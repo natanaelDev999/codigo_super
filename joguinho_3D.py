@@ -2,7 +2,7 @@ import os
 import time
 #notas:tempo necessario para ser concluido foi 3 dias, ajudas externas:pesquisa de como ler de trás para frente uma lista, como usar loop para mudar certa parte de uma ...
 #matrix ,erros ajeitados por entidades externas 1 o da matrix com loop na atualização do monstro, tipo de pixel 0 = céu,1 = terra,3 = espada,8 = monstro
-#marcador de direcao
+#marcador de direcao :)
 direcao = ['sul','leste','norte','oeste']
 #matrix para visualização
 tela = [[0,0,0,0,0,0,0,0,0,0],
