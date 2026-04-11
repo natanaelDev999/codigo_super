@@ -1,9 +1,13 @@
 def ficha(nome='<desconhecido>',gols=0):
-    return f'o jogador do nome {nome} fez {gols} gol(s)'
-nome2 = input('qual o nome do jogador: ')
-gols2 = input('quantos gols ele fez: ')
-if gols2.isnumeric() == True:
-    gols2 = int(gols2)
+    print(f'O nome do jogador é {nome}, a quantidade de gols feita pelo jogador é {gols}')
+
+nome = str(input("Nome do jogador: "))
+gols = str(input("Quantos gols foram feitos: "))
+if gols.isnumeric():
+    gols = int(gols)
 else:
-    print('escreva em forma de numero')
-print(ficha(nome2,gols2))
+    gols = 0
+if nome.strip() == '':
+    ficha(gols=gols)
+else:
+    ficha(nome,gols)

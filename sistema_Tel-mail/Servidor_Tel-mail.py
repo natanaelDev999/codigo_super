@@ -4,6 +4,19 @@ import json
 
 lock = threading.Lock()
 
+def lista_cont(nome):
+    dado_json = {}
+    list = []
+    with lock:
+        with open('Usuarios_Tel-mail.json','r') as arquivo:
+            dado_json = json.load(arquivo)
+    for pos,usuario in enumerate(dado_json['usuarios']):
+        if usuario['nome'] == nome:
+            del dado_json['usuarios'][pos]
+        else:
+            list.append(usuario['nome'])
+    return list
+
 def valida(nome,ender):
     dado_json = {}
     with lock:
@@ -42,7 +55,7 @@ def main(con,ender):
         data = con.recv(1024).decode()
         para, email, nome = data.split('/')
         print(nome)
-        if email == 'exit-':
+        if email in 'exit-':
             break
         resps = valida(nome,ender)
         resps_cliente = []
@@ -51,7 +64,8 @@ def main(con,ender):
                 if email2['para'] == nome:
                     resps_cliente.append('para:' + email2['para'] + ';email:' + email2['email'] + ';de:' + email2['de'])
                     mensagens.remove(email2)
-            mensagens.append({'para':para,'email':email,'de':nome})
+            if not  'Contects--' in email:
+                mensagens.append({'para':para,'email':email,'de':nome})
             print(mensagens)
         #
         elif resps == 'registro encontrado':
@@ -59,9 +73,13 @@ def main(con,ender):
                 if email2['para'] == nome:
                     resps_cliente.append('para:' + email2['para'] + ';email:' + email2['email'] + ';de:' + email2['de'])
                     mensagens.remove(email2)
-            mensagens.append({'para': para, 'email': email, 'de': nome})
+            if not 'Contects--' in email:
+                mensagens.append({'para': para, 'email': email, 'de': nome})
             print(mensagens)
         print(data)
+        if 'Contects--' in email:
+            resp = lista_cont(nome)
+            resps_cliente = str(resp)[1:-1]
         con.sendall((resps+';Tel-mails:\n'+'\033[35m'+str(resps_cliente)[1:-1]+'\033[m').encode())
     con.close()
 

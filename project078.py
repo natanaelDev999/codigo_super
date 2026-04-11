@@ -1,11 +1,23 @@
-def mostradoc():
-    while True:
-        print(f'\033[0;0;42m{"~"*30}\033[m\n\033[0;0;42m   SISTEMA DE AJUDA PYhelp    \033[m\n\033[0;0;42m{"~"*30}\033[m')
-        func = str(input('Função ou biblioteca > '))
-        if not func == 'fim':
-            doc = str(help(func))
-            print(f'\033[0;0;0m{doc}\033[m')
-        else:
-            print(f'\033[0;0;41m{"~"*15}\033[m\n\033[0;0;41m    ATÉ LOGO   \033[m\n\033[0;0;41m{"~"*15}\033[m')
-            break
-mostradoc()
+import time
+def main(mens):
+    titulo(f'PROCURANDO O COMANDO OU BIBLIOTECA {mens}','44')
+    time.sleep(1)
+    help(mens)
+
+def titulo(mensg,cor):
+    tam = len(mensg) + 2
+    print(f'\033[0;30;{cor}m',end='')
+    print('~'*(tam+1))
+    print(f' {mensg}')
+    print('~'*tam)
+    print('\033[m')
+
+com = ''
+while True:
+    titulo('SISTEMA DE AJUDA PyHelp','42')
+    com = input('Pesquise uma função ou biblioteca: ')
+    if com == 'fim':
+        break
+    else:
+        main(com)
+titulo('ATÉ LOGO','41')
