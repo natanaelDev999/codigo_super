@@ -79,7 +79,7 @@ def trata_cliente(conexao,endereco):
         conexao.sendall(('[SERVIDOR] '+respt+';/-'+string_list+'\n').encode())
 # trata do socket para a conexao
 port = "127.0.0.1"
-ip = 7999
+ip = 7666
 
 ob_socket = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
 

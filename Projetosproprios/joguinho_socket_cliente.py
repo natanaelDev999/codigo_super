@@ -41,7 +41,7 @@ tela = [[' ',' ',' ',' ',' ',' ',' ',' ',' '],
 # variaveis necessarias
 jogadores = []
 port = "127.0.0.1"
-ip = 7999
+ip = 7666
 pos_x = 4
 pos_y = 2
 

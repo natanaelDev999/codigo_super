@@ -1,4 +1,4 @@
-etxt = input('>>> ')
+'''etxt = input('>>> ')
 def parenteses(txt):
     if '(' in txt and ')' in txt:
         loc = txt.index('(')
@@ -13,4 +13,4 @@ def parenteses(txt):
             print('Comando invalido')
     else:
         print('Comando invalido por não conter parenteses!')
-parenteses(etxt)
+parenteses(etxt)'''

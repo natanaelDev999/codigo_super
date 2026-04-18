@@ -1,4 +1,4 @@
-'''import os
+import os
 import time
 matrix = [['  ','  ','  ','+ '],
           ['  ','  ','  ','  '],
@@ -18,4 +18,4 @@ for c in range(0,4):
             print(coluna,end=' ')
         print()
     time.sleep(1)
-    os.system('cls')'''
+    os.system('cls')
