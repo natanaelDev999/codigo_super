@@ -19,7 +19,7 @@ nome_programa = ""
 erro = 0
 
 while True:
-    or1 = input('')
+    or1 = input('>>>')
     if or1.startswith(writenum[0]):
         partes = or1.split()
         num1 = partes[1]

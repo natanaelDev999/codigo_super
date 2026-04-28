@@ -4,11 +4,11 @@ def desenhar():
 class Animal:
     def __init__(self, nome):
         self.nome = nome
-        self.vel_a = 0   # tempo do animal
-        self.vel_p = 0   # tempo do predador
-        self.dis_a = 0   # distância do animal
-        self.dis_p = 0   # distância do predador
-        self.chance = 50 # chance inicial
+        self.vel_a = 0
+        self.vel_p = 0
+        self.dis_a = 0
+        self.dis_p = 0
+        self.chance = 50
 
     def coleta_de_dados(self):
         desenhar()
@@ -20,13 +20,13 @@ class Animal:
         desenhar()
 
     def analise_de_dados(self):
-        # Comparação de distância
+
         if self.dis_a < self.dis_p:
             self.chance += 25
         else:
             self.chance -= 25
 
-        # Comparação de tempo (quem chega mais rápido)
+
         if self.vel_a < self.vel_p:
             self.chance += 25
         else:

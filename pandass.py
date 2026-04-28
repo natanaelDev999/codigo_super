@@ -1,31 +1,25 @@
-'''import glfw
-from OpenGL.GL import *
-
-# inicia glfw
-if not glfw.init():
-    raise Exception("GLFW não iniciou")
-
-# cria janela
-window = glfw.create_window(800, 600, "OpenGL com GLFW", None, None)
-
-if not window:
-    glfw.terminate()
-    raise Exception("Janela não criada")
-
-glfw.make_context_current(window)
-
-# loop principal
-while not glfw.window_should_close(window):
-    glClear(GL_COLOR_BUFFER_BIT)
-
-    # desenha triângulo
-    glBegin(GL_TRIANGLES)
-    glVertex2f(0, 0.20)
-    glVertex2f(-0.5, -0.5)
-    glVertex2f(0.5, -0.5)
-    glEnd()
-
-    glfw.swap_buffers(window)
-    glfw.poll_events()
-
-glfw.terminate()'''
+import time
+import random
+def m1():
+    print("-=    Calculadora de x    =-")
+    valor_igual = int(input('Qual valor será igual a multiplicação: '))
+    print(f"{valor_igual} = ? . ?")
+    valor_descoberto = int(input('Qual o primeiro fator o que se sabe o valor: '))
+    print(f"{valor_igual} = {valor_descoberto} . x")
+    print(f"=-   Calculando o valor de x ",end=' ')
+    for c in range(0,3):
+        time.sleep(1)
+        print('.', end=' ')
+    print('   -=')
+    if valor_descoberto < valor_igual:
+        print(f"   O valor de x é {valor_igual / valor_descoberto}")
+    else:
+        print(f"   O valor de x é {valor_descoberto / valor_igual}")
+def m2():
+    x = 4
+    print("-=    Calculadora de dano    =-")
+    for c in range(0, 20):
+        valor_igual = random.randint(1,20)
+        valor_descoberto = random.randint(1, 20)
+        print(f"A força foi {valor_descoberto}, o dano foi {valor_descoberto*x}")
+m2()

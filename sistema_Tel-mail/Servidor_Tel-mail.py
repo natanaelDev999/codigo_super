@@ -62,16 +62,16 @@ def main(con,ender):
         if resps == 'registro de usuario feito':
             for email2 in mensagens:
                 if email2['para'] == nome:
-                    resps_cliente.append('para:' + email2['para'] + ';email:' + email2['email'] + ';de:' + email2['de'])
+                    resps_cliente.append('para:' + email2['para'] + ';email:' + email2['email'] + ';de:' + email2['de'] + "§-")
                     mensagens.remove(email2)
-            if not  'Contects--' in email:
+            if not 'Contects--' in email:
                 mensagens.append({'para':para,'email':email,'de':nome})
             print(mensagens)
         #
         elif resps == 'registro encontrado':
             for email2 in mensagens:
                 if email2['para'] == nome:
-                    resps_cliente.append('para:' + email2['para'] + ';email:' + email2['email'] + ';de:' + email2['de'])
+                    resps_cliente.append('para:' + email2['para'] + ';email:' + email2['email'] + ';de:' + email2['de'] + "§-")
                     mensagens.remove(email2)
             if not 'Contects--' in email:
                 mensagens.append({'para': para, 'email': email, 'de': nome})
@@ -79,8 +79,8 @@ def main(con,ender):
         print(data)
         if 'Contects--' in email:
             resp = lista_cont(nome)
-            resps_cliente = str(resp)[1:-1]
-        con.sendall((resps+';Tel-mails:\n'+'\033[35m'+str(resps_cliente)[1:-1]+'\033[m').encode())
+            resps_cliente = str(resp)
+        con.sendall((resps+';Tel-mails:\n'+'\033[35m'+str(resps_cliente)+'\033[m').encode())
     con.close()
 
 mensagens = []

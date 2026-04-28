@@ -5,15 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="40f19d69-33a2-4c14-82a8-a0754e89c91b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Modularização_Estudos/mod01.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projetosproprios/bola_quicante.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projetosproprios/bola_quicante.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projetosproprios/joguinho_3d.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projetosproprios/joguinho_3d.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projetosproprios/joguinho_socket_cliente.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projetosproprios/joguinho_socket_cliente.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projetosproprios/joguinho_socket_servidor.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projetosproprios/joguinho_socket_servidor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projetosproprios/teste_validador.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projetosproprios/teste_validador.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Modularização_Estudos/ex001.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Modularização_Estudos/ex002.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Modularização_Estudos/ex003.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Modularização_Estudos/mods01/mod01.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Modularização_Estudos/mods01/mod02.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Modularização_Estudos/mods02/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Modularização_Estudos/mods02/tipo/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Modularização_Estudos/modulos/moeda.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Modularização_Estudos/valida_tipo.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projetosproprios/joguinho_3d.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projetosproprios/output/joguinho_3d.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projetosproprios/musicaventura.wav" beforeDir="false" afterPath="$PROJECT_DIR$/Projetosproprios/output/musicaventura.wav" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projetosproprios/sobrevivenciacalculo.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projetosproprios/sobrevivenciacalculo.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pandass.py" beforeDir="false" afterPath="$PROJECT_DIR$/pandass.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sistema_Tel-mail/Cliente_Tel-mail.py" beforeDir="false" afterPath="$PROJECT_DIR$/sistema_Tel-mail/Cliente_Tel-mail.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sistema_Tel-mail/Servidor_Tel-mail.py" beforeDir="false" afterPath="$PROJECT_DIR$/sistema_Tel-mail/Servidor_Tel-mail.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sistema_Tel-mail/Usuarios_Tel-mail.json" beforeDir="false" afterPath="$PROJECT_DIR$/sistema_Tel-mail/Usuarios_Tel-mail.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teltel.1.1.py" beforeDir="false" afterPath="$PROJECT_DIR$/teltel.1.1.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,6 +71,7 @@
     &quot;JavaScript Debug.project.html.executor&quot;: &quot;Run&quot;,
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;Python tests.Python tests in teste.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Cliente_Tel-mail.executor&quot;: &quot;Run&quot;,
     &quot;Python.OS.executor&quot;: &quot;Run&quot;,
     &quot;Python.PRINCIPAL.executor&quot;: &quot;Run&quot;,
     &quot;Python.RPG_Sword_Master.executor&quot;: &quot;Run&quot;,
@@ -92,6 +102,7 @@
     &quot;Python.joguinho (1).executor&quot;: &quot;Run&quot;,
     &quot;Python.joguinho.executor&quot;: &quot;Run&quot;,
     &quot;Python.joguinho_3D.executor&quot;: &quot;Run&quot;,
+    &quot;Python.joguinho_3d (1).executor&quot;: &quot;Run&quot;,
     &quot;Python.joguinho_3d.executor&quot;: &quot;Run&quot;,
     &quot;Python.joguinho_multiplayer.executor&quot;: &quot;Run&quot;,
     &quot;Python.joguinho_socket_cliente.executor&quot;: &quot;Run&quot;,
@@ -101,6 +112,8 @@
     &quot;Python.moeda.executor&quot;: &quot;Run&quot;,
     &quot;Python.mouse_pynput.executor&quot;: &quot;Run&quot;,
     &quot;Python.new_word.executor&quot;: &quot;Run&quot;,
+    &quot;Python.opengl01.executor&quot;: &quot;Run&quot;,
+    &quot;Python.opengl02.executor&quot;: &quot;Run&quot;,
     &quot;Python.pandas.executor&quot;: &quot;Run&quot;,
     &quot;Python.pandass.executor&quot;: &quot;Run&quot;,
     &quot;Python.pgame.executor&quot;: &quot;Run&quot;,
@@ -224,10 +237,11 @@
       <recent name="C:\Users\Natan\PycharmProjects\PythonProject1" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Natan\PycharmProjects\PythonProject1\modularização\mod05" />
+      <recent name="C:\Users\Natan\PycharmProjects\PythonProject1\modularização" />
+      <recent name="C:\Users\Natan\PycharmProjects\PythonProject1\Projetosproprios\output" />
       <recent name="C:\Users\Natan\PycharmProjects\PythonProject1\Modularização_Estudos\ex01" />
       <recent name="C:\Users\Natan\PycharmProjects\PythonProject1\Modularização_Estudos" />
-      <recent name="C:\Users\Natan\PycharmProjects\PythonProject1\Projetosproprios" />
-      <recent name="C:\Users\Natan\PycharmProjects\PythonProject1" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -235,7 +249,30 @@
       <command value="project038" />
     </option>
   </component>
-  <component name="RunManager" selected="Python.joguinho_3d">
+  <component name="RunManager" selected="Python.programa_principal">
+    <configuration name="Cliente_Tel-mail" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PythonProject1" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="SDK_NAME" value="Python 3.12 (PythonProject1)" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/sistema_Tel-mail" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/sistema_Tel-mail/Cliente_Tel-mail.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="true" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <module name="PythonProject1" />
       <option name="ENV_FILES" value="" />
@@ -259,7 +296,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="bola_quicante" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="joguinho_3d (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PythonProject1" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -269,57 +306,11 @@
       </envs>
       <option name="SDK_HOME" value="" />
       <option name="SDK_NAME" value="Python 3.12 (PythonProject1)" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Projetosproprios" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Projetosproprios/output" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Projetosproprios/bola_quicante.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="true" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="joguinho_3d" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="PythonProject1" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="SDK_NAME" value="Python 3.12 (PythonProject1)" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Projetosproprios" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Projetosproprios/joguinho_3d.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="true" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="joguinho_socket_cliente" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="PythonProject1" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="SDK_NAME" value="Python 3.12 (PythonProject1)" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Projetosproprios" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Projetosproprios/joguinho_socket_cliente.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Projetosproprios/output/joguinho_3d.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="true" />
@@ -351,7 +342,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="teste_validador" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="programa_principal" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PythonProject1" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -361,11 +352,34 @@
       </envs>
       <option name="SDK_HOME" value="" />
       <option name="SDK_NAME" value="Python 3.12 (PythonProject1)" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Projetosproprios" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/modularização/mod05" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Projetosproprios/teste_validador.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\Natan\PycharmProjects\PythonProject1\modularização\mod05\programa_principal.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="true" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="project049" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PythonProject1" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="SDK_NAME" value="Python 3.12 (PythonProject1)" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/project049.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="true" />
@@ -398,19 +412,19 @@
     </configuration>
     <list>
       <item itemvalue="Python.testeclass" />
-      <item itemvalue="Python.bola_quicante" />
-      <item itemvalue="Python.teste_validador" />
+      <item itemvalue="Python.programa_principal" />
+      <item itemvalue="Python.project049" />
+      <item itemvalue="Python.Cliente_Tel-mail" />
+      <item itemvalue="Python.joguinho_3d (1)" />
       <item itemvalue="Python.pandass" />
-      <item itemvalue="Python.joguinho_socket_cliente" />
-      <item itemvalue="Python.joguinho_3d" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.joguinho_3d" />
-        <item itemvalue="Python.teste_validador" />
+        <item itemvalue="Python.programa_principal" />
+        <item itemvalue="Python.project049" />
+        <item itemvalue="Python.Cliente_Tel-mail" />
         <item itemvalue="Python.pandass" />
-        <item itemvalue="Python.bola_quicante" />
-        <item itemvalue="Python.joguinho_socket_cliente" />
+        <item itemvalue="Python.joguinho_3d (1)" />
       </list>
     </recent_temporary>
   </component>
