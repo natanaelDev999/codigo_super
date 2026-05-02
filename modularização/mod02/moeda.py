@@ -6,5 +6,5 @@ def mais(num,mais):
     return (num*mais)/100+num
 def menos(num,menos):
     return num-((num*menos)/100)
-def moeda(num):
-    return f'R${num:.2f}'.replace('.',',')
+def moeda(num=0,moeda='R$'):
+    return f'{moeda}{num:.2f}'.replace('.',',')

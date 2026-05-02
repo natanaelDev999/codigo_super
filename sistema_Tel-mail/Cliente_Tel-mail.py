@@ -8,16 +8,12 @@ tela = [[' ',' ',' ',' ',' ',' '],
         [' ',' ',' ',' ',' ',' '],
         [' ',' ',' ',' ',' ',' ']]
 def trata_img(pos,string):
-    achou = False
     de = ''
-    for pos, iten in enumerate(string[pos+1:]):
-        if iten == '<' and achou == False:
-            tela[string[int(pos)+1]][string[int(pos)+2]] = '\033[34m#\033[m'
-        elif iten == '¢':
-            achou = True
-        elif iten == True:
+    print(pos)
+    for pos2, iten in enumerate(string[pos:]):
+        if iten == '<':
             de += iten
-    desenha_tela(True)
+    desenha_tela()
     print(de)
 def desenha_tela(clear=False):
     for linha in tela:
@@ -50,10 +46,10 @@ def img():
     return cod_string
 def trata_string(string):
     email = ''
+    print(string)
     for pos,ms in enumerate(string[0:]):
         if ms == '¢':
             trata_img(pos,string)
-            print(email)
             break
         if ms == '§' and string[pos+1] == '-':
             email += ms + string[pos+1]

@@ -22,4 +22,65 @@ def m2():
         valor_igual = random.randint(1,20)
         valor_descoberto = random.randint(1, 20)
         print(f"A força foi {valor_descoberto}, o dano foi {valor_descoberto*x}")
-m2()
+'''
+
+import os
+import time
+
+
+def atualiza_tela():
+    global tela
+    global z
+    chao = 6 - z
+    print(chao)
+    for pos, linha2 in enumerate(tela):
+        if pos >= chao and z <= 3:
+            tela[pos] = ['#', '#', '#', '#', '#', '#', '#']
+
+
+def desenha_tela():
+    global tela
+    global z
+    for linha in tela:
+        for coluna in linha:
+            if coluna == ' ':
+                print(f'\033[0;0;44m{coluna}\033[m', end='\033[0;0;44m \033[m')
+            elif coluna == '#':
+                print(f'\033[32;0;42m{coluna}\033[m', end='\033[32;0;42m \033[m')
+        print()
+    for pos3, linha3 in enumerate(tela):
+        tela[pos3] = [' ', ' ', ' ', ' ', ' ', ' ', ' ']
+    if z > 3:
+        for pos, linha2 in enumerate(tela):
+            if pos >= 3 and z > 3:
+                tela[pos] = ['#', '#', '#', '#', '#', '#', '#']
+
+
+def linha():
+    print('-' * 30)
+
+
+tela = [[' ', ' ', ' ', ' ', ' ', ' ', ' '],
+        [' ', ' ', ' ', ' ', ' ', ' ', ' '],
+        [' ', ' ', ' ', ' ', ' ', ' ', ' '],
+        [' ', ' ', ' ', ' ', ' ', ' ', ' '],
+        [' ', ' ', ' ', ' ', ' ', ' ', ' '],
+        [' ', ' ', ' ', ' ', ' ', ' ', ' '],
+        [' ', ' ', ' ', ' ', ' ', ' ', ' '],
+        [' ', ' ', ' ', ' ', ' ', ' ', ' ']]
+z = 1
+while True:
+    atualiza_tela()
+    linha()
+    desenha_tela()
+    linha()
+    print(f'O eixo z e igual a: {z}')
+    acao = input('Deseja fazer o que: subir(w), descer(s); ').strip()
+    if z == 1 and acao == 's':
+        print('\033[31mVocê já se encontra no chão\033[m')
+    elif z > 1 and acao == 's':
+        z -= 1
+    elif acao == 'w':
+        z += 1
+    time.sleep(2)
+    os.system('cls')'''
