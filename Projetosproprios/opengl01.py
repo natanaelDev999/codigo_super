@@ -56,7 +56,7 @@ def render():
 def main():
     global quant
     glfw.init()
-    window = glfw.create_window(700,700,"window - 01",None,None)
+    window = glfw.create_window(700,700,"window - 00",None,None)
     glfw.make_context_current(window)
     init()
     while not glfw.window_should_close(window):

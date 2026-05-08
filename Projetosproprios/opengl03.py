@@ -8,30 +8,30 @@ dados = []
 
 # Trata da cor
 def init():
-    glClearColor(1,1,1,1)
+    glClearColor(0,0,0,0)
 quant = 0
 def render():
     global quant
-    if quant <= 1:
-        time.sleep(0.05)
-        glClear(GL_COLOR_BUFFER_BIT)
-        glColor3f(1, 0, 0)
-        glBegin(GL_TRIANGLES)
-        # esquerda
-        glVertex2f(-0.3, -0.3-quant)
-        # direita
-        glVertex2f(0.3, -0.3)
-        # cima
-        glVertex2f(0.3, 0.3)
-        glEnd()
-        #
-        glColor3f(0, 1, 0)
-        glBegin(GL_TRIANGLES)
-        glVertex2f(-0.3, 0.3+quant)
-        glVertex2f(-0.3, -0.3-quant)
-        glVertex2f(0.3 , 0.3)
-        glEnd()
-    elif quant > 1:
+    #if quant <= 1:
+    time.sleep(0.05)
+    glClear(GL_COLOR_BUFFER_BIT)
+    glColor3f(1, 0, 0)
+    glBegin(GL_TRIANGLES)
+    # esquerda
+    glVertex2f(-0.3+(quant/2), -0.3 - quant)
+    # direita
+    glVertex2f(0.3-(quant/2), -0.3)
+    # cima
+    glVertex2f(0.3-(quant/2), 0.3)
+    glEnd()
+    #
+    glColor3f(1, 0, 0)
+    glBegin(GL_TRIANGLES)
+    glVertex2f(-0.3+(quant/2), 0.3 + quant)
+    glVertex2f(-0.3+(quant/2), -0.3 - quant)
+    glVertex2f(0.3-(quant/2), 0.3)
+    glEnd()
+    '''elif quant > 1:
         time.sleep(0.05)
         glClear(GL_COLOR_BUFFER_BIT)
         glColor3f(1, 0, 0)
@@ -50,7 +50,7 @@ def render():
         glVertex2f(-0.3, -0.3)
         glVertex2f(0.3, 0.3)
         glEnd()
-        quant = 0
+        quant = 0'''
 def analise():
     print(f'lista de dados:menor ângulo:{min(dados):.2f};maior ângulo:{max(dados)};metade do ângulo maior:{max(dados)/2:.2f}')
 # Função principal
