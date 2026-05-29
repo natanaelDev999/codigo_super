@@ -7,16 +7,23 @@ def key_callback(window, key, scancode, action, mods):
     if key == glfw.KEY_A and action == glfw.PRESS:
         for vert in verticies:
             vert[0] -= 0.05
+        for vert in verticies3:
+            vert[0] += 0.008
 
         verticies[1][1] += 0.008
         verticies[0][1] -= 0.0008
         verticies[2][0] -= 0.00071
         verticies[4][1] += 0.00089
         verticies[6][1] += 0.006
+        #
+        verticies[9][1] += 0.0057
+        verticies[10][1] += 0.0076
 
     elif key == glfw.KEY_D and action == glfw.PRESS:
         for vert in verticies:
             vert[0] += 0.05
+        for vert in verticies3:
+            vert[0] -= 0.008
 
         verticies[1][1] -= 0.008
         verticies[0][1] += 0.0008
@@ -27,19 +34,37 @@ def key_callback(window, key, scancode, action, mods):
             verticies[2][0] += 0.00071
         else:
             verticies[2][0] -= 0.00071
+        #
+        verticies[7][1] += 0.00000001
+        verticies[8][1] += 0.000046
+        verticies[9][1] -= 0.0057
+        verticies[10][1] -= 0.0076
     elif key == glfw.KEY_W and action == glfw.PRESS:
         for vert in verticies:
             vert[1] += 0.05
+        for vert in verticies3:
+            vert[1] -= 0.008
+
         verticies[2][1] += 0.009
-        verticies[3][1] += 0.008
-        verticies[5][1] += 0.008
+        verticies[3][1] += 0.0088
+        verticies[5][1] += 0.0088
+        #
+        verticies[8][1] -= 0.0007
+        verticies[10][1] -= 0.0007
     elif key == glfw.KEY_S and action == glfw.PRESS:
         for vert in verticies:
             vert[1] -= 0.05
+        for vert in verticies3:
+            vert[1] += 0.008
+
         verticies[3][1] -= 0.0098
         verticies[5][1] -= 0.0098
         verticies[2][1] -= 0.0099
-verticies = [[-0.16,0.1],[0.16,0.1],[-0.0,0.2],[-0.0,0.2],[-0.06,0.1],[-0.0,0.2],[0.06,0.1]]
+        #
+        verticies[8][1] += 0.0007
+        verticies[10][1] += 0.0007
+verticies = [[-0.16,0.1],[0.16,0.1],[-0.0,0.2],[-0.0,0.2],[-0.06,0.1],[-0.0,0.2],[0.06,0.1],
+             [-0.068,0.1],[-0.08,0.19],[0.068,0.1],[0.08,0.19]]
 
 verticies2 = [
     [-1,0.0],
@@ -101,6 +126,13 @@ def render():
     glVertex2fv(verticies[5])
     glVertex2fv(verticies[6])
     glEnd()
+    glBegin(GL_LINES)
+    glColor3f(0,0,1)
+    glVertex2fv(verticies[7])
+    glVertex2fv(verticies[8])
+    glVertex2fv(verticies[9])
+    glVertex2fv(verticies[10])
+    glEnd()
 
 def init():
     glClearColor(0, 0, 0, 0)
@@ -116,7 +148,7 @@ def draw_data():
 def main():
     glfw.init()
 
-    window = glfw.create_window(600, 600, "window - 04", None, None)
+    window = glfw.create_window(600, 600, "SuperSpace", None, None)
 
     glfw.make_context_current(window)
     glfw.set_key_callback(window, key_callback)

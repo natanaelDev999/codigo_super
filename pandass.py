@@ -22,9 +22,7 @@ def m2():
         valor_igual = random.randint(1,20)
         valor_descoberto = random.randint(1, 20)
         print(f"A força foi {valor_descoberto}, o dano foi {valor_descoberto*x}")
-'''
-
-import os
+'''import os
 import time
 
 
@@ -83,4 +81,4 @@ while True:
     elif acao == 'w':
         z += 1
     time.sleep(2)
-    os.system('cls')'''
+    os.system('cls)'''

@@ -9,3 +9,5 @@ def leiadinheiro():
             return float(valor.replace(',','.'))
         elif valor.isalpha() or valor.strip() == '':
             print(f"\033[31mO valor '{str(valor)}' é inválido por não tratar-se de um valor monetário\033[m")
+        else:
+            print(f"\033[31mO valor '{str(valor)}' é inválido por não tratar-se de um valor monetário\033[m")

@@ -4,21 +4,27 @@ import OpenGL.GL.shaders as ops
 import numpy as np
 import ctypes as ct
 shaderid = 0
-verticies = [[-0.05,0.0, 0,1,0],[0.05,0.0, 0,1,0],[-0.0,0.8, 0,1,0]
-            ]
+verticies = [[-0.8,-0.8, 1,0,0],
+             [0.0,-0.8, 1,0,0],
+             [0.0,-0.8, 0,1,0],
+             [0.0,-0.8, 1,1,0],
+             [0.8,-0.8, 0,1,0],
+             [-0.4,0.0, 1,0,0],
+             [-0.4,0.0, 1,0,1],
+             [0.4,0.0, 0,1,0],
+             [0.4,0.0, 0,1,1],
+             [0.0,0.8, 0,0,1]]
+faces = [[0,1,5],
+         [2,4,7],
+         [6,8,9],
+         [3,8,6]]
 vaoid = 0
-def key_callback(window, key, scancode, action, mods):
-    global verticies
-    if key == glfw.KEY_A and action == glfw.PRESS:
-        for vert in verticies:
-            vert[1] -= 0.05
-    elif key == glfw.KEY_D and action == glfw.PRESS:
-        for vert in verticies:
-            vert[1] += 0.05
+qtd_fc = len(faces)
 def init():
     global verticies
     global vaoid,shaderid
-    glClearColor(0,0,0,0)
+    global faces
+    glClearColor(1,1,1,1)
     verticies = np.array(verticies,np.dtype(np.float32))
     vaoid = glGenVertexArrays(1)
     glBindVertexArray(vaoid)
@@ -34,6 +40,12 @@ def init():
 
     glEnableVertexAttribArray(0)
     glEnableVertexAttribArray(1)
+
+    #criando ebo
+    faces = np.array(faces,dtype=np.uint32)
+    eboid = glGenBuffers(1)
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,eboid)
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER,faces.nbytes,faces,GL_STATIC_DRAW)
 
     glBindBuffer(GL_ARRAY_BUFFER,0)
     glBindVertexArray(0)
@@ -72,7 +84,8 @@ def render():
     glClear(GL_COLOR_BUFFER_BIT)
     glUseProgram(shaderid)
     glBindVertexArray(vaoid)
-    glDrawArrays(GL_TRIANGLES,0,len(verticies))
+    # glDrawArrays(GL_TRIANGLES,0,len(verticies))
+    glDrawElements(GL_TRIANGLES,3*qtd_fc,GL_UNSIGNED_INT,None)
     glBindVertexArray(0)
     glUseProgram(0)
 
@@ -80,7 +93,6 @@ def main():
     glfw.init()
     window = glfw.create_window(600,600,"window - vbo - vao - shades",None,None)
     glfw.make_context_current(window)
-    glfw.set_key_callback(window, key_callback)
     init()
     while not glfw.window_should_close(window):
         render()

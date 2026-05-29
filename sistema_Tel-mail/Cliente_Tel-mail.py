@@ -8,13 +8,26 @@ tela = [[' ',' ',' ',' ',' ',' '],
         [' ',' ',' ',' ',' ',' '],
         [' ',' ',' ',' ',' ',' ']]
 def trata_img(pos,string):
-    de = ''
-    print(pos)
-    for pos2, iten in enumerate(string[pos:]):
-        if iten == '<':
-            de += iten
-    desenha_tela()
-    print(de)
+    cont = ''
+    achou = False
+    for obj in string[pos:]:
+        if obj != '¢' and achou == False:
+            cont += obj
+        else:
+            achou = True
+    cod = []
+    achouu = False
+    for c in cont:
+        if c == '<':
+            achouu = True
+        elif c == '>':
+            achouu = False
+        elif achouu == True and c.isnumeric():
+            cod.append(c)
+    for c in range(0,len(cod),2):
+        tela[int(cod[c])][int(cod[c+1])] = '\033[0;34;44m#\033[m'
+        # print(f'cod: {cod[c],cod[c+1]}')
+    desenha_tela(True)
 def desenha_tela(clear=False):
     for linha in tela:
         for coluna in linha:
@@ -38,7 +51,7 @@ def img():
         else:
             print("\033[31mAlgum dado não corresponde ao nosso protocolo\033[m")
     for cods in cod:
-        tela[int(cods[1])][int(cods[3])] = '\033[34m#\033[m'
+        tela[int(cods[1])][int(cods[3])] = '\033[0;34;44m#\033[m'
     desenha_tela(True)
     cod_string = ''
     for iten in cod:
@@ -49,7 +62,7 @@ def trata_string(string):
     print(string)
     for pos,ms in enumerate(string[0:]):
         if ms == '¢':
-            trata_img(pos,string)
+            trata_img(pos+1,string)
             break
         if ms == '§' and string[pos+1] == '-':
             email += ms + string[pos+1]
