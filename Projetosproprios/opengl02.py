@@ -18,10 +18,10 @@ def key_callback(window, key, scancode, action, mods):
         z -= 0.5
     if key == glfw.KEY_A:
         angle -= 4
-        print(angle)
+        glRotatef(angle, 1, 0, 0)
     elif key == glfw.KEY_D:
         angle += 4
-        print(angle)
+        glRotatef(angle, 1, 0, 0)
 
 verticies = [[-0.5,0.5,0.0],[0.5,0.5,0.0],[-0.5,-0.5,0.0],
              [0.5,0.5,0.0],[-0.5,-0.5,0.0],[0.5,-0.5,0.0],

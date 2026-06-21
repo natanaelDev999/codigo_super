@@ -1,17 +1,34 @@
+import glfw
 from OpenGL.GL import *
 from OpenGL.GLU import *
-from OpenGL.GLUT import *
-import sys
-
-def draw():
+x = 0
+y = 0
+z = -5
+angle = 0
+def init():
+    glClearColor(0,0,0.4,0)
+    glMatrixMode(GL_PROJECTION)
+    gluPerspective(45, 1, 0.1, 500000000000000000000000)
+    glMatrixMode(GL_MODELVIEW)
+    glPointSize(5)
+def render():
+    global x,y,z
+    glLoadIdentity()
+    glRotatef(angle, 0, 1, 0)
+    glTranslatef(x, y, z)
     glClear(GL_COLOR_BUFFER_BIT)
-    glutWireCube(0.7)
-    glFlush()
-
-glutInit(sys.argv)
-glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB)
-glutInitWindowSize(500, 500)
-glutInitWindowPosition(100,100)
-glutCreateWindow('cube')
-glutDisplayFunc(draw)
-glutMainLoop()
+    glBegin(GL_LINES)
+    for c in obj:
+        glVertex3fv(c)
+    glEnd()
+def main():
+    glfw.init()
+    window = glfw.create_window(600,600,"SuperSpace 2",None,None)
+    glfw.make_context_current(window)
+    init()
+    while not glfw.window_should_close(window):
+        render()
+        glfw.poll_events()
+        glfw.swap_buffers(window)
+    glfw.terminate()
+main()

@@ -7,15 +7,8 @@
     <list default="true" id="40f19d69-33a2-4c14-82a8-a0754e89c91b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Projetosproprios/opengl02.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projetosproprios/opengl02.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projetosproprios/opengl06.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projetosproprios/opengl06.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projetosproprios/opengl07.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projetosproprios/opengl07.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modularização/mod03/moeda.py" beforeDir="false" afterPath="$PROJECT_DIR$/modularização/mod03/moeda.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modularização/mod04/moeda.py" beforeDir="false" afterPath="$PROJECT_DIR$/modularização/mod04/moeda.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modularização/mod04/programa_principal.py" beforeDir="false" afterPath="$PROJECT_DIR$/modularização/mod04/programa_principal.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modularização/utilidadesCeV/dado/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/modularização/utilidadesCeV/dado/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandass.py" beforeDir="false" afterPath="$PROJECT_DIR$/pandass.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistema_Tel-mail/Cliente_Tel-mail.py" beforeDir="false" afterPath="$PROJECT_DIR$/sistema_Tel-mail/Cliente_Tel-mail.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sistema_Tel-mail/Usuarios_Tel-mail.json" beforeDir="false" afterPath="$PROJECT_DIR$/sistema_Tel-mail/Usuarios_Tel-mail.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projetosproprios/opengl08.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projetosproprios/opengl08.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projetosproprios/opengl10.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projetosproprios/opengl10.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -290,33 +283,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="joguinho_3d" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="PythonProject1" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="SDK_NAME" value="Python 3.12 (PythonProject1)" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Projetosproprios/output" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="DEBUG_JUST_MY_CODE" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="RUN_TOOL" value="" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Projetosproprios/output/joguinho_3d.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="true" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="opengl07" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="opengl05" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PythonProject1" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -333,7 +300,33 @@
       <option name="DEBUG_JUST_MY_CODE" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="RUN_TOOL" value="" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Projetosproprios/opengl07.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Projetosproprios/opengl05.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="true" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="opengl06" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PythonProject1" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="SDK_NAME" value="Python 3.12 (PythonProject1)" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Projetosproprios" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="DEBUG_JUST_MY_CODE" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="RUN_TOOL" value="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Projetosproprios/opengl06.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="true" />
@@ -368,32 +361,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="opengl09" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="PythonProject1" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="SDK_NAME" value="Python 3.12 (PythonProject1)" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Projetosproprios" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="DEBUG_JUST_MY_CODE" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="RUN_TOOL" value="" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Projetosproprios/opengl09.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="true" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="opengl10" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PythonProject1" />
       <option name="ENV_FILES" value="" />
@@ -412,6 +379,32 @@
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="RUN_TOOL" value="" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Projetosproprios/opengl10.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="true" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="pandass" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PythonProject1" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="SDK_NAME" value="Python 3.12 (PythonProject1)" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="DEBUG_JUST_MY_CODE" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="RUN_TOOL" value="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pandass.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="true" />
@@ -447,19 +440,19 @@
     </configuration>
     <list>
       <item itemvalue="Python.testeclass" />
-      <item itemvalue="Python.joguinho_3d" />
-      <item itemvalue="Python.opengl07" />
+      <item itemvalue="Python.pandass" />
+      <item itemvalue="Python.opengl05" />
+      <item itemvalue="Python.opengl06" />
       <item itemvalue="Python.opengl08" />
-      <item itemvalue="Python.opengl09" />
       <item itemvalue="Python.opengl10" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.opengl10" />
-        <item itemvalue="Python.joguinho_3d" />
-        <item itemvalue="Python.opengl09" />
         <item itemvalue="Python.opengl08" />
-        <item itemvalue="Python.opengl07" />
+        <item itemvalue="Python.pandass" />
+        <item itemvalue="Python.opengl06" />
+        <item itemvalue="Python.opengl05" />
       </list>
     </recent_temporary>
   </component>
@@ -575,12 +568,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/sistema_Tel-mail/Servidor_Tel-mail.py</url>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">
