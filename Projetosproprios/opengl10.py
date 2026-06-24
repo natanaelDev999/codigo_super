@@ -38,34 +38,37 @@ sate = []
 
 ship = {'max':20,'nave':'tectel I','pulo espacial':150000,'pulo hypespacial':2000000}
 
+pr_ships = []
+
 x = 0
 y = 0
 z = -3
 angle = 0
 mov = False
 vel = 1.5
-comb = 1000.0
+comb = 500.0
 cr = 100.0
 maxc = 0
 cont = []
 estpreco = []
 hyper = True
+maxca = 10
 
 def create_name_planets():
     global np,sib,iten
     for c in iten:
         colonia = random.randint(0,30)
         if colonia <= 20:
-            np.append([random.choice(sib)+random.choice(sib)+random.choice(sib),'humanas'])
+            np.append([random.choice(sib)+random.choice(sib)+random.choice(sib),'humanas',random.randint(1,15)])
         else:
             np.append([random.choice(sib)+random.choice(sib)+random.choice(sib),
                        random.choice(['felinos','crustáceos','reptilianos']) +' '+ random.choice(['pretos','amarelos','brancos'])+
-                       ' '+random.choice(['encouraçados','lisos','peludos'])])
+                       ' '+random.choice(['encouraçados','lisos','peludos']),random.randint(1,15)])
 
 def create_world():
     global iten,estr
     co = estr[0]
-    estr.append([co[0], co[1], co[2] * 50,25012,[random.randint(25,50)/10,random.randint(25,50)/10,0]])
+    estr.append([co[0], co[1], co[2] * 50,random.randint(25012,30000),[random.randint(25,50)/10,random.randint(25,50)/10,0]])
     for v in range(random.randint(1,8)):
         y = random.randint(0,50)
         # iten.append([co[0]+random.randint(2000,6000),
@@ -85,7 +88,7 @@ def create_world():
                          random.randint(9012, 15000), [random.random(), random.random(), random.random()],
                          random.randint(900, 3000), float(random.randint(-10, 10)),
                          random.randint(0, 50)])
-    estr.append([co[0], co[1], -co[2]*100,25012,[random.randint(25,50)/10,random.randint(25,50)/10,0]])
+    estr.append([co[0], co[1], -co[2]*100,random.randint(25012,30000),[random.randint(25,50)/10,random.randint(25,50)/10,0]])
     for v in range(random.randint(1,8)):
         y = random.randint(0,50)
         # iten.append([co[0]+random.randint(2000,6000),
@@ -106,7 +109,7 @@ def create_world():
                          random.randint(900, 3000), float(random.randint(-10, 10)),
                          random.randint(0, 50)])
 
-    estr.append([-co[0] * 3.5, co[1], co[2], 25012, [random.randint(25, 50) / 10, random.randint(25, 50) / 10, 0]])
+    estr.append([-co[0] * 3.5, co[1], co[2], random.randint(25012,30000), [random.randint(25, 50) / 10, random.randint(25, 50) / 10, 0]])
     for v in range(random.randint(1, 8)):
         y = random.randint(0, 50)
         # iten.append([co[0]+random.randint(2000,6000),
@@ -129,7 +132,7 @@ def create_world():
                          random.randint(900, 3000), float(random.randint(-10, 10)),
                          random.randint(0, 50)])
 
-    estr.append([co[0] * 3.5, co[1], co[2], 25012, [random.randint(25, 50) / 10, random.randint(25, 50) / 10, 0]])
+    estr.append([co[0] * 3.5, co[1], co[2], random.randint(25012,30000), [random.randint(25, 50) / 10, random.randint(25, 50) / 10, 0]])
     for v in range(random.randint(1, 8)):
         y = random.randint(0, 50)
         # iten.append([co[0]+random.randint(2000,6000),
@@ -146,8 +149,8 @@ def create_world():
                          random.randint(900, 3000), float(random.randint(-10, 10)),
                          random.randint(0, 50)])
         elif y > 25:
-            iten.append([co[0] * 3.5 + -random.randint(800000, 1200000), co[1] + -random.randint(400, 1250),
-                         co[2] + -random.randint(1200000, 1800000),
+            iten.append([co[0] * 3.5 + -random.randint(800000, 1200000)+v*100, co[1] + -random.randint(400, 1250)+v*300,
+                         co[2] + -random.randint(1200000, 1800000)+v*100,
                          random.randint(9012, 15000), [random.random(), random.random(), random.random()],
                          random.randint(900, 3000), float(random.randint(-10, 10)),
                          random.randint(0, 50)])
@@ -163,12 +166,13 @@ def circuferencia(zl):
     return vert
 
 def cons():
-    global vel,comb,cr,maxc
+    global vel,comb,cr,maxc,ship
     print('\033[35m---  CONSOLE  ---\033[m')
     print(f'\033[33mvelocidade:{vel}\033[m')
     print(f'\033[32mcombustível:{comb:.2f}\033[m')
     print(f'\033[34mcréditos:{cr}\033[m')
     print(f'\033[37mcarga/t:{maxc}\033[m')
+    print(f'nave:{ship['nave']}')
 
 def estr_colisao():
     global estr,x,y,z
@@ -216,12 +220,88 @@ def sate_colisao():
             achou = True
     return achou
 
-def planeta_colisao():
-    global x,y,z,iten
-    achou = False
+def preco_ships():
+    global iten,pr_ships
     for c in iten:
-        if math.sqrt((c[0]--x)**2+(c[1]--y)**2+(c[2]--z)**2) < c[3]:
+        pr_ships.append([['tectel II',random.randint(0,4),random.randint(370,420),
+                          {'max':20,'nave':'tectel II','pulo espacial':200000,'pulo hypespacial':2800000}],
+                         ['tectel III',random.randint(0,4),random.randint(390,430),
+                          {'max':25,'nave':'tectel III','pulo espacial':280000,'pulo hypespacial':3000000}],
+                         ['cargo tec I',random.randint(0,4),random.randint(380,410),
+                          {'max':10,'nave':'cargo tec I','pulo espacial':180000,'pulo hypespacial':1800000}],
+                         ['cargo tec II',random.randint(0,4),random.randint(390,430),
+                          {'max':13,'nave':'cargo tec II','pulo espacial':190000,'pulo hypespacial':1900000}],
+                         ['cargo tec III',random.randint(0,4),random.randint(400,450),
+                          {'max':16,'nave':'cargo tec III','pulo espacial':200000,'pulo hypespacial':2500000}]])
+
+def comp(pos):
+    global pr_ships,cr,ship,maxca
+    while True:
+        print(f'\033[31mtodas as naves começadas em cargo aumentam a capacidade\033[m')
+        print(f'\033[33mcr:{cr}\033[m')
+        for pos,c in enumerate(pr_ships[pos]):
+            print(f'\033[34mseção:{pos}\033[m;\033[35mnave:{c[0]}\033[m;\033[33mquantidade:{c[1]}\033[m;\033[32mpreço:{c[2]}\033[m;\033[31mcarga máxima:{c[3]['max']}\033[m;\033[37mpulo espacial:{c[3]['pulo espacial']}\033[m;pulo hypespacial:{c[3]['pulo hypespacial']}')
+        p = str(input('Deseja comprar qual nave,(se não NH): '))
+        if p.upper() != 'NH':
+            for c in pr_ships[pos]:
+                if c[0] == p:
+                    if cr >= c[2]:
+                        cr -= c[2]
+                        ship = c[3]
+                        if c[0].startswith('cargo'):
+                            if c[0].endswith('I'):
+                                maxca = 15
+                            if c[0].endswith('II'):
+                                maxca = 20
+                            if c[0].endswith('III'):
+                                maxca = 25
+                        print(f'\033[32mCOMPRADO, AGORA VOCÊ CONTROLA UMA {ship['nave'].upper()}\033[m')
+                        time.sleep(2)
+                        break
+        else:
+            break
+
+
+def pouso(pos):
+    global iten,np,x,y,z,mov,iten,comb,cr
+    print(f'\033[35mPouso feito com sucesso\033[m')
+    time.sleep(2.5)
+    os.system('cls')
+    print('\033[33m--- DADOS DO PLANETA ---\033[m')
+    print(f'\033[33mtipo do planeta\033[m: {classif(iten[pos][4])}')
+    print(f'\033[34mnome do planeta\033[m: {np[pos][0]}')
+    print(f'\033[37mraio do planeta\033[m: {iten[pos][3]} km')
+    if classif(iten[pos][4]) != 'GASOSO':
+        print(f'\033[35mdados de vida\033[m: contém colônias de {np[pos][1]}')
+        print(f'\033[31mpopulação\033[m:{np[pos][2]} bi')
+    else:
+        print('\033[35mdados de vida\033[m: não contém colônias')
+    time.sleep(6)
+    y2 = str(input('Deseja reabastecer o seu combustível,custo:5,(S/N): ')).upper()
+    if y2 == 'S':
+        if cr >= 5:
+            comb = 500
+            cr -= 5
+        else:
+            print('\033[31mCRÉDITOS INSUFICIENTES PARA REABASTECIMENTO DE COMBUSTÍVEL!\033[m')
+    print('\033[33m- - - HANGAR DA BASE COLONIAL - - -\033[m')
+    comp(pos)
+    mov = False
+    if math.sqrt((iten[pos][0]--(x+200))**2+(iten[pos][1]--y)**2+(iten[pos][2]--z)**2) < iten[pos][3]:
+        x -= 400
+    if math.sqrt((iten[pos][0]--(x-200))**2+(iten[pos][1]--y)**2+(iten[pos][2]--z)**2) < iten[pos][3]:
+        x += 400
+    os.system('cls')
+    cons()
+
+def planeta_colisao():
+    global x,y,z,iten,vel
+    achou = False
+    for pos,c in enumerate(iten):
+        if math.sqrt((c[0]--x)**2+(c[1]--y)**2+(c[2]--z)**2) < c[3] and vel > 0.5:
             achou = True
+        elif math.sqrt((c[0]--x)**2+(c[1]--y)**2+(c[2]--z)**2) < c[3]+10 and vel == 0.5:
+            pouso(pos)
     return achou
 
 def classif(cor):
@@ -245,9 +325,11 @@ def visul_d(pos):
     print('\033[33m--- DADOS DA ESTAÇÃO ---\033[m')
     print('\033[31mtipo da estação\033[m: revenger')
     print(f'\033[34mnome do planeta\033[m: {np[pos][0]}')
+    print(f'\033[37mraio do planeta\033[m: {iten[pos][3]} km')
     print(f'\033[33mtipo do planeta\033[m: {classif(iten[pos][4])}')
     if classif(iten[pos][4]) != 'GASOSO':
         print(f'\033[35mdados de vida\033[m: contém colônias de {np[pos][1]}')
+        print(f'\033[31mpopulação\033[m:{np[pos][2]} bi')
     else:
         print('\033[35mdados de vida\033[m: não contém colônias')
 
@@ -255,16 +337,18 @@ def comerc(sell,pos):
     global iten,comb,maxc,cont,cr,x,y,z,mov,hyper
     os.system('cls')
     print(f'\033[35mAcoplação da nave feita com sucesso\033[m')
-    if cr >= 5:
-        comb = 500
-        cr -= 5
-    else:
-        print('\033[31mCRÉDITOS INSUFICIENTES PARA REABASTECIMENTO DE COMBUSTÍVEL!\033[m')
     time.sleep(2.5)
     os.system('cls')
     visul_d(pos)
     time.sleep(10)
     os.system('cls')
+    y2 = str(input('Deseja reabastecer o seu combustível,custo:5,(S/N): ')).upper()
+    if y2 == 'S':
+        if cr >= 5:
+            comb = 500
+            cr -= 5
+        else:
+            print('\033[31mCRÉDITOS INSUFICIENTES PARA REABASTECIMENTO DE COMBUSTÍVEL!\033[m')
     # produto / quant  / preço
     while True:
         print('\033[33m- - - HANGAR DA ESTAÇÃO ESPACIAL - - -\033[m')
@@ -286,12 +370,15 @@ def comerc(sell,pos):
             break
         quant = int(input('Quanto deseja?: '))
         for v in sell:
-            if v[0] == desejado and v[1] >= quant and quant > 0:
-                if v[2] * quant < cr and quant <= 10 and maxc < 10:
+            if v[0] == desejado and v[1] >= quant and quant > 0 and quant + maxc <= maxca:
+                if v[2] * quant < cr and quant <= maxca and maxc < maxca:
                     if 'computador para pulo hypespacial' == desejado and hyper == False:
                         hyper = True
                         v[1] -= quant
                         cr -= v[2] * quant
+                        print('\033[32mCOMPRADO!\033[m')
+                        time.sleep(1)
+                        break
                     else:
                         v[1] -= quant
                         cr -= v[2] * quant
@@ -299,6 +386,7 @@ def comerc(sell,pos):
                         cont.append([v[0], quant])
                         print('\033[32mCOMPRADO!\033[m')
                         time.sleep(1)
+                        break
         os.system('cls')
         #VENDA
         print('\033[33m- - - HANGAR DA ESTAÇÃO ESPACIAL - - -\033[m')
@@ -327,6 +415,7 @@ def comerc(sell,pos):
                         cr += quant*j[3]
                         print('\033[33mVENDIDO!\033[m')
                         time.sleep(1)
+                        break
         os.system('cls')
 
 def colisao():
@@ -669,6 +758,7 @@ def tc():
     time.sleep(0.1)
     os.system('cls')
 def m_consl():
+    global vel,comb,cr,maxc,ship
     print('\033[31m---  CONSOLE  ---\033[m')
     tc()
     print('\033[32m---  CONSOLE  ---\033[m')
@@ -682,25 +772,26 @@ def m_consl():
     print(f'\033[32mcombustível:{comb:.2f}\033[m')
     print(f'\033[34mcréditos:{cr}\033[m')
     print(f'\033[37mcarga/t:{maxc}\033[m')
+    print(f'nave:{ship['nave']}')
 
 def pcoli(coli):
     print(f'\033[31m- - - COLISÃO CONTRA {coli} - - -\033[m')
-    time.sleep(0.5)
+    time.sleep(1)
     os.system('cls')
     print(f'\033[33m- - - COLISÃO CONTRA {coli} - - -\033[m')
-    time.sleep(0.5)
+    time.sleep(1)
     os.system('cls')
     print(f'\033[31m- - - COLISÃO CONTRA {coli} - - -\033[m')
-    time.sleep(0.5)
+    time.sleep(1)
 
-def line():
-    print(30*'-')
+def line(quant):
+    print((quant+4)*3*'-')
 
 def apresent():
     global ship
-    line()
-    print(f'Você está controlando uma {ship['nave']}')
-    line()
+    line(len(ship['nave']))
+    print(f' Você está controlando uma {ship['nave']}')
+    line(len(ship['nave']))
     time.sleep(4)
     os.system('cls')
 
@@ -712,6 +803,7 @@ def main():
     window = glfw.create_window(800,800,"SuperSpace 3",None,None)
     glfw.make_context_current(window)
     glfw.set_key_callback(window, key_callback)
+    glfw.set_window_pos(window,500,120)
     init()
     apresent()
     m_consl()
@@ -719,6 +811,7 @@ def main():
     glDepthFunc(GL_LESS)
     crtprc()
     satec()
+    preco_ships()
     while not glfw.window_should_close(window):
         if mov == True:
             if comb > 0:
