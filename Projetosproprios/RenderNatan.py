@@ -1,10 +1,10 @@
 # buffer de desenho
 # estrutura de dados: [x,y,z,color(se haverá cor)]
 # -y cima, y baixo, o mesmo acontece com outras coordenadas
-buffer_de_desenho = [[0,0,2,True]]
+buffer_de_desenho = [[0,0,1,True],[0,0,1,True]]
 # buffer de aparência
 # estrutura de dados: número(\033[ número m \033[m)
-buffer_de_aparencia = [31]
+buffer_de_aparencia = [31,33]
 # variáveis para projeção
 w = 16
 h = 10
@@ -34,12 +34,10 @@ def linha(tipo,quant):
         print(quant*'-')
     elif tipo == 2:
         print(quant*'-=')
-# função para atualização de tela
-def atualiza_tela(buffer_transformado):
+# funções para atualização de tela
+def atualiza_tela_pontos(buffer_transformado):
     global tela,buffer_de_aparencia
     for pos,c in enumerate(buffer_transformado):
-        print(c)
-        print(buffer_de_aparencia[pos])
         if int(c[1]-1) < 9 and int(c[0]-1) < 15 and c[2] == True:
             tela[int(c[1])-1][int(c[0])-1] = f'\033[{buffer_de_aparencia[pos]}m.\033[m'
         if int(c[1]-1) < 9 and int(c[0]-1) < 15 and c[2] == False:
@@ -56,6 +54,6 @@ def desenho_tela():
     linha(2,16)
 # função principal, onde tudo acontece
 def main():
-    atualiza_tela(coordenadas_transformadas())
+    atualiza_tela_pontos(coordenadas_transformadas())
     desenho_tela()
 main()

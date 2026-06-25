@@ -257,7 +257,7 @@
       <command value="project038" />
     </option>
   </component>
-  <component name="RunManager" selected="Python.RenderNatan">
+  <component name="RunManager" selected="Python.opengl10">
     <configuration name="RenderNatan" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PythonProject1" />
       <option name="ENV_FILES" value="" />
@@ -449,9 +449,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.opengl10" />
         <item itemvalue="Python.RenderNatan" />
         <item itemvalue="Python._strings" />
-        <item itemvalue="Python.opengl10" />
         <item itemvalue="Python.opengl06" />
         <item itemvalue="Python.pandass" />
       </list>
