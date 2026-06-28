@@ -59,7 +59,7 @@ def create_name_planets():
     for c in iten:
         colonia = random.randint(0,30)
         if colonia <= 20:
-            np.append([random.choice(sib)+random.choice(sib)+random.choice(sib),'humanas',random.randint(1,15)])
+            np.append([random.choice(sib)+random.choice(sib)+random.choice(sib),'humanos',random.randint(1,15)])
         else:
             np.append([random.choice(sib)+random.choice(sib)+random.choice(sib),
                        random.choice(['felinos','crustáceos','reptilianos']) +' '+ random.choice(['pretos','amarelos','brancos'])+
