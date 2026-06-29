@@ -44,7 +44,8 @@ tela = [[' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '],
          [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '],
          [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '],
          [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '],
-         [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '],]
+         [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '],
+         ]
 # função para estilização com linha
 def linha_estilizacao():
     print(30*'-')
@@ -168,6 +169,27 @@ def atualiza_tela_linhas(buffer_transformado,linhas_quant,pos_cor,começo,cor=Fa
                 else:
                     p += 2 * dx
                 y += passo_y
+def y_maior():
+    global buffer_posicao_pixel
+    maior = buffer_posicao_pixel[0][1]
+    for c in buffer_posicao_pixel:
+        if c[1] > maior:
+            maior = c[1]
+    return maior
+# função para preencher as formas
+def preenche_forma(cor,começo,termino):
+    global buffer_de_desenho,buffer_posicao_pixel,h,w,tela
+    if len(buffer_de_desenho) >= 3:
+        # valor para limite
+        maior = y_maior()
+        # rodar todo o buffer para as posições dos pixeis
+        for px in buffer_posicao_pixel[começo:termino]:
+            # contador para terminar o loop e marcar base do objeto
+            cont = 1
+            # loop para desenhar '#' até a base do objeto
+            while cont < maior and px[1]+cont < h and px[0] < w and int(px[1]+cont) <= maior:
+                tela[int(px[1]+cont)][int(px[0])] = f'\033[{cor}m#\033[m'
+                cont += 1
 # utiliza o shader de fundo para pintar o fundo
 def pintar_fundo_shader():
     global shader_fundo,tela
@@ -192,6 +214,10 @@ def limpa_tela_buffer():
     for pos0,c in enumerate(tela):
         for pos1,v in enumerate(c):
             tela[pos0][pos1] = ' '
+# limpa o buffer de pixels das linhas
+def limpa_pixels_linhas_buffer():
+    global buffer_posicao_pixel
+    buffer_posicao_pixel = []
 # função principal, onde tudo acontece
 def main():
     global buffer_de_desenho,coordenadas_camera
@@ -199,13 +225,19 @@ def main():
     estado_render()
     sleep(4)
     while True:
+        # pineple => transforma as coordenas em relação a camera => carrega o buffer de desenho => utiliza o buffer de desenho para
+        # desenhar os vértices => utiliza o buffer de desenho com base para conectar linhas => utiliza as coordenadas das linhas
+        # para preencher formas => utiliza o shader de fundo para pintar o fundo => limpa os buffers de tela e das linhas => limpa a
+        # tela e controla o fps
         # modifica e utiliza os buffers
         coordenadas_camera_transformadas()
         buffer = coordenadas_transformadas()
         atualiza_tela_pontos(buffer)
         atualiza_tela_linhas(buffer,6,0,0,True)
+        preenche_forma(33,0,20)
         pintar_fundo_shader()
         desenho_tela()
+        limpa_pixels_linhas_buffer()
         limpa_tela_buffer()
         #
         # controla o fps
