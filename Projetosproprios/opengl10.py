@@ -46,12 +46,12 @@ z = -3
 angle = 0
 mov = False
 vel = 1.5
-comb = 50000.0
+comb = 500.0
 cr = 100.0
 maxc = 0
 cont = []
 estpreco = []
-hyper = True
+hyper = False
 maxca = 10
 
 def create_name_planets():

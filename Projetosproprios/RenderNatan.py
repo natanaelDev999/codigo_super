@@ -340,7 +340,7 @@ def main():
     global buffer_de_desenho,rotacao_camera
     # mostra estado
     estado_render()
-    objeto_triangulo = rotacao_z(deepcopy(buffer_de_desenho[0:6]),22)
+    objeto_triangulo = deepcopy(buffer_de_desenho[0:6])
     sleep(4)
     while True:
         # pineple => transforma o buffer de desenho em relação a cãmera=> carrega o buffer de desenho => utiliza o buffer de desenho para
@@ -349,6 +349,7 @@ def main():
         # tela e controla o fps
         # processos especiais => iluminação => testurização simples
         # modifica e utiliza os buffers
+        começo = perf_counter()
         coordenadas_camera_transformadas()
         # 0.000216
         buffer = coordenadas_transformadas(objeto_triangulo)
@@ -362,10 +363,11 @@ def main():
         desenho_tela()
         limpa_pixels_linhas_buffer()
         limpa_tela_buffer()
+        limpa_z_buffer()
         # 0.000038
         #
         # controla o fps
-        sleep(0.5)
+        sleep(0.25)
         # limpa terminal
         sys.stdout.write("\033c")
         sys.stdout.flush()
@@ -373,4 +375,6 @@ def main():
         sys.stdout.write("\033[?25l")
         sys.stdout.flush()
         # 0.001730
+        fim = perf_counter()
+        print(f'{fim-começo:.6f}')
 main()
