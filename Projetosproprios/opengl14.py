@@ -27,7 +27,7 @@ def cria_esfera(raio):
 def init():
     glClearColor(0,0,0.4,0)
     glMatrixMode(GL_PROJECTION)
-    gluPerspective(45, 1, 0.1, 500000000000000000000000)
+    gluPerspective(45, 1, 0.1, 5000000)
     glMatrixMode(GL_MODELVIEW)
     glPointSize(5)
 def render():

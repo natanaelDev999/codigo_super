@@ -1,22 +1,32 @@
 # biblioteca para controle do fps
-from time import sleep
+from time import sleep, perf_counter
 # biblioteca para limpar o terminal
 import sys
 # biblioteca para manter o buffer_de_desenho_original
 from copy import deepcopy
+# biblioteca para rotação
+import math
 # variáveis para o programa
 # valores para camera
-# estrutura de dados: [x, y, z]
-coordenadas_camera = [0,0,0]
+# estrutura de dados: [x, y]
+rotacao_camera = [0,0]
 # buffer de desenho
 # estrutura de dados: [x,y,z,cor(se haverá cor)]
 # -y cima, y baixo, o mesmo acontece com outras coordenadas
+#   triãngulo
+# [-4,4,1,True],
+# [4,4,1,True],
+# [4,4,1,True],
+# [0,0,1,True],
+# [0,0,1,True],
+# [-4,4,1,True]
 buffer_de_desenho = [[-4,4,1,True],
                      [4,4,1,True],
                      [4,4,1,True],
                      [0,0,1,True],
                      [0,0,1,True],
-                     [-4,4,1,True]]
+                     [-4,4,1,True]
+                     ]
 # buffer de preservação de coordenadas originais
 buffer_de_desenho_original = []
 # buffer de aparência
@@ -27,6 +37,13 @@ buffer_de_aparencia = [34,34,34,34,34,34]
 buffer_de_aparencia_linha = [31]
 # buffer para posição dos pixels das linhas
 buffer_posicao_pixel = []
+# configurações para iluminação, e shaders de iluminação
+configuracoes_iluminacao = {'ativado':False,
+                           'cor':36,
+                           'direcao':-1,
+                           'eixo':'x',
+                           'alcance':9,
+                           'reflexão':True}
 # shader de fundo
 shader_fundo = [34,True]
 # variáveis para projeção
@@ -46,18 +63,94 @@ tela = [[' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '],
          [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '],
          [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '],
          ]
+# função para rotação no eixo x
+def rotacao_x(buffer,angulo):
+    buffer_rotacionado = []
+    for c in buffer:
+        cosseno = math.cos(math.radians(angulo))
+        seno = math.sin(math.radians(angulo))
+        # estrutura de dados: [x,y,z,cor(se haverá cor)]
+        buffer_rotacionado.append([c[0],
+                                   c[1]*cosseno-c[2]*seno,
+                                   c[1]*seno+c[2]*cosseno,
+                                   c[3]])
+    return buffer_rotacionado
+# função para rotação no eixo y
+def rotacao_y(buffer,angulo):
+    buffer_rotacionado = []
+    for c in buffer:
+        cosseno = math.cos(math.radians(angulo))
+        seno = math.sin(math.radians(angulo))
+        # estrutura de dados: [x,y,z,cor(se haverá cor)]
+        buffer_rotacionado.append([c[0]*cosseno+c[2]*seno,
+                                   c[1],
+                                   -c[0]*seno+c[2]*cosseno,
+                                   c[3]])
+    return buffer_rotacionado
+# função para rotação no eixo z
+def rotacao_z(buffer,angulo):
+    buffer_rotacionado = []
+    for c in buffer:
+        cosseno = math.cos(math.radians(angulo))
+        seno = math.sin(math.radians(angulo))
+        # estrutura de dados: [x,y,z,cor(se haverá cor)]
+        buffer_rotacionado.append([c[0]*cosseno-c[1]*seno,
+                                   c[0]*seno+c[1]*cosseno,
+                                   c[2],
+                                   c[3]])
+    return buffer_rotacionado
+# função para uso do shader de reflexão
+def shader_reflexao(coordenada,caractere_inicio):
+    global configuracoes_iluminacao
+    if abs(configuracoes_iluminacao['alcance']-coordenada) > 1 and configuracoes_iluminacao['reflexão'] == True:
+        if abs(configuracoes_iluminacao['alcance']-coordenada) <= 3:
+            caractere_inicio = '@'
+    return caractere_inicio
+# função para controle de iluminação
+def tratamento_ilumicao(x,y,caractere):
+    global configuracoes_iluminacao,h,w
+    if configuracoes_iluminacao['ativado'] == True:
+        if int(x) < w and int(y) < h:
+            # verefica e se a vereficação for válida a iluminação será utilizada , este bloco serve para o eixo x
+            if configuracoes_iluminacao['eixo'] == 'x':
+                if x <= configuracoes_iluminacao['alcance'] and configuracoes_iluminacao['direcao'] > 0:
+                    # shader de reflexão
+                    caractere = shader_reflexao(x,caractere)
+                    if abs(configuracoes_iluminacao['alcance']-x) == 0:
+                        caractere = ':'
+                    tela[int(y)][int(x)] = f'\033[{configuracoes_iluminacao['cor']}m{caractere}\033[m'
+                if x >= configuracoes_iluminacao['alcance'] and configuracoes_iluminacao['direcao'] < 0:
+                    # shader de reflexão
+                    caractere = shader_reflexao(x,caractere)
+                    if abs(configuracoes_iluminacao['alcance']-x) == 0:
+                        caractere = ':'
+                    tela[int(y)][int(x)] = f'\033[{configuracoes_iluminacao['cor']}m{caractere}\033[m'
+            # verefica e se a vereficação for válida a iluminação será utilizada , este bloco serve para o eixo y
+            if configuracoes_iluminacao['eixo'] == 'y':
+                if y <= configuracoes_iluminacao['alcance'] and configuracoes_iluminacao['direcao'] > 0:
+                    # shader de reflexão
+                    caractere = shader_reflexao(y,caractere)
+                    if abs(configuracoes_iluminacao['alcance']-y) == 0:
+                        caractere = ':'
+                    tela[int(y)][int(x)] = f'\033[{configuracoes_iluminacao['cor']}m{caractere}\033[m'
+                if y >= configuracoes_iluminacao['alcance'] and configuracoes_iluminacao['direcao'] < 0:
+                    # shader de reflexão
+                    caractere = shader_reflexao(y,caractere)
+                    if abs(configuracoes_iluminacao['alcance']-y) == 0:
+                        caractere = ':'
+                    tela[int(y)][int(x)] = f'\033[{configuracoes_iluminacao['cor']}m{caractere}\033[m'
 # função para estilização com linha
 def linha_estilizacao():
     print(30*'-')
 # estados do renderizador
 def estado_render():
-    global buffer_de_desenho,coordenadas_camera,buffer_de_aparencia,buffer_de_aparencia_linha
+    global buffer_de_desenho,rotacao_camera,buffer_de_aparencia,buffer_de_aparencia_linha
     linha_estilizacao()
     print('\033[36m ESTADOS DO RENDERIZADOR RENDERNATAN\033[m')
     print(f'\033[33mQuantidade de vértices no buffer_de_desenho\033[m: {len(buffer_de_desenho)}')
     print(f'\033[31mQuantidade de sub-shaders no buffer_de_aparencia\033[m: {len(buffer_de_aparencia)}')
     print(f'\033[34mQuantidade de valores de cor para as linha:\033[m: {len(buffer_de_aparencia_linha)}')
-    print(f'\033[36mPosição da câmera\033[m: x:{coordenadas_camera[0]}; y:{coordenadas_camera[1]}; z:{coordenadas_camera[2]}')
+    print(f'\033[36mPosição da câmera\033[m: x:{rotacao_camera[0]}; y:{rotacao_camera[1]}')
     linha_estilizacao()
 # função para atualização do z-buffer
 def z_buffer_atualizacao(x,y,z):
@@ -69,23 +162,22 @@ def z_buffer_atualizacao(x,y,z):
     return achou
 # função para inserir novos valores nas coordenadas
 def coordenadas_camera_transformadas():
-    global coordenadas_camera,buffer_de_desenho,buffer_de_desenho_original
+    global rotacao_camera,buffer_de_desenho,buffer_de_desenho_original
     buffer_de_desenho_original = deepcopy(buffer_de_desenho)
     for cod in buffer_de_desenho:
-        if coordenadas_camera[0] <= 4 and coordenadas_camera[1] <= 5 and coordenadas_camera[2] <= 5:
-            cod[0] -= coordenadas_camera[0]
-            cod[1] -= coordenadas_camera[1]
-            cod[2] += coordenadas_camera[2]
+        cod[0] -= rotacao_camera[0]
+        cod[1] -= rotacao_camera[1]
 # função para obter as coordenadas do objeto na tela
-def coordenadas_transformadas():
-    global buffer_de_desenho, w, h
+def coordenadas_transformadas(buffer,começo=0):
+    global w, h
+    termino = len(buffer)
     buffer_de_desenho_transformado = []
-    for c in buffer_de_desenho:
+    for c in buffer[começo:termino]:
         # estrutura de dado: [x_tela , y_tela , cor , z(para z-buffer)]
-        buffer_de_desenho_transformado.append([((c[0])/c[2]) + (w/2),
-                                               ((c[1]) / c[2]) + (h/2),c[3],c[2]])
+        if c[2] > 0:
+            buffer_de_desenho_transformado.append([((c[0])/c[2]) + (w/2),
+                                                   ((c[1]) / c[2]) + (h/2),c[3],c[2]])
     return buffer_de_desenho_transformado
-
 # função para linha
 def linha(tipo,quant):
     if tipo == 1:
@@ -99,11 +191,12 @@ def atualiza_tela_pontos(buffer_transformado):
     for pos,c in enumerate(buffer_transformado):
         achou = z_buffer_atualizacao(c[0],c[1],c[3])
         if achou == False:
-            if int(c[1]) < h and int(c[0]) < w and c[2] == True:
-                tela[int(c[1])][int(c[0])] = f'\033[{buffer_de_aparencia[pos]}m.\033[m'
+            if abs(int(c[1])) < h and abs(int(c[0])) < w and c[2] == True:
+                tela[abs(int(c[1]))][abs(int(c[0]))] = f'\033[{buffer_de_aparencia[pos]}m.\033[m'
             if int(c[1]) < h and int(c[0]) < w and c[2] == False:
-                tela[int(c[1])][int(c[0])] = '.'
-            z_buffer.append([c[0],c[1],c[3]])
+                tela[abs(int(c[1]))][abs(int(c[0]))] = '.'
+            tratamento_ilumicao(abs(int(c[0])),abs(int(c[1])),'.')
+            z_buffer.append([abs(int(c[0])),abs(int(c[1])),abs(int(c[3]))])
 # função para linhas
 def atualiza_tela_linhas(buffer_transformado,linhas_quant,pos_cor,começo,cor=False):
     global tela,z_buffer,h,w,buffer_posicao_pixel
@@ -116,9 +209,9 @@ def atualiza_tela_linhas(buffer_transformado,linhas_quant,pos_cor,começo,cor=Fa
         elif pos % 2 != 0:
             ponto2.append(c)
     # calculos para desenho de linha
-    for pos,v in enumerate(ponto1):
-        dx = abs(ponto2[pos][0]-v[0])
-        dy = abs(ponto2[pos][1]-v[1])
+    for pos, v in enumerate(ponto1):
+        dx = abs(ponto2[pos][0] - v[0])
+        dy = abs(ponto2[pos][1] - v[1])
         passo_x = 0
         if v[0] < ponto2[pos][0]:
             passo_x = 1
@@ -135,60 +228,80 @@ def atualiza_tela_linhas(buffer_transformado,linhas_quant,pos_cor,começo,cor=Fa
         y = v[1]
 
         if dx > dy:
-            p = 2*dy-dx
-            while x != ponto2[pos][0]:
-                if y < h and x < w:
-                    achou = z_buffer_atualizacao(x,y,v[3])
+            p = 2 * dy - dx
+            while abs(int(x)) != int(abs(ponto2[pos][0])):
+                if abs(int(y)) < h and abs(int(x)) < w:
+                    achou = z_buffer_atualizacao(x, y, v[3])
                     if achou == False:
                         if cor == False:
-                            tela[int(y)][int(x)] = '.'
+                            tela[abs(int(y))][abs(int(x))] = '.'
                         else:
-                            tela[int(y)][int(x)] = f'\033[{buffer_de_aparencia_linha[pos_cor]}m.\033[m'
-                        z_buffer.append([x,y,v[3]])
-                        buffer_posicao_pixel.append([x,y])
+                            tela[abs(int(y))][abs(int(x))] = f'\033[{buffer_de_aparencia_linha[pos_cor]}m.\033[m'
+                        tratamento_ilumicao(abs(int(x)), abs(int(y)), '.')
+                        z_buffer.append([int(abs(x)), int(abs(y)), v[3]])
+                        buffer_posicao_pixel.append([x, y, v[3]])
                 if p >= 0:
                     y += passo_y
-                    p += 2 * (dy-dx)
+                    p += 2 * (dy - dx)
                 else:
                     p += 2 * dy
                 x += passo_x
         else:
             p = 2 * dx - dy
-            while y != ponto2[pos][1]:
-                if y < h and x < w:
+            while abs(int(y)) != abs(int(ponto2[pos][1])):
+                if abs(int(y)) < h and abs(int(x)) < w:
                     achou = z_buffer_atualizacao(x, y, v[3])
                     if achou == False:
                         if cor == False:
-                            tela[int(y)][int(x)] = '.'
+                            tela[abs(int(y))][abs(int(x))] = '.'
                         else:
-                            tela[int(y)][int(x)] = f'\033[{buffer_de_aparencia_linha[pos_cor]}m.\033[m'
-                        z_buffer.append([x, y, v[3]])
-                        buffer_posicao_pixel.append([x,y])
+                            tela[abs(int(y))][abs(int(x))] = f'\033[{buffer_de_aparencia_linha[pos_cor]}m.\033[m'
+                        tratamento_ilumicao(abs(int(x)), abs(int(y)), '.')
+                        z_buffer.append([abs(int(x)), abs(int(y)), v[3]])
+                        buffer_posicao_pixel.append([x, y, v[3]])
                 if p >= 0:
                     x += passo_x
                 else:
                     p += 2 * dx
                 y += passo_y
+# captura o menor valor y do buffer de posição para pixels de linhas
 def y_maior():
     global buffer_posicao_pixel
-    maior = buffer_posicao_pixel[0][1]
-    for c in buffer_posicao_pixel:
-        if c[1] > maior:
-            maior = c[1]
-    return maior
+    if len(buffer_posicao_pixel) != 0:
+        maior = buffer_posicao_pixel[0][1]
+        for c in buffer_posicao_pixel:
+            if c[1] > maior:
+                maior = c[1]
+        return maior
 # função para preencher as formas
-def preenche_forma(cor,começo,termino):
-    global buffer_de_desenho,buffer_posicao_pixel,h,w,tela
-    if len(buffer_de_desenho) >= 3:
+def preenche_forma(cor1,cor2,começo,termino,shader):
+    global buffer_de_desenho,buffer_posicao_pixel,h,w,tela,z_buffer
+    if len(buffer_de_desenho) >= 6:
         # valor para limite
         maior = y_maior()
         # rodar todo o buffer para as posições dos pixeis
         for px in buffer_posicao_pixel[começo:termino]:
             # contador para terminar o loop e marcar base do objeto
-            cont = 1
+            cont = 0
             # loop para desenhar '#' até a base do objeto
-            while cont < maior and px[1]+cont < h and px[0] < w and int(px[1]+cont) <= maior:
-                tela[int(px[1]+cont)][int(px[0])] = f'\033[{cor}m#\033[m'
+            testurizacao = True
+            caractere = shader
+            while cont < int(abs(maior)) and abs(int(px[1]+cont)) < h and abs(int(px[0])) < w and abs(int(px[1]+cont)) <= int(abs(maior)):
+                achou = z_buffer_atualizacao(int(px[0]), int(px[1] + cont), px[2])
+                if achou == False:
+                    achou2 = False
+                    for v in buffer_posicao_pixel:
+                        if v[1] == abs(int(px[1]+cont)) and abs(int(v[1])) != abs(int(maior)):
+                            achou2 = True
+                    if achou2 == True:
+                        if testurizacao == True:
+                            tela[abs(int(px[1]+cont))][abs(int(px[0]))] = f'\033[{cor1}m{caractere}\033[m'
+                            testurizacao = False
+                        elif testurizacao == False:
+                            tela[abs(int(px[1] + cont))][abs(int(px[0]))] = f'\033[{cor2}m{caractere}\033[m'
+                            testurizacao = True
+                        tratamento_ilumicao(abs(int(px[0])), abs(int(px[1]+cont)),'#')
+                        z_buffer.append([abs(int(px[0])),abs(int(px[1]+cont)),px[2]])
                 cont += 1
 # utiliza o shader de fundo para pintar o fundo
 def pintar_fundo_shader():
@@ -200,13 +313,13 @@ def pintar_fundo_shader():
                     tela[pos][pos1] = f'\033[0;0;{shader_fundo[0]}m*\033[m'
 # função de desenho
 def desenho_tela():
-    global tela,buffer_de_desenho_original,buffer_de_desenho
-    linha(2,16)
+    global tela, buffer_de_desenho_original, buffer_de_desenho
+    linha(2, 16)
     for c in tela:
         for v in c:
-            print(v,end=' ')
+            print(v, end=' ')
         print()
-    linha(2,16)
+    linha(2, 16)
     buffer_de_desenho = deepcopy(buffer_de_desenho_original)
 # limpa o buffer colocado na tela
 def limpa_tela_buffer():
@@ -218,27 +331,38 @@ def limpa_tela_buffer():
 def limpa_pixels_linhas_buffer():
     global buffer_posicao_pixel
     buffer_posicao_pixel = []
+# limpa o z-buffer
+def limpa_z_buffer():
+    global z_buffer
+    z_buffer = []
 # função principal, onde tudo acontece
 def main():
-    global buffer_de_desenho,coordenadas_camera
+    global buffer_de_desenho,rotacao_camera
     # mostra estado
     estado_render()
+    objeto_triangulo = rotacao_z(deepcopy(buffer_de_desenho[0:6]),22)
     sleep(4)
     while True:
-        # pineple => transforma as coordenas em relação a camera => carrega o buffer de desenho => utiliza o buffer de desenho para
+        # pineple => transforma o buffer de desenho em relação a cãmera=> carrega o buffer de desenho => utiliza o buffer de desenho para
         # desenhar os vértices => utiliza o buffer de desenho com base para conectar linhas => utiliza as coordenadas das linhas
         # para preencher formas => utiliza o shader de fundo para pintar o fundo => limpa os buffers de tela e das linhas => limpa a
         # tela e controla o fps
+        # processos especiais => iluminação => testurização simples
         # modifica e utiliza os buffers
         coordenadas_camera_transformadas()
-        buffer = coordenadas_transformadas()
+        # 0.000216
+        buffer = coordenadas_transformadas(objeto_triangulo)
+        # 0.000042
         atualiza_tela_pontos(buffer)
-        atualiza_tela_linhas(buffer,6,0,0,True)
-        preenche_forma(33,0,20)
+        atualiza_tela_linhas(buffer,12,0,0,True)
+        # 0.000174
+        preenche_forma(31,33,0,20,'=')
+        # 0.000514
         pintar_fundo_shader()
         desenho_tela()
         limpa_pixels_linhas_buffer()
         limpa_tela_buffer()
+        # 0.000038
         #
         # controla o fps
         sleep(0.5)
@@ -248,4 +372,5 @@ def main():
         # some o cursor de digitação
         sys.stdout.write("\033[?25l")
         sys.stdout.flush()
+        # 0.001730
 main()
