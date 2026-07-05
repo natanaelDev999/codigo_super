@@ -107,7 +107,7 @@ def shader_reflexao(coordenada,caractere_inicio):
             caractere_inicio = '@'
     return caractere_inicio
 # função para controle de iluminação
-def tratamento_ilumicao(x,y,caractere):
+def tratamento_iluminacao(x,y,caractere):
     global configuracoes_iluminacao,h,w
     if configuracoes_iluminacao['ativado'] == True:
         if int(x) < w and int(y) < h:
@@ -195,7 +195,7 @@ def atualiza_tela_pontos(buffer_transformado):
                 tela[abs(int(c[1]))][abs(int(c[0]))] = f'\033[{buffer_de_aparencia[pos]}m.\033[m'
             if int(c[1]) < h and int(c[0]) < w and c[2] == False:
                 tela[abs(int(c[1]))][abs(int(c[0]))] = '.'
-            tratamento_ilumicao(abs(int(c[0])),abs(int(c[1])),'.')
+            tratamento_iluminacao(abs(int(c[0])),abs(int(c[1])),'.')
             z_buffer.append([abs(int(c[0])),abs(int(c[1])),abs(int(c[3]))])
 # função para linhas
 def atualiza_tela_linhas(buffer_transformado,linhas_quant,pos_cor,começo,cor=False):
@@ -237,7 +237,7 @@ def atualiza_tela_linhas(buffer_transformado,linhas_quant,pos_cor,começo,cor=Fa
                             tela[abs(int(y))][abs(int(x))] = '.'
                         else:
                             tela[abs(int(y))][abs(int(x))] = f'\033[{buffer_de_aparencia_linha[pos_cor]}m.\033[m'
-                        tratamento_ilumicao(abs(int(x)), abs(int(y)), '.')
+                        tratamento_iluminacao(abs(int(x)), abs(int(y)), '.')
                         z_buffer.append([int(abs(x)), int(abs(y)), v[3]])
                         buffer_posicao_pixel.append([x, y, v[3]])
                 if p >= 0:
@@ -256,7 +256,7 @@ def atualiza_tela_linhas(buffer_transformado,linhas_quant,pos_cor,começo,cor=Fa
                             tela[abs(int(y))][abs(int(x))] = '.'
                         else:
                             tela[abs(int(y))][abs(int(x))] = f'\033[{buffer_de_aparencia_linha[pos_cor]}m.\033[m'
-                        tratamento_ilumicao(abs(int(x)), abs(int(y)), '.')
+                        tratamento_iluminacao(abs(int(x)), abs(int(y)), '.')
                         z_buffer.append([abs(int(x)), abs(int(y)), v[3]])
                         buffer_posicao_pixel.append([x, y, v[3]])
                 if p >= 0:
@@ -277,7 +277,45 @@ def y_maior():
 def preenche_forma(cor1,cor2,começo,termino,shader):
     global buffer_de_desenho,buffer_posicao_pixel,h,w,tela,z_buffer
     if len(buffer_de_desenho) >= 6:
-        # valor para limite
+        pixels_forma = buffer_posicao_pixel[começo:termino]
+        if pixels_forma:
+            lista_x = []
+            lista_y = []
+
+            for pos,c in enumerate(pixels_forma):
+                lista_x.append(c[0])
+                lista_y.append(c[1])
+
+                menor_x = int(max(0, min(lista_x)))
+                maior_x = int(min(w - 1, max(lista_x)))
+                menor_y = int(max(0, min(lista_y)))
+                maior_y = int(min(h - 1, max(lista_y)))
+
+                linhas_x = {}
+                for v in range(menor_y,maior_y+1):
+                    linhas_x[v] = []
+                for p in pixels_forma:
+                    px,py = int(p[0]), int(p[1])
+                    if menor_y <= py <= maior_y:
+                        linhas_x[py].append(px)
+                testurizacao = True
+                caractere = shader
+                for y in range(menor_y,maior_y+1):
+                    x_inicio = max(menor_x,min(linhas_x[y]))
+                    x_fim = min(maior_x, max(linhas_x[y]))
+                    for x in range(x_inicio,x_fim+1):
+                        z_atual = pixels_forma[0][2]
+
+                        if not z_buffer_atualizacao(abs(int(x)),abs(int(y)),z_atual):
+                            if testurizacao == True:
+                                tela[y][x] = f'\033[{cor1}m{caractere}\033[m'
+                                testurizacao = False
+                            elif testurizacao == False:
+                                tela[y][x] = f'\033[{cor2}m{caractere}\033[m'
+                                testurizacao = True
+                            tratamento_iluminacao(abs(int(x)),abs(int(y)),'#')
+                            z_buffer.append([abs(int(x)),abs(int(y)),z_atual])
+        '''# valor para limite
         maior = y_maior()
         # rodar todo o buffer para as posições dos pixeis
         for px in buffer_posicao_pixel[começo:termino]:
@@ -291,7 +329,7 @@ def preenche_forma(cor1,cor2,começo,termino,shader):
                 if achou == False:
                     achou2 = False
                     for v in buffer_posicao_pixel:
-                        if v[1] == abs(int(px[1]+cont)) and abs(int(v[1])) != abs(int(maior)):
+                        if v[1] == abs(int(px[1]+cont)) and abs(int(v[1])) != abs(int(maior)) and v[1] - abs(int(px[1]+cont)) != 0:
                             achou2 = True
                     if achou2 == True:
                         if testurizacao == True:
@@ -302,7 +340,7 @@ def preenche_forma(cor1,cor2,começo,termino,shader):
                             testurizacao = True
                         tratamento_ilumicao(abs(int(px[0])), abs(int(px[1]+cont)),'#')
                         z_buffer.append([abs(int(px[0])),abs(int(px[1]+cont)),px[2]])
-                cont += 1
+                cont += 1'''
 # utiliza o shader de fundo para pintar o fundo
 def pintar_fundo_shader():
     global shader_fundo,tela
@@ -357,7 +395,7 @@ def main():
         atualiza_tela_pontos(buffer)
         atualiza_tela_linhas(buffer,12,0,0,True)
         # 0.000174
-        preenche_forma(31,33,0,20,'=')
+        preenche_forma(31,33,0,16,'=')
         # 0.000514
         pintar_fundo_shader()
         desenho_tela()
