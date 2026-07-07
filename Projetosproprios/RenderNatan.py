@@ -264,6 +264,7 @@ def atualiza_tela_linhas(buffer_transformado,linhas_quant,pos_cor,começo,cor=Fa
                 else:
                     p += 2 * dx
                 y += passo_y
+    return len(buffer_posicao_pixel)
 # captura o menor valor y do buffer de posição para pixels de linhas
 def y_maior():
     global buffer_posicao_pixel
@@ -381,7 +382,7 @@ def main():
     objeto_triangulo = deepcopy(buffer_de_desenho[0:6])
     sleep(4)
     while True:
-        # pineple => transforma o buffer de desenho em relação a cãmera=> carrega o buffer de desenho => utiliza o buffer de desenho para
+        # pineline => transforma o buffer de desenho em relação a cãmera=> carrega o buffer de desenho => utiliza o buffer de desenho para
         # desenhar os vértices => utiliza o buffer de desenho com base para conectar linhas => utiliza as coordenadas das linhas
         # para preencher formas => utiliza o shader de fundo para pintar o fundo => limpa os buffers de tela e das linhas => limpa a
         # tela e controla o fps
@@ -393,8 +394,9 @@ def main():
         buffer = coordenadas_transformadas(objeto_triangulo)
         # 0.000042
         atualiza_tela_pontos(buffer)
-        atualiza_tela_linhas(buffer,12,0,0,True)
+        pixels_usados = atualiza_tela_linhas(buffer,6,0,0,True)
         # 0.000174
+        print(pixels_usados)
         preenche_forma(31,33,0,16,'=')
         # 0.000514
         pintar_fundo_shader()
