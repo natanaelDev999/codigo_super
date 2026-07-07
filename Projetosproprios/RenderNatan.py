@@ -20,18 +20,76 @@ rotacao_camera = [0,0]
 # [0,0,1,True],
 # [0,0,1,True],
 # [-4,4,1,True]
-buffer_de_desenho = [[-4,4,1,True],
-                     [4,4,1,True],
-                     [4,4,1,True],
-                     [0,0,1,True],
-                     [0,0,1,True],
-                     [-4,4,1,True]
+#      cubo
+# [-2.5,2,1,True],
+# [2.5,2,1,True],
+# [2.5,-2,1,True],
+# [-2.5,-2,1,True],
+#
+# [-2.5,2,1,True],
+# [-2.5,-2,1,True],
+# [2.5,2,1,True],
+# [2.5,-2,1,True],
+#
+#
+# [-2.5,2,2,True],
+# [2.5,2,2,True],
+# [2.5,-2,2,True],
+# [-2.5,-2,2,True],
+#
+# [-2.5,2,2,True],
+# [-2.5,-2,2,True],
+# [2.5,2,2,True],
+# [2.5,-2,2,True],
+#
+#
+# [-2.5,2,1,True],
+# [-2.5,2,2,True],
+# [2.5,2,1,True],
+# [2.5,2,2,True],
+# [2.5,-2,1,True],
+# [2.5,-2,2,True],
+# [-2.5,-2,1,True],
+# [-2.5,-2,2,True]
+buffer_de_desenho = [[-2.5,2,1,True],
+                     [2.5,2,1,True],
+                     [2.5,-2,1,True],
+                     [-2.5,-2,1,True],
+
+                     [-2.5,2,1,True],
+                     [-2.5,-2,1,True],
+                     [2.5,2,1,True],
+                     [2.5,-2,1,True],
+
+
+                     [-2.5,2,2,True],
+                     [2.5,2,2,True],
+                     [2.5,-2,2,True],
+                     [-2.5,-2,2,True],
+
+                     [-2.5,2,2,True],
+                     [-2.5,-2,2,True],
+                     [2.5,2,2,True],
+                     [2.5,-2,2,True],
+
+
+                     [-2.5,2,1,True],
+                     [-2.5,2,2,True],
+                     [2.5,2,1,True],
+                     [2.5,2,2,True],
+                     [2.5,-2,1,True],
+                     [2.5,-2,2,True],
+                     [-2.5,-2,1,True],
+                     [-2.5,-2,2,True]
                      ]
 # buffer de preservação de coordenadas originais
 buffer_de_desenho_original = []
 # buffer de aparência
 # estrutura de dados: número(\033[ número m \033[m)
-buffer_de_aparencia = [34,34,34,34,34,34]
+buffer_de_aparencia = [34,34,34,34,34,34,34,34,
+                       34,34,34,34,34,34,34,34,
+                       34,34,34,34,34,34,34,34
+                       ]
 # buffer de aparência para linhas
 # estrutura de dados: número(\033[ número m \033[m)
 buffer_de_aparencia_linha = [31]
@@ -379,8 +437,9 @@ def main():
     global buffer_de_desenho,rotacao_camera
     # mostra estado
     estado_render()
-    objeto_triangulo = deepcopy(buffer_de_desenho[0:6])
     sleep(4)
+    coordenadas_camera_transformadas()
+    objeto_triangulo = deepcopy(buffer_de_desenho)
     while True:
         # pineline => transforma o buffer de desenho em relação a cãmera=> carrega o buffer de desenho => utiliza o buffer de desenho para
         # desenhar os vértices => utiliza o buffer de desenho com base para conectar linhas => utiliza as coordenadas das linhas
@@ -389,15 +448,14 @@ def main():
         # processos especiais => iluminação => testurização simples
         # modifica e utiliza os buffers
         começo = perf_counter()
-        coordenadas_camera_transformadas()
         # 0.000216
-        buffer = coordenadas_transformadas(objeto_triangulo)
+        buffer = coordenadas_transformadas(rotacao_z(objeto_triangulo,1))
         # 0.000042
         atualiza_tela_pontos(buffer)
-        pixels_usados = atualiza_tela_linhas(buffer,6,0,0,True)
+        pixels_usados = atualiza_tela_linhas(buffer,12,0,0,True)
         # 0.000174
         print(pixels_usados)
-        preenche_forma(31,33,0,16,'=')
+        preenche_forma(31,33,0,pixels_usados,'=')
         # 0.000514
         pintar_fundo_shader()
         desenho_tela()
