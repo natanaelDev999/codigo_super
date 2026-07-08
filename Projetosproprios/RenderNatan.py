@@ -87,7 +87,8 @@ rotacao_camera = [0,0]
 # [-2.5,-1,2,True]
 
 
-buffer_de_desenho = [
+buffer_de_desenho = \
+[
 [-2.5,1,1,True],
 [2.5,1,1,True],
 [2.5,-1,1,True],
