@@ -570,7 +570,9 @@
       <workItem from="1783259664992" duration="11304000" />
       <workItem from="1783366986900" duration="12248000" />
       <workItem from="1783430758953" duration="15161000" />
-      <workItem from="1783456505970" duration="959000" />
+      <workItem from="1783456505970" duration="1605000" />
+      <workItem from="1783517530245" duration="1573000" />
+      <workItem from="1783520005672" duration="1116000" />
     </task>
     <servers />
   </component>
@@ -590,7 +592,7 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/PythonProject1$project026.coverage" NAME="project026 Coverage Results" MODIFIED="1760896210477" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/opengl10_py$RenderNatan.coverage" NAME="RenderNatan Coverage Results" MODIFIED="1783457468559" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Projetosproprios" />
+    <SUITE FILE_PATH="coverage/opengl10_py$RenderNatan.coverage" NAME="RenderNatan Coverage Results" MODIFIED="1783520570642" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Projetosproprios" />
     <SUITE FILE_PATH="coverage/PythonProject1$project023.coverage" NAME="project023 Coverage Results" MODIFIED="1760820115939" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PythonProject1$projecto21.coverage" NAME="projecto21 Coverage Results" MODIFIED="1760817193846" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/opengl10_py$opengl14.coverage" NAME="opengl14 Coverage Results" MODIFIED="1783106203984" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Projetosproprios" />

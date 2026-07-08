@@ -13,6 +13,9 @@ rotacao_camera = [0,0]
 # buffer de desenho
 # estrutura de dados: [x,y,z,cor(se haverá cor)]
 # -y cima, y baixo, o mesmo acontece com outras coordenadas
+
+
+#    MODELOS
 #   triãngulo
 # [-4,4,1,True],
 # [4,4,1,True],
@@ -51,37 +54,71 @@ rotacao_camera = [0,0]
 # [2.5,-2,2,True],
 # [-2.5,-2,1,True],
 # [-2.5,-2,2,True]
-buffer_de_desenho = [[-2.5,2,1,True],
-                     [2.5,2,1,True],
-                     [2.5,-2,1,True],
-                     [-2.5,-2,1,True],
+#    retângulo
+# [-2.5,1,1,True],
+# [2.5,1,1,True],
+# [2.5,-1,1,True],
+# [-2.5,-1,1,True],
+#
+# [-2.5,1,1,True],
+# [-2.5,-1,1,True],
+# [2.5,1,1,True],
+# [2.5,-1,1,True],
+#
+#
+# [-2.5,1,2,True],
+# [2.5,1,2,True],
+# [2.5,-1,2,True],
+# [-2.5,-1,2,True],
+#
+# [-2.5,1,2,True],
+# [-2.5,-1,2,True],
+# [2.5,1,2,True],
+# [2.5,-1,2,True],
+#
+#
+# [-2.5,1,1,True],
+# [-2.5,1,2,True],
+# [2.5,1,1,True],
+# [2.5,1,2,True],
+# [2.5,-1,1,True],
+# [2.5,-1,2,True],
+# [-2.5,-1,1,True],
+# [-2.5,-1,2,True]
 
-                     [-2.5,2,1,True],
-                     [-2.5,-2,1,True],
-                     [2.5,2,1,True],
-                     [2.5,-2,1,True],
+
+buffer_de_desenho = [
+[-2.5,1,1,True],
+[2.5,1,1,True],
+[2.5,-1,1,True],
+[-2.5,-1,1,True],
+
+[-2.5,1,1,True],
+[-2.5,-1,1,True],
+[2.5,1,1,True],
+[2.5,-1,1,True],
 
 
-                     [-2.5,2,2,True],
-                     [2.5,2,2,True],
-                     [2.5,-2,2,True],
-                     [-2.5,-2,2,True],
+[-2.5,1,2,True],
+[2.5,1,2,True],
+[2.5,-1,2,True],
+[-2.5,-1,2,True],
 
-                     [-2.5,2,2,True],
-                     [-2.5,-2,2,True],
-                     [2.5,2,2,True],
-                     [2.5,-2,2,True],
+[-2.5,1,2,True],
+[-2.5,-1,2,True],
+[2.5,1,2,True],
+[2.5,-1,2,True],
 
 
-                     [-2.5,2,1,True],
-                     [-2.5,2,2,True],
-                     [2.5,2,1,True],
-                     [2.5,2,2,True],
-                     [2.5,-2,1,True],
-                     [2.5,-2,2,True],
-                     [-2.5,-2,1,True],
-                     [-2.5,-2,2,True]
-                     ]
+[-2.5,1,1,True],
+[-2.5,1,2,True],
+[2.5,1,1,True],
+[2.5,1,2,True],
+[2.5,-1,1,True],
+[2.5,-1,2,True],
+[-2.5,-1,1,True],
+[-2.5,-1,2,True]
+]
 # buffer de preservação de coordenadas originais
 buffer_de_desenho_original = []
 # buffer de aparência
@@ -439,17 +476,18 @@ def main():
     estado_render()
     sleep(4)
     coordenadas_camera_transformadas()
-    objeto_triangulo = deepcopy(buffer_de_desenho)
+    objeto_retangulo = deepcopy(buffer_de_desenho)
     while True:
         # pineline => transforma o buffer de desenho em relação a cãmera=> carrega o buffer de desenho => utiliza o buffer de desenho para
         # desenhar os vértices => utiliza o buffer de desenho com base para conectar linhas => utiliza as coordenadas das linhas
         # para preencher formas => utiliza o shader de fundo para pintar o fundo => limpa os buffers de tela e das linhas => limpa a
         # tela e controla o fps
+        # CUIDADO: não utilize rotações antes de transformar as coordenadas tridimensionais em bidimensionais,
         # processos especiais => iluminação => testurização simples
         # modifica e utiliza os buffers
         começo = perf_counter()
         # 0.000216
-        buffer = coordenadas_transformadas(rotacao_z(objeto_triangulo,1))
+        buffer = coordenadas_transformadas(rotacao_z(objeto_retangulo,45))
         # 0.000042
         atualiza_tela_pontos(buffer)
         pixels_usados = atualiza_tela_linhas(buffer,12,0,0,True)
