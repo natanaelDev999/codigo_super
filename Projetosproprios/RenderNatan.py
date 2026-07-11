@@ -159,6 +159,35 @@ tela = [[' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '],
          [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '],
          [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '],
          ]
+# ---------------------------------------------------------------------------------------------------------------------------------------
+# LSN-Linguagem de shader do RenderNatan
+def compila_codigo_lsn(codigo,pixel,x,y):
+    # variáveis internas
+    pixel_retorna = ' '
+    # loop para procura de linhas
+    linha = ''
+    for c in codigo.strip():
+        if c != ';':
+            linha+=c
+        elif c == ';':
+            if linha.startswith('pr=') or linha.startswith('pr ='):
+                if 'p' in linha:
+                    pixel_retorna = pixel
+    return pixel_retorna
+
+# função para utilização de código LSN(Linguagem de Shader do RenderNatan)
+def utiliza_codigo_lsn(codigo):
+    global tela
+    # PASSOS:Criar loop que roda a tela inteira rodando , e para cada pixel(célula) rodar o shader em LSN
+    for pos0,a in enumerate(tela):
+        for pos1,c in enumerate(a):
+            # verifica se não contém nada
+            if c != ' ':
+                # compila o código LSN
+                c_novo = compila_codigo_lsn(codigo,c,pos1,pos0)
+                # atualiza com o resultado do shader o pixel
+                tela[pos0][pos1] = c_novo
+
 # função para rotação no eixo x
 def rotacao_x(buffer,angulo):
     buffer_rotacionado = []
@@ -404,14 +433,15 @@ def preenche_forma(cor1,cor2,começo,termino,shader):
                         z_atual = pixels_forma[0][2]
 
                         if not z_buffer_atualizacao(abs(int(x)),abs(int(y)),z_atual):
-                            if testurizacao == True:
-                                tela[y][x] = f'\033[{cor1}m{caractere}\033[m'
-                                testurizacao = False
-                            elif testurizacao == False:
-                                tela[y][x] = f'\033[{cor2}m{caractere}\033[m'
-                                testurizacao = True
-                            tratamento_iluminacao(abs(int(x)),abs(int(y)),'#')
-                            z_buffer.append([abs(int(x)),abs(int(y)),z_atual])
+                            if abs(int(y)) < h and abs(int(x)) < w:
+                                if testurizacao == True:
+                                    tela[y][x] = f'\033[{cor1}m{caractere}\033[m'
+                                    testurizacao = False
+                                elif testurizacao == False:
+                                    tela[y][x] = f'\033[{cor2}m{caractere}\033[m'
+                                    testurizacao = True
+                                tratamento_iluminacao(abs(int(x)),abs(int(y)),'#')
+                                z_buffer.append([abs(int(x)),abs(int(y)),z_atual])
         '''# valor para limite
         maior = y_maior()
         # rodar todo o buffer para as posições dos pixeis
@@ -484,7 +514,10 @@ def main():
     sys.stdout.flush()
     coordenadas_camera_transformadas()
     objeto_retangulo = deepcopy(buffer_de_desenho)
-    #
+    # código LSN
+    codigo_lsn = (''
+                  'pr=p;'
+                  '')
     # RECOMENDAÇÃO: Rode o código no terminal para melhor performance, cuidado ao rodar no Pycharm dependendo da sua configuração
     #
     while True:
@@ -505,6 +538,8 @@ def main():
         print(pixels_usados)
         preenche_forma(31,33,0,pixels_usados,'=')
         # 0.000514
+        utiliza_codigo_lsn(codigo_lsn)
+        #
         pintar_fundo_shader()
         desenho_tela()
         limpa_pixels_linhas_buffer()

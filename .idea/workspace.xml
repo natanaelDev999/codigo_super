@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="40f19d69-33a2-4c14-82a8-a0754e89c91b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projetosproprios/opengl17.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projetosproprios/opengl17.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projetosproprios/RenderNatan.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projetosproprios/RenderNatan.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,7 +14,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="179" />
+    <option name="cachedIndexableFilesCount" value="180" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -46,61 +46,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0000000001081686" />
-      <entry key="S2" value="1.0032249667523532" />
-      <entry key="S5" value="1.1008428259527359" />
-      <entry key="S10" value="1.3313413921043098" />
-      <entry key="S30" value="2.279133791927057" />
-      <entry key="S60" value="3.3696679110320433" />
-      <entry key="M2" value="4.647890029115971" />
-      <entry key="M5" value="12.892477991986217" />
-      <entry key="M10" value="35.23709128406488" />
-      <entry key="M15" value="58.90830651021602" />
-      <entry key="M30" value="115.25016470366482" />
-      <entry key="H1" value="173.2429771277015" />
-      <entry key="H2" value="216.4984651949805" />
-      <entry key="H4" value="243.1764402798184" />
-      <entry key="D1" value="268.54586050191244" />
-      <entry key="W1" value="273.21266647649094" />
+      <entry key="MS100" value="1.0000000000008493" />
+      <entry key="MS500" value="1.005304925932499" />
+      <entry key="S2" value="1.4444484270170939" />
+      <entry key="S5" value="2.0949099372419733" />
+      <entry key="S10" value="2.5349501130817576" />
+      <entry key="S30" value="4.245416172858086" />
+      <entry key="S60" value="7.499871035960113" />
+      <entry key="M2" value="13.282356523333034" />
+      <entry key="M5" value="22.955566232032783" />
+      <entry key="M10" value="30.829919946840302" />
+      <entry key="M15" value="38.67918864931579" />
+      <entry key="M30" value="66.51256501593632" />
+      <entry key="H1" value="116.72919004867086" />
+      <entry key="H2" value="205.40694508170802" />
+      <entry key="H4" value="325.615730184108" />
+      <entry key="D1" value="539.6384477972761" />
+      <entry key="W1" value="595.0438658842892" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="0.0" />
-      <entry key="S2" value="0.0" />
-      <entry key="S5" value="0.0" />
-      <entry key="S10" value="0.0" />
-      <entry key="S30" value="0.0" />
-      <entry key="S60" value="0.0" />
-      <entry key="M2" value="0.0" />
-      <entry key="M5" value="0.0" />
-      <entry key="M10" value="0.0" />
-      <entry key="M15" value="0.0" />
-      <entry key="M30" value="0.0" />
-      <entry key="H1" value="0.0" />
-      <entry key="H2" value="0.0" />
-      <entry key="H4" value="0.0" />
-      <entry key="D1" value="0.0" />
-      <entry key="W1" value="0.0" />
+      <entry key="MS500" value="9.72715921730015E-111" />
+      <entry key="S2" value="3.140483428952697E-28" />
+      <entry key="S5" value="9.972375026727574E-12" />
+      <entry key="S10" value="3.157906747630076E-6" />
+      <entry key="S30" value="0.014671226898424239" />
+      <entry key="S60" value="0.12112484013786863" />
+      <entry key="M2" value="0.34802994143876265" />
+      <entry key="M5" value="0.6556116215280945" />
+      <entry key="M10" value="0.8096984756859154" />
+      <entry key="M15" value="0.8687247894124556" />
+      <entry key="M30" value="0.932054070004769" />
+      <entry key="H1" value="0.9654294743816196" />
+      <entry key="H2" value="0.9825627076078246" />
+      <entry key="H4" value="0.9912430113790588" />
+      <entry key="D1" value="0.9985351478832536" />
+      <entry key="W1" value="0.9997906039176326" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="2.226384324661935E-49" />
-      <entry key="MS500" value="2.1824519148381935E-10" />
-      <entry key="S2" value="0.00607598583047462" />
-      <entry key="S5" value="0.19574201627261426" />
-      <entry key="S10" value="0.6369306015648817" />
-      <entry key="S30" value="1.9250288350044942" />
-      <entry key="S60" value="3.1536471406149182" />
-      <entry key="M2" value="4.5239562670341416" />
-      <entry key="M5" value="12.835994627866713" />
-      <entry key="M10" value="35.200937514677776" />
-      <entry key="M15" value="58.87652585000068" />
-      <entry key="M30" value="115.22397451604522" />
-      <entry key="H1" value="173.22447430421653" />
-      <entry key="H2" value="216.48722100451639" />
-      <entry key="H4" value="243.1702107848422" />
-      <entry key="D1" value="268.5447268580003" />
-      <entry key="W1" value="273.21250203366725" />
+      <entry key="MS100" value="2.7497962454940706E-10" />
+      <entry key="MS500" value="0.014164705999479768" />
+      <entry key="S2" value="0.6712731130820093" />
+      <entry key="S5" value="1.6243826593176616" />
+      <entry key="S10" value="2.255711080521653" />
+      <entry key="S30" value="4.128267010212549" />
+      <entry key="S60" value="7.512329855110183" />
+      <entry key="M2" value="13.533827108901818" />
+      <entry key="M5" value="23.54162887530405" />
+      <entry key="M10" value="31.591770831587088" />
+      <entry key="M15" value="39.509392442064474" />
+      <entry key="M30" value="67.41660080277582" />
+      <entry key="H1" value="117.67458806345591" />
+      <entry key="H2" value="206.37541952130076" />
+      <entry key="H4" value="326.597410625669" />
+      <entry key="D1" value="540.6346533121613" />
+      <entry key="W1" value="596.0432964381272" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -125,7 +125,7 @@
     "Python.OS.executor": "Run",
     "Python.PRINCIPAL.executor": "Run",
     "Python.RPG_Sword_Master.executor": "Run",
-    "Python.RenderNatan.executor": "Debug",
+    "Python.RenderNatan.executor": "Run",
     "Python._strings.executor": "Run",
     "Python.arquivosPastas.executor": "Run",
     "Python.aula_json.executor": "Run",
@@ -327,7 +327,7 @@
       <command value="project038" />
     </option>
   </component>
-  <component name="RunManager" selected="Python.opengl17">
+  <component name="RunManager" selected="Python.RenderNatan">
     <configuration name="RenderNatan" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PythonProject1" />
       <option name="ENV_FILES" value="" />
@@ -513,8 +513,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.opengl17" />
         <item itemvalue="Python.RenderNatan" />
+        <item itemvalue="Python.opengl17" />
         <item itemvalue="Python.opengl14" />
         <item itemvalue="Python.opengl16" />
         <item itemvalue="Python.opengl15" />
@@ -644,7 +644,7 @@
       <workItem from="1783520005672" duration="21684000" />
       <workItem from="1783696753857" duration="11997000" />
       <workItem from="1783770580835" duration="3291000" />
-      <workItem from="1783778736352" duration="12133000" />
+      <workItem from="1783778736352" duration="24217000" />
     </task>
     <servers />
   </component>
@@ -664,10 +664,10 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/PythonProject1$project026.coverage" NAME="project026 Coverage Results" MODIFIED="1760896210477" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/opengl10_py$RenderNatan.coverage" NAME="RenderNatan Coverage Results" MODIFIED="1783783922378" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Projetosproprios" />
+    <SUITE FILE_PATH="coverage/opengl10_py$RenderNatan.coverage" NAME="RenderNatan Coverage Results" MODIFIED="1783810619908" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Projetosproprios" />
     <SUITE FILE_PATH="coverage/PythonProject1$project023.coverage" NAME="project023 Coverage Results" MODIFIED="1760820115939" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PythonProject1$projecto21.coverage" NAME="projecto21 Coverage Results" MODIFIED="1760817193846" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/opengl10_py$opengl17.coverage" NAME="opengl17 Coverage Results" MODIFIED="1783791226040" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Projetosproprios" />
+    <SUITE FILE_PATH="coverage/opengl10_py$opengl17.coverage" NAME="opengl17 Coverage Results" MODIFIED="1783810612610" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Projetosproprios" />
     <SUITE FILE_PATH="coverage/opengl10_py$opengl14.coverage" NAME="opengl14 Coverage Results" MODIFIED="1783771811585" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Projetosproprios" />
     <SUITE FILE_PATH="coverage/PythonProject1$project020.coverage" NAME="project020 Coverage Results" MODIFIED="1760300122782" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PythonProject1$projeto004.coverage" NAME="projeto004 Coverage Results" MODIFIED="1760297479053" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
