@@ -20,9 +20,9 @@ def cria_esfera(raio):
             y2 = raio * math.cos(phi)
             z2 = raio * math.sin(phi)* math.sin(theta)
 
-            vertices.append([x2+random.randint(0,60)/100,
-                             y2+random.randint(0,60)/100,
-                             z2+random.randint(0,60)/100])
+            vertices.append([x2+random.randint(0,60)/200,
+                             y2+random.randint(0,60)/200,
+                             z2+random.randint(0,60)/200])
     return vertices
 def init():
     glClearColor(0,0,0.4,0)

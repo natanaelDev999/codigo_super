@@ -162,9 +162,9 @@ tela = [[' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '],
 # função para rotação no eixo x
 def rotacao_x(buffer,angulo):
     buffer_rotacionado = []
+    cosseno = math.cos(math.radians(angulo))
+    seno = math.sin(math.radians(angulo))
     for c in buffer:
-        cosseno = math.cos(math.radians(angulo))
-        seno = math.sin(math.radians(angulo))
         # estrutura de dados: [x,y,z,cor(se haverá cor)]
         buffer_rotacionado.append([c[0],
                                    c[1]*cosseno-c[2]*seno,
@@ -478,6 +478,9 @@ def main():
     sleep(4)
     coordenadas_camera_transformadas()
     objeto_retangulo = deepcopy(buffer_de_desenho)
+    #
+    # RECOMENDAÇÃO: Rode o código no terminal para melhor performance, cuidado ao rodar no Pycharm dependendo da sua configuração
+    #
     while True:
         # pineline => transforma o buffer de desenho em relação a cãmera=> carrega o buffer de desenho => utiliza o buffer de desenho para
         # desenhar os vértices => utiliza o buffer de desenho com base para conectar linhas => utiliza as coordenadas das linhas
