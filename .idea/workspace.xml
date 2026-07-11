@@ -45,23 +45,23 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.4074067653921496" />
-      <entry key="MS500" value="3.002518129217787" />
-      <entry key="S2" value="6.301801664681232" />
-      <entry key="S5" value="14.372200081053732" />
-      <entry key="S10" value="24.77373241747857" />
-      <entry key="S30" value="42.52683762886807" />
-      <entry key="S60" value="53.462556127972746" />
-      <entry key="M2" value="66.08863765111796" />
-      <entry key="M5" value="83.32011878794766" />
-      <entry key="M10" value="96.74937179616737" />
-      <entry key="M15" value="104.36854989014475" />
-      <entry key="M30" value="115.15076929108115" />
-      <entry key="H1" value="122.2826312690601" />
-      <entry key="H2" value="126.4186146850866" />
-      <entry key="H4" value="128.65022444935545" />
-      <entry key="D1" value="130.59985797062495" />
-      <entry key="W1" value="130.94262425188586" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0" />
+      <entry key="S2" value="1.0000000000021942" />
+      <entry key="S5" value="1.0000402561717512" />
+      <entry key="S10" value="1.0109146451510824" />
+      <entry key="S30" value="1.465220033273322" />
+      <entry key="S60" value="2.244908955000127" />
+      <entry key="M2" value="3.3484123739798197" />
+      <entry key="M5" value="12.14603458009299" />
+      <entry key="M10" value="38.87696225868903" />
+      <entry key="M15" value="62.396431607541246" />
+      <entry key="M30" value="104.2752167321235" />
+      <entry key="H1" value="136.97135594535246" />
+      <entry key="H2" value="157.65398851226146" />
+      <entry key="H4" value="169.32608686715477" />
+      <entry key="D1" value="179.8140933188857" />
+      <entry key="W1" value="181.685870375178" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
@@ -83,23 +83,23 @@
       <entry key="W1" value="0.0" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.3174444941722987" />
-      <entry key="MS500" value="2.8939699084052393" />
-      <entry key="S2" value="6.244183097288382" />
-      <entry key="S5" value="14.329565953868004" />
-      <entry key="S10" value="24.724412467679667" />
-      <entry key="S30" value="42.46708707389071" />
-      <entry key="S60" value="53.40555589755849" />
-      <entry key="M2" value="66.04019833296154" />
-      <entry key="M5" value="83.29047508730608" />
-      <entry key="M10" value="96.73175463058386" />
-      <entry key="M15" value="104.35600526847811" />
-      <entry key="M30" value="115.14402139104091" />
-      <entry key="H1" value="122.27911889588191" />
-      <entry key="H2" value="126.41682080315718" />
-      <entry key="H4" value="128.64931764752757" />
-      <entry key="D1" value="130.59970542766249" />
-      <entry key="W1" value="130.94260242498245" />
+      <entry key="MS100" value="6.761544609942747E-9" />
+      <entry key="MS500" value="0.023227859131734602" />
+      <entry key="S2" value="0.39039324630567973" />
+      <entry key="S5" value="0.6864753893172758" />
+      <entry key="S10" value="0.8390919967130777" />
+      <entry key="S30" value="1.3988992355919607" />
+      <entry key="S60" value="2.2038904370013985" />
+      <entry key="M2" value="3.3185914412108835" />
+      <entry key="M5" value="12.111062454966275" />
+      <entry key="M10" value="38.83556983438785" />
+      <entry key="M15" value="62.35730354627194" />
+      <entry key="M30" value="104.24673842129896" />
+      <entry key="H1" value="136.9540206400975" />
+      <entry key="H2" value="157.6444042407644" />
+      <entry key="H4" value="169.32104504406482" />
+      <entry key="D1" value="179.81321644997982" />
+      <entry key="W1" value="181.68574418709142" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -124,7 +124,7 @@
     "Python.OS.executor": "Run",
     "Python.PRINCIPAL.executor": "Run",
     "Python.RPG_Sword_Master.executor": "Run",
-    "Python.RenderNatan.executor": "Run",
+    "Python.RenderNatan.executor": "Debug",
     "Python._strings.executor": "Run",
     "Python.arquivosPastas.executor": "Run",
     "Python.aula_json.executor": "Run",
@@ -179,6 +179,7 @@
     "Python.opengl14.executor": "Run",
     "Python.opengl15.executor": "Run",
     "Python.opengl16.executor": "Run",
+    "Python.opengl17.executor": "Run",
     "Python.pandas.executor": "Run",
     "Python.pandass.executor": "Run",
     "Python.pgame.executor": "Run",
@@ -325,7 +326,7 @@
       <command value="project038" />
     </option>
   </component>
-  <component name="RunManager" selected="Python.RenderNatan">
+  <component name="RunManager" selected="Python.opengl17">
     <configuration name="RenderNatan" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PythonProject1" />
       <option name="ENV_FILES" value="" />
@@ -368,31 +369,6 @@
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="RUN_TOOL" value="" />
       <option name="SCRIPT_NAME" value="" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="true" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="opengl06" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="PythonProject1" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Projetosproprios" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="DEBUG_JUST_MY_CODE" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="RUN_TOOL" value="" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Projetosproprios/opengl06.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="true" />
@@ -476,6 +452,31 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="opengl17" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PythonProject1" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Projetosproprios" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="DEBUG_JUST_MY_CODE" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="RUN_TOOL" value="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Projetosproprios/opengl17.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="true" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="testeclass" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="PythonProject1" />
       <option name="ENV_FILES" value="" />
@@ -503,19 +504,19 @@
     </configuration>
     <list>
       <item itemvalue="Python.testeclass" />
-      <item itemvalue="Python.opengl14" />
-      <item itemvalue="Python.opengl16" />
+      <item itemvalue="Python.opengl17" />
       <item itemvalue="Python.RenderNatan" />
-      <item itemvalue="Python.opengl06" />
+      <item itemvalue="Python.opengl14" />
       <item itemvalue="Python.opengl15" />
+      <item itemvalue="Python.opengl16" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.opengl17" />
         <item itemvalue="Python.RenderNatan" />
         <item itemvalue="Python.opengl14" />
         <item itemvalue="Python.opengl16" />
         <item itemvalue="Python.opengl15" />
-        <item itemvalue="Python.opengl06" />
       </list>
     </recent_temporary>
   </component>
@@ -642,6 +643,7 @@
       <workItem from="1783520005672" duration="21684000" />
       <workItem from="1783696753857" duration="11997000" />
       <workItem from="1783770580835" duration="3291000" />
+      <workItem from="1783778736352" duration="9985000" />
     </task>
     <servers />
   </component>
@@ -661,11 +663,12 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/PythonProject1$project026.coverage" NAME="project026 Coverage Results" MODIFIED="1760896210477" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/opengl10_py$RenderNatan.coverage" NAME="RenderNatan Coverage Results" MODIFIED="1783773728436" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Projetosproprios" />
+    <SUITE FILE_PATH="coverage/opengl10_py$RenderNatan.coverage" NAME="RenderNatan Coverage Results" MODIFIED="1783783922378" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Projetosproprios" />
     <SUITE FILE_PATH="coverage/PythonProject1$project023.coverage" NAME="project023 Coverage Results" MODIFIED="1760820115939" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PythonProject1$projecto21.coverage" NAME="projecto21 Coverage Results" MODIFIED="1760817193846" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/PythonProject1$project020.coverage" NAME="project020 Coverage Results" MODIFIED="1760300122782" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/opengl10_py$opengl17.coverage" NAME="opengl17 Coverage Results" MODIFIED="1783789484606" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Projetosproprios" />
     <SUITE FILE_PATH="coverage/opengl10_py$opengl14.coverage" NAME="opengl14 Coverage Results" MODIFIED="1783771811585" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Projetosproprios" />
+    <SUITE FILE_PATH="coverage/PythonProject1$project020.coverage" NAME="project020 Coverage Results" MODIFIED="1760300122782" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PythonProject1$projeto004.coverage" NAME="projeto004 Coverage Results" MODIFIED="1760297479053" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PythonProject1$project029.coverage" NAME="project029 Coverage Results" MODIFIED="1760899224582" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PythonProject1$project014.coverage" NAME="project014 Coverage Results" MODIFIED="1760199314734" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -675,8 +678,8 @@
     <SUITE FILE_PATH="coverage/opengl10_py$joguinho_3d.coverage" NAME="joguinho_3d Coverage Results" MODIFIED="1782943441157" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Projetosproprios/output" />
     <SUITE FILE_PATH="coverage/PythonProject1$opengl13.coverage" NAME="opengl13 Coverage Results" MODIFIED="1779903427111" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Projetosproprios" />
     <SUITE FILE_PATH="coverage/PythonProject1$programa_principal__1_.coverage" NAME="programa_principal (1) Coverage Results" MODIFIED="1778433132784" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/modularização/mod04" />
-    <SUITE FILE_PATH="coverage/PythonProject1$project008.coverage" NAME="project008 Coverage Results" MODIFIED="1759663591613" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PythonProject1$opengl07.coverage" NAME="opengl07 Coverage Results" MODIFIED="1779399366871" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Projetosproprios" />
+    <SUITE FILE_PATH="coverage/PythonProject1$project008.coverage" NAME="project008 Coverage Results" MODIFIED="1759663591613" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PythonProject1$project011.coverage" NAME="project011 Coverage Results" MODIFIED="1759690874309" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PythonProject1$pygame.coverage" NAME="pygame Coverage Results" MODIFIED="1760198359459" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PythonProject1$project016.coverage" NAME="project016 Coverage Results" MODIFIED="1760206016268" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
