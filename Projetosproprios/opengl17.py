@@ -42,14 +42,14 @@ quantidade_faces = len(faces)
 # função para entrada de teclado
 def key_callback(window, key, scancode, action, mods):
     global movimento_x,movimento_y
-    if key == glfw.KEY_W and action == glfw.PRESS:
-        movimento_y += 0.5
-    elif key == glfw.KEY_S and action == glfw.PRESS:
-        movimento_y -= 0.5
-    elif key == glfw.KEY_A and action == glfw.PRESS:
-        movimento_x += 0.5
-    elif key == glfw.KEY_D and action == glfw.PRESS:
-        movimento_x -= 0.5
+    if key == glfw.KEY_W:
+        movimento_y += 0.005
+    elif key == glfw.KEY_S:
+        movimento_y -= 0.005
+    elif key == glfw.KEY_A:
+        movimento_x -= 0.005
+    elif key == glfw.KEY_D:
+        movimento_x += 0.005
 
 # função inicial
 def init():
@@ -178,7 +178,7 @@ def init():
     glAttachShader(shader_program_id, fragment_id)
     # 'linka' os shader
     glLinkProgram(shader_program_id)
-    local_uniform_pos = glGetUniformLocation(shader_program_id, 'cor_sistema')
+    local_uniform_pos = glGetUniformLocation(shader_program_id, 'pos_sistema')
 
 # função para desenho
 def render():
