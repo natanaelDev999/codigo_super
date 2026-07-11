@@ -45,23 +45,23 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.1756262965569457" />
-      <entry key="MS500" value="2.17288512172642" />
-      <entry key="S2" value="7.332163647068072" />
-      <entry key="S5" value="12.428445163322175" />
-      <entry key="S10" value="15.258602361874088" />
-      <entry key="S30" value="18.428443366969155" />
-      <entry key="S60" value="21.392493448694044" />
-      <entry key="M2" value="24.73798788921253" />
-      <entry key="M5" value="28.0073086935077" />
-      <entry key="M10" value="29.407042962036947" />
-      <entry key="M15" value="29.9152540778397" />
-      <entry key="M30" value="30.445894690798678" />
-      <entry key="H1" value="30.71994771446983" />
-      <entry key="H2" value="30.859215466126376" />
-      <entry key="H4" value="30.929417064351203" />
-      <entry key="D1" value="30.988209604236115" />
-      <entry key="W1" value="30.99831500578179" />
+      <entry key="MS100" value="1.4074067653921496" />
+      <entry key="MS500" value="3.002518129217787" />
+      <entry key="S2" value="6.301801664681232" />
+      <entry key="S5" value="14.372200081053732" />
+      <entry key="S10" value="24.77373241747857" />
+      <entry key="S30" value="42.52683762886807" />
+      <entry key="S60" value="53.462556127972746" />
+      <entry key="M2" value="66.08863765111796" />
+      <entry key="M5" value="83.32011878794766" />
+      <entry key="M10" value="96.74937179616737" />
+      <entry key="M15" value="104.36854989014475" />
+      <entry key="M30" value="115.15076929108115" />
+      <entry key="H1" value="122.2826312690601" />
+      <entry key="H2" value="126.4186146850866" />
+      <entry key="H4" value="128.65022444935545" />
+      <entry key="D1" value="130.59985797062495" />
+      <entry key="W1" value="130.94262425188586" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
@@ -83,23 +83,23 @@
       <entry key="W1" value="0.0" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.086326547569967" />
-      <entry key="MS500" value="2.133346409152196" />
-      <entry key="S2" value="7.291636520395726" />
-      <entry key="S5" value="12.40124775226474" />
-      <entry key="S10" value="15.242017040603928" />
-      <entry key="S30" value="18.420498211791685" />
-      <entry key="S60" value="21.386053580296053" />
-      <entry key="M2" value="24.733185929216905" />
-      <entry key="M5" value="28.004743920900093" />
-      <entry key="M10" value="29.405620622413196" />
-      <entry key="M15" value="29.914271822522398" />
-      <entry key="M30" value="30.44538575917402" />
-      <entry key="H1" value="30.719688643897207" />
-      <entry key="H2" value="30.859084759911138" />
-      <entry key="H4" value="30.929351416010945" />
-      <entry key="D1" value="30.988198621627753" />
-      <entry key="W1" value="30.998313435825523" />
+      <entry key="MS100" value="1.3174444941722987" />
+      <entry key="MS500" value="2.8939699084052393" />
+      <entry key="S2" value="6.244183097288382" />
+      <entry key="S5" value="14.329565953868004" />
+      <entry key="S10" value="24.724412467679667" />
+      <entry key="S30" value="42.46708707389071" />
+      <entry key="S60" value="53.40555589755849" />
+      <entry key="M2" value="66.04019833296154" />
+      <entry key="M5" value="83.29047508730608" />
+      <entry key="M10" value="96.73175463058386" />
+      <entry key="M15" value="104.35600526847811" />
+      <entry key="M30" value="115.14402139104091" />
+      <entry key="H1" value="122.27911889588191" />
+      <entry key="H2" value="126.41682080315718" />
+      <entry key="H4" value="128.64931764752757" />
+      <entry key="D1" value="130.59970542766249" />
+      <entry key="W1" value="130.94260242498245" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -641,7 +641,7 @@
       <workItem from="1783517530245" duration="1573000" />
       <workItem from="1783520005672" duration="21684000" />
       <workItem from="1783696753857" duration="11997000" />
-      <workItem from="1783770580835" duration="2682000" />
+      <workItem from="1783770580835" duration="3291000" />
     </task>
     <servers />
   </component>
@@ -661,7 +661,7 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/PythonProject1$project026.coverage" NAME="project026 Coverage Results" MODIFIED="1760896210477" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/opengl10_py$RenderNatan.coverage" NAME="RenderNatan Coverage Results" MODIFIED="1783772773845" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Projetosproprios" />
+    <SUITE FILE_PATH="coverage/opengl10_py$RenderNatan.coverage" NAME="RenderNatan Coverage Results" MODIFIED="1783773728436" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Projetosproprios" />
     <SUITE FILE_PATH="coverage/PythonProject1$project023.coverage" NAME="project023 Coverage Results" MODIFIED="1760820115939" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PythonProject1$projecto21.coverage" NAME="projecto21 Coverage Results" MODIFIED="1760817193846" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PythonProject1$project020.coverage" NAME="project020 Coverage Results" MODIFIED="1760300122782" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />

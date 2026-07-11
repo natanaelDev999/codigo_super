@@ -476,6 +476,12 @@ def main():
     # mostra estado
     estado_render()
     sleep(4)
+    # limpa terminal
+    sys.stdout.write("\033c")
+    sys.stdout.flush()
+    # some o cursor de digitação
+    sys.stdout.write("\033[?25l")
+    sys.stdout.flush()
     coordenadas_camera_transformadas()
     objeto_retangulo = deepcopy(buffer_de_desenho)
     #
@@ -506,10 +512,10 @@ def main():
         limpa_z_buffer()
         # 0.000038
         #
-        # controla o fps
-        sleep(0.25)
+        # controla o fps - para 60 fps
+        sleep(0.016)
         # limpa terminal
-        sys.stdout.write("\033c")
+        sys.stdout.write("\033[H")
         sys.stdout.flush()
         # some o cursor de digitação
         sys.stdout.write("\033[?25l")
