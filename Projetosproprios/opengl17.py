@@ -42,13 +42,13 @@ quantidade_faces = len(faces)
 # função para entrada de teclado
 def key_callback(window, key, scancode, action, mods):
     global movimento_x,movimento_y
-    if key == glfw.KEY_W:
+    if key == glfw.KEY_W or action == glfw.REPEAT:
         movimento_y += 0.005
-    elif key == glfw.KEY_S:
+    elif key == glfw.KEY_S or action == glfw.REPEAT:
         movimento_y -= 0.005
-    elif key == glfw.KEY_A:
+    elif key == glfw.KEY_A or action == glfw.REPEAT:
         movimento_x -= 0.005
-    elif key == glfw.KEY_D:
+    elif key == glfw.KEY_D or action == glfw.REPEAT:
         movimento_x += 0.005
 
 # função inicial
