@@ -179,6 +179,7 @@ def compila_codigo_lsn(codigo,pixel,x,y):
     VARIÁVEIS INTERNAS :
     - pr:valor do pixel a ser retornado pelo shader, pode receber novos valores, o seu valor nunca pode ser ' '
     - p:valor do pixel recebido que pode ser atribuído ao pr, para não mudar o que será retornado
+    - cp:valor para a cor do pixel, recomendado que receba um valor pelo programador
     '''
     # variáveis internas
     pixel_retorna = ' '
@@ -198,6 +199,9 @@ def compila_codigo_lsn(codigo,pixel,x,y):
                             pixel_retorna = linha[linha.find('=') + 2]
                         else:
                             pixel_retorna = linha[linha.find('=') + 1]
+            if linha.startswith('cp=') or linha.startswith('cp ='):
+                if linha[linha.find('=')] != linha[-1]:
+                    pixel_retorna = (f'\033[{int(linha[linha.find('=')+1:] )}m{pixel_retorna}\033[m')
             linha = ''
     return pixel_retorna
 
@@ -543,7 +547,7 @@ def main():
     # código LSN
     codigo_lsn = '''
                   pr=*;
-                  pr=p;
+                  cp=35;
                   '''
     #
     # RECOMENDAÇÃO: Rode o código no terminal para melhor performance , cuidado ao rodar no Pycharm dependendo da sua configuração
