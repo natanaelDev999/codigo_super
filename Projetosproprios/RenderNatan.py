@@ -161,18 +161,46 @@ tela = [[' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '],
          ]
 # ---------------------------------------------------------------------------------------------------------------------------------------
 # LSN-Linguagem de shader do RenderNatan
+# função para procura de caractere
+def procura_caractere(string,marco,procurado):
+    achou = False
+    verificacao = False
+    verificacao_solidao = False
+    for v in string:
+        if v == marco:
+            achou = True
+        if achou == True and verificacao_solidao == False:
+            verificacao_solidao = True
+        if v == procurado and achou == True:
+            verificacao = True
+    return [verificacao,verificacao_solidao]
+# função para compilação de código LSN(Linguagem de Shader do RenderNatan)
 def compila_codigo_lsn(codigo,pixel,x,y):
+    '''
+            SUMÁRIO DA LSN(Linguagem de Shader do RenderNatan)
+    
+    VARIÁVEIS INTERNAS :
+    - pr:valor do pixel a ser retornado pelo shader, pode receber novos valores , seu valor nunca pode ser ' '
+    - p:valor do pixel recebido que pode ser atribuído ao pr, para não mudar o que será retornado
+    '''
     # variáveis internas
     pixel_retorna = ' '
-    # loop para procura de linhas
     linha = ''
+    # loop para procura de linhas
     for c in codigo.strip():
         if c != ';':
             linha+=c
         elif c == ';':
             if linha.startswith('pr=') or linha.startswith('pr ='):
-                if 'p' in linha:
+                verificacao = procura_caractere(linha,'=','p')
+                if verificacao[0]:
                     pixel_retorna = pixel
+                else:
+                    if verificacao[1]:
+                        if linha[linha.find('=') + 1] == ' ':
+                            pixel_retorna = linha[linha.find('=') + 2]
+                        else:
+                            pixel_retorna = linha[linha.find('=') + 1]
     return pixel_retorna
 
 # função para utilização de código LSN(Linguagem de Shader do RenderNatan)
@@ -516,7 +544,7 @@ def main():
     objeto_retangulo = deepcopy(buffer_de_desenho)
     # código LSN
     codigo_lsn = (''
-                  'pr=p;'
+                  'pr= (;'
                   '')
     # RECOMENDAÇÃO: Rode o código no terminal para melhor performance, cuidado ao rodar no Pycharm dependendo da sua configuração
     #
