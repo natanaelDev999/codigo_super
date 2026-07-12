@@ -165,19 +165,16 @@ tela = [[' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '],
 def procura_caractere(string,marco,procurado):
     achou = False
     verificacao = False
-    verificacao_solidao = False
     for v in string:
         if v == marco:
             achou = True
-        if achou == True and verificacao_solidao == False:
-            verificacao_solidao = True
         if v == procurado and achou == True:
             verificacao = True
-    return [verificacao,verificacao_solidao]
+    return verificacao
 # função para compilação de código LSN(Linguagem de Shader do RenderNatan)
 def compila_codigo_lsn(codigo,pixel,x,y):
     '''
-            SUMÁRIO DA LSN(Linguagem de Shader do RenderNatan)
+            SUMÁRIO DA LSN
     
     VARIÁVEIS INTERNAS :
     - pr:valor do pixel a ser retornado pelo shader, pode receber novos valores , seu valor nunca pode ser ' '
@@ -192,15 +189,15 @@ def compila_codigo_lsn(codigo,pixel,x,y):
             linha+=c
         elif c == ';':
             if linha.startswith('pr=') or linha.startswith('pr ='):
-                verificacao = procura_caractere(linha,'=','p')
-                if verificacao[0]:
+                if procura_caractere(linha,'=','p'):
                     pixel_retorna = pixel
                 else:
-                    if verificacao[1]:
+                    if linha[linha.find('=')] != linha[-1]:
                         if linha[linha.find('=') + 1] == ' ':
                             pixel_retorna = linha[linha.find('=') + 2]
                         else:
                             pixel_retorna = linha[linha.find('=') + 1]
+            linha = ''
     return pixel_retorna
 
 # função para utilização de código LSN(Linguagem de Shader do RenderNatan)
@@ -543,10 +540,12 @@ def main():
     coordenadas_camera_transformadas()
     objeto_retangulo = deepcopy(buffer_de_desenho)
     # código LSN
-    codigo_lsn = (''
-                  'pr= (;'
-                  '')
-    # RECOMENDAÇÃO: Rode o código no terminal para melhor performance, cuidado ao rodar no Pycharm dependendo da sua configuração
+    codigo_lsn = '''
+                  pr=p;
+                  pr=*;
+                  '''
+    #
+    # RECOMENDAÇÃO: Rode o código no terminal para melhor performance , cuidado ao rodar no Pycharm dependendo da sua configuração
     #
     while True:
         # pineline => transforma o buffer de desenho em relação a cãmera=> carrega o buffer de desenho => utiliza o buffer de desenho para
