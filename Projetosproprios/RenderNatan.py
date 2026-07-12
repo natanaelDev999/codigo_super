@@ -177,7 +177,7 @@ def compila_codigo_lsn(codigo,pixel,x,y):
             SUMÁRIO DA LSN
     
     VARIÁVEIS INTERNAS :
-    - pr:valor do pixel a ser retornado pelo shader, pode receber novos valores , seu valor nunca pode ser ' '
+    - pr:valor do pixel a ser retornado pelo shader, pode receber novos valores, o seu valor nunca pode ser ' '
     - p:valor do pixel recebido que pode ser atribuído ao pr, para não mudar o que será retornado
     '''
     # variáveis internas
@@ -188,6 +188,7 @@ def compila_codigo_lsn(codigo,pixel,x,y):
         if c != ';':
             linha+=c
         elif c == ';':
+            linha = linha.strip()
             if linha.startswith('pr=') or linha.startswith('pr ='):
                 if procura_caractere(linha,'=','p'):
                     pixel_retorna = pixel
@@ -541,8 +542,8 @@ def main():
     objeto_retangulo = deepcopy(buffer_de_desenho)
     # código LSN
     codigo_lsn = '''
-                  pr=p;
                   pr=*;
+                  pr=p;
                   '''
     #
     # RECOMENDAÇÃO: Rode o código no terminal para melhor performance , cuidado ao rodar no Pycharm dependendo da sua configuração
