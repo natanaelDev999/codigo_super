@@ -188,6 +188,7 @@ def compila_codigo_lsn(codigo,pixel,x,y):
     pixel_retorna = ' '
     cor_pixel = 0
     #
+    ativacao_if = False
     linha = ''
     # loop para procura de linhas
     for c in codigo.strip():
@@ -223,6 +224,23 @@ def compila_codigo_lsn(codigo,pixel,x,y):
                     x = x+int(valor2)
                 elif valor1 == 'y':
                     y = y+int(valor2)
+            if linha.startswith('cs'):
+                caso = linha.split(' ')
+                if caso[1] == 'y':
+                    if caso[2] == '<':
+                        if y < int(caso[3]):
+                            ativacao_if = True
+            if linha.startswith('$pr=') or linha.startswith('$pr ='):
+                if ativacao_if == True:
+                    if procura_caractere(linha,'=','p'):
+                        pixel_retorna = pixel
+                    else:
+                        if linha[linha.find('=')] != linha[-1]:
+                            if linha[linha.find('=') + 1] == ' ':
+                                pixel_retorna = linha[linha.find('=') + 2]
+                            else:
+                                pixel_retorna = linha[linha.find('=') + 1]
+                    ativacao_if = False
             linha = ''
     return [f'\033[{cor_pixel}m{pixel_retorna}\033[m',x,y]
 
@@ -571,7 +589,8 @@ def main():
     codigo_lsn = '''
                   pr=@;
                   cp=31;
-                  s x 6;
+                  cs y < 5 ;
+                  $pr=¨;
                   '''
     #
     # RECOMENDAÇÃO: Rode o código no terminal para melhor performance , cuidado ao rodar no Pycharm dependendo da sua configuração
