@@ -177,12 +177,17 @@ def compila_codigo_lsn(codigo,pixel,x,y):
             SUMÁRIO DA LSN
     
     VARIÁVEIS INTERNAS :
-    - pr:valor do pixel a ser retornado pelo shader, pode receber novos valores, o seu valor nunca pode ser ' '
-    - p:valor do pixel recebido que pode ser atribuído ao pr, para não mudar o que será retornado
-    - cp:valor para a cor do pixel, recomendado que receba um valor pelo programador
+    - pr:valor do pixel a ser retornado pelo shader, pode receber novos valores, o seu valor nunca pode ser ' '.
+    - p:valor do pixel recebido que pode ser atribuído ao pr, para não mudar o que será retornado.
+    - cp:valor para a cor do pixel, recomendado que receba um valor pelo programador.
+    OPERAÇÕES MATEMÁTICAS :
+    - s: ínicio para a soma dos valores escolhidos
+    - su: ínicio para a subtração dos valores escolhidos
     '''
     # variáveis internas
     pixel_retorna = ' '
+    cor_pixel = 0
+    #
     linha = ''
     # loop para procura de linhas
     for c in codigo.strip():
@@ -190,6 +195,7 @@ def compila_codigo_lsn(codigo,pixel,x,y):
             linha+=c
         elif c == ';':
             linha = linha.strip()
+            # inseri um valor para pr
             if linha.startswith('pr=') or linha.startswith('pr ='):
                 if procura_caractere(linha,'=','p'):
                     pixel_retorna = pixel
@@ -199,15 +205,30 @@ def compila_codigo_lsn(codigo,pixel,x,y):
                             pixel_retorna = linha[linha.find('=') + 2]
                         else:
                             pixel_retorna = linha[linha.find('=') + 1]
+            # inseri um valor para cp
             if linha.startswith('cp=') or linha.startswith('cp ='):
                 if linha[linha.find('=')] != linha[-1]:
-                    pixel_retorna = (f'\033[{int(linha[linha.find('=')+1:] )}m{pixel_retorna}\033[m')
+                    cor_pixel = linha[linha.find('=')+1:]
+            # subtrai os valores para simular uma soma de valores positivos
+            if linha.startswith('s'):
+                operacao,valor1,valor2 = linha.split(' ')
+                if valor1 == 'x':
+                    x = x-int(valor2)
+                elif valor1 == 'y':
+                    y = y-int(valor2)
+            # soma os valores para simular uma soma de valores negativos
+            if linha.startswith('v'):
+                operacao,valor1,valor2 = linha.split(' ')
+                if valor1 == 'x':
+                    x = x+int(valor2)
+                elif valor1 == 'y':
+                    y = y+int(valor2)
             linha = ''
-    return pixel_retorna
+    return [f'\033[{cor_pixel}m{pixel_retorna}\033[m',x,y]
 
 # função para utilização de código LSN(Linguagem de Shader do RenderNatan)
 def utiliza_codigo_lsn(codigo):
-    global tela
+    global tela,h,w
     # PASSOS:Criar loop que roda a tela inteira rodando , e para cada pixel(célula) rodar o shader em LSN
     for pos0,a in enumerate(tela):
         for pos1,c in enumerate(a):
@@ -216,7 +237,9 @@ def utiliza_codigo_lsn(codigo):
                 # compila o código LSN
                 c_novo = compila_codigo_lsn(codigo,c,pos1,pos0)
                 # atualiza com o resultado do shader o pixel
-                tela[pos0][pos1] = c_novo
+                if abs(int(c_novo[2])) <= h and abs(int(c_novo[1])) <= w:
+                    tela[pos0][pos1] = ' '
+                    tela[abs(int(c_novo[2]))][abs(int(c_novo[1]))] = c_novo[0]
 
 # função para rotação no eixo x
 def rotacao_x(buffer,angulo):
@@ -546,8 +569,9 @@ def main():
     objeto_retangulo = deepcopy(buffer_de_desenho)
     # código LSN
     codigo_lsn = '''
-                  pr=*;
-                  cp=35;
+                  pr=@;
+                  cp=31;
+                  s x 6;
                   '''
     #
     # RECOMENDAÇÃO: Rode o código no terminal para melhor performance , cuidado ao rodar no Pycharm dependendo da sua configuração
