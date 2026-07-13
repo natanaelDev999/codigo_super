@@ -161,6 +161,22 @@ tela = [[' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '],
          ]
 # ---------------------------------------------------------------------------------------------------------------------------------------
 # LSN-Linguagem de shader do RenderNatan
+# função para tratamento de casos
+def trata_condicionais(valor1,comparacao,valor2):
+    classificador = False
+    if comparacao == '=':
+        if valor1 == valor2:
+            classificador = True
+    if comparacao == '<':
+        if valor1 < valor2:
+            classificador = True
+    if comparacao == '>':
+        if valor1 > valor2:
+            classificador = True
+    if comparacao == '~':
+        if valor1 != valor2:
+            classificador = True
+    return classificador
 # função para procura de caractere
 def procura_caractere(string,marco,procurado):
     achou = False
@@ -181,8 +197,10 @@ def compila_codigo_lsn(codigo,pixel,x,y):
     - p:valor do pixel recebido que pode ser atribuído ao pr, para não mudar o que será retornado.
     - cp:valor para a cor do pixel, recomendado que receba um valor pelo programador.
     OPERAÇÕES MATEMÁTICAS :
-    - s: ínicio para a soma dos valores escolhidos
-    - su: ínicio para a subtração dos valores escolhidos
+    - s: ínicio para a soma dos valores positivos escolhidos
+    - v: ínicio para a soma dos valores negativos escolhidos
+    CONDICIONAIS :
+    - cs: verifica se algo é verdade , se sim faz certa coisa se não faz nada
     '''
     # variáveis internas
     pixel_retorna = ' '
@@ -227,9 +245,9 @@ def compila_codigo_lsn(codigo,pixel,x,y):
             if linha.startswith('cs'):
                 caso = linha.split(' ')
                 if caso[1] == 'y':
-                    if caso[2] == '<':
-                        if y < int(caso[3]):
-                            ativacao_if = True
+                    ativacao_if = trata_condicionais(y,caso[2],int(caso[3]))
+                elif caso[1] == 'x':
+                    ativacao_if = trata_condicionais(x,caso[2],int(caso[3]))
             if linha.startswith('$pr=') or linha.startswith('$pr ='):
                 if ativacao_if == True:
                     if procura_caractere(linha,'=','p'):
