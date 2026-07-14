@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="40f19d69-33a2-4c14-82a8-a0754e89c91b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projetosproprios/RenderNatan.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projetosproprios/RenderNatan.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,61 +45,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0000000050818467" />
-      <entry key="S2" value="1.0086227926112172" />
-      <entry key="S5" value="1.2247663035727294" />
-      <entry key="S10" value="2.1093127129847487" />
-      <entry key="S30" value="6.817954827769619" />
-      <entry key="S60" value="14.261996046372781" />
-      <entry key="M2" value="27.310297284983047" />
-      <entry key="M5" value="50.913065494447196" />
-      <entry key="M10" value="74.9021157878378" />
-      <entry key="M15" value="91.36370836571653" />
-      <entry key="M30" value="124.7790976662575" />
-      <entry key="H1" value="200.78729871954266" />
-      <entry key="H2" value="376.7275848433134" />
-      <entry key="H4" value="691.7242639889025" />
-      <entry key="D1" value="1944.181515407937" />
-      <entry key="W1" value="2558.016629826745" />
+      <entry key="MS100" value="1.3928546891402462" />
+      <entry key="MS500" value="2.3968126488416504" />
+      <entry key="S2" value="2.8254111892120553" />
+      <entry key="S5" value="3.1558058871622716" />
+      <entry key="S10" value="6.157081973153291" />
+      <entry key="S30" value="24.18761493971133" />
+      <entry key="S60" value="38.140558316531774" />
+      <entry key="M2" value="50.32971668513476" />
+      <entry key="M5" value="73.24777147252544" />
+      <entry key="M10" value="102.49721406521469" />
+      <entry key="M15" value="123.76634743018333" />
+      <entry key="M30" value="165.70531154881496" />
+      <entry key="H1" value="245.73950304578506" />
+      <entry key="H2" value="422.70701630129827" />
+      <entry key="H4" value="739.1115020609635" />
+      <entry key="D1" value="2000.3679306240026" />
+      <entry key="W1" value="2620.5466074882916" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="7.323807001321333E-103" />
-      <entry key="S2" value="2.925393033502624E-26" />
-      <entry key="S5" value="6.117224301180061E-11" />
-      <entry key="S10" value="8.003016751683912E-6" />
-      <entry key="S30" value="0.03161434584299887" />
-      <entry key="S60" value="0.32868983985857453" />
-      <entry key="M2" value="1.125889204724099" />
-      <entry key="M5" value="2.4053904354834486" />
-      <entry key="M10" value="3.174392086165488" />
-      <entry key="M15" value="3.557689289350904" />
-      <entry key="M30" value="4.360703228466022" />
-      <entry key="H1" value="7.030042650637982" />
-      <entry key="H2" value="13.040546151487497" />
-      <entry key="H4" value="20.91538167721335" />
-      <entry key="D1" value="36.406768033623536" />
-      <entry key="W1" value="41.11340126967182" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="1.4436665786987753E-101" />
+      <entry key="S5" value="4.611768270780608E-41" />
+      <entry key="S10" value="6.94880719804994E-21" />
+      <entry key="S30" value="3.0160350104661677E-7" />
+      <entry key="S60" value="0.0010152251528051024" />
+      <entry key="M2" value="0.06257252776783503" />
+      <entry key="M5" value="0.7570782988955522" />
+      <entry key="M10" value="1.780894434532418" />
+      <entry key="M15" value="2.420024460215357" />
+      <entry key="M30" value="3.596519348271068" />
+      <entry key="H1" value="6.38441184506267" />
+      <entry key="H2" value="12.42731331687504" />
+      <entry key="H4" value="20.417686347173" />
+      <entry key="D1" value="36.26092809550908" />
+      <entry key="W1" value="41.08983306415932" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="2.0247059223985387E-4" />
-      <entry key="MS500" value="0.1825040015328271" />
-      <entry key="S2" value="0.6575006732977466" />
-      <entry key="S5" value="1.0175794937772082" />
-      <entry key="S10" value="1.9089473356163629" />
-      <entry key="S30" value="6.584478482928329" />
-      <entry key="S60" value="14.3188819271834" />
-      <entry key="M2" value="28.2004675839218" />
-      <entry key="M5" value="53.16911124100143" />
-      <entry key="M10" value="77.98333357695486" />
-      <entry key="M15" value="94.85167186746239" />
-      <entry key="M30" value="129.0977785563766" />
-      <entry key="H1" value="207.79160847809635" />
-      <entry key="H2" value="389.7502203628979" />
-      <entry key="H4" value="712.6244708586056" />
-      <entry key="D1" value="1980.5806333112787" />
-      <entry key="W1" value="2599.128571089626" />
+      <entry key="MS100" value="1.2237759647181974" />
+      <entry key="MS500" value="2.017396150442248" />
+      <entry key="S2" value="2.6450141130661677" />
+      <entry key="S5" value="3.0728843962775745" />
+      <entry key="S10" value="6.109662941255614" />
+      <entry key="S30" value="24.156508735387547" />
+      <entry key="S60" value="38.11532389814462" />
+      <entry key="M2" value="50.36073888931587" />
+      <entry key="M5" value="73.94806064418671" />
+      <entry key="M10" value="104.22040312966037" />
+      <entry key="M15" value="126.13518738737525" />
+      <entry key="M30" value="169.26522457771898" />
+      <entry key="H1" value="252.09955288842224" />
+      <entry key="H2" value="435.1167603639196" />
+      <entry key="H4" value="759.514123078287" />
+      <entry key="D1" value="2036.6211971332432" />
+      <entry key="W1" value="2661.6349753640884" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -114,202 +113,202 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "JavaScript Debug.ht.html.executor": "Run",
-    "JavaScript Debug.project.html.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Python tests.Python tests in teste.py.executor": "Run",
-    "Python.Cliente_Tel-mail.executor": "Run",
-    "Python.OS.executor": "Run",
-    "Python.PRINCIPAL.executor": "Run",
-    "Python.RPG_Sword_Master.executor": "Run",
-    "Python.RenderNatan.executor": "Run",
-    "Python._strings.executor": "Run",
-    "Python.arquivosPastas.executor": "Run",
-    "Python.aula_json.executor": "Run",
-    "Python.aula_modulos.executor": "Run",
-    "Python.bancoDB.executor": "Run",
-    "Python.biblioteca.com.executor": "Run",
-    "Python.bola_quicante.executor": "Run",
-    "Python.botao.executor": "Run",
-    "Python.calculo_de_tiro.executor": "Run",
-    "Python.chat_socket_cliente.executor": "Run",
-    "Python.chat_socket_servidor (1).executor": "Run",
-    "Python.chat_socket_sevidor.executor": "Run",
-    "Python.chattel.executor": "Run",
-    "Python.cliente.executor": "Run",
-    "Python.cliente_servidor_aula.executor": "Run",
-    "Python.cliente_socket_threading.executor": "Run",
-    "Python.cosmic_game (1).executor": "Run",
-    "Python.cosmic_game.executor": "Run",
-    "Python.desing.executor": "Run",
-    "Python.ex001 (1).executor": "Run",
-    "Python.ex001.executor": "Run",
-    "Python.ex002.executor": "Run",
-    "Python.g.executor": "Run",
-    "Python.game.executor": "Run",
-    "Python.gamepygame.executor": "Run",
-    "Python.joguinho (1).executor": "Run",
-    "Python.joguinho.executor": "Run",
-    "Python.joguinho_3D.executor": "Run",
-    "Python.joguinho_3d (1).executor": "Run",
-    "Python.joguinho_3d.executor": "Run",
-    "Python.joguinho_multiplayer.executor": "Run",
-    "Python.joguinho_socket_cliente.executor": "Run",
-    "Python.joguinho_socket_servidor.executor": "Run",
-    "Python.linguagem_tetel1.0.executor": "Run",
-    "Python.main.executor": "Run",
-    "Python.moeda.executor": "Run",
-    "Python.mouse_pynput.executor": "Run",
-    "Python.new_word.executor": "Run",
-    "Python.opengl01.executor": "Run",
-    "Python.opengl02.executor": "Run",
-    "Python.opengl03.executor": "Run",
-    "Python.opengl04.executor": "Run",
-    "Python.opengl05.executor": "Run",
-    "Python.opengl06.executor": "Run",
-    "Python.opengl07.executor": "Run",
-    "Python.opengl08.executor": "Run",
-    "Python.opengl09.executor": "Run",
-    "Python.opengl10.executor": "Run",
-    "Python.opengl11.executor": "Run",
-    "Python.opengl12.executor": "Run",
-    "Python.opengl13.executor": "Run",
-    "Python.opengl14.executor": "Run",
-    "Python.opengl15.executor": "Run",
-    "Python.opengl16.executor": "Run",
-    "Python.opengl17.executor": "Run",
-    "Python.pandas.executor": "Run",
-    "Python.pandass.executor": "Run",
-    "Python.pgame.executor": "Run",
-    "Python.pix.executor": "Run",
-    "Python.programa_principal (1).executor": "Run",
-    "Python.programa_principal (2).executor": "Run",
-    "Python.programa_principal.executor": "Run",
-    "Python.programa_principal_2.executor": "Run",
-    "Python.project006.executor": "Run",
-    "Python.project007.executor": "Run",
-    "Python.project008.executor": "Run",
-    "Python.project009.executor": "Run",
-    "Python.project010.executor": "Run",
-    "Python.project011.executor": "Run",
-    "Python.project012.executor": "Run",
-    "Python.project013.executor": "Run",
-    "Python.project014.executor": "Run",
-    "Python.project015.executor": "Run",
-    "Python.project016.executor": "Run",
-    "Python.project017.executor": "Run",
-    "Python.project018.executor": "Run",
-    "Python.project020.executor": "Run",
-    "Python.project022.executor": "Run",
-    "Python.project023.executor": "Run",
-    "Python.project024.executor": "Run",
-    "Python.project025.executor": "Run",
-    "Python.project026.executor": "Run",
-    "Python.project027.executor": "Run",
-    "Python.project028.executor": "Run",
-    "Python.project029.executor": "Run",
-    "Python.project030.executor": "Run",
-    "Python.project031.executor": "Run",
-    "Python.project032.executor": "Run",
-    "Python.project034.executor": "Run",
-    "Python.project035.executor": "Run",
-    "Python.project036.executor": "Run",
-    "Python.project037.executor": "Run",
-    "Python.project038.executor": "Run",
-    "Python.project041.executor": "Run",
-    "Python.project042.executor": "Run",
-    "Python.project043.executor": "Run",
-    "Python.project044.executor": "Run",
-    "Python.project045.executor": "Run",
-    "Python.project046.executor": "Run",
-    "Python.project047.executor": "Run",
-    "Python.project048.executor": "Run",
-    "Python.project049.executor": "Run",
-    "Python.project050.executor": "Run",
-    "Python.project051.executor": "Run",
-    "Python.project052.executor": "Run",
-    "Python.project053.executor": "Run",
-    "Python.project054.executor": "Run",
-    "Python.project055.executor": "Run",
-    "Python.project056.executor": "Run",
-    "Python.project057.executor": "Run",
-    "Python.project058.executor": "Run",
-    "Python.project059.executor": "Run",
-    "Python.project060.executor": "Run",
-    "Python.project061.executor": "Run",
-    "Python.project062.executor": "Run",
-    "Python.project072.executor": "Run",
-    "Python.project073.executor": "Run",
-    "Python.project074.executor": "Run",
-    "Python.project076.executor": "Run",
-    "Python.project077.executor": "Run",
-    "Python.project078.executor": "Run",
-    "Python.project39.executor": "Run",
-    "Python.project40.executor": "Run",
-    "Python.project56.executor": "Run",
-    "Python.project63.executor": "Run",
-    "Python.project64.executor": "Run",
-    "Python.project65.executor": "Run",
-    "Python.project66.executor": "Run",
-    "Python.project67.executor": "Run",
-    "Python.project68.executor": "Run",
-    "Python.project69.executor": "Run",
-    "Python.project70.executor": "Run",
-    "Python.project71.executor": "Run",
-    "Python.project75.executor": "Run",
-    "Python.projecto019.executor": "Run",
-    "Python.projecto21.executor": "Run",
-    "Python.projeto python0002.executor": "Run",
-    "Python.projeto python003.executor": "Run",
-    "Python.projeto004.executor": "Run",
-    "Python.projeto005.executor": "Run",
-    "Python.pygame.executor": "Run",
-    "Python.rich01.executor": "Run",
-    "Python.rich02.executor": "Run",
-    "Python.rich03.executor": "Run",
-    "Python.rich04.executor": "Run",
-    "Python.rich05.executor": "Run",
-    "Python.rpoject033.executor": "Run",
-    "Python.servidor.executor": "Run",
-    "Python.servidor_aula.executor": "Run",
-    "Python.servidor_socket_threading.executor": "Run",
-    "Python.sistema_de_arquivos.executor": "Run",
-    "Python.sistema_de_request.executor": "Run",
-    "Python.sobrevivenciacalculo.executor": "Run",
-    "Python.teltel.1.1 (1).executor": "Run",
-    "Python.teltel.1.1.executor": "Run",
-    "Python.teste_arquivos.executor": "Run",
-    "Python.teste_barra_de_progresso.executor": "Run",
-    "Python.teste_haker.executor": "Run",
-    "Python.teste_validador.executor": "Run",
-    "Python.testeclass.executor": "Run",
-    "Python.testejson.executor": "Run",
-    "Python.tetel.1.1.executor": "Run",
-    "RunOnceActivity.MCP Project settings loaded": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/Natan/PycharmProjects/PythonProject1/Projetosproprios",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "terminal",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;JavaScript Debug.ht.html.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.project.html.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Python tests.Python tests in teste.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Cliente_Tel-mail.executor&quot;: &quot;Run&quot;,
+    &quot;Python.OS.executor&quot;: &quot;Run&quot;,
+    &quot;Python.PRINCIPAL.executor&quot;: &quot;Run&quot;,
+    &quot;Python.RPG_Sword_Master.executor&quot;: &quot;Run&quot;,
+    &quot;Python.RenderNatan.executor&quot;: &quot;Run&quot;,
+    &quot;Python._strings.executor&quot;: &quot;Run&quot;,
+    &quot;Python.arquivosPastas.executor&quot;: &quot;Run&quot;,
+    &quot;Python.aula_json.executor&quot;: &quot;Run&quot;,
+    &quot;Python.aula_modulos.executor&quot;: &quot;Run&quot;,
+    &quot;Python.bancoDB.executor&quot;: &quot;Run&quot;,
+    &quot;Python.biblioteca.com.executor&quot;: &quot;Run&quot;,
+    &quot;Python.bola_quicante.executor&quot;: &quot;Run&quot;,
+    &quot;Python.botao.executor&quot;: &quot;Run&quot;,
+    &quot;Python.calculo_de_tiro.executor&quot;: &quot;Run&quot;,
+    &quot;Python.chat_socket_cliente.executor&quot;: &quot;Run&quot;,
+    &quot;Python.chat_socket_servidor (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.chat_socket_sevidor.executor&quot;: &quot;Run&quot;,
+    &quot;Python.chattel.executor&quot;: &quot;Run&quot;,
+    &quot;Python.cliente.executor&quot;: &quot;Run&quot;,
+    &quot;Python.cliente_servidor_aula.executor&quot;: &quot;Run&quot;,
+    &quot;Python.cliente_socket_threading.executor&quot;: &quot;Run&quot;,
+    &quot;Python.cosmic_game (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.cosmic_game.executor&quot;: &quot;Run&quot;,
+    &quot;Python.desing.executor&quot;: &quot;Run&quot;,
+    &quot;Python.ex001 (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.ex001.executor&quot;: &quot;Run&quot;,
+    &quot;Python.ex002.executor&quot;: &quot;Run&quot;,
+    &quot;Python.g.executor&quot;: &quot;Run&quot;,
+    &quot;Python.game.executor&quot;: &quot;Run&quot;,
+    &quot;Python.gamepygame.executor&quot;: &quot;Run&quot;,
+    &quot;Python.joguinho (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.joguinho.executor&quot;: &quot;Run&quot;,
+    &quot;Python.joguinho_3D.executor&quot;: &quot;Run&quot;,
+    &quot;Python.joguinho_3d (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.joguinho_3d.executor&quot;: &quot;Run&quot;,
+    &quot;Python.joguinho_multiplayer.executor&quot;: &quot;Run&quot;,
+    &quot;Python.joguinho_socket_cliente.executor&quot;: &quot;Run&quot;,
+    &quot;Python.joguinho_socket_servidor.executor&quot;: &quot;Run&quot;,
+    &quot;Python.linguagem_tetel1.0.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.moeda.executor&quot;: &quot;Run&quot;,
+    &quot;Python.mouse_pynput.executor&quot;: &quot;Run&quot;,
+    &quot;Python.new_word.executor&quot;: &quot;Run&quot;,
+    &quot;Python.opengl01.executor&quot;: &quot;Run&quot;,
+    &quot;Python.opengl02.executor&quot;: &quot;Run&quot;,
+    &quot;Python.opengl03.executor&quot;: &quot;Run&quot;,
+    &quot;Python.opengl04.executor&quot;: &quot;Run&quot;,
+    &quot;Python.opengl05.executor&quot;: &quot;Run&quot;,
+    &quot;Python.opengl06.executor&quot;: &quot;Run&quot;,
+    &quot;Python.opengl07.executor&quot;: &quot;Run&quot;,
+    &quot;Python.opengl08.executor&quot;: &quot;Run&quot;,
+    &quot;Python.opengl09.executor&quot;: &quot;Run&quot;,
+    &quot;Python.opengl10.executor&quot;: &quot;Run&quot;,
+    &quot;Python.opengl11.executor&quot;: &quot;Run&quot;,
+    &quot;Python.opengl12.executor&quot;: &quot;Run&quot;,
+    &quot;Python.opengl13.executor&quot;: &quot;Run&quot;,
+    &quot;Python.opengl14.executor&quot;: &quot;Run&quot;,
+    &quot;Python.opengl15.executor&quot;: &quot;Run&quot;,
+    &quot;Python.opengl16.executor&quot;: &quot;Run&quot;,
+    &quot;Python.opengl17.executor&quot;: &quot;Run&quot;,
+    &quot;Python.pandas.executor&quot;: &quot;Run&quot;,
+    &quot;Python.pandass.executor&quot;: &quot;Run&quot;,
+    &quot;Python.pgame.executor&quot;: &quot;Run&quot;,
+    &quot;Python.pix.executor&quot;: &quot;Run&quot;,
+    &quot;Python.programa_principal (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.programa_principal (2).executor&quot;: &quot;Run&quot;,
+    &quot;Python.programa_principal.executor&quot;: &quot;Run&quot;,
+    &quot;Python.programa_principal_2.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project006.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project007.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project008.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project009.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project010.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project011.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project012.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project013.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project014.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project015.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project016.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project017.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project018.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project020.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project022.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project023.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project024.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project025.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project026.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project027.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project028.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project029.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project030.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project031.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project032.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project034.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project035.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project036.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project037.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project038.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project041.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project042.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project043.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project044.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project045.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project046.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project047.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project048.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project049.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project050.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project051.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project052.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project053.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project054.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project055.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project056.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project057.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project058.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project059.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project060.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project061.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project062.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project072.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project073.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project074.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project076.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project077.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project078.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project39.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project40.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project56.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project63.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project64.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project65.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project66.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project67.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project68.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project69.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project70.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project71.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project75.executor&quot;: &quot;Run&quot;,
+    &quot;Python.projecto019.executor&quot;: &quot;Run&quot;,
+    &quot;Python.projecto21.executor&quot;: &quot;Run&quot;,
+    &quot;Python.projeto python0002.executor&quot;: &quot;Run&quot;,
+    &quot;Python.projeto python003.executor&quot;: &quot;Run&quot;,
+    &quot;Python.projeto004.executor&quot;: &quot;Run&quot;,
+    &quot;Python.projeto005.executor&quot;: &quot;Run&quot;,
+    &quot;Python.pygame.executor&quot;: &quot;Run&quot;,
+    &quot;Python.rich01.executor&quot;: &quot;Run&quot;,
+    &quot;Python.rich02.executor&quot;: &quot;Run&quot;,
+    &quot;Python.rich03.executor&quot;: &quot;Run&quot;,
+    &quot;Python.rich04.executor&quot;: &quot;Run&quot;,
+    &quot;Python.rich05.executor&quot;: &quot;Run&quot;,
+    &quot;Python.rpoject033.executor&quot;: &quot;Run&quot;,
+    &quot;Python.servidor.executor&quot;: &quot;Run&quot;,
+    &quot;Python.servidor_aula.executor&quot;: &quot;Run&quot;,
+    &quot;Python.servidor_socket_threading.executor&quot;: &quot;Run&quot;,
+    &quot;Python.sistema_de_arquivos.executor&quot;: &quot;Run&quot;,
+    &quot;Python.sistema_de_request.executor&quot;: &quot;Run&quot;,
+    &quot;Python.sobrevivenciacalculo.executor&quot;: &quot;Run&quot;,
+    &quot;Python.teltel.1.1 (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.teltel.1.1.executor&quot;: &quot;Run&quot;,
+    &quot;Python.teste_arquivos.executor&quot;: &quot;Run&quot;,
+    &quot;Python.teste_barra_de_progresso.executor&quot;: &quot;Run&quot;,
+    &quot;Python.teste_haker.executor&quot;: &quot;Run&quot;,
+    &quot;Python.teste_validador.executor&quot;: &quot;Run&quot;,
+    &quot;Python.testeclass.executor&quot;: &quot;Run&quot;,
+    &quot;Python.testejson.executor&quot;: &quot;Run&quot;,
+    &quot;Python.tetel.1.1.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Natan/PycharmProjects/PythonProject1/Projetosproprios&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;terminal&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "sqlite"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;sqlite&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Natan\PycharmProjects\PythonProject1\Projetosproprios" />
@@ -647,7 +646,8 @@
       <workItem from="1783770580835" duration="3291000" />
       <workItem from="1783778736352" duration="25162000" />
       <workItem from="1783866423686" duration="31113000" />
-      <workItem from="1783948389261" duration="23353000" />
+      <workItem from="1783948389261" duration="23910000" />
+      <workItem from="1784030936050" duration="935000" />
     </task>
     <servers />
   </component>
@@ -667,12 +667,12 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/PythonProject1$project026.coverage" NAME="project026 Coverage Results" MODIFIED="1760896210477" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/opengl10_py$RenderNatan.coverage" NAME="RenderNatan Coverage Results" MODIFIED="1783979401075" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Projetosproprios" />
+    <SUITE FILE_PATH="coverage/opengl10_py$RenderNatan.coverage" NAME="RenderNatan Coverage Results" MODIFIED="1784031290201" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Projetosproprios" />
     <SUITE FILE_PATH="coverage/PythonProject1$project023.coverage" NAME="project023 Coverage Results" MODIFIED="1760820115939" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/PythonProject1$projecto21.coverage" NAME="projecto21 Coverage Results" MODIFIED="1760817193846" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/opengl10_py$opengl17.coverage" NAME="opengl17 Coverage Results" MODIFIED="1783810612610" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Projetosproprios" />
-    <SUITE FILE_PATH="coverage/opengl10_py$opengl14.coverage" NAME="opengl14 Coverage Results" MODIFIED="1783771811585" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Projetosproprios" />
+    <SUITE FILE_PATH="coverage/PythonProject1$projecto21.coverage" NAME="projecto21 Coverage Results" MODIFIED="1760817193846" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PythonProject1$project020.coverage" NAME="project020 Coverage Results" MODIFIED="1760300122782" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/opengl10_py$opengl14.coverage" NAME="opengl14 Coverage Results" MODIFIED="1783771811585" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Projetosproprios" />
     <SUITE FILE_PATH="coverage/PythonProject1$projeto004.coverage" NAME="projeto004 Coverage Results" MODIFIED="1760297479053" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PythonProject1$project029.coverage" NAME="project029 Coverage Results" MODIFIED="1760899224582" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PythonProject1$project014.coverage" NAME="project014 Coverage Results" MODIFIED="1760199314734" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -682,8 +682,8 @@
     <SUITE FILE_PATH="coverage/opengl10_py$joguinho_3d.coverage" NAME="joguinho_3d Coverage Results" MODIFIED="1782943441157" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Projetosproprios/output" />
     <SUITE FILE_PATH="coverage/PythonProject1$opengl13.coverage" NAME="opengl13 Coverage Results" MODIFIED="1779903427111" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Projetosproprios" />
     <SUITE FILE_PATH="coverage/PythonProject1$programa_principal__1_.coverage" NAME="programa_principal (1) Coverage Results" MODIFIED="1778433132784" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/modularização/mod04" />
-    <SUITE FILE_PATH="coverage/PythonProject1$opengl07.coverage" NAME="opengl07 Coverage Results" MODIFIED="1779399366871" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Projetosproprios" />
     <SUITE FILE_PATH="coverage/PythonProject1$project008.coverage" NAME="project008 Coverage Results" MODIFIED="1759663591613" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PythonProject1$opengl07.coverage" NAME="opengl07 Coverage Results" MODIFIED="1779399366871" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Projetosproprios" />
     <SUITE FILE_PATH="coverage/PythonProject1$project011.coverage" NAME="project011 Coverage Results" MODIFIED="1759690874309" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PythonProject1$pygame.coverage" NAME="pygame Coverage Results" MODIFIED="1760198359459" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PythonProject1$project016.coverage" NAME="project016 Coverage Results" MODIFIED="1760206016268" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />

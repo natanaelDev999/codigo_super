@@ -258,7 +258,11 @@ def compila_codigo_lsn(codigo,pixel,x,y):
                                 pixel_retorna = linha[linha.find('=') + 2]
                             else:
                                 pixel_retorna = linha[linha.find('=') + 1]
-                    ativacao_if = False
+            # inseri um valor para cp
+            if linha.startswith('$cp=') or linha.startswith('$cp ='):
+                if ativacao_if == True:
+                    if linha[linha.find('=')] != linha[-1]:
+                        cor_pixel = linha[linha.find('=') + 1:]
             linha = ''
     return [f'\033[{cor_pixel}m{pixel_retorna}\033[m',x,y]
 
@@ -607,8 +611,8 @@ def main():
     codigo_lsn = '''
                   pr=@;
                   cp=31;
-                  cs y < 5 ;
-                  $pr=¨;
+                  cs x ~ 8 ;
+                  $cp=36;
                   '''
     #
     # RECOMENDAÇÃO: Rode o código no terminal para melhor performance , cuidado ao rodar no Pycharm dependendo da sua configuração
