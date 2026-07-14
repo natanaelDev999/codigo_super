@@ -248,6 +248,7 @@ def compila_codigo_lsn(codigo,pixel,x,y):
                     ativacao_if = trata_condicionais(y,caso[2],int(caso[3]))
                 elif caso[1] == 'x':
                     ativacao_if = trata_condicionais(x,caso[2],int(caso[3]))
+            # inseri um valor para pr
             if linha.startswith('$pr=') or linha.startswith('$pr ='):
                 if ativacao_if == True:
                     if procura_caractere(linha,'=','p'):
@@ -263,6 +264,10 @@ def compila_codigo_lsn(codigo,pixel,x,y):
                 if ativacao_if == True:
                     if linha[linha.find('=')] != linha[-1]:
                         cor_pixel = linha[linha.find('=') + 1:]
+            # acaba com condicional
+            if linha.startswith('ec'):
+                if ativacao_if == True:
+                    ativacao_if = False
             linha = ''
     return [f'\033[{cor_pixel}m{pixel_retorna}\033[m',x,y]
 
@@ -613,6 +618,7 @@ def main():
                   cp=31;
                   cs x ~ 8 ;
                   $cp=36;
+                  ec;
                   '''
     #
     # RECOMENDAÇÃO: Rode o código no terminal para melhor performance , cuidado ao rodar no Pycharm dependendo da sua configuração
