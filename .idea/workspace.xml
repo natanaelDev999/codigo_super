@@ -1,0 +1,752 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="40f19d69-33a2-4c14-82a8-a0754e89c91b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projetosproprios/RenderNatan.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projetosproprios/RenderNatan.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="EmbeddingIndexingInfo">
+    <option name="cachedIndexableFilesCount" value="180" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="HTML File" />
+        <option value="Python Unit Test" />
+        <option value="Python Stub" />
+        <option value="HTTP Request" />
+        <option value="OpenAPI" />
+        <option value="Jupyter Notebook" />
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/project048.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/projeto004.py" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="HttpClientOnboardingState">{
+  &quot;isOnboardingCommentShown&quot;: true
+}</component>
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
+  </component>
+  <component name="NextEditCompletionFeaturesState">
+    <decayedCancelled>
+      <entry key="MS100" value="1.3928546891402462" />
+      <entry key="MS500" value="2.3968126488416504" />
+      <entry key="S2" value="2.8254111892120553" />
+      <entry key="S5" value="3.1558058871622716" />
+      <entry key="S10" value="6.157081973153291" />
+      <entry key="S30" value="24.18761493971133" />
+      <entry key="S60" value="38.140558316531774" />
+      <entry key="M2" value="50.32971668513476" />
+      <entry key="M5" value="73.24777147252544" />
+      <entry key="M10" value="102.49721406521469" />
+      <entry key="M15" value="123.76634743018333" />
+      <entry key="M30" value="165.70531154881496" />
+      <entry key="H1" value="245.73950304578506" />
+      <entry key="H2" value="422.70701630129827" />
+      <entry key="H4" value="739.1115020609635" />
+      <entry key="D1" value="2000.3679306240026" />
+      <entry key="W1" value="2620.5466074882916" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="1.4436665786987753E-101" />
+      <entry key="S5" value="4.611768270780608E-41" />
+      <entry key="S10" value="6.94880719804994E-21" />
+      <entry key="S30" value="3.0160350104661677E-7" />
+      <entry key="S60" value="0.0010152251528051024" />
+      <entry key="M2" value="0.06257252776783503" />
+      <entry key="M5" value="0.7570782988955522" />
+      <entry key="M10" value="1.780894434532418" />
+      <entry key="M15" value="2.420024460215357" />
+      <entry key="M30" value="3.596519348271068" />
+      <entry key="H1" value="6.38441184506267" />
+      <entry key="H2" value="12.42731331687504" />
+      <entry key="H4" value="20.417686347173" />
+      <entry key="D1" value="36.26092809550908" />
+      <entry key="W1" value="41.08983306415932" />
+    </decayedSelected>
+    <decayedShown>
+      <entry key="MS100" value="1.2237759647181974" />
+      <entry key="MS500" value="2.017396150442248" />
+      <entry key="S2" value="2.6450141130661677" />
+      <entry key="S5" value="3.0728843962775745" />
+      <entry key="S10" value="6.109662941255614" />
+      <entry key="S30" value="24.156508735387547" />
+      <entry key="S60" value="38.11532389814462" />
+      <entry key="M2" value="50.36073888931587" />
+      <entry key="M5" value="73.94806064418671" />
+      <entry key="M10" value="104.22040312966037" />
+      <entry key="M15" value="126.13518738737525" />
+      <entry key="M30" value="169.26522457771898" />
+      <entry key="H1" value="252.09955288842224" />
+      <entry key="H2" value="435.1167603639196" />
+      <entry key="H4" value="759.514123078287" />
+      <entry key="D1" value="2036.6211971332432" />
+      <entry key="W1" value="2661.6349753640884" />
+    </decayedShown>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
+  <component name="ProjectId" id="33K2aH4soTRGMjCeRYFVZHP15ac" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;JavaScript Debug.ht.html.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.project.html.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Python tests.Python tests in teste.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Cliente_Tel-mail.executor&quot;: &quot;Run&quot;,
+    &quot;Python.OS.executor&quot;: &quot;Run&quot;,
+    &quot;Python.PRINCIPAL.executor&quot;: &quot;Run&quot;,
+    &quot;Python.RPG_Sword_Master.executor&quot;: &quot;Run&quot;,
+    &quot;Python.RenderNatan.executor&quot;: &quot;Run&quot;,
+    &quot;Python._strings.executor&quot;: &quot;Run&quot;,
+    &quot;Python.arquivosPastas.executor&quot;: &quot;Run&quot;,
+    &quot;Python.aula_json.executor&quot;: &quot;Run&quot;,
+    &quot;Python.aula_modulos.executor&quot;: &quot;Run&quot;,
+    &quot;Python.bancoDB.executor&quot;: &quot;Run&quot;,
+    &quot;Python.biblioteca.com.executor&quot;: &quot;Run&quot;,
+    &quot;Python.bola_quicante.executor&quot;: &quot;Run&quot;,
+    &quot;Python.botao.executor&quot;: &quot;Run&quot;,
+    &quot;Python.calculo_de_tiro.executor&quot;: &quot;Run&quot;,
+    &quot;Python.chat_socket_cliente.executor&quot;: &quot;Run&quot;,
+    &quot;Python.chat_socket_servidor (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.chat_socket_sevidor.executor&quot;: &quot;Run&quot;,
+    &quot;Python.chattel.executor&quot;: &quot;Run&quot;,
+    &quot;Python.cliente.executor&quot;: &quot;Run&quot;,
+    &quot;Python.cliente_servidor_aula.executor&quot;: &quot;Run&quot;,
+    &quot;Python.cliente_socket_threading.executor&quot;: &quot;Run&quot;,
+    &quot;Python.cosmic_game (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.cosmic_game.executor&quot;: &quot;Run&quot;,
+    &quot;Python.desing.executor&quot;: &quot;Run&quot;,
+    &quot;Python.ex001 (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.ex001.executor&quot;: &quot;Run&quot;,
+    &quot;Python.ex002.executor&quot;: &quot;Run&quot;,
+    &quot;Python.g.executor&quot;: &quot;Run&quot;,
+    &quot;Python.game.executor&quot;: &quot;Run&quot;,
+    &quot;Python.gamepygame.executor&quot;: &quot;Run&quot;,
+    &quot;Python.joguinho (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.joguinho.executor&quot;: &quot;Run&quot;,
+    &quot;Python.joguinho_3D.executor&quot;: &quot;Run&quot;,
+    &quot;Python.joguinho_3d (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.joguinho_3d.executor&quot;: &quot;Run&quot;,
+    &quot;Python.joguinho_multiplayer.executor&quot;: &quot;Run&quot;,
+    &quot;Python.joguinho_socket_cliente.executor&quot;: &quot;Run&quot;,
+    &quot;Python.joguinho_socket_servidor.executor&quot;: &quot;Run&quot;,
+    &quot;Python.linguagem_tetel1.0.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.moeda.executor&quot;: &quot;Run&quot;,
+    &quot;Python.mouse_pynput.executor&quot;: &quot;Run&quot;,
+    &quot;Python.new_word.executor&quot;: &quot;Run&quot;,
+    &quot;Python.opengl01.executor&quot;: &quot;Run&quot;,
+    &quot;Python.opengl02.executor&quot;: &quot;Run&quot;,
+    &quot;Python.opengl03.executor&quot;: &quot;Run&quot;,
+    &quot;Python.opengl04.executor&quot;: &quot;Run&quot;,
+    &quot;Python.opengl05.executor&quot;: &quot;Run&quot;,
+    &quot;Python.opengl06.executor&quot;: &quot;Run&quot;,
+    &quot;Python.opengl07.executor&quot;: &quot;Run&quot;,
+    &quot;Python.opengl08.executor&quot;: &quot;Run&quot;,
+    &quot;Python.opengl09.executor&quot;: &quot;Run&quot;,
+    &quot;Python.opengl10.executor&quot;: &quot;Run&quot;,
+    &quot;Python.opengl11.executor&quot;: &quot;Run&quot;,
+    &quot;Python.opengl12.executor&quot;: &quot;Run&quot;,
+    &quot;Python.opengl13.executor&quot;: &quot;Run&quot;,
+    &quot;Python.opengl14.executor&quot;: &quot;Run&quot;,
+    &quot;Python.opengl15.executor&quot;: &quot;Run&quot;,
+    &quot;Python.opengl16.executor&quot;: &quot;Run&quot;,
+    &quot;Python.opengl17.executor&quot;: &quot;Run&quot;,
+    &quot;Python.pandas.executor&quot;: &quot;Run&quot;,
+    &quot;Python.pandass.executor&quot;: &quot;Run&quot;,
+    &quot;Python.pgame.executor&quot;: &quot;Run&quot;,
+    &quot;Python.pix.executor&quot;: &quot;Run&quot;,
+    &quot;Python.programa_principal (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.programa_principal (2).executor&quot;: &quot;Run&quot;,
+    &quot;Python.programa_principal.executor&quot;: &quot;Run&quot;,
+    &quot;Python.programa_principal_2.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project006.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project007.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project008.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project009.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project010.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project011.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project012.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project013.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project014.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project015.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project016.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project017.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project018.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project020.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project022.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project023.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project024.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project025.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project026.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project027.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project028.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project029.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project030.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project031.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project032.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project034.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project035.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project036.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project037.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project038.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project041.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project042.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project043.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project044.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project045.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project046.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project047.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project048.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project049.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project050.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project051.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project052.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project053.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project054.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project055.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project056.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project057.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project058.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project059.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project060.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project061.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project062.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project072.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project073.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project074.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project076.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project077.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project078.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project39.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project40.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project56.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project63.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project64.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project65.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project66.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project67.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project68.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project69.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project70.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project71.executor&quot;: &quot;Run&quot;,
+    &quot;Python.project75.executor&quot;: &quot;Run&quot;,
+    &quot;Python.projecto019.executor&quot;: &quot;Run&quot;,
+    &quot;Python.projecto21.executor&quot;: &quot;Run&quot;,
+    &quot;Python.projeto python0002.executor&quot;: &quot;Run&quot;,
+    &quot;Python.projeto python003.executor&quot;: &quot;Run&quot;,
+    &quot;Python.projeto004.executor&quot;: &quot;Run&quot;,
+    &quot;Python.projeto005.executor&quot;: &quot;Run&quot;,
+    &quot;Python.pygame.executor&quot;: &quot;Run&quot;,
+    &quot;Python.rich01.executor&quot;: &quot;Run&quot;,
+    &quot;Python.rich02.executor&quot;: &quot;Run&quot;,
+    &quot;Python.rich03.executor&quot;: &quot;Run&quot;,
+    &quot;Python.rich04.executor&quot;: &quot;Run&quot;,
+    &quot;Python.rich05.executor&quot;: &quot;Run&quot;,
+    &quot;Python.rpoject033.executor&quot;: &quot;Run&quot;,
+    &quot;Python.servidor.executor&quot;: &quot;Run&quot;,
+    &quot;Python.servidor_aula.executor&quot;: &quot;Run&quot;,
+    &quot;Python.servidor_socket_threading.executor&quot;: &quot;Run&quot;,
+    &quot;Python.sistema_de_arquivos.executor&quot;: &quot;Run&quot;,
+    &quot;Python.sistema_de_request.executor&quot;: &quot;Run&quot;,
+    &quot;Python.sobrevivenciacalculo.executor&quot;: &quot;Run&quot;,
+    &quot;Python.teltel.1.1 (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.teltel.1.1.executor&quot;: &quot;Run&quot;,
+    &quot;Python.teste_arquivos.executor&quot;: &quot;Run&quot;,
+    &quot;Python.teste_barra_de_progresso.executor&quot;: &quot;Run&quot;,
+    &quot;Python.teste_haker.executor&quot;: &quot;Run&quot;,
+    &quot;Python.teste_validador.executor&quot;: &quot;Run&quot;,
+    &quot;Python.testeclass.executor&quot;: &quot;Run&quot;,
+    &quot;Python.testejson.executor&quot;: &quot;Run&quot;,
+    &quot;Python.tetel.1.1.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Natan/PycharmProjects/PythonProject1/Projetosproprios&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;terminal&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;sqlite&quot;
+    ]
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Natan\PycharmProjects\PythonProject1\Projetosproprios" />
+      <recent name="C:\Users\Natan\PycharmProjects\PythonProject1" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Natan\PycharmProjects\PythonProject1\modularização\mod05" />
+      <recent name="C:\Users\Natan\PycharmProjects\PythonProject1\modularização" />
+      <recent name="C:\Users\Natan\PycharmProjects\PythonProject1\Projetosproprios\output" />
+      <recent name="C:\Users\Natan\PycharmProjects\PythonProject1\Modularização_Estudos\ex01" />
+      <recent name="C:\Users\Natan\PycharmProjects\PythonProject1\Modularização_Estudos" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="project038" />
+    </option>
+  </component>
+  <component name="RunManager" selected="Python.RenderNatan">
+    <configuration name="RenderNatan" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PythonProject1" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Projetosproprios" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="DEBUG_JUST_MY_CODE" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="RUN_TOOL" value="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Projetosproprios/RenderNatan.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="true" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <module name="PythonProject1" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="DEBUG_JUST_MY_CODE" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="RUN_TOOL" value="" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="true" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="rich01" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PythonProject1" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/rich" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="DEBUG_JUST_MY_CODE" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="RUN_TOOL" value="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/rich/rich01.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="true" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="rich03" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PythonProject1" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/rich" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="DEBUG_JUST_MY_CODE" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="RUN_TOOL" value="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/rich/rich03.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="true" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="rich04" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PythonProject1" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/rich" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="DEBUG_JUST_MY_CODE" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="RUN_TOOL" value="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/rich/rich04.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="true" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="rich05" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PythonProject1" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/rich" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="DEBUG_JUST_MY_CODE" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="RUN_TOOL" value="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/rich/rich05.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="true" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="testeclass" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="PythonProject1" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="DEBUG_JUST_MY_CODE" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="RUN_TOOL" value="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/testeclass.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.testeclass" />
+      <item itemvalue="Python.rich01" />
+      <item itemvalue="Python.rich03" />
+      <item itemvalue="Python.rich04" />
+      <item itemvalue="Python.rich05" />
+      <item itemvalue="Python.RenderNatan" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.RenderNatan" />
+        <item itemvalue="Python.rich01" />
+        <item itemvalue="Python.rich05" />
+        <item itemvalue="Python.rich04" />
+        <item itemvalue="Python.rich03" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-245168a56dbd-c2ffad84badb-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-261.25134.203" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="40f19d69-33a2-4c14-82a8-a0754e89c91b" name="Changes" comment="" />
+      <created>1759051512986</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1759051512986</updated>
+      <workItem from="1759054112079" duration="412000" />
+      <workItem from="1759054778132" duration="343000" />
+      <workItem from="1759058629654" duration="644000" />
+      <workItem from="1759059884786" duration="818000" />
+      <workItem from="1759061250766" duration="415000" />
+      <workItem from="1759062000847" duration="30000" />
+      <workItem from="1759062544314" duration="175000" />
+      <workItem from="1759063006271" duration="156000" />
+      <workItem from="1759063332474" duration="350000" />
+      <workItem from="1759068125211" duration="466000" />
+      <workItem from="1759069812339" duration="610000" />
+      <workItem from="1759070676120" duration="930000" />
+      <workItem from="1759326843876" duration="147000" />
+      <workItem from="1759328436390" duration="5278000" />
+      <workItem from="1759428173625" duration="5479000" />
+      <workItem from="1759494966576" duration="7491000" />
+      <workItem from="1759583862925" duration="5302000" />
+      <workItem from="1759597220546" duration="9637000" />
+      <workItem from="1759659096585" duration="3452000" />
+      <workItem from="1759680782857" duration="15459000" />
+      <workItem from="1759835086284" duration="3576000" />
+      <workItem from="1759922764918" duration="4398000" />
+      <workItem from="1760097635135" duration="3002000" />
+      <workItem from="1760186937364" duration="29707000" />
+      <workItem from="1760269109591" duration="3951000" />
+      <workItem from="1760281320486" duration="9106000" />
+      <workItem from="1760290902094" duration="10748000" />
+      <workItem from="1760358378256" duration="2905000" />
+      <workItem from="1760436406691" duration="202000" />
+      <workItem from="1760444655548" duration="3338000" />
+      <workItem from="1760449286174" duration="1912000" />
+      <workItem from="1760531063809" duration="21701000" />
+      <workItem from="1760617886860" duration="4616000" />
+      <workItem from="1760694573265" duration="6749000" />
+      <workItem from="1760792382168" duration="25190000" />
+      <workItem from="1760866813699" duration="16376000" />
+      <workItem from="1760891244735" duration="11945000" />
+      <workItem from="1760959633466" duration="1216000" />
+      <workItem from="1761049480932" duration="6167000" />
+      <workItem from="1761132480353" duration="1853000" />
+      <workItem from="1761218212021" duration="12739000" />
+      <workItem from="1761312729648" duration="1701000" />
+      <workItem from="1761394623999" duration="4294000" />
+      <workItem from="1761572803300" duration="2820000" />
+      <workItem from="1761583864941" duration="10074000" />
+      <workItem from="1761744443635" duration="68000" />
+      <workItem from="1761744608141" duration="334000" />
+      <workItem from="1777485471474" duration="63000" />
+      <workItem from="1777485700014" duration="3668000" />
+      <workItem from="1777577722552" duration="110000" />
+      <workItem from="1777640108023" duration="16870000" />
+      <workItem from="1777668650559" duration="1944000" />
+      <workItem from="1777718761773" duration="870000" />
+      <workItem from="1777734035450" duration="7701000" />
+      <workItem from="1777748140168" duration="6551000" />
+      <workItem from="1777814349278" duration="214000" />
+      <workItem from="1777832135346" duration="9400000" />
+      <workItem from="1777998408445" duration="4580000" />
+      <workItem from="1778010761507" duration="9394000" />
+      <workItem from="1778172981435" duration="5013000" />
+      <workItem from="1778181135237" duration="9828000" />
+      <workItem from="1778257770788" duration="10705000" />
+      <workItem from="1778325417320" duration="11943000" />
+      <workItem from="1778431616944" duration="12204000" />
+      <workItem from="1778500144602" duration="15605000" />
+      <workItem from="1778531753203" duration="800000" />
+      <workItem from="1778605570661" duration="2990000" />
+      <workItem from="1778688661623" duration="10525000" />
+      <workItem from="1778705920303" duration="1081000" />
+      <workItem from="1778779189938" duration="4673000" />
+      <workItem from="1778862574592" duration="3681000" />
+      <workItem from="1778933419153" duration="20632000" />
+      <workItem from="1779010828565" duration="9070000" />
+      <workItem from="1779047350052" duration="7820000" />
+      <workItem from="1779123228734" duration="3949000" />
+      <workItem from="1779214465721" duration="10901000" />
+      <workItem from="1779294325363" duration="8851000" />
+      <workItem from="1779381121670" duration="7143000" />
+      <workItem from="1779396843160" duration="4022000" />
+      <workItem from="1779467045536" duration="8200000" />
+      <workItem from="1779536009538" duration="11462000" />
+      <workItem from="1779564397155" duration="9748000" />
+      <workItem from="1779647637015" duration="9831000" />
+      <workItem from="1779812724760" duration="2925000" />
+      <workItem from="1779832466705" duration="3598000" />
+      <workItem from="1779899298065" duration="11901000" />
+      <workItem from="1779987202295" duration="14191000" />
+      <workItem from="1780069680825" duration="692000" />
+      <workItem from="1780072853473" duration="365000" />
+      <workItem from="1780073925303" duration="191000" />
+      <workItem from="1782851452399" duration="8348000" />
+      <workItem from="1782910964902" duration="20951000" />
+      <workItem from="1782935348862" duration="972000" />
+      <workItem from="1782937448916" duration="3724000" />
+      <workItem from="1782943664866" duration="4591000" />
+      <workItem from="1782998092335" duration="8919000" />
+      <workItem from="1783013486144" duration="15055000" />
+      <workItem from="1783087932578" duration="5924000" />
+      <workItem from="1783098435335" duration="14338000" />
+      <workItem from="1783169958624" duration="25157000" />
+      <workItem from="1783255326497" duration="579000" />
+      <workItem from="1783259664992" duration="11304000" />
+      <workItem from="1783366986900" duration="12248000" />
+      <workItem from="1783430758953" duration="15161000" />
+      <workItem from="1783456505970" duration="1605000" />
+      <workItem from="1783517530245" duration="1573000" />
+      <workItem from="1783520005672" duration="21684000" />
+      <workItem from="1783696753857" duration="11997000" />
+      <workItem from="1783770580835" duration="3291000" />
+      <workItem from="1783778736352" duration="25162000" />
+      <workItem from="1783866423686" duration="31113000" />
+      <workItem from="1783948389261" duration="23910000" />
+      <workItem from="1784030936050" duration="2037000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/PythonProject1$project026.coverage" NAME="project026 Coverage Results" MODIFIED="1760896210477" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/opengl10_py$RenderNatan.coverage" NAME="RenderNatan Coverage Results" MODIFIED="1784032408198" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Projetosproprios" />
+    <SUITE FILE_PATH="coverage/PythonProject1$project023.coverage" NAME="project023 Coverage Results" MODIFIED="1760820115939" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/opengl10_py$opengl17.coverage" NAME="opengl17 Coverage Results" MODIFIED="1783810612610" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Projetosproprios" />
+    <SUITE FILE_PATH="coverage/PythonProject1$projecto21.coverage" NAME="projecto21 Coverage Results" MODIFIED="1760817193846" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PythonProject1$project020.coverage" NAME="project020 Coverage Results" MODIFIED="1760300122782" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/opengl10_py$opengl14.coverage" NAME="opengl14 Coverage Results" MODIFIED="1783771811585" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Projetosproprios" />
+    <SUITE FILE_PATH="coverage/PythonProject1$projeto004.coverage" NAME="projeto004 Coverage Results" MODIFIED="1760297479053" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PythonProject1$project029.coverage" NAME="project029 Coverage Results" MODIFIED="1760899224582" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PythonProject1$project014.coverage" NAME="project014 Coverage Results" MODIFIED="1760199314734" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PythonProject1$project017.coverage" NAME="project017 Coverage Results" MODIFIED="1760206661482" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PythonProject1$project032.coverage" NAME="project032 Coverage Results" MODIFIED="1761574331126" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PythonProject1$project035.coverage" NAME="project035 Coverage Results" MODIFIED="1761592087458" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/opengl10_py$joguinho_3d.coverage" NAME="joguinho_3d Coverage Results" MODIFIED="1782943441157" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Projetosproprios/output" />
+    <SUITE FILE_PATH="coverage/PythonProject1$opengl13.coverage" NAME="opengl13 Coverage Results" MODIFIED="1779903427111" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Projetosproprios" />
+    <SUITE FILE_PATH="coverage/PythonProject1$programa_principal__1_.coverage" NAME="programa_principal (1) Coverage Results" MODIFIED="1778433132784" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/modularização/mod04" />
+    <SUITE FILE_PATH="coverage/PythonProject1$project008.coverage" NAME="project008 Coverage Results" MODIFIED="1759663591613" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PythonProject1$opengl07.coverage" NAME="opengl07 Coverage Results" MODIFIED="1779399366871" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Projetosproprios" />
+    <SUITE FILE_PATH="coverage/PythonProject1$project011.coverage" NAME="project011 Coverage Results" MODIFIED="1759690874309" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PythonProject1$pygame.coverage" NAME="pygame Coverage Results" MODIFIED="1760198359459" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PythonProject1$project016.coverage" NAME="project016 Coverage Results" MODIFIED="1760206016268" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/opengl10_py$rich02.coverage" NAME="rich02 Coverage Results" MODIFIED="1783896459460" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/rich" />
+    <SUITE FILE_PATH="coverage/PythonProject1$project010.coverage" NAME="project010 Coverage Results" MODIFIED="1760191239019" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PythonProject1$opengl12.coverage" NAME="opengl12 Coverage Results" MODIFIED="1779832734275" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Projetosproprios" />
+    <SUITE FILE_PATH="coverage/PythonProject1$project022.coverage" NAME="project022 Coverage Results" MODIFIED="1760818627467" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/opengl10_py$opengl16.coverage" NAME="opengl16 Coverage Results" MODIFIED="1783703065323" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Projetosproprios" />
+    <SUITE FILE_PATH="coverage/PythonProject1$projeto_python0002.coverage" NAME="projeto python0002 Coverage Results" MODIFIED="1759659217052" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PythonProject1$projeto005.coverage" NAME="projeto005 Coverage Results" MODIFIED="1759601679896" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PythonProject1$main.coverage" NAME="main Coverage Results" MODIFIED="1759070322728" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PythonProject1$rpoject033.coverage" NAME="rpoject033 Coverage Results" MODIFIED="1761585109649" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/opengl10_py$rich03.coverage" NAME="rich03 Coverage Results" MODIFIED="1783896482323" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/rich" />
+    <SUITE FILE_PATH="coverage/PythonProject1$opengl01.coverage" NAME="opengl01 Coverage Results" MODIFIED="1777748968600" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Projetosproprios" />
+    <SUITE FILE_PATH="coverage/PythonProject1$programa_principal__2_.coverage" NAME="programa_principal (2) Coverage Results" MODIFIED="1778435550704" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/modularização/mod05and06" />
+    <SUITE FILE_PATH="coverage/PythonProject1$project027.coverage" NAME="project027 Coverage Results" MODIFIED="1760892511937" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PythonProject1$project009.coverage" NAME="project009 Coverage Results" MODIFIED="1759606712961" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PythonProject1$opengl06.coverage" NAME="opengl06 Coverage Results" MODIFIED="1778349410426" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Projetosproprios" />
+    <SUITE FILE_PATH="coverage/PythonProject1$project038.coverage" NAME="project038 Coverage Results" MODIFIED="1761593130170" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PythonProject1$project015.coverage" NAME="project015 Coverage Results" MODIFIED="1760204604062" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PythonProject1$opengl02.coverage" NAME="opengl02 Coverage Results" MODIFIED="1779057406915" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Projetosproprios" />
+    <SUITE FILE_PATH="coverage/PythonProject1$opengl05.coverage" NAME="opengl05 Coverage Results" MODIFIED="1777752935535" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Projetosproprios" />
+    <SUITE FILE_PATH="coverage/PythonProject1$programa_principal.coverage" NAME="programa_principal Coverage Results" MODIFIED="1778433044188" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/modularização/mod03" />
+    <SUITE FILE_PATH="coverage/PythonProject1$opengl08.coverage" NAME="opengl08 Coverage Results" MODIFIED="1779399401222" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Projetosproprios" />
+    <SUITE FILE_PATH="coverage/PythonProject1$bancoDB.coverage" NAME="bancoDB Coverage Results" MODIFIED="1778444618379" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Projetosproprios" />
+    <SUITE FILE_PATH="coverage/opengl10_py$opengl06.coverage" NAME="opengl06 Coverage Results" MODIFIED="1783550756041" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Projetosproprios" />
+    <SUITE FILE_PATH="coverage/PythonProject1$project031.coverage" NAME="project031 Coverage Results" MODIFIED="1761234702000" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PythonProject1$project037.coverage" NAME="project037 Coverage Results" MODIFIED="1761595805506" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PythonProject1$project034.coverage" NAME="project034 Coverage Results" MODIFIED="1761586768371" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PythonProject1$project025.coverage" NAME="project025 Coverage Results" MODIFIED="1760894293715" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/opengl10_py$opengl10.coverage" NAME="opengl10 Coverage Results" MODIFIED="1783381245078" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Projetosproprios" />
+    <SUITE FILE_PATH="coverage/PythonProject1$opengl14.coverage" NAME="opengl14 Coverage Results" MODIFIED="1779908614746" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Projetosproprios" />
+    <SUITE FILE_PATH="coverage/PythonProject1$opengl11.coverage" NAME="opengl11 Coverage Results" MODIFIED="1779572558841" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Projetosproprios" />
+    <SUITE FILE_PATH="coverage/PythonProject1$new_word.coverage" NAME="new_word Coverage Results" MODIFIED="1761398706212" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/opengl10_py$opengl15.coverage" NAME="opengl15 Coverage Results" MODIFIED="1783550844748" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Projetosproprios" />
+    <SUITE FILE_PATH="coverage/opengl10_py$rich04.coverage" NAME="rich04 Coverage Results" MODIFIED="1783896496550" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/rich" />
+    <SUITE FILE_PATH="coverage/opengl10_py$opengl01.coverage" NAME="opengl01 Coverage Results" MODIFIED="1783367652853" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Projetosproprios" />
+    <SUITE FILE_PATH="coverage/PythonProject1$project67.coverage" NAME="project67 Coverage Results" MODIFIED="1778440434860" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PythonProject1$pandass.coverage" NAME="pandass Coverage Results" MODIFIED="1779576131829" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/opengl10_py$rich01.coverage" NAME="rich01 Coverage Results" MODIFIED="1783898862519" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/rich" />
+    <SUITE FILE_PATH="coverage/PythonProject1$project028.coverage" NAME="project028 Coverage Results" MODIFIED="1760898170821" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PythonProject1$arquivosPastas.coverage" NAME="arquivosPastas Coverage Results" MODIFIED="1777488799784" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Projetosproprios" />
+    <SUITE FILE_PATH="coverage/PythonProject1$gamepygame.coverage" NAME="gamepygame Coverage Results" MODIFIED="1760294254054" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PythonProject1$testeclass.coverage" NAME="testeclass Coverage Results" MODIFIED="1761396516070" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PythonProject1$game.coverage" NAME="game Coverage Results" MODIFIED="1760202594399" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PythonProject1$project007.coverage" NAME="project007 Coverage Results" MODIFIED="1759659193294" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PythonProject1$project036.coverage" NAME="project036 Coverage Results" MODIFIED="1761593869976" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PythonProject1$projecto019.coverage" NAME="projecto019 Coverage Results" MODIFIED="1760191930447" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PythonProject1$opengl03.coverage" NAME="opengl03 Coverage Results" MODIFIED="1777748941735" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Projetosproprios" />
+    <SUITE FILE_PATH="coverage/PythonProject1$opengl04.coverage" NAME="opengl04 Coverage Results" MODIFIED="1777752413118" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Projetosproprios" />
+    <SUITE FILE_PATH="coverage/PythonProject1$projeto_python003.coverage" NAME="projeto python003 Coverage Results" MODIFIED="1759328697826" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PythonProject1$programa_principal_2.coverage" NAME="programa_principal_2 Coverage Results" MODIFIED="1778439270354" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/modularização/mod05and06" />
+    <SUITE FILE_PATH="coverage/PythonProject1$pgame.coverage" NAME="pgame Coverage Results" MODIFIED="1761398584328" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PythonProject1$project013.coverage" NAME="project013 Coverage Results" MODIFIED="1760194780007" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PythonProject1$project018.coverage" NAME="project018 Coverage Results" MODIFIED="1760210473967" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PythonProject1$opengl10.coverage" NAME="opengl10 Coverage Results" MODIFIED="1780008986797" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Projetosproprios" />
+    <SUITE FILE_PATH="coverage/PythonProject1$project012.coverage" NAME="project012 Coverage Results" MODIFIED="1760193891200" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PythonProject1$opengl09.coverage" NAME="opengl09 Coverage Results" MODIFIED="1779569046231" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Projetosproprios" />
+    <SUITE FILE_PATH="coverage/opengl10_py$opengl02.coverage" NAME="opengl02 Coverage Results" MODIFIED="1783367684417" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Projetosproprios" />
+    <SUITE FILE_PATH="coverage/PythonProject1$project006.coverage" NAME="project006 Coverage Results" MODIFIED="1759587124893" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/opengl10_py$rich05.coverage" NAME="rich05 Coverage Results" MODIFIED="1783896513580" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/rich" />
+    <SUITE FILE_PATH="coverage/PythonProject1$project024.coverage" NAME="project024 Coverage Results" MODIFIED="1760821288603" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PythonProject1$project030.coverage" NAME="project030 Coverage Results" MODIFIED="1760908886186" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+</project>
