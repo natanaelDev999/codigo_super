@@ -24,7 +24,7 @@ def m2():
         print(f"A força foi {valor_descoberto}, o dano foi {valor_descoberto*x}")
 import os
 import time
-
+'''
 
 def atualiza_tela():
     global tela
@@ -81,4 +81,4 @@ while True:
     elif acao == 'w':
         z += 1
     time.sleep(2)
-    os.system('cls')
+    os.system('cls')'''
