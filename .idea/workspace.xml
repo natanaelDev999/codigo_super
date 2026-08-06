@@ -5,41 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="40f19d69-33a2-4c14-82a8-a0754e89c91b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Projetosproprios/opengl18.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Projetosproprios/opengl19.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Projetosproprios/opengl20.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Projetosproprios/opengl21.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Projetosproprios/opengl22.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Projetosproprios/opengl23.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Projetosproprios/p.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Projetosproprios/q.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Projetosproprios/testeLibraryRenderNatan.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libraryRenderNatan/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/PythonProject1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/PythonProject1.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projetosproprios/RenderNatan.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projetosproprios/RenderNatan.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projetosproprios/opengl10.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projetosproprios/opengl10.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projetosproprios/opengl17.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projetosproprios/opengl17.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/g.py" beforeDir="false" afterPath="$PROJECT_DIR$/g.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/opengl01.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/opengl02.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/opengl03.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/opengl04.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/opengl05.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/opengl06.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/opengl07.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/opengl08.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/opengl09.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/opengl10.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/opengl11.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/opengl12.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/opengl13.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/opengl14.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/opengl15.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/opengl16.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/opengl17.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projetosproprios/q.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projetosproprios/q.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projetosproprios/testeLibraryRenderNatan.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projetosproprios/testeLibraryRenderNatan.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libraryRenderNatan/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/libraryRenderNatan/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/output/joguinho_3D.exe" beforeDir="false" afterPath="$PROJECT_DIR$/output/joguinho_3D.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pandass.py" beforeDir="false" afterPath="$PROJECT_DIR$/pandass.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/opengl10.exe" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -361,7 +332,7 @@
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
     &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;D:/Nova pasta/arquivos python/Projetosproprios&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
@@ -404,7 +375,7 @@
       <command value="project038" />
     </option>
   </component>
-  <component name="RunManager" selected="Python.pandass">
+  <component name="RunManager" selected="Python.opengl23">
     <configuration name="RenderNatan" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PythonProject1" />
       <option name="ENV_FILES" value="" />
@@ -455,31 +426,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="joguinho_3d" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="PythonProject1" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Projetosproprios/output" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="DEBUG_JUST_MY_CODE" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="RUN_TOOL" value="" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Projetosproprios/output/joguinho_3d.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="true" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="opengl23" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PythonProject1" />
       <option name="ENV_FILES" value="" />
@@ -522,6 +468,31 @@
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="RUN_TOOL" value="" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pandass.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="true" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="q" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PythonProject1" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Projetosproprios" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="DEBUG_JUST_MY_CODE" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="RUN_TOOL" value="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Projetosproprios/q.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="true" />
@@ -581,20 +552,20 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.RenderNatan" />
-      <item itemvalue="Python.joguinho_3d" />
-      <item itemvalue="Python.opengl23" />
-      <item itemvalue="Python.pandass" />
-      <item itemvalue="Python.testeLibraryRenderNatan" />
       <item itemvalue="Python.testeclass" />
+      <item itemvalue="Python.q" />
+      <item itemvalue="Python.pandass" />
+      <item itemvalue="Python.opengl23" />
+      <item itemvalue="Python.RenderNatan" />
+      <item itemvalue="Python.testeLibraryRenderNatan" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.pandass" />
-        <item itemvalue="Python.testeLibraryRenderNatan" />
-        <item itemvalue="Python.joguinho_3d" />
-        <item itemvalue="Python.RenderNatan" />
         <item itemvalue="Python.opengl23" />
+        <item itemvalue="Python.testeLibraryRenderNatan" />
+        <item itemvalue="Python.RenderNatan" />
+        <item itemvalue="Python.q" />
+        <item itemvalue="Python.pandass" />
       </list>
     </recent_temporary>
   </component>
@@ -764,7 +735,10 @@
       <workItem from="1785780229289" duration="2691000" />
       <workItem from="1785787810824" duration="138000" />
       <workItem from="1785787961646" duration="8660000" />
-      <workItem from="1785863082484" duration="1527000" />
+      <workItem from="1785863082484" duration="3036000" />
+      <workItem from="1785950061977" duration="1097000" />
+      <workItem from="1785952694696" duration="8028000" />
+      <workItem from="1786032683277" duration="3991000" />
     </task>
     <servers />
   </component>
@@ -783,8 +757,8 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/opengl10_py$RenderNatan.coverage" NAME="RenderNatan Coverage Results" MODIFIED="1785787775147" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Projetosproprios" />
-    <SUITE FILE_PATH="coverage/opengl10_py$testeLibraryRenderNatan.coverage" NAME="testeLibraryRenderNatan Coverage Results" MODIFIED="1785798169098" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Projetosproprios" />
+    <SUITE FILE_PATH="coverage/opengl10_py$RenderNatan.coverage" NAME="RenderNatan Coverage Results" MODIFIED="1786038060525" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Projetosproprios" />
+    <SUITE FILE_PATH="coverage/opengl10_py$testeLibraryRenderNatan.coverage" NAME="testeLibraryRenderNatan Coverage Results" MODIFIED="1786038797553" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Projetosproprios" />
     <SUITE FILE_PATH="coverage/PythonProject1$project023.coverage" NAME="project023 Coverage Results" MODIFIED="1760820115939" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PythonProject1$projecto21.coverage" NAME="projecto21 Coverage Results" MODIFIED="1760817193846" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/opengl10_py$opengl17.coverage" NAME="opengl17 Coverage Results" MODIFIED="1784981213743" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Projetosproprios" />
@@ -796,8 +770,8 @@
     <SUITE FILE_PATH="coverage/opengl10_py$main.coverage" NAME="main Coverage Results" MODIFIED="1784990114845" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PythonProject1$opengl13.coverage" NAME="opengl13 Coverage Results" MODIFIED="1779903427111" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Projetosproprios" />
     <SUITE FILE_PATH="coverage/opengl10_py$project68.coverage" NAME="project68 Coverage Results" MODIFIED="1784990217300" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/opengl10_py$pandass.coverage" NAME="pandass Coverage Results" MODIFIED="1785866729941" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/opengl10_py$rich02.coverage" NAME="rich02 Coverage Results" MODIFIED="1783896459460" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/rich" />
-    <SUITE FILE_PATH="coverage/opengl10_py$pandass.coverage" NAME="pandass Coverage Results" MODIFIED="1785798635169" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PythonProject1$opengl12.coverage" NAME="opengl12 Coverage Results" MODIFIED="1779832734275" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Projetosproprios" />
     <SUITE FILE_PATH="coverage/opengl10_py$testeclass.coverage" NAME="testeclass Coverage Results" MODIFIED="1784990144575" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PythonProject1$project022.coverage" NAME="project022 Coverage Results" MODIFIED="1760818627467" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -840,7 +814,7 @@
     <SUITE FILE_PATH="coverage/opengl10_py$project077.coverage" NAME="project077 Coverage Results" MODIFIED="1784989978454" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/opengl10_py$opengl02.coverage" NAME="opengl02 Coverage Results" MODIFIED="1785184085523" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Projetosproprios" />
     <SUITE FILE_PATH="coverage/PythonProject1$project006.coverage" NAME="project006 Coverage Results" MODIFIED="1759587124893" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/opengl10_py$q.coverage" NAME="q Coverage Results" MODIFIED="1785166534371" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Projetosproprios" />
+    <SUITE FILE_PATH="coverage/opengl10_py$q.coverage" NAME="q Coverage Results" MODIFIED="1785952908308" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Projetosproprios" />
     <SUITE FILE_PATH="coverage/PythonProject1$project026.coverage" NAME="project026 Coverage Results" MODIFIED="1760896210477" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/opengl10_py$project017.coverage" NAME="project017 Coverage Results" MODIFIED="1784989818625" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PythonProject1$project020.coverage" NAME="project020 Coverage Results" MODIFIED="1760300122782" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -864,7 +838,7 @@
     <SUITE FILE_PATH="coverage/opengl10_py$project045.coverage" NAME="project045 Coverage Results" MODIFIED="1784990240005" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PythonProject1$project009.coverage" NAME="project009 Coverage Results" MODIFIED="1759606712961" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PythonProject1$opengl06.coverage" NAME="opengl06 Coverage Results" MODIFIED="1778349410426" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Projetosproprios" />
-    <SUITE FILE_PATH="coverage/opengl10_py$opengl23.coverage" NAME="opengl23 Coverage Results" MODIFIED="1785778688394" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Projetosproprios" />
+    <SUITE FILE_PATH="coverage/opengl10_py$opengl23.coverage" NAME="opengl23 Coverage Results" MODIFIED="1786038837122" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Projetosproprios" />
     <SUITE FILE_PATH="coverage/opengl10_py$opengl05.coverage" NAME="opengl05 Coverage Results" MODIFIED="1785184184028" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Projetosproprios" />
     <SUITE FILE_PATH="coverage/PythonProject1$opengl02.coverage" NAME="opengl02 Coverage Results" MODIFIED="1779057406915" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Projetosproprios" />
     <SUITE FILE_PATH="coverage/opengl10_py$p.coverage" NAME="p Coverage Results" MODIFIED="1784909787414" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Projetosproprios" />

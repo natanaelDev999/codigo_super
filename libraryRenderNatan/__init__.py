@@ -29,7 +29,6 @@ largura_tela = 0
 ###############################################################
 def multiplicacao_matricial(matriz,vetor):
     vetor_saida = []
-
     for c in matriz:
         soma = 0
         for pos, v in enumerate(c):
@@ -37,9 +36,43 @@ def multiplicacao_matricial(matriz,vetor):
         vetor_saida.append(soma)
     return vetor_saida
 ###############################################################
+#                   FUNÇÕES PARA A LTLN
+###############################################################
+# função para compilação de código LTLN(Linguagem de tela do RenderNatan)
+def compila_codigo_LTLN(codigo):
+    '''
+            SUMÁRIO DA LSN
+
+    VARIÁVEIS INTERNAS :
+    - pixel: representa o pixel a ser retornado.
+    '''
+    linha = ''
+    pixel = ' '
+    cor_pixel = 0
+    for c in codigo:
+        if c != ';':
+            linha += c
+        elif c == ';':
+            linha = linha.strip()
+            if linha.startswith('pr=') or linha.startswith('pr ='):
+                comando, caractere = linha.split('=')
+                pixel = caractere.strip()
+            elif linha.startswith('cp=') or linha.startswith('cp ='):
+                comando, cor = linha.split('=')
+                cor_pixel = cor.strip()
+            linha = ''
+    return f'\033[{cor_pixel}m{pixel}\033[m'
+# função para utilização do código LTLN(linguagem de tela da libraryRenderNatan)
+def utiliza_codigo_LTLN(codigo):
+    global tela
+    for pos0,c in enumerate(tela):
+        for pos1,v in enumerate(c):
+            if v == ' ':
+                tela[pos0][pos1] = compila_codigo_LTLN(codigo)
+###############################################################
 #                   FUNÇÕES PARA A LSLN
 ###############################################################
-# funções auxiliares para o código LSLN(linguagem de sombreamento da libraryRenderNatan)
+# funções auxiliares para o código LSLN(linguagem de Sombreamento da libraryRenderNatan)
 # procura dados
 def procura_dados(procurado,local):
     achado = None
@@ -73,7 +106,7 @@ def procura_caractere(string,marco,procurado):
         if v == procurado and achou == True:
             verificacao = True
     return verificacao
-# função para compilação de código LSLN(Linguagem de Shader do RenderNatan)
+# função para compilação de código LSLN(Linguagem de Sombreamento do RenderNatan)
 def compila_codigo_LSLN(codigo, pixel, x, y):
     '''
             SUMÁRIO DA LSN
@@ -115,7 +148,7 @@ def compila_codigo_LSLN(codigo, pixel, x, y):
         elif c == ';':
             if c != ';':
                 linha += c
-            elif c == ';':
+            elif c == ';' and not linha.startswith('//'):
                 linha = linha.strip()
                 # inseri um valor para pr
                 if linha.startswith('pr=') or linha.startswith('pr ='):
@@ -540,6 +573,29 @@ def trata_terminal(fps):
     sys.stdout.write("\033[?25l")
     sys.stdout.flush()
 ###############################################################
+#                   FUNÇÕES UTILITÁRIAS
+###############################################################
+def converte_RGB_ANSI(cores):
+    cores_ANSI = []
+    for cor in cores:
+        if cor == [1,0,0]:
+            cores_ANSI.append(31)
+        elif cor == [0,1,0]:
+            cores_ANSI.append(32)
+        elif cor == [0,0,1]:
+            cores_ANSI.append(34)
+        elif cor == [1,1,0]:
+            cores_ANSI.append(33)
+        elif cor == [0,1,1]:
+            cores_ANSI.append(36)
+        elif cor == [1,0,1]:
+            cores_ANSI.append(35)
+        elif cor == [0,0,0]:
+            cores_ANSI.append(30)
+        elif cor == [1,1,1]:
+            cores_ANSI.append(37)
+    return cores_ANSI
+###############################################################
 #                 FUNÇÕES DE RENDERIZAÇÃO
 ###############################################################
 # função para z-buffer
@@ -686,8 +742,10 @@ def desenha_pontos(buffer_projetado):
                         z_buffer.append([c[0],c[1],c[2]])
     return tela
 # função para preenchimento de forma
-def preenche_forma(buffer_pontos_linhas,cor1,cor2):
+def preenche_forma(buffer_pontos_linhas,cores):
     global tela,altura_tela,largura_tela
+    cor1 = cores[0]
+    cor2 = cores[1]
     if buffer_pontos_linhas:
         # esqueci do que faz exatamente
         lista_x = []
@@ -742,7 +800,6 @@ def preenche_forma(buffer_pontos_linhas,cor1,cor2):
                         elif testurizacao == False:
                             tela[y][x] = f'\033[{cor2}m.\033[m'
                         z_buffer.append([x, y, z_atual])
-
 # função para desenho da tela
 def desenha_tela(tela_recebida):
     for c in tela_recebida:

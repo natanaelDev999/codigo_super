@@ -1,7 +1,8 @@
 import libraryRenderNatan
 import time
-import psutil
-import os
+# Inicialização
+# Armazena, transforma e cria dados
+# Cria dados
 buffer_de_desenho = [
  [-3,3,1],
  [3,3,1],
@@ -18,22 +19,34 @@ cs x = 9 ;
 $tp xy vecto;
 ec;
 '''
+codigo_ltln = '''
+pr=*;
+cp=34;
+'''
+matriz_id_1 = [[2,0],
+               [0,2]]
+#  Transforma dados
+cores_pontos = libraryRenderNatan.converte_RGB_ANSI([[1,0,0],[1,0,0],[1,0,0],[1,0,0],[1,0,0],[1,0,0]])# 0.000013
+cor_linha = libraryRenderNatan.converte_RGB_ANSI([[1,1,0]])# 0.000008
+cores_preenche = libraryRenderNatan.converte_RGB_ANSI([[1,0,0],[1,1,0]])# 0.000008
+# Manda dados para o centro de processamento da libraryRenderNatan
 libraryRenderNatan.adiciona_dados('BDV',buffer_de_desenho)# 0.000013
-libraryRenderNatan.adiciona_dados('BDA',[31,31,31,31,31,31])# 0.000008
-libraryRenderNatan.adiciona_dados('BDM',[[2,0],[0,2]],1)# 0.000009
+libraryRenderNatan.adiciona_dados('BDA',cores_pontos)# 0.000008
+libraryRenderNatan.adiciona_dados('BDM',matriz_id_1,1)# 0.000009
 libraryRenderNatan.cria_tela(16, 18)# 0.000063
+# Loop principal
+# Utiliza os dados da inicialização para renderização
 while True:
+    comeco = time.perf_counter()
     buffer = libraryRenderNatan.projeta_vertices()# 0.000089
-    buffer_pixels_linha = libraryRenderNatan.desenha_linhas(buffer, 0, 6, 33)# 0.000046
-    libraryRenderNatan.preenche_forma(buffer_pixels_linha, 31, 33)# 0.000516
+    buffer_pixels_linha = libraryRenderNatan.desenha_linhas(buffer, 0, 6, cor_linha)# 0.000046
+    libraryRenderNatan.preenche_forma(buffer_pixels_linha, cores_preenche)# 0.000516
     tela = libraryRenderNatan.desenha_pontos(buffer)# 0.000062
     libraryRenderNatan.utiliza_codigo_LSLN(codigo_lsln)# 0.000384
+    libraryRenderNatan.utiliza_codigo_LTLN(codigo_ltln)# 0.000723
     print(36*'-')
-    comeco = time.perf_counter()
     libraryRenderNatan.desenha_tela(tela)# print() -> 0.029529; sys.stdout.write() -> 0.016820 ; Δ = 0.012709
-    fim = time.perf_counter()
     print(36 * '-')
-    libraryRenderNatan.trata_terminal(2)# 0.016236
+    libraryRenderNatan.trata_terminal(3)# 0.016236
+    fim = time.perf_counter()
     print(f'{fim-comeco:.6f}\n')
-    processo = psutil.Process(os.getpid())
-    print(processo.memory_info().rss / 1024 / 1024, "MB")

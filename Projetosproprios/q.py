@@ -141,12 +141,16 @@ def main():
             for fi in faces_ord:
                 desenhar_face(tela, zbuf, proj, faces[fi], cores_faces[fi])
 
-            # 6) Envia para terminal (sem flicker)
-            os.system("cls" if os.name == "nt" else "clear")
-            sys.stdout.write("\033[H")  # cursor para topo
-            for linha in tela:
-                sys.stdout.write("".join(linha) + "\n")
+            # limpa terminal
+            sys.stdout.write("\033[H")
             sys.stdout.flush()
+            # some o cursor de digitação
+            sys.stdout.write("\033[?25l")
+            sys.stdout.flush()
+            for linha in tela:
+                for coluna in linha:
+                    print(coluna,end=' ')
+                print()
 
             # 7) Atualiza ângulos
             ang_x += VELOCIDADE
