@@ -39,9 +39,9 @@ def multiplicacao_matricial(matriz,vetor):
 #                   FUNÇÕES PARA A LTLN
 ###############################################################
 # função para compilação de código LTLN(Linguagem de tela do RenderNatan)
-def compila_codigo_LTLN(codigo):
+def compila_codigo_LTLN(codigo,x,y):
     '''
-            SUMÁRIO DA LSN
+            SUMÁRIO DA LTLN
 
     VARIÁVEIS INTERNAS :
     - pixel: representa o pixel a ser retornado.
@@ -49,6 +49,7 @@ def compila_codigo_LTLN(codigo):
     linha = ''
     pixel = ' '
     cor_pixel = 0
+    ativacao_if = False
     for c in codigo:
         if c != ';':
             linha += c
@@ -60,6 +61,22 @@ def compila_codigo_LTLN(codigo):
             elif linha.startswith('cp=') or linha.startswith('cp ='):
                 comando, cor = linha.split('=')
                 cor_pixel = cor.strip()
+            elif linha.startswith('cs'):
+                caso = linha.split(' ')
+                if caso[1] == 'y':
+                    ativacao_if = trata_condicionais(y, caso[2], int(caso[3]))
+                elif caso[1] == 'x':
+                    ativacao_if = trata_condicionais(x, caso[2], int(caso[3]))
+            elif linha.startswith('ec'):
+                ativacao_if = False
+            elif linha.startswith('$pr=') or linha.startswith('$pr ='):
+                if ativacao_if == True:
+                    comando, caractere = linha.split('=')
+                    pixel = caractere.strip()
+            elif linha.startswith('$cp=') or linha.startswith('$cp ='):
+                if ativacao_if == True:
+                    comando, cor = linha.split('=')
+                    cor_pixel = cor.strip()
             linha = ''
     return f'\033[{cor_pixel}m{pixel}\033[m'
 # função para utilização do código LTLN(linguagem de tela da libraryRenderNatan)
@@ -68,7 +85,90 @@ def utiliza_codigo_LTLN(codigo):
     for pos0,c in enumerate(tela):
         for pos1,v in enumerate(c):
             if v == ' ':
-                tela[pos0][pos1] = compila_codigo_LTLN(codigo)
+                tela[pos0][pos1] = compila_codigo_LTLN(codigo,pos1,pos0)
+###############################################################
+#                   FUNÇÕES PARA A LMLN
+###############################################################
+# função para compilação de código LMLN(Linguagem de Matricial do RenderNatan)
+def compila_codigo_LMLN(codigo,vetor):
+    '''
+            SUMÁRIO DA LMLN
+
+    VARIÁVEIS INTERNAS :
+    - v3: o vetor a ser retornado, tem comprimento de 3 inteiros x,y,z.
+    FUNÇÕES MATRICIAIS :
+    - MMV: multiplica um vetor por uma matriz do BDM.
+    '''
+    # variáveis auxiliares
+    linha = ''
+    estruturas_dados = {'vetores':[]}
+    for c in codigo:
+        if c != ';':
+            linha += c
+        elif c == ';':
+            linha = linha.strip()
+            # cria vetor
+            if linha.startswith('t'):
+                dados = linha.split(' ')
+                if dados[1] != 'v3':
+                    # verefica se existe outro vetor com outro nome
+                    achou = False
+                    for v in estruturas_dados['vetores']:
+                        if v[0] == dados[1]:
+                            achou = True
+                    if achou == False:
+                        estruturas_dados['vetores'].append([dados[1], dados[2:]])
+            # faz uma multiplicação entre vetor e matriz
+            if linha.startswith('MMV'):
+                # sintaxe: comando índice vetor
+                comando, indice, vetor1 = linha.split(' ')
+                if len(buffer_de_matrizes) > 0:
+                    if vetor1 == 'v3':
+                        vetor_resultado = multiplicacao_matricial(buffer_de_matrizes[f'{indice}'], vetor)
+                        if len(vetor_resultado) > 0:
+                            vetor = vetor_resultado
+                    else:
+                        for pos, v in enumerate(estruturas_dados['vetores']):
+                            if v[0] == vetor1:
+                                vetor_resultado = multiplicacao_matricial(buffer_de_matrizes[f'{indice}'], v[1])
+                                estruturas_dados['vetores'][pos][1] = vetor_resultado
+            if linha.startswith('ot'):
+                dados = linha.split(' ')
+                if 'x' in dados[1] and 'y' in dados[1]:
+                    for v in estruturas_dados['vetores']:
+                        if v[0] == dados[2]:
+                            if int(v[1][0]) <= largura_tela and int(v[1][1]) <= altura_tela:
+                                vetor[0] = int(v[1][0])
+                                vetor[1] = int(v[1][1])
+                                vetor[2] = int(v[1][2])
+                                break
+            if linha.startswith('ts'):
+                dados = linha.split(' ')
+                if 'v3' in dados[1]:
+                    for v in estruturas_dados['vetores']:
+                        if v[0] == dados[2]:
+                            if int(v[1][0]) + vetor[0] <= largura_tela and int(v[1][1]) + vetor[1] <= altura_tela:
+                                vetor[0] += int(v[1][0])
+                                vetor[1] += int(v[1][1])
+                                vetor[2] += int(v[1][2])
+                                break
+            if linha.startswith('tp'):
+                dados = linha.split(' ')
+                if 'v3' in dados[1]:
+                    for v in estruturas_dados['vetores']:
+                        if v[0] == dados[2]:
+                            if int(v[1][0]) + vetor[0] <= largura_tela and int(v[1][1]) + vetor[1] <= altura_tela:
+                                vetor[0] -= int(v[1][0])
+                                vetor[1] -= int(v[1][1])
+                                vetor[2] -= int(v[1][2])
+                                break
+            linha = ''
+    return vetor
+# função para utilização do código LMLN(linguagem de matricial da libraryRenderNatan)
+def utiliza_codigo_LMLN(codigo):
+    global buffer_de_vertices
+    for pos0,c in enumerate(buffer_de_vertices):
+        buffer_de_vertices[pos0] = compila_codigo_LMLN(codigo,c)
 ###############################################################
 #                   FUNÇÕES PARA A LSLN
 ###############################################################
@@ -86,14 +186,20 @@ def trata_condicionais(valor1,comparacao,valor2):
     if comparacao == '=':
         if valor1 == valor2:
             classificador = True
-    if comparacao == '<':
+    elif comparacao == '<':
         if valor1 < valor2:
             classificador = True
-    if comparacao == '>':
+    elif comparacao == '>':
         if valor1 > valor2:
             classificador = True
-    if comparacao == '~':
+    elif comparacao == '~':
         if valor1 != valor2:
+            classificador = True
+    elif comparacao == '%2':
+        if valor1 % valor2 == 0:
+            classificador = True
+    elif comparacao == '%+':
+        if valor1 % valor2 != 0:
             classificador = True
     return classificador
 # função para procura de caractere
@@ -109,7 +215,7 @@ def procura_caractere(string,marco,procurado):
 # função para compilação de código LSLN(Linguagem de Sombreamento do RenderNatan)
 def compila_codigo_LSLN(codigo, pixel, x, y):
     '''
-            SUMÁRIO DA LSN
+            SUMÁRIO DA LSLN
 
     VARIÁVEIS INTERNAS :
     - pr:valor do pixel a ser retornado pelo shader, pode receber novos valores, o seu valor nunca pode ser ' '.
@@ -562,10 +668,16 @@ def trata_terminal(fps):
     # trata fps
     if fps == 1:
         time.sleep(0.032)
-    if fps == 2:
+    elif fps == 2:
         time.sleep(0.016)
     elif fps == 3:
         time.sleep(0.008)
+    elif fps == 4:
+        time.sleep(0.004)
+    elif fps == 5:
+        time.sleep(0.002)
+    elif fps == 6:
+        time.sleep(0.001)
     # limpa terminal
     sys.stdout.write("\033[H")
     sys.stdout.flush()

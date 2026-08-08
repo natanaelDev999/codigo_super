@@ -21,10 +21,24 @@ ec;
 '''
 codigo_ltln = '''
 pr=*;
-cp=34;
+cs x %2 2 ;
+$cp=34;
+ec;
+cs x %+ 2 ;
+$cp=32;
+ec;
+'''
+codigo_lmln = '''
+t vetor 1 0 0 ;
+MMV 2 v3;
+ts v3 vetor;
 '''
 matriz_id_1 = [[2,0],
                [0,2]]
+
+matriz_id_2 = [[1,0,0],
+               [0,1,0],
+               [0,0,1]]
 #  Transforma dados
 cores_pontos = libraryRenderNatan.converte_RGB_ANSI([[1,0,0],[1,0,0],[1,0,0],[1,0,0],[1,0,0],[1,0,0]])# 0.000013
 cor_linha = libraryRenderNatan.converte_RGB_ANSI([[1,1,0]])# 0.000008
@@ -33,7 +47,9 @@ cores_preenche = libraryRenderNatan.converte_RGB_ANSI([[1,0,0],[1,1,0]])# 0.0000
 libraryRenderNatan.adiciona_dados('BDV',buffer_de_desenho)# 0.000013
 libraryRenderNatan.adiciona_dados('BDA',cores_pontos)# 0.000008
 libraryRenderNatan.adiciona_dados('BDM',matriz_id_1,1)# 0.000009
+libraryRenderNatan.adiciona_dados('BDM',matriz_id_2,2)# 0.000012
 libraryRenderNatan.cria_tela(16, 18)# 0.000063
+libraryRenderNatan.utiliza_codigo_LMLN(codigo_lmln)# 0.000116
 # Loop principal
 # Utiliza os dados da inicialização para renderização
 while True:
