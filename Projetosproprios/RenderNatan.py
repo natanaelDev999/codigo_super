@@ -161,6 +161,13 @@ tela = [[' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '],
          ]
 # ---------------------------------------------------------------------------------------------------------------------------------------
 # LSN-Linguagem de shader do RenderNatan
+# procura dados
+def procura_dados(procurado,local):
+    achado = None
+    for v in local['variáveis']:
+        if v[0] == procurado:
+            achado = v[1]
+    return achado
 # função para tratamento de casos
 def trata_condicionais(valor1,comparacao,valor2):
     classificador = False
@@ -197,15 +204,24 @@ def compila_codigo_lsn(codigo,pixel,x,y):
     - p:valor do pixel recebido que pode ser atribuído ao pr, para não mudar o que será retornado.
     - cp:valor para a cor do pixel, recomendado que receba um valor pelo programador.
     OPERAÇÕES MATEMÁTICAS :
-    - s: ínicio para a soma dos valores positivos escolhidos
-    - v: ínicio para a soma dos valores negativos escolhidos
+    - s: ínicio para a soma dos valores positivos escolhidos.
+    - v: ínicio para a soma dos valores negativos escolhidos.
     CONDICIONAIS :
-    - cs: verifica se algo é verdade , se sim faz certa coisa se não faz nada
+    - cs: verifica se algo é verdade , se sim faz certa coisa se não faz nada.
+    VARIÁVEIS :
+    - l: cria e salva na memória do pixel , uma variável.
+    VETORES :
+    - t: cria e salva na memória do pixel , um vetor.
+    - ot: inseri um valor em x e y com base em um vetor.
+    - ts: faz uma soma negativa nos valores x e y com base em um vetor.
+    - tp: faz uma soma positiva nos valores x e y com base em um vetor.
     '''
+    global w, h
     # variáveis internas
     pixel_retorna = ' '
     cor_pixel = 0
     #
+    estruturas_dados = {'variáveis':[],'vetores':[]}
     ativacao_if = False
     linha = ''
     # loop para procura de linhas
@@ -213,62 +229,152 @@ def compila_codigo_lsn(codigo,pixel,x,y):
         if c != ';':
             linha+=c
         elif c == ';':
-            linha = linha.strip()
-            # inseri um valor para pr
-            if linha.startswith('pr=') or linha.startswith('pr ='):
-                if procura_caractere(linha,'=','p'):
-                    pixel_retorna = pixel
-                else:
-                    if linha[linha.find('=')] != linha[-1]:
-                        if linha[linha.find('=') + 1] == ' ':
-                            pixel_retorna = linha[linha.find('=') + 2]
-                        else:
-                            pixel_retorna = linha[linha.find('=') + 1]
-            # inseri um valor para cp
-            if linha.startswith('cp=') or linha.startswith('cp ='):
-                if linha[linha.find('=')] != linha[-1]:
-                    cor_pixel = linha[linha.find('=')+1:]
-            # subtrai os valores para simular uma soma de valores positivos
-            if linha.startswith('s'):
-                operacao,valor1,valor2 = linha.split(' ')
-                if valor1 == 'x':
-                    x = x-int(valor2)
-                elif valor1 == 'y':
-                    y = y-int(valor2)
-            # soma os valores para simular uma soma de valores negativos
-            if linha.startswith('v'):
-                operacao,valor1,valor2 = linha.split(' ')
-                if valor1 == 'x':
-                    x = x+int(valor2)
-                elif valor1 == 'y':
-                    y = y+int(valor2)
-            if linha.startswith('cs'):
-                caso = linha.split(' ')
-                if caso[1] == 'y':
-                    ativacao_if = trata_condicionais(y,caso[2],int(caso[3]))
-                elif caso[1] == 'x':
-                    ativacao_if = trata_condicionais(x,caso[2],int(caso[3]))
-            # inseri um valor para pr
-            if linha.startswith('$pr=') or linha.startswith('$pr ='):
-                if ativacao_if == True:
-                    if procura_caractere(linha,'=','p'):
+            if c != ';':
+                linha += c
+            elif c == ';':
+                linha = linha.strip()
+                # inseri um valor para pr
+                if linha.startswith('pr=') or linha.startswith('pr ='):
+                    if procura_caractere(linha, '=', 'p'):
                         pixel_retorna = pixel
                     else:
                         if linha[linha.find('=')] != linha[-1]:
-                            if linha[linha.find('=') + 1] == ' ':
-                                pixel_retorna = linha[linha.find('=') + 2]
-                            else:
-                                pixel_retorna = linha[linha.find('=') + 1]
-            # inseri um valor para cp
-            if linha.startswith('$cp=') or linha.startswith('$cp ='):
-                if ativacao_if == True:
-                    if linha[linha.find('=')] != linha[-1]:
+                            vereficacao = procura_dados(linha[linha.find('=') + 1:], estruturas_dados)
+                            if vereficacao == None:
+                                if linha[linha.find('=') + 1] == ' ':
+                                    pixel_retorna = linha[linha.find('=') + 2]
+                                else:
+                                    pixel_retorna = linha[linha.find('=') + 1]
+                            elif vereficacao != None:
+                                pixel_retorna = vereficacao
+                # inseri um valor para cp
+                if linha.startswith('cp=') or linha.startswith('cp ='):
+                    vereficacao = procura_dados(linha[linha.find('=') + 1:], estruturas_dados)
+                    if linha[linha.find('=')] != linha[-1] and vereficacao == None:
                         cor_pixel = linha[linha.find('=') + 1:]
-            # acaba com condicional
-            if linha.startswith('ec'):
-                if ativacao_if == True:
-                    ativacao_if = False
-            linha = ''
+                    elif vereficacao != None:
+                        cor_pixel = vereficacao
+                # subtrai os valores para simular uma soma de valores positivos
+                if linha.startswith('s'):
+                    operacao, valor1, valor2 = linha.split(' ')
+                    if valor1 == 'x':
+                        x = x - int(valor2)
+                    elif valor1 == 'y':
+                        y = y - int(valor2)
+                # subtrai os valores para simular uma soma de valores positivos
+                if linha.startswith('$s'):
+                    if ativacao_if == True:
+                        operacao, valor1, valor2 = linha.split(' ')
+                        if valor1 == 'x':
+                            x = x - int(valor2)
+                        elif valor1 == 'y':
+                            y = y - int(valor2)
+                # soma os valores para simular uma soma de valores negativos
+                if linha.startswith('v'):
+                    operacao, valor1, valor2 = linha.split(' ')
+                    if valor1 == 'x':
+                        x = x + int(valor2)
+                    elif valor1 == 'y':
+                        y = y + int(valor2)
+                # soma os valores para simular uma soma de valores negativos
+                if linha.startswith('$v'):
+                    if ativacao_if == True:
+                        operacao, valor1, valor2 = linha.split(' ')
+                        if valor1 == 'x':
+                            x = x + int(valor2)
+                        elif valor1 == 'y':
+                            y = y + int(valor2)
+                if linha.startswith('cs'):
+                    caso = linha.split(' ')
+                    if caso[1] == 'y':
+                        ativacao_if = trata_condicionais(y, caso[2], int(caso[3]))
+                    elif caso[1] == 'x':
+                        ativacao_if = trata_condicionais(x, caso[2], int(caso[3]))
+                # inseri um valor para pr
+                if linha.startswith('$pr=') or linha.startswith('$pr ='):
+                    if ativacao_if == True:
+                        if procura_caractere(linha, '=', 'p'):
+                            pixel_retorna = pixel
+                        else:
+                            if linha[linha.find('=')] != linha[-1]:
+                                vereficacao = procura_dados(linha[linha.find('=') + 1:], estruturas_dados)
+                                if vereficacao == None:
+                                    if linha[linha.find('=') + 1] == ' ':
+                                        pixel_retorna = linha[linha.find('=') + 2]
+                                    else:
+                                        pixel_retorna = linha[linha.find('=') + 1]
+                                elif vereficacao != None:
+                                    pixel_retorna = vereficacao
+                # inseri um valor para cp
+                if linha.startswith('$cp=') or linha.startswith('$cp ='):
+                    if ativacao_if == True:
+                        vereficacao = procura_dados(linha[linha.find('=') + 1:], estruturas_dados)
+                        if linha[linha.find('=')] != linha[-1] and vereficacao == None:
+                            cor_pixel = linha[linha.find('=') + 1:]
+                        elif vereficacao != None:
+                            cor_pixel = vereficacao
+                # acaba com condicional
+                if linha.startswith('ec'):
+                    if ativacao_if == True:
+                        ativacao_if = False
+                # cria variável
+                if linha.startswith('l'):
+                    inicio, final = linha.split('=')
+                    inicio = inicio[1:].strip()
+                    final = final.strip()
+                    vereficacao = procura_dados(inicio, estruturas_dados)
+                    if vereficacao == None and inicio != 'p':
+                        estruturas_dados['variáveis'].append([inicio, final])
+                # cria variável
+                if linha.startswith('$l'):
+                    if ativacao_if == True:
+                        inicio, final = linha.split('=')
+                        inicio = inicio[1:].strip()
+                        final = final.strip()
+                        vereficacao = procura_dados(inicio, estruturas_dados)
+                        if vereficacao == None:
+                            estruturas_dados['variáveis'].append([inicio, final])
+                # cria vetor
+                if linha.startswith('t'):
+                    dados = linha.split(' ')
+                    if dados[1] != 'p':
+                        # verefica se existe outro vetor com outro nome
+                        achou = False
+                        for v in estruturas_dados['vetores']:
+                            if v[0] == dados[1]:
+                                achou = True
+                        if achou == False:
+                            estruturas_dados['vetores'].append([dados[1],dados[2:]])
+                # inseri valor de um vetor nas posições de saída(por isso ot de out, que é saída em inglês)
+                if linha.startswith('ot'):
+                    dados = linha.split(' ')
+                    if 'x' in dados[1] and 'y' in dados[1]:
+                        for v in estruturas_dados['vetores']:
+                            if v[0] == dados[2]:
+                                if int(v[1][0]) <= w and int(v[1][1]) <= h:
+                                    x = int(v[1][0])
+                                    y = int(v[1][1])
+                                    break
+                # soma um valor(causando soma negativa visualmente) de um vetor nas posições de saída(por isso ot de out, que é saída em inglês)
+                if linha.startswith('ts'):
+                    dados = linha.split(' ')
+                    if 'x' in dados[1] and 'y' in dados[1]:
+                        for v in estruturas_dados['vetores']:
+                            if v[0] == dados[2]:
+                                if int(v[1][0])+x <= w and int(v[1][1])+y <= h:
+                                    x += int(v[1][0])
+                                    y += int(v[1][1])
+                                    break
+                # soma um valor(causando soma positiva visualmente) de um vetor nas posições de saída(por isso ot de out, que é saída em inglês)
+                if linha.startswith('tp'):
+                    dados = linha.split(' ')
+                    if 'x' in dados[1] and 'y' in dados[1]:
+                        for v in estruturas_dados['vetores']:
+                            if v[0] == dados[2]:
+                                x -= int(v[1][0])
+                                y -= int(v[1][1])
+                                break
+                linha = ''
     return [f'\033[{cor_pixel}m{pixel_retorna}\033[m',x,y]
 
 # função para utilização de código LSN(Linguagem de Shader do RenderNatan)
@@ -614,19 +720,106 @@ def main():
     objeto_retangulo = deepcopy(buffer_de_desenho)
     # código LSN
     codigo_lsn = '''
-                  pr=@;
-                  cp=31;
-                  cs x ~ 8 ;
-                  $cp=36;
-                  ec;
-                  '''
+    l mx=8;
+    l my=5;
+    l q=0;
+    l s=0;
+    l t=0;
+    l u=0;
+    t v1 2 1;
+    t v2 -2 1;
+    t v3 2 -1;
+    t v4 -2 -1;
+    t v5 3 0;
+    t v6 0 3;
+    t v7 -3 0;
+    t v8 0 -3;
+    pr=p;
+    cp=34;
+    cs x > 8 ;
+    $l q=1;
+    $tp x,y v1;
+    ec;
+    cs x < 8 ;
+    $l q=2;
+    $tp x,y v2;
+    ec;
+    cs y > 5 ;
+    $l q=3;
+    $tp x,y v3;
+    ec;
+    cs y < 5 ;
+    $l q=4;
+    $tp x,y v4;
+    ec;
+    cs q = 1 ;
+    $l s=1;
+    $tp x,y v5;
+    ec;
+    cs q = 2 ;
+    $l s=2;
+    $tp x,y v6;
+    ec;
+    cs q = 3 ;
+    $l s=3;
+    $tp x,y v7;
+    ec;
+    cs q = 4 ;
+    $l s=4;
+    $tp x,y v8;
+    ec;
+    cs s = 1 ;
+    $l t=1;
+    $ts x,y v1;
+    ec;
+    cs s = 2 ;
+    $l t=2;
+    $ts x,y v2;
+    ec;
+    cs s = 3 ;
+    $l t=3;
+    $ts x,y v3;
+    ec;
+    cs s = 4 ;
+    $l t=4;
+    $ts x,y v4;
+    ec;
+    cs t = 1 ;
+    $cp=31;
+    $pr=#;
+    ec;
+    cs t = 2 ;
+    $cp=33;
+    $pr=@;
+    ec;
+    cs t = 3 ;
+    $cp=35;
+    $pr=+;
+    ec;
+    cs t = 4 ;
+    $cp=36;
+    $pr=*;
+    ec;
+    cs t = 0 ;
+    $cp=37;
+    $pr==;
+    ec;
+    cs x = 8 ;
+    $cp=31;
+    $pr=|;
+    ec;
+    cs y = 5 ;
+    $cp=33;
+    $pr=-;
+    ec;
+    '''
     #
     # RECOMENDAÇÃO: Rode o código no terminal para melhor performance , cuidado ao rodar no Pycharm dependendo da sua configuração
     #
     while True:
         # pineline => transforma o buffer de desenho em relação a cãmera=> carrega o buffer de desenho => utiliza o buffer de desenho para
         # desenhar os vértices => utiliza o buffer de desenho com base para conectar linhas => utiliza as coordenadas das linhas
-        # para preencher formas => utiliza o shader de fundo para pintar o fundo => limpa os buffers de tela e das linhas => limpa a
+        # para preencher formas => utiliza código LSN para inserir shaders=> utiliza o shader de fundo para pintar o fundo => limpa os buffers de tela e das linhas => limpa a
         # tela e controla o fps
         # CUIDADO: não utilize rotações antes de transformar as coordenadas tridimensionais em bidimensionais,
         # processos especiais => iluminação => testurização simples

@@ -1,4 +1,3 @@
-
 import tkinter as tk
 logins = [['jujubinha','111'],
           ['pingu','222'],

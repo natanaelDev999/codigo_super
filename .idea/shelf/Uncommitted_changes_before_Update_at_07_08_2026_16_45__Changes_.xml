@@ -1,0 +1,19 @@
+<changelist name="Uncommitted_changes_before_Update_at_07_08_2026_16_45_[Changes]" date="1786131904909" recycled="false" toDelete="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_07_08_2026_16_45_[Changes]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Update at 07/08/2026 16:45 [Changes]" />
+  <binary>
+    <option name="BEFORE_PATH" value="Projetosproprios/usuarios.db" />
+    <option name="AFTER_PATH" value="ProjetosProprios/usuarios.db" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_07_08_2026_16_45_[Changes]/usuarios.db" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="Projetosproprios/output/musicaventura.wav" />
+    <option name="AFTER_PATH" value="ProjetosProprios/output/musicaventura.wav" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_07_08_2026_16_45_[Changes]/musicaventura.wav" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="Projetosproprios/telos.db" />
+    <option name="AFTER_PATH" value="ProjetosProprios/telos.db" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_07_08_2026_16_45_[Changes]/telos.db" />
+  </binary>
+</changelist>
