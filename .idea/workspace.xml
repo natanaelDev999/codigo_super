@@ -6,9 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="40f19d69-33a2-4c14-82a8-a0754e89c91b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projetosproprios/testeLibraryRenderNatan.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projetosproprios/testeLibraryRenderNatan.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libraryRenderNatan/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/libraryRenderNatan/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/joguinho_3d.exe" beforeDir="false" afterPath="$PROJECT_DIR$/output/joguinho_3d.exe" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -747,7 +744,7 @@
       <workItem from="1786216568358" duration="229000" />
       <workItem from="1786216894872" duration="1000" />
       <workItem from="1786216914473" duration="68000" />
-      <workItem from="1786219545563" duration="431000" />
+      <workItem from="1786219545563" duration="2615000" />
     </task>
     <servers />
   </component>
