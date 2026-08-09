@@ -2,6 +2,8 @@
 #                   LibraryRenderNatan
 ###############################################################
 # criação do projeto: 27/07/2026
+# termino do projeto: 09/08/2026
+# intervalo de tempo: 14 dias
 ###############################################################
 #                 bibliotecas utilizadas
 # biblioteca para manipulação do terminal
