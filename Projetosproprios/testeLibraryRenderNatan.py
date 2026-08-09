@@ -29,7 +29,7 @@ $cp=32;
 ec;
 '''
 codigo_lmln = '''
-t vetor 1 0 0 ;
+t vetor 0 1 0 ;
 MMV 2 v3;
 ts v3 vetor;
 '''
