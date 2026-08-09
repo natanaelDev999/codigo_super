@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="40f19d69-33a2-4c14-82a8-a0754e89c91b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libraryRenderNatan/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/libraryRenderNatan/__init__.py" afterDir="false" />
-    </list>
+    <list default="true" id="40f19d69-33a2-4c14-82a8-a0754e89c91b" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -748,7 +745,7 @@
       <workItem from="1786219545563" duration="4522000" />
       <workItem from="1786226594852" duration="74000" />
       <workItem from="1786287176303" duration="750000" />
-      <workItem from="1786301457328" duration="635000" />
+      <workItem from="1786301457328" duration="935000" />
     </task>
     <servers />
   </component>
