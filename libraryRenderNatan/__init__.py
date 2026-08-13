@@ -582,10 +582,10 @@ def compila_codigo_LSLN(codigo, pixel, x, y):
                     elif operacao == '*':
                         if valor == 'x':
                             if int(x * math.tan(math.radians(int(angulo)))) < largura_tela:
-                                x *= math.cos(math.radians(int(angulo)))
+                                x *= math.tan(math.radians(int(angulo)))
                         elif valor == 'y':
                             if int(y * math.tan(math.radians(int(angulo)))) < altura_tela:
-                                y *= math.cos(math.radians(int(angulo)))
+                                y *= math.tan(math.radians(int(angulo)))
                 # faz uma operação matemática a algum valor com o tangente de um ângulo
                 if linha.startswith('$TAN'):
                     if ativacao_if == True:
@@ -607,10 +607,10 @@ def compila_codigo_LSLN(codigo, pixel, x, y):
                         elif operacao == '*':
                             if valor == 'x':
                                 if int(x * math.tan(math.radians(int(angulo)))) < largura_tela:
-                                    x *= math.cos(math.radians(int(angulo)))
+                                    x *= math.tan(math.radians(int(angulo)))
                             elif valor == 'y':
                                 if int(y * math.tan(math.radians(int(angulo)))) < altura_tela:
-                                    y *= math.cos(math.radians(int(angulo)))
+                                    y *= math.tan(math.radians(int(angulo)))
                 # função que faz um valor receber ele ao quadrado
                 if linha.startswith('PW2'):
                     comando , numero = linha.split(' ')
@@ -776,66 +776,62 @@ def projeta_vertices():
     return buffer_projetado
 # função para desenho de linhas
 def desenha_linhas(buffer_projetado,comeco,termino,cor=0):
-    global tela
-    buffer_pixel_linha = []
-    if termino % 2 == 0:
-        conjunto_1 = []
-        conjunto_2 = []
-        # obtenção dos vértices
-        for pos0,c in enumerate(buffer_projetado[comeco:termino]):
-            if pos0 % 2 == 0:
-                conjunto_1.append(c)
-            elif pos0 % 2 != 0:
-                conjunto_2.append(c)
-        # cálculos para desenho das linhas
-        for pos1, v in enumerate(conjunto_1):
-            delta_x = abs(conjunto_2[pos1][0]-v[0])
-            delta_y = abs(conjunto_2[pos1][1]-v[1])
-            # verifica o passo que deve ser feito em x e y
-            passo_x = 0
-            if v[0] < conjunto_2[pos1][0]:
-                passo_x = 1
-            else:
-                passo_x = -1
+    ponto1 = []
+    ponto2 = []
+    buffer_posicao_pixel = []
+    # obtenção dos vértices
+    for pos0, c in enumerate(buffer_projetado[comeco:termino]):
+        if pos0 % 2 == 0:
+            ponto1.append(c)
+        elif pos0 % 2 != 0:
+            ponto2.append(c)
+    # calculos para desenho de linha
+    for pos, v in enumerate(ponto1):
+        dx = abs(ponto2[pos][0] - v[0])
+        dy = abs(ponto2[pos][1] - v[1])
+        passo_x = 0
+        if v[0] < ponto2[pos][0]:
+            passo_x = 1
+        else:
+            passo_x = -1
 
-            passo_y = 0
-            if v[1] < conjunto_2[pos1][1]:
-                passo_y = 1
-            else:
-                passo_y = -1
+        passo_y = 0
+        if v[1] < ponto2[pos][1]:
+            passo_y = 1
+        else:
+            passo_y = -1
 
-            # nomeia de forma mais legível
-            x = v[0]
-            y = v[1]
+        x = v[0]
+        y = v[1]
 
-            if delta_x > delta_y:
-                p = 2 * delta_y - delta_x
-                while x != conjunto_2[pos1][0]:
-                    valida = valida_z_buffer(x, y, v[2])
-                    if valida == True:
-                        tela[y][x] = f'\033[{cor}m.\033[m'
-                        z_buffer.append([x,y, v[2]])
-                    buffer_pixel_linha.append([x,y,v[2]])
-                    if p >= 0:
-                        y += passo_y
-                        p += 2 * (delta_y-delta_x)
-                    else:
-                        p += 2 * delta_y
-                    x += passo_x
-            else:
-                p = 2 * delta_y - delta_x
-                while y != conjunto_2[pos1][1]:
-                    valida = valida_z_buffer(x, y, v[2])
-                    if valida == True:
-                        tela[y][x] = f'\033[{cor}m.\033[m'
-                        z_buffer.append([x, y, v[2]])
-                    buffer_pixel_linha.append([x, y,v[2]])
-                    if p >= 0:
-                        x += passo_x
-                    else:
-                        p += 2 * delta_x
+        if dx > dy:
+            p = 2 * dy - dx
+            while abs(int(x)) != int(abs(ponto2[pos][0])):
+                valida = valida_z_buffer(x, y, v[2])
+                if valida == True:
+                    tela[y][x] = f'\033[{cor}m.\033[m'
+                    z_buffer.append([x, y, v[2]])
+                buffer_posicao_pixel.append([x, y, v[2]])
+                if p >= 0:
                     y += passo_y
-    return buffer_pixel_linha
+                    p += 2 * (dy - dx)
+                else:
+                    p += 2 * dy
+                x += passo_x
+        else:
+            p = 2 * dx - dy
+            while abs(int(y)) != abs(int(ponto2[pos][1])):
+                valida = valida_z_buffer(x, y, v[2])
+                if valida == True:
+                    tela[y][x] = f'\033[{cor}m.\033[m'
+                    z_buffer.append([x, y, v[2]])
+                buffer_posicao_pixel.append([x, y, v[2]])
+                if p >= 0:
+                    x += passo_x
+                else:
+                    p += 2 * dx
+                y += passo_y
+    return buffer_posicao_pixel
 # função para desenho de pontos
 def desenha_pontos(buffer_projetado):
     global tela,altura_tela,largura_tela,z_buffer

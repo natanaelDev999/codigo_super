@@ -532,10 +532,10 @@ def atualiza_tela_linhas(buffer_transformado,linhas_quant,pos_cor,começo,cor=Fa
     ponto1 = []
     ponto2 = []
     # obtenção dos vértices
-    for pos,c in enumerate(buffer_transformado[começo:linhas_quant]):
-        if pos % 2 == 0:
+    for pos0,c in enumerate(buffer_transformado[começo:linhas_quant]):
+        if pos0 % 2 == 0:
             ponto1.append(c)
-        elif pos % 2 != 0:
+        elif pos0 % 2 != 0:
             ponto2.append(c)
     # calculos para desenho de linha
     for pos, v in enumerate(ponto1):
