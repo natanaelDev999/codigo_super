@@ -1,23 +1,39 @@
 import libraryRenderNatan
 import time
+import math
 # Inicialização
 # Armazena, transforma e cria dados
 # Cria dados
 buffer_de_desenho = [
- [-3,3,1],
- [3,3,1],
- [3,3,1],
- [0,0,1],
- [0,0,1],
- [-3,3,1]
+[-2,2,1],
+[2,2,1],
+[2,-2,1],
+[-2,-2,1],
+
+[-2,2,1],
+[-2,-2,1],
+
+[2,2,1],
+[2,-2,1],
+#
+[-2,2,2],
+[2,2,2],
+[2,-2,2],
+[-2,-2,2],
+
+[-2,2,2],
+[-2,-2,2],
+
+[2,2,2],
+[2,-2,2],
 ]
 codigo_lsln = '''
 pr=p;
-t vecto 2 1;
-MMV 1 vecto;
-cs x = 9 ;
-$tp xy vecto;
-ec;
+//t vecto 2 1;
+//MMV 1 vecto;
+//cs x = 9 ;
+//$tp xy vecto;
+//ec;
 '''
 codigo_ltln = '''
 pr=*;
@@ -29,13 +45,16 @@ $cp=32;
 ec;
 '''
 codigo_lmln = '''
-t vetor 0 1 0 ;
+t vetor 4 0 0 ;
 MMV 2 v3;
 ts v3 vetor;
 '''
 matriz_id_1 = [[2,0],
                [0,2]]
-
+angulo = math.radians(0)
+'''matriz_id_2 = [[math.cos(angulo),-math.sin(angulo),0],
+               [math.sin(angulo),math.cos(angulo),0],
+               [0,0,1]]'''
 matriz_id_2 = [[1,0,0],
                [0,1,0],
                [0,0,1]]
@@ -55,7 +74,7 @@ libraryRenderNatan.utiliza_codigo_LMLN(codigo_lmln)# 0.000116
 while True:
     comeco = time.perf_counter()
     buffer = libraryRenderNatan.projeta_vertices()# 0.000089
-    buffer_pixels_linha = libraryRenderNatan.desenha_linhas(buffer, 0, 6, cor_linha)# 0.000046
+    buffer_pixels_linha = libraryRenderNatan.desenha_linhas(buffer, 0, 32, 31)# 0.000046
     libraryRenderNatan.preenche_forma(buffer_pixels_linha, cores_preenche)# 0.000516
     tela = libraryRenderNatan.desenha_pontos(buffer)# 0.000062
     libraryRenderNatan.utiliza_codigo_LSLN(codigo_lsln)# 0.000384
@@ -63,6 +82,6 @@ while True:
     print(36*'-')
     libraryRenderNatan.desenha_tela(tela)# print() -> 0.029529; sys.stdout.write() -> 0.016820 ; Δ = 0.012709
     print(36 * '-')
-    libraryRenderNatan.trata_terminal(3)# 0.016236
+    libraryRenderNatan.trata_terminal(6)# 0.016236
     fim = time.perf_counter()
     print(f'{fim-comeco:.6f}\n')
