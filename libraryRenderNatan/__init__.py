@@ -2,8 +2,8 @@
 #                   LibraryRenderNatan
 ###############################################################
 # criação do projeto: 27/07/2026
-# termino do projeto: 09/08/2026
-# intervalo de tempo: 14 dias
+# termino do projeto: 13/08/2026
+# intervalo de tempo: 17 dias
 ###############################################################
 #                 bibliotecas utilizadas
 # biblioteca para manipulação do terminal
@@ -273,21 +273,21 @@ def compila_codigo_LSLN(codigo, pixel, x, y):
                             elif vereficacao != None:
                                 pixel_retorna = vereficacao
                 # inseri um valor para cp
-                if linha.startswith('cp=') or linha.startswith('cp ='):
+                elif linha.startswith('cp=') or linha.startswith('cp ='):
                     vereficacao = procura_dados(linha[linha.find('=') + 1:], estruturas_dados)
                     if linha[linha.find('=')] != linha[-1] and vereficacao == None:
                         cor_pixel = linha[linha.find('=') + 1:]
                     elif vereficacao != None:
                         cor_pixel = vereficacao
                 # subtrai os valores para simular uma soma de valores positivos
-                if linha.startswith('s'):
+                elif linha.startswith('s'):
                     operacao, valor1, valor2 = linha.split(' ')
                     if valor1 == 'x':
                         x = x - int(valor2)
                     elif valor1 == 'y':
                         y = y - int(valor2)
                 # subtrai os valores para simular uma soma de valores positivos
-                if linha.startswith('$s'):
+                elif linha.startswith('$s'):
                     if ativacao_if == True:
                         operacao, valor1, valor2 = linha.split(' ')
                         if valor1 == 'x':
@@ -295,28 +295,28 @@ def compila_codigo_LSLN(codigo, pixel, x, y):
                         elif valor1 == 'y':
                             y = y - int(valor2)
                 # soma os valores para simular uma soma de valores negativos
-                if linha.startswith('v'):
+                elif linha.startswith('v'):
                     operacao, valor1, valor2 = linha.split(' ')
                     if valor1 == 'x':
                         x = x + int(valor2)
                     elif valor1 == 'y':
                         y = y + int(valor2)
                 # soma os valores para simular uma soma de valores negativos
-                if linha.startswith('$v'):
+                elif linha.startswith('$v'):
                     if ativacao_if == True:
                         operacao, valor1, valor2 = linha.split(' ')
                         if valor1 == 'x':
                             x = x + int(valor2)
                         elif valor1 == 'y':
                             y = y + int(valor2)
-                if linha.startswith('cs'):
+                elif linha.startswith('cs'):
                     caso = linha.split(' ')
                     if caso[1] == 'y':
                         ativacao_if = trata_condicionais(y, caso[2], int(caso[3]))
                     elif caso[1] == 'x':
                         ativacao_if = trata_condicionais(x, caso[2], int(caso[3]))
                 # inseri um valor para pr
-                if linha.startswith('$pr=') or linha.startswith('$pr ='):
+                elif linha.startswith('$pr=') or linha.startswith('$pr ='):
                     if ativacao_if == True:
                         if procura_caractere(linha, '=', 'p'):
                             pixel_retorna = pixel
@@ -331,7 +331,7 @@ def compila_codigo_LSLN(codigo, pixel, x, y):
                                 elif vereficacao != None:
                                     pixel_retorna = vereficacao
                 # inseri um valor para cp
-                if linha.startswith('$cp=') or linha.startswith('$cp ='):
+                elif linha.startswith('$cp=') or linha.startswith('$cp ='):
                     if ativacao_if == True:
                         vereficacao = procura_dados(linha[linha.find('=') + 1:], estruturas_dados)
                         if linha[linha.find('=')] != linha[-1] and vereficacao == None:
@@ -339,11 +339,11 @@ def compila_codigo_LSLN(codigo, pixel, x, y):
                         elif vereficacao != None:
                             cor_pixel = vereficacao
                 # acaba com condicional
-                if linha.startswith('ec'):
+                elif linha.startswith('ec'):
                     if ativacao_if == True:
                         ativacao_if = False
                 # cria variável
-                if linha.startswith('l'):
+                elif linha.startswith('l'):
                     inicio, final = linha.split('=')
                     inicio = inicio[1:].strip()
                     final = final.strip()
@@ -351,7 +351,7 @@ def compila_codigo_LSLN(codigo, pixel, x, y):
                     if vereficacao == None and inicio != 'p':
                         estruturas_dados['variáveis'].append([inicio, final])
                 # cria variável
-                if linha.startswith('$l'):
+                elif linha.startswith('$l'):
                     if ativacao_if == True:
                         inicio, final = linha.split('=')
                         inicio = inicio[1:].strip()
@@ -360,7 +360,7 @@ def compila_codigo_LSLN(codigo, pixel, x, y):
                         if vereficacao == None:
                             estruturas_dados['variáveis'].append([inicio, final])
                 # cria vetor
-                if linha.startswith('t'):
+                elif linha.startswith('t'):
                     dados = linha.split(' ')
                     if dados[1] != 'p':
                         # verefica se existe outro vetor com outro nome
@@ -371,7 +371,7 @@ def compila_codigo_LSLN(codigo, pixel, x, y):
                         if achou == False:
                             estruturas_dados['vetores'].append([dados[1], dados[2:]])
                 # inseri valor de um vetor nas posições de saída(por isso ot de out, que é saída em inglês)
-                if linha.startswith('ot'):
+                elif linha.startswith('ot'):
                     dados = linha.split(' ')
                     if 'x' in dados[1] and 'y' in dados[1]:
                         for v in estruturas_dados['vetores']:
@@ -381,7 +381,7 @@ def compila_codigo_LSLN(codigo, pixel, x, y):
                                     y = int(v[1][1])
                                     break
                 # soma um valor(causando soma negativa visualmente) de um vetor nas posições de saída(por isso ot de out, que é saída em inglês)
-                if linha.startswith('ts'):
+                elif linha.startswith('ts'):
                     dados = linha.split(' ')
                     if 'x' in dados[1] and 'y' in dados[1]:
                         for v in estruturas_dados['vetores']:
@@ -391,7 +391,7 @@ def compila_codigo_LSLN(codigo, pixel, x, y):
                                     y += int(v[1][1])
                                     break
                 # soma um valor(causando soma positiva visualmente) de um vetor nas posições de saída(por isso ot de out, que é saída em inglês)
-                if linha.startswith('tp'):
+                elif linha.startswith('tp'):
                     dados = linha.split(' ')
                     if 'x' in dados[1] and 'y' in dados[1]:
                         for v in estruturas_dados['vetores']:
@@ -400,7 +400,7 @@ def compila_codigo_LSLN(codigo, pixel, x, y):
                                 y -= int(v[1][1])
                                 break
                 # inseri valor de um vetor nas posições de saída(por isso ot de out, que é saída em inglês)
-                if linha.startswith('$ot'):
+                elif linha.startswith('$ot'):
                     if ativacao_if == True:
                         dados = linha.split(' ')
                         if 'x' in dados[1] and 'y' in dados[1]:
@@ -411,7 +411,7 @@ def compila_codigo_LSLN(codigo, pixel, x, y):
                                         y = int(v[1][1])
                                         break
                 # soma um valor(causando soma negativa visualmente) de um vetor nas posições de saída(por isso ot de out, que é saída em inglês)
-                if linha.startswith('$ts'):
+                elif linha.startswith('$ts'):
                     if ativacao_if == True:
                         dados = linha.split(' ')
                         if 'x' in dados[1] and 'y' in dados[1]:
@@ -422,7 +422,7 @@ def compila_codigo_LSLN(codigo, pixel, x, y):
                                         y += int(v[1][1])
                                         break
                 # soma um valor(causando soma positiva visualmente) de um vetor nas posições de saída(por isso ot de out, que é saída em inglês)
-                if linha.startswith('$tp'):
+                elif linha.startswith('$tp'):
                     if ativacao_if == True:
                         dados = linha.split(' ')
                         if 'x' in dados[1] and 'y' in dados[1]:
@@ -432,7 +432,7 @@ def compila_codigo_LSLN(codigo, pixel, x, y):
                                     y -= int(v[1][1])
                                     break
                 # faz uma operação matemática a algum valor com o cosseno de um ângulo
-                if linha.startswith('COS'):
+                elif linha.startswith('COS'):
                     funcao, valor , operacao ,  angulo = linha.split(' ')
                     if operacao == '+':
                         if valor == 'x':
@@ -456,7 +456,7 @@ def compila_codigo_LSLN(codigo, pixel, x, y):
                             if int(y * math.cos(math.radians(int(angulo)))) < altura_tela:
                                 y *= math.cos(math.radians(int(angulo)))
                 # faz uma operação matemática a algum valor com o seno de um ângulo
-                if linha.startswith('SIN'):
+                elif linha.startswith('SIN'):
                     funcao, valor, operacao, angulo = linha.split(' ')
                     if operacao == '+':
                         if valor == 'x':
@@ -480,7 +480,7 @@ def compila_codigo_LSLN(codigo, pixel, x, y):
                             if int(y * math.sin(math.radians(int(angulo)))) < altura_tela:
                                 y *= math.sin(math.radians(int(angulo)))
                 # faz uma operação matemática a algum valor com o cosseno de um ângulo
-                if linha.startswith('$COS'):
+                elif linha.startswith('$COS'):
                     if ativacao_if == True:
                         funcao, valor, operacao, angulo = linha.split(' ')
                         if operacao == '+':
@@ -505,7 +505,7 @@ def compila_codigo_LSLN(codigo, pixel, x, y):
                                 if int(y * math.cos(math.radians(int(angulo)))) < altura_tela:
                                     y *= math.cos(math.radians(int(angulo)))
                 # faz uma operação matemática a algum valor com o seno de um ângulo
-                if linha.startswith('$SIN'):
+                elif linha.startswith('$SIN'):
                     if ativacao_if == True:
                         funcao, valor, operacao, angulo = linha.split(' ')
                         if operacao == '+':
@@ -530,7 +530,7 @@ def compila_codigo_LSLN(codigo, pixel, x, y):
                                 if int(y * math.sin(math.radians(int(angulo)))) < altura_tela:
                                     y *= math.sin(math.radians(int(angulo)))
                 # faz uma multiplicação entre vetor e matriz
-                if linha.startswith('MMV'):
+                elif linha.startswith('MMV'):
                     # sintaxe: comando índice vetor
                     comando, indice , vetor = linha.split(' ')
                     if len(buffer_de_matrizes) > 0:
@@ -546,7 +546,7 @@ def compila_codigo_LSLN(codigo, pixel, x, y):
                                     vetor_resultado = multiplicacao_matricial(buffer_de_matrizes[f'{indice}'],v[1])
                                     estruturas_dados['vetores'][pos][1] = vetor_resultado
                 # faz uma multiplicação entre vetor e matriz
-                if linha.startswith('$MMV'):
+                elif linha.startswith('$MMV'):
                     if ativacao_if == True:
                         # sintaxe: comando índice vetor
                         comando, indice, vetor = linha.split(' ')
@@ -563,7 +563,7 @@ def compila_codigo_LSLN(codigo, pixel, x, y):
                                         vetor_resultado = multiplicacao_matricial(buffer_de_matrizes[f'{indice}'], v[1])
                                         estruturas_dados['vetores'][pos][1] = vetor_resultado
                 # faz uma operação matemática a algum valor com o tangente de um ângulo
-                if linha.startswith('TAN'):
+                elif linha.startswith('TAN'):
                     funcao, valor, operacao, angulo = linha.split(' ')
                     if operacao == '+':
                         if valor == 'x':
@@ -587,7 +587,7 @@ def compila_codigo_LSLN(codigo, pixel, x, y):
                             if int(y * math.tan(math.radians(int(angulo)))) < altura_tela:
                                 y *= math.tan(math.radians(int(angulo)))
                 # faz uma operação matemática a algum valor com o tangente de um ângulo
-                if linha.startswith('$TAN'):
+                elif linha.startswith('$TAN'):
                     if ativacao_if == True:
                         funcao, valor, operacao, angulo = linha.split(' ')
                         if operacao == '+':
@@ -612,7 +612,7 @@ def compila_codigo_LSLN(codigo, pixel, x, y):
                                 if int(y * math.tan(math.radians(int(angulo)))) < altura_tela:
                                     y *= math.tan(math.radians(int(angulo)))
                 # função que faz um valor receber ele ao quadrado
-                if linha.startswith('PW2'):
+                elif linha.startswith('PW2'):
                     comando , numero = linha.split(' ')
                     if numero == 'x':
                         if x**2 < largura_tela:
@@ -626,7 +626,7 @@ def compila_codigo_LSLN(codigo, pixel, x, y):
                             if v[0] == numero:
                                 estruturas_dados['variáveis'][pos][1] = int(valor)**2
                 # função que faz um valor receber ele ao cubo
-                if linha.startswith('PW3'):
+                elif linha.startswith('PW3'):
                     comando , numero = linha.split(' ')
                     if numero == 'x':
                         if x**3 < largura_tela:
@@ -729,18 +729,24 @@ def adiciona_dados(tipo_de_buffer, dados, indice=0):
             buffer_de_vertices = dados
         else:
             print('\033[31mErro:Não há suporte para os dados que seriam adicionados\033[m')
+            print('\7')
     # parte para tratamento dos dados do BDA
     elif tipo_de_buffer == 'BDA':
         if len(dados) > 0:
             buffer_de_aparencia = dados
         else:
             print('\033[31mErro:Não há nenhum dado para adicionar\033[m')
+            print('\7')
     # parte para tratamento de dados do BDM
     elif tipo_de_buffer == 'BDM':
         if indice != 0:
             buffer_de_matrizes[f'{indice}'] = dados
+        else:
+            print('\033[31mErro:O endereço de BDM é inválido\033[m')
+            print('\7')
     else:
         print('\033[31mErro:Não existe buffer com o nome informado\033[m')
+        print('\7')
 # função para criar uma tela para o desenho
 def cria_tela(altura,largura):
     global tela,altura_tela,largura_tela,z_buffer
@@ -808,7 +814,7 @@ def desenha_linhas(buffer_projetado,comeco,termino,cor=0):
             p = 2 * dy - dx
             while abs(int(x)) != int(abs(ponto2[pos][0])):
                 valida = valida_z_buffer(x, y, v[2])
-                if valida == True:
+                if valida == True and y < altura_tela and x < largura_tela:
                     tela[y][x] = f'\033[{cor}m.\033[m'
                     z_buffer.append([x, y, v[2]])
                 buffer_posicao_pixel.append([x, y, v[2]])
@@ -822,7 +828,7 @@ def desenha_linhas(buffer_projetado,comeco,termino,cor=0):
             p = 2 * dx - dy
             while abs(int(y)) != abs(int(ponto2[pos][1])):
                 valida = valida_z_buffer(x, y, v[2])
-                if valida == True:
+                if valida == True and y < altura_tela and x < largura_tela:
                     tela[y][x] = f'\033[{cor}m.\033[m'
                     z_buffer.append([x, y, v[2]])
                 buffer_posicao_pixel.append([x, y, v[2]])
