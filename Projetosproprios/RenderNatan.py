@@ -16,7 +16,7 @@ rotacao_camera = [0,0]
 
 
 #    MODELOS
-#   triãngulo
+#   triangulo
 # [-4,4,1,True],
 # [4,4,1,True],
 # [4,4,1,True],

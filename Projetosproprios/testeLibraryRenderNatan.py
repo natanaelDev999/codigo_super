@@ -4,28 +4,45 @@ import math
 # Inicialização
 # Armazena, transforma e cria dados
 # Cria dados
+'''
+   cubo
+[-2.5,2,1],
+[2.5,2,1],
+[2.5,-2,1],
+[-2.5,-2,1],
+
+[-2.5,2,1],
+[-2.5,-2,1],
+[2.5,2,1],
+[2.5,-2,1],
+
+
+[-2.5,2,2],
+[2.5,2,2],
+[2.5,-2,2],
+[-2.5,-2,2],
+
+[-2.5,2,2],
+[-2.5,-2,2],
+[2.5,2,2],
+[2.5,-2,2],
+
+
+[-2.5,2,1],
+[-2.5,2,2],
+[2.5,2,1],
+[2.5,2,2],
+[2.5,-2,1],
+[2.5,-2,2],
+[-2.5,-2,1],
+[-2.5,-2,2]'''
 buffer_de_desenho = [
-[-2,2,1],
-[2,2,1],
-[2,-2,1],
-[-2,-2,1],
-
-[-2,2,1],
-[-2,-2,1],
-
-[2,2,1],
-[2,-2,1],
-#
-[-2,2,2],
-[2,2,2],
-[2,-2,2],
-[-2,-2,2],
-
-[-2,2,2],
-[-2,-2,2],
-
-[2,2,2],
-[2,-2,2],
+[-4,4,1,True],
+[4,4,1,True],
+[4,4,1,True],
+[0,0,1,True],
+[0,0,1,True],
+[-4,4,1,True]
 ]
 codigo_lsln = '''
 pr=p;
@@ -45,19 +62,20 @@ $cp=32;
 ec;
 '''
 codigo_lmln = '''
-t vetor 4 0 0 ;
+t vetor 0 0 0 ;
 MMV 2 v3;
 ts v3 vetor;
 '''
 matriz_id_1 = [[2,0],
                [0,2]]
-angulo = math.radians(0)
-'''matriz_id_2 = [[math.cos(angulo),-math.sin(angulo),0],
+ang = 5
+angulo = math.radians(ang)
+matriz_id_2 = [[math.cos(angulo),-math.sin(angulo),0],
                [math.sin(angulo),math.cos(angulo),0],
-               [0,0,1]]'''
-matriz_id_2 = [[1,0,0],
-               [0,1,0],
                [0,0,1]]
+'''matriz_id_2 = [[1,0,0],
+               [0,1,0],
+               [0,0,1]]'''
 #  Transforma dados
 cores_pontos = libraryRenderNatan.converte_RGB_ANSI([[1,0,0],[1,0,0],[1,0,0],[1,0,0],[1,0,0],[1,0,0]])# 0.000013
 cor_linha = libraryRenderNatan.converte_RGB_ANSI([[1,1,0]])# 0.000008
@@ -67,6 +85,7 @@ libraryRenderNatan.adiciona_dados('BDV',buffer_de_desenho)# 0.000013
 libraryRenderNatan.adiciona_dados('BDA',cores_pontos)# 0.000008
 libraryRenderNatan.adiciona_dados('BDM',matriz_id_1,1)# 0.000009
 libraryRenderNatan.adiciona_dados('BDM',matriz_id_2,2)# 0.000012
+libraryRenderNatan.adiciona_dados('kjdfçad','dado')
 libraryRenderNatan.cria_tela(16, 18)# 0.000063
 libraryRenderNatan.utiliza_codigo_LMLN(codigo_lmln)# 0.000116
 # Loop principal
@@ -74,7 +93,7 @@ libraryRenderNatan.utiliza_codigo_LMLN(codigo_lmln)# 0.000116
 while True:
     comeco = time.perf_counter()
     buffer = libraryRenderNatan.projeta_vertices()# 0.000089
-    buffer_pixels_linha = libraryRenderNatan.desenha_linhas(buffer, 0, 32, 31)# 0.000046
+    buffer_pixels_linha = libraryRenderNatan.desenha_linhas(buffer, 0, 40, cor_linha)# 0.000046
     libraryRenderNatan.preenche_forma(buffer_pixels_linha, cores_preenche)# 0.000516
     tela = libraryRenderNatan.desenha_pontos(buffer)# 0.000062
     libraryRenderNatan.utiliza_codigo_LSLN(codigo_lsln)# 0.000384
