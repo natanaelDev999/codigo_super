@@ -9,5 +9,6 @@ soma = LibraryVectorNatan.soma_vetores(vetor,vetor2)
 subtracao = LibraryVectorNatan.subtrai_vetores(vetor,vetor2)
 produto = LibraryVectorNatan.multiplica_vetores(vetor,vetor2)
 quociente = LibraryVectorNatan.divide_vetores(vetor2,vetor)
+print("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=")
 print(f"soma: {soma}; subtracao: {subtracao};produto: {produto}; quociente: {quociente}; tamanho: {tamanho}; normalização: {vetor_normalizado}")
 
