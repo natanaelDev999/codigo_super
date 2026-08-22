@@ -62,7 +62,7 @@ $cp=32;
 ec;
 '''
 codigo_lmln = '''
-t vetor 0 0 0 ;
+t vetor 4 0 0 ;
 MMV 2 v3;
 ts v3 vetor;
 '''
@@ -85,7 +85,6 @@ libraryRenderNatan.adiciona_dados('BDV',buffer_de_desenho)# 0.000013
 libraryRenderNatan.adiciona_dados('BDA',cores_pontos)# 0.000008
 libraryRenderNatan.adiciona_dados('BDM',matriz_id_1,1)# 0.000009
 libraryRenderNatan.adiciona_dados('BDM',matriz_id_2,2)# 0.000012
-libraryRenderNatan.adiciona_dados('kjdfçad','dado')
 libraryRenderNatan.cria_tela(16, 18)# 0.000063
 libraryRenderNatan.utiliza_codigo_LMLN(codigo_lmln)# 0.000116
 # Loop principal

@@ -33,6 +33,10 @@ def divide_vetores(vetor1,vetor2):
         vetor_saida.append(i / vetor2[pos0])
     return vetor_saida
 #---------------------------------------------------------------------
+#                          PRODUTO ESCALAR
+def produto_escalar(vetor1,vetor2):
+    return vetor1[0]*vetor2[0]+vetor1[1]*vetor2[1]
+#---------------------------------------------------------------------
 # função para pegar o tamanho do vetor
 def tamanho_vetor(vetor):
     tamanho = 0
