@@ -770,9 +770,9 @@ def projeta_vertices():
     for pos0,c in enumerate(buffer_de_vertices):
         if c[2] > 0:
             # (x/z) + (x_tela/2)
-            x = (c[0]/c[2]) + (largura_tela/2)
+            x = (c[0]/(c[2])) + (largura_tela/2)
             # (y/z) + (y_tela/2)
-            y = (c[1]/c[2]) + (altura_tela/2)
+            y = (c[1]/(c[2])) + (altura_tela/2)
             # desenha
             if int(y) < altura_tela and int(x) < largura_tela:
                 if pos0 < len(buffer_de_aparencia):
