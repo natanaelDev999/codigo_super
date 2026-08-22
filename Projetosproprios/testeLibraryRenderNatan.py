@@ -35,7 +35,74 @@ import math
 [2.5,-2,1],
 [2.5,-2,2],
 [-2.5,-2,1],
-[-2.5,-2,2]'''
+[-2.5,-2,2]
+   bule de chá
+    # --- Corpo (contorno) ---
+    # começar no lado esquerdo inferior do corpo
+    [-6.0, -1.5, 1, True],
+    [-6.0, -1.5, 1, True],  # repetido para "levantar a caneta" no começo do segmento
+    [-5.0, -2.5, 1, True],
+    [-3.0, -3.0, 1, True],
+    [0.0, -3.5, 1, True],
+    [3.0, -3.0, 1, True],
+    [5.0, -2.5, 1, True],
+    [6.0, -1.5, 1, True],
+    [5.5, -0.5, 1, True],
+    [4.5, 0.5, 1, True],
+    [3.0, 1.5, 1, True],
+    [0.5, 2.5, 1, True],
+    [-1.0, 2.8, 1, True],
+    [-3.0, 2.5, 1, True],
+    [-5.0, 1.5, 1, True],
+    [-6.0, 0.0, 1, True],
+    [-6.0, -1.5, 1, True],  # volta ao início para fechar o contorno
+    [-6.0, -1.5, 1, True],  # repetido para separar do próximo segmento
+
+    # --- Tampa (pequeno arco no topo) ---
+    [ -1.5, 2.8, 1, True],
+    [ -1.5, 2.8, 1, True],
+    [ -0.75, 3.3, 1, True],
+    [ 0.0, 3.6, 1, True],
+    [ 0.75, 3.3, 1, True],
+    [ 1.5, 2.8, 1, True],
+    [ -1.5, 2.8, 1, True],
+    [ -1.5, 2.8, 1, True],  # repetir para separar
+
+    # --- Botão da tampa ---
+    [ 0.0, 3.9, 1, True],
+    [ 0.0, 3.9, 1, True],
+    [ 0.0, 4.2, 1, True],
+    [ 0.0, 3.9, 1, True],
+    [ 0.0, 3.9, 1, True],  # repetir para separar
+
+    # --- Bico (lado direito) ---
+    [ 6.0, -1.5, 1, True],
+    [ 6.0, -1.5, 1, True],
+    [ 7.5, -0.5, 1, True],
+    [ 8.5, 0.2, 1, True],
+    [ 8.2, 0.9, 1, True],
+    [ 7.3, 0.6, 1, True],
+    [ 6.0, 0.5, 1, True],
+    [ 6.0, -1.5, 1, True],
+    [ 6.0, -1.5, 1, True],  # repetir para separar
+
+    # --- Alça (lado esquerdo) ---
+    [ -6.0, -0.0, 1, True],
+    [ -6.0, -0.0, 1, True],
+    [ -8.0, 0.8, 1, True],
+    [ -8.0, 1.8, 1, True],
+    [ -7.2, 2.2, 1, True],
+    [ -6.0, 1.2, 1, True],
+    [ -6.0, -0.0, 1, True],
+    [ -6.0, -0.0, 1, True],  # repetir para separar
+
+    # --- Base (linha de apoio) ---
+    [ -4.0, -3.2, 1, True],
+    [ -4.0, -3.2, 1, True],
+    [ 4.0, -3.2, 1, True],
+    [ 4.0, -3.2, 1, True],
+
+'''
 buffer_de_desenho = [
 [-4,4,1,True],
 [4,4,1,True],
@@ -68,7 +135,7 @@ ts v3 vetor;
 '''
 matriz_id_1 = [[2,0],
                [0,2]]
-ang = 5
+ang = 10
 angulo = math.radians(ang)
 matriz_id_2 = [[math.cos(angulo),-math.sin(angulo),0],
                [math.sin(angulo),math.cos(angulo),0],
@@ -79,7 +146,7 @@ matriz_id_2 = [[math.cos(angulo),-math.sin(angulo),0],
 #  Transforma dados
 cores_pontos = libraryRenderNatan.converte_RGB_ANSI([[1,0,0],[1,0,0],[1,0,0],[1,0,0],[1,0,0],[1,0,0]])# 0.000013
 cor_linha = libraryRenderNatan.converte_RGB_ANSI([[1,1,0]])# 0.000008
-cores_preenche = libraryRenderNatan.converte_RGB_ANSI([[1,0,0],[1,1,0]])# 0.000008
+cores_preenche = libraryRenderNatan.converte_RGB_ANSI([[1,1,0],[1,1,0]])# 0.000008
 # Manda dados para o centro de processamento da libraryRenderNatan
 libraryRenderNatan.adiciona_dados('BDV',buffer_de_desenho)# 0.000013
 libraryRenderNatan.adiciona_dados('BDA',cores_pontos)# 0.000008
