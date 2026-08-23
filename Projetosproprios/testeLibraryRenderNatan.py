@@ -137,12 +137,12 @@ matriz_id_1 = [[2,0],
                [0,2]]
 ang = 10
 angulo = math.radians(ang)
-matriz_id_2 = [[math.cos(angulo),-math.sin(angulo),0],
+'''matriz_id_2 = [[math.cos(angulo),-math.sin(angulo),0],
                [math.sin(angulo),math.cos(angulo),0],
-               [0,0,1]]
-'''matriz_id_2 = [[1,0,0],
-               [0,1,0],
                [0,0,1]]'''
+matriz_id_2 = [[0,1,0],
+               [-1,0,0],
+               [0,0,1]]
 #  Transforma dados
 cores_pontos = libraryRenderNatan.converte_RGB_ANSI([[1,0,0],[1,0,0],[1,0,0],[1,0,0],[1,0,0],[1,0,0]])# 0.000013
 cor_linha = libraryRenderNatan.converte_RGB_ANSI([[1,1,0]])# 0.000008
