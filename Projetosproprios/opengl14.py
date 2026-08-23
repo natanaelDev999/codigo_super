@@ -23,6 +23,7 @@ def cria_esfera(raio):
             vertices.append([x2+random.randint(0,60)/200,
                              y2+random.randint(0,60)/200,
                              z2+random.randint(0,60)/200])
+    print(vertices)
     return vertices
 def init():
     glClearColor(0,0,0.4,0)

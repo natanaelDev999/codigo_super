@@ -129,7 +129,7 @@ $cp=32;
 ec;
 '''
 codigo_lmln = '''
-t vetor 4 0 0 ;
+t vetor 0 0 0 ;
 MMV 2 v3;
 ts v3 vetor;
 '''
@@ -140,8 +140,8 @@ angulo = math.radians(ang)
 '''matriz_id_2 = [[math.cos(angulo),-math.sin(angulo),0],
                [math.sin(angulo),math.cos(angulo),0],
                [0,0,1]]'''
-matriz_id_2 = [[0,1,0],
-               [-1,0,0],
+matriz_id_2 = [[1,0,0],
+               [0,1,0],
                [0,0,1]]
 #  Transforma dados
 cores_pontos = libraryRenderNatan.converte_RGB_ANSI([[1,0,0],[1,0,0],[1,0,0],[1,0,0],[1,0,0],[1,0,0]])# 0.000013

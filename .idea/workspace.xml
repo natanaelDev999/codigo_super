@@ -5,6 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="40f19d69-33a2-4c14-82a8-a0754e89c91b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjetosProprios/testeLibraryVectorNatan.py" beforeDir="false" afterPath="$PROJECT_DIR$/ProjetosProprios/testeLibraryVectorNatan.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projetosproprios/LibraryVectorNatan.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projetosproprios/LibraryVectorNatan.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Projetosproprios/desafioTela1D.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projetosproprios/desafioTela1D.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -364,8 +367,8 @@
       <command value="project038" />
     </option>
   </component>
-  <component name="RunManager" selected="Python.desafioTela1D">
-    <configuration name="__init__" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.testeLibraryVectorNatan">
+    <configuration name="LibraryVectorNatan" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PythonProject1" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -374,14 +377,14 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/libraryRenderNatan" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ProjetosProprios" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="DEBUG_JUST_MY_CODE" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="RUN_TOOL" value="" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/libraryRenderNatan/__init__.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ProjetosProprios/LibraryVectorNatan.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="true" />
@@ -440,7 +443,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="joguinho" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="opengl14" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PythonProject1" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -456,7 +459,7 @@
       <option name="DEBUG_JUST_MY_CODE" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="RUN_TOOL" value="" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ProjetosProprios/joguinho.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ProjetosProprios/opengl14.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="true" />
@@ -465,7 +468,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="opengl17" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="q" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PythonProject1" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -481,7 +484,7 @@
       <option name="DEBUG_JUST_MY_CODE" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="RUN_TOOL" value="" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ProjetosProprios/opengl17.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ProjetosProprios/q.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="true" />
@@ -490,7 +493,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="testeLibraryRenderNatan" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="testeLibraryVectorNatan" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PythonProject1" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -506,7 +509,7 @@
       <option name="DEBUG_JUST_MY_CODE" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="RUN_TOOL" value="" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ProjetosProprios/testeLibraryRenderNatan.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ProjetosProprios/testeLibraryVectorNatan.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="true" />
@@ -542,19 +545,19 @@
     </configuration>
     <list>
       <item itemvalue="Python.testeclass" />
-      <item itemvalue="Python.joguinho" />
-      <item itemvalue="Python.__init__" />
+      <item itemvalue="Python.opengl14" />
+      <item itemvalue="Python.q" />
+      <item itemvalue="Python.testeLibraryVectorNatan" />
+      <item itemvalue="Python.LibraryVectorNatan" />
       <item itemvalue="Python.desafioTela1D" />
-      <item itemvalue="Python.opengl17" />
-      <item itemvalue="Python.testeLibraryRenderNatan" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.testeLibraryVectorNatan" />
+        <item itemvalue="Python.LibraryVectorNatan" />
         <item itemvalue="Python.desafioTela1D" />
-        <item itemvalue="Python.testeLibraryRenderNatan" />
-        <item itemvalue="Python.joguinho" />
-        <item itemvalue="Python.opengl17" />
-        <item itemvalue="Python.__init__" />
+        <item itemvalue="Python.q" />
+        <item itemvalue="Python.opengl14" />
       </list>
     </recent_temporary>
   </component>
