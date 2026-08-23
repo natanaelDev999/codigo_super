@@ -3,6 +3,16 @@ import LibraryVectorNatan as lvn
 
 tela = []
 buffer = []
+depth = []
+
+
+def teste_pixel_z_buffer(xy,z):
+    global depth
+    achou = False
+    for i in depth:
+        if i[0] == xy[0] and i[1] == xy[1] and i[2] < z:
+            achou = True
+    return achou
 
 
 def cria_tela(altura, largura):
@@ -22,20 +32,21 @@ def desenha_tela(largura):
             print()
 
 
-def cria_ponto(xy, altura, largura):
-    global tela,buffer
+def cria_ponto(xy,cor, altura, largura):
+    global tela,buffer,depth
 
     if xy[2] != 0:
 
-        xy[1] = (xy[1]/xy[2])+int(altura / 2)
-        xy[0] = (xy[0]/xy[2])+int(largura / 2)
+        xy[1] = int((xy[1]/xy[2])+int(altura / 2))
+        xy[0] = int((xy[0]/xy[2])+int(largura / 2))
 
         cY = 0
         cX = 0
 
         for pos0, c in enumerate(tela):
-            if cY == xy[1] and cX == xy[0]:
-                buffer.append(pos0)
+            if cY == xy[1] and cX == xy[0] and teste_pixel_z_buffer([xy[0],xy[1]],xy[2]) == False:
+                buffer.append([pos0,cor])
+                depth.append([xy[0], xy[1], xy[2]])
             if pos0 % largura == 0:
                 cY += 1
                 cX = 0
@@ -57,41 +68,54 @@ def ponto_triangulo(a,b,c,p):
 
     sideCA = ponto_teste_dentro(c,a,p)
 
-    return sideAB == sideBC and sideBC == sideCA
+    return sideAB and sideBC and sideCA
 
 
-def cria_triangulo(a,b,c,largura,altura):
+def cria_triangulo(a,b,c,cor,largura,altura):
     cY = 0
     cX = 0
 
-
-    a = [a[0]+(largura/2),a[1]+(altura/2)]
-    b = [b[0]+(largura/2),b[1]+(altura/2)]
-    c = [c[0]+(largura/2),c[1]+(altura/2)]
+    if a[2] != 0 and b[2] != 0 and c[2] != 0:
 
 
-    for pos0,i in enumerate(tela):
-        if pos0 % largura == 0:
-            cY += 1
-            cX = 0
-        else:
-            cX += 1
-        if ponto_triangulo(a,b,c,[cX,cY]) == True:
-            buffer.append(pos0)
+        a[0] = int(a[0]/a[2])
+        a[1] = int(a[1]/a[2])
+
+        b[0] = int(b[0]/b[2])
+        b[1] = int(b[1]/b[2])
+
+        c[0] = int(c[0]/c[2])
+        c[1] = int(c[1]/c[2])
+
+
+        a = [a[0]+(largura/2),a[1]+(altura/2),a[2]]
+        b = [b[0]+(largura/2),b[1]+(altura/2),b[2]]
+        c = [c[0]+(largura/2),c[1]+(altura/2),c[2]]
+
+
+        for pos0,i in enumerate(tela):
+            if pos0 % largura == 0:
+                cY += 1
+                cX = 0
+            else:
+                cX += 1
+            if ponto_triangulo(a,b,c,[cX,cY]) == True and teste_pixel_z_buffer([cX,cY],(a[2]+c[2]+b[2])/3) == False:
+                buffer.append([pos0,cor])
+                depth.append([cX,cY,(a[2]+c[2]+b[2])/3])
 
 
 def desenha_buffer():
     global buffer
     for c in buffer:
-        tela[c] = '\033[33m█\033[m'
+        tela[c[0]] = f'\033[{c[1]}m█\033[m'
 
 
 def main():
     altura = 35
     largura = 100
     cria_tela(altura, largura)
-    # cria_triangulo([0,0],[-8,8],[8,8],largura,altura)
-    cria_ponto([0,0,1],altura,largura)
+    cria_triangulo([0,0,1],[-8,8,1],[8,8,1],31,largura,altura)
+    cria_triangulo([0,0,2],[-8,8,2],[8,8,2],33,largura,altura)
     desenha_buffer()
     desenha_tela(largura)
 
