@@ -13,6 +13,36 @@ import math
 # biblioteca matemática especializada para OpenGL
 import glm
 
+def cria_esfera(raio):
+    vertices = []
+    ebo = []
+
+    for i in range(30+1):
+        phi = math.pi * i / 30
+
+        for j in range(30+1):
+            theta = 2 *math.pi * j / 30
+
+            x2 = raio * math.sin(phi) * math.cos(theta)
+            y2 = raio * math.cos(phi)
+            z2 = raio * math.sin(phi)* math.sin(theta)
+            normal = [-1,0,0]
+            vertices.append([x2,y2,z2+(raio*0.5),
+                             1, 0, 0,
+                             normal[0], normal[1] , normal[2]])
+    for i in range(30+1):
+        k1 = i * (30+1)
+        k2 = k1 + 30 + 1
+
+        for j in range(30+1):
+            k1 += 1
+            k2 += 1
+
+            if i != 0:
+                ebo.append([k1,k2,k1+1])
+            if i != 30+1:
+                ebo.append([k1+1,k2,k2+1])
+    return [vertices,ebo]
 
 #####################################################
 #            FUNÇÕES DE INICIALIZAÇÃO
@@ -47,40 +77,46 @@ yaw = -90
 # faces
 # [0,1,3]
 # [0,2,3]
-vertices = \
-    [
-        # posição   \\   cor   \\ normal
-        # frente
-        [0.2, 0.2, 0, 1, 0, 0, 0, 0, 1],
-        [-0.2, 0.2, 0, 1, 0, 0, 0, 0, 1],
-        [0.2, -0.2, 0, 1, 0, 0, 0, 0, 1],
-        [-0.2, -0.2, 0, 1, 0, 0, 0, 0, 1],
-        # atrás
-        [0.2, 0.2, 0.36, 1, 0, 0, 0, 0, -1],
-        [-0.2, 0.2, 0.36, 1, 0, 0, 0, 0, -1],
-        [0.2, -0.2, 0.36, 1, 0, 0, 0, 0, -1],
-        [-0.2, -0.2, 0.36, 1, 0, 0, 0, 0, -1]
-    ]
-faces = [
-    # atrás
-    [4, 5, 7],
-    [4, 6, 7],
-    # frente
-    [0, 1, 3],
-    [0, 2, 3],
-    # lado esquerdo
-    [0, 4, 6],
-    [0, 2, 6],
-    # lado direito
-    [1, 5, 3],
-    [3, 5, 7],
-    # cima
-    [0, 4, 1],
-    [4, 1, 5],
-    # baixo
-    [2, 6, 3],
-    [6, 3, 7],
-]
+
+dados = cria_esfera(0.4)
+vertices = dados[0]
+faces = dados[1]
+#
+#
+# vertices = \
+#     [
+#         # posição   \\   cor   \\ normal
+#         # frente
+#         [0.2, 0.2, 0, 1, 0, 0, 0, 0, 1],
+#         [-0.2, 0.2, 0, 1, 0, 0, 0, 0, 1],
+#         [0.2, -0.2, 0, 1, 0, 0, 0, 0, 1],
+#         [-0.2, -0.2, 0, 1, 0, 0, 0, 0, 1],
+#         # atrás
+#         [0.2, 0.2, 0.36, 1, 0, 0, 0, 0, -1],
+#         [-0.2, 0.2, 0.36, 1, 0, 0, 0, 0, -1],
+#         [0.2, -0.2, 0.36, 1, 0, 0, 0, 0, -1],
+#         [-0.2, -0.2, 0.36, 1, 0, 0, 0, 0, -1]
+#     ]
+# faces = [
+#     # atrás
+#     [4, 5, 7],
+#     [4, 6, 7],
+#     # frente
+#     [0, 1, 3],
+#     [0, 2, 3],
+#     # lado esquerdo
+#     [0, 4, 6],
+#     [0, 2, 6],
+#     # lado direito
+#     [1, 5, 3],
+#     [3, 5, 7],
+#     # cima
+#     [0, 4, 1],
+#     [4, 1, 5],
+#     # baixo
+#     [2, 6, 3],
+#     [6, 3, 7],
+# ]
 # quantidade de vértices
 quantidade_vertices = len(vertices)
 # quantidade de faces
@@ -215,7 +251,7 @@ def init():
         float quadratica = 0.032;
         float distancia = length(pos_luz - fragmento_pos);
 
-        float atenuacao = 2.0 / (constante+linear*distancia+quadratica*(distancia*distancia));
+        float atenuacao = 8.0 / (constante+linear*distancia+quadratica*(distancia*distancia));
 
         vec3 direcao_luz = normalize(pos_luz-fragmento_pos);
         float delta = max(dot(fragmento_normal, direcao_luz),0.0);
