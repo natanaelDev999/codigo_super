@@ -12,6 +12,8 @@ import pyrr
 import math
 # biblioteca matemática especializada para OpenGL
 import glm
+# biblioteca para aleatóridade
+import random
 
 def cria_esfera(raio):
     vertices = []
@@ -27,7 +29,7 @@ def cria_esfera(raio):
             y2 = raio * math.cos(phi)
             z2 = raio * math.sin(phi)* math.sin(theta)
             normal = [-1,0,0]
-            vertices.append([x2,y2,z2+(raio*0.5),
+            vertices.append([x2+random.random()/100,y2+random.random()/100,z2+(raio*0.5),
                              1, 0, 0,
                              normal[0], normal[1] , normal[2]])
     for i in range(30+1):
