@@ -3,8 +3,8 @@ import LibraryVectorNatan
 vetor = (2,2)
 vetor2 = (1,0)
 
-vetor3 = (0,1,1)
-vetor4 = (0,1,1)
+vetor3 = (0,0,1)
+vetor4 = (2,0,1)
 
 matriz1 = [[1,0],
            [0,1],
