@@ -1,8 +1,6 @@
 import LibraryVectorNatan as lvn
 import time
 
-from ProjetosProprios.LibraryVectorNatan import normaliza_vetor
-
 #vetores
 vetor_pos = [0,0,0]
 vetor_dir = [0,0,1]
