@@ -69,8 +69,28 @@ def produto_escalar2(vetor1,vetor2):
 def produto_escalar3(vetor1,vetor2):
     return vetor1[0]*vetor2[0]+vetor1[1]*vetor2[1]+vetor1[2]*vetor2[2]
 #---------------------------------------------------------------------
+#                               NORMA
+def norma2(vetor):
+    return math.sqrt(vetor[0]**2+vetor[1]**2)
+def norma3(vetor):
+    return math.sqrt(vetor[0]**2+vetor[1]**2+vetor[2]**2)
 #---------------------------------------------------------------------
-#                          CÁLCULO VETORIAL
+#                        ÂNGULO ENTRE VETORES
+def angulo_vetores_graus(vetor1,vetor2):
+    produto = 0
+    norma_1 = None
+    norma_2 = None
+    if len(vetor1) == 2:
+        produto = produto_escalar2(vetor1,vetor2)
+        norma_1 = norma2(vetor1)
+        norma_2 = norma2(vetor2)
+    elif len(vetor1) == 3:
+        produto = produto_escalar3(vetor1,vetor2)
+        norma_1 = norma3(vetor1)
+        norma_2 = norma3(vetor2)
+    return math.degrees(math.acos(produto/(norma_1*norma_2)))
+#---------------------------------------------------------------------
+#                      CÁLCULO VETORIAL MATRICIAL
 def multiplica_vetor_matriz(vetor,matriz):
     '''
 

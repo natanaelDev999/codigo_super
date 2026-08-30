@@ -3,6 +3,8 @@ import time
 
 #vetores
 vetor_pos = [0,0,0]
+vetor_cima = [0,1,0]
+vetor_direita = [1,0,0]
 vetor_dir = [0,0,1]
 #raytracing variáveis
 y_visao = 4

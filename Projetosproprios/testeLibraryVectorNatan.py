@@ -25,4 +25,4 @@ print("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 print(f"soma: {soma}; subtracao: {subtracao};produto: {produto}; quociente: {quociente}; tamanho: {tamanho}; normalização: {vetor_normalizado}; produto escalar: {produto_escalar}")
 print(produto_escalar2)
 print("resultado da multiplicação vetor e matriz",vetor_mm)
-
+print(LibraryVectorNatan.angulo_vetores_graus([1,0],[0,1]))
