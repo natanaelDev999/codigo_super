@@ -1,4 +1,8 @@
 import LibraryVectorNatan as lvn
+import time
+
+from ProjetosProprios.LibraryVectorNatan import normaliza_vetor
+
 #vetores
 vetor_pos = [0,0,0]
 vetor_dir = [0,0,1]
@@ -48,12 +52,12 @@ def raytracing():
                         matriz_visual[round(vetor_ini[1])][round(vetor_ini[0])] = '█'
                         break
                     else:
-                        vetor_ini = lvn.soma_vetores(vetor_ini,vetor_dir)
+                        vetor_ini = lvn.soma_vetores(vetor_ini,lvn.normaliza_vetor(vetor_dir))
                         print(vetor_ini)
                 else:
-                    vetor_ini = lvn.soma_vetores(vetor_ini, vetor_dir)
+                    vetor_ini = lvn.soma_vetores(vetor_ini, lvn.normaliza_vetor(vetor_dir))
                     print(vetor_ini)
-                if vetor_ini[2] == 4 or vetor_ini[2] < 0:
+                if vetor_ini[2] >= 4 or vetor_ini[2] < 0 or vetor_ini[1] >= 4 or vetor_ini[1] < 0 or vetor_ini[0] >= 4 or vetor_ini[0] < 0:
                     break
 
 def desenha_tela():
@@ -64,6 +68,9 @@ def desenha_tela():
         print()
 
 def main():
+    comeco = time.perf_counter()
     raytracing()
     desenha_tela()
+    fim = time.perf_counter()
+    print(f'{fim-comeco:.6f}')
 main()
