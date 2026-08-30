@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="40f19d69-33a2-4c14-82a8-a0754e89c91b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjetosProprios/RayTracing2.py" beforeDir="false" afterPath="$PROJECT_DIR$/ProjetosProprios/RayTracing2.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -553,9 +554,9 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.RayTracing2" />
+        <item itemvalue="Python.testeLibraryVectorNatan" />
         <item itemvalue="Python.RayTracing" />
         <item itemvalue="Python.desafioTela1D" />
-        <item itemvalue="Python.testeLibraryVectorNatan" />
         <item itemvalue="Python.opengl23" />
       </list>
     </recent_temporary>
