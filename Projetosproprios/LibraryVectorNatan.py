@@ -67,16 +67,37 @@ def produto_escalar2(vetor1,vetor2):
     '''
     return vetor1[0]*vetor2[0]+vetor1[1]*vetor2[1]
 def produto_escalar3(vetor1,vetor2):
+    '''
+    :param vetor1: um dos vetores que pode ser tupla ou lista mas deve ter tamanho de dois itens, este será usado para calcular o produto escalar entre o vetor2 e ele
+    :param vetor2: um dos vetores que pode ser tupla ou lista mas deve ter tamanho de dois itens, este será usado para calcular o produto escalar entre o vetor2 e ele
+    :return: devolve o produto vetorial do vetor1 e vetor2
+    '''
     return vetor1[0]*vetor2[0]+vetor1[1]*vetor2[1]+vetor1[2]*vetor2[2]
 #---------------------------------------------------------------------
 #                               NORMA
 def norma2(vetor):
+    '''
+
+    :param vetor: vetor da qual será retirada a norma, deve ter como quantidade de itens 2
+    :return: retorna a norma do vetor
+    '''
     return math.sqrt(vetor[0]**2+vetor[1]**2)
 def norma3(vetor):
+    '''
+
+    :param vetor: vetor da qual será retirada a norma, deve ter como quantidade de itens 3
+    :return: retorna a norma do vetor
+    '''
     return math.sqrt(vetor[0]**2+vetor[1]**2+vetor[2]**2)
 #---------------------------------------------------------------------
 #                        ÂNGULO ENTRE VETORES
 def angulo_vetores_graus(vetor1,vetor2):
+    '''
+
+    :param vetor1: vetor que pode ter como quantidade de itens 2 ou 3
+    :param vetor2: vetor que pode ter como quantidade de itens 2 ou 3
+    :return: retorna o ângulo entre os dois vetores
+    '''
     produto = 0
     norma_1 = None
     norma_2 = None
@@ -88,7 +109,32 @@ def angulo_vetores_graus(vetor1,vetor2):
         produto = produto_escalar3(vetor1,vetor2)
         norma_1 = norma3(vetor1)
         norma_2 = norma3(vetor2)
-    return math.degrees(math.acos(produto/(norma_1*norma_2)))
+    if norma_1*norma_2 != 0:
+        return math.degrees(math.acos(produto/(norma_1*norma_2)))
+    else:
+        return 0
+def angulo_vetores_radianos(vetor1,vetor2):
+    '''
+
+    :param vetor1: vetor que pode ter como quantidade de itens 2 ou 3
+    :param vetor2: vetor que pode ter como quantidade de itens 2 ou 3
+    :return: retorna o ângulo entre os dois vetores
+    '''
+    produto = 0
+    norma_1 = None
+    norma_2 = None
+    if len(vetor1) == 2:
+        produto = produto_escalar2(vetor1,vetor2)
+        norma_1 = norma2(vetor1)
+        norma_2 = norma2(vetor2)
+    elif len(vetor1) == 3:
+        produto = produto_escalar3(vetor1,vetor2)
+        norma_1 = norma3(vetor1)
+        norma_2 = norma3(vetor2)
+    if norma_1 * norma_2 != 0:
+        return math.degrees(math.acos(produto / (norma_1 * norma_2)))
+    else:
+        return 0
 #---------------------------------------------------------------------
 #                      CÁLCULO VETORIAL MATRICIAL
 def multiplica_vetor_matriz(vetor,matriz):
