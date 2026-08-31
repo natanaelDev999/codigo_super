@@ -6,6 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="40f19d69-33a2-4c14-82a8-a0754e89c91b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projetosproprios/LibraryVectorNatan.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projetosproprios/LibraryVectorNatan.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projetosproprios/RayTracing2.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projetosproprios/RayTracing2.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -366,7 +368,7 @@
       <command value="project038" />
     </option>
   </component>
-  <component name="RunManager" selected="Python.testeLibraryVectorNatan">
+  <component name="RunManager" selected="Python.RayTracing2">
     <configuration name="LibraryVectorNatan" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PythonProject1" />
       <option name="ENV_FILES" value="" />
@@ -552,9 +554,9 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.testeLibraryVectorNatan" />
-        <item itemvalue="Python.LibraryVectorNatan" />
         <item itemvalue="Python.RayTracing2" />
+        <item itemvalue="Python.LibraryVectorNatan" />
+        <item itemvalue="Python.testeLibraryVectorNatan" />
         <item itemvalue="Python.RayTracing" />
         <item itemvalue="Python.desafioTela1D" />
       </list>
