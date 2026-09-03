@@ -20,5 +20,8 @@ while True:
         socket.send((f"-{titulo}").encode())
         artigo = socket.recv(1024).decode()
         print(artigo)
+    cont = str(input("Deseja continuar?: ")).upper()
+    if cont == "N":
+        break
 socket.close()
 input('pressione enter para sair')
