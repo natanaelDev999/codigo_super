@@ -6,7 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="40f19d69-33a2-4c14-82a8-a0754e89c91b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projetosproprios/WikiNatan/artigos.json" beforeDir="false" afterPath="$PROJECT_DIR$/Projetosproprios/WikiNatan/artigos.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Projetosproprios/WikiNatan/cliente_WikiNatan.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projetosproprios/WikiNatan/cliente_WikiNatan.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projetosproprios/WikiNatan/servidor_WikiNatan.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projetosproprios/WikiNatan/servidor_WikiNatan.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -370,7 +372,7 @@
       <command value="project038" />
     </option>
   </component>
-  <component name="RunManager" selected="Python.opengl10">
+  <component name="RunManager" selected="Python.servidor_WikiNatan">
     <configuration name="RayTracing2" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PythonProject1" />
       <option name="ENV_FILES" value="" />
@@ -556,9 +558,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.servidor_WikiNatan" />
         <item itemvalue="Python.opengl10" />
         <item itemvalue="Python.cliente_WikiNatan" />
-        <item itemvalue="Python.servidor_WikiNatan" />
         <item itemvalue="Python.RayTracing2" />
         <item itemvalue="Python.Servidor_Tel-mail" />
       </list>
