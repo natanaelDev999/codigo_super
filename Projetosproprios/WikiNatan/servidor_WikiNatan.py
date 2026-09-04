@@ -1,6 +1,7 @@
 import socket
 import json
 import threading
+import datetime
 
 lock = threading.Lock()
 
@@ -10,14 +11,13 @@ def salva_artigo(titulo,artigo,autor):
     with lock:
         with open("artigos.json",'r') as arquivo:
             dados = json.load(arquivo)
-    dados["artigos"].append([titulo,autor,artigo])
+    dados["artigos"].append([titulo,autor,artigo,str(datetime.date.today())])
     with lock:
         with open("artigos.json",'w') as arquivo2:
             json.dump(dados,arquivo2)
 
 def ler_artigo(titulo):
     global lock
-    print(lock)
     dados = {}
     artigo_retorna = []
     with lock:
@@ -25,9 +25,23 @@ def ler_artigo(titulo):
             dados = json.load(arquivo)
 
     for artigo in dados["artigos"]:
-        if artigo[0] == titulo:
+        if artigo[0] == titulo or titulo in artigo[0]:
             artigo_retorna = artigo
     return artigo_retorna
+
+def modifica_artigo(titulo,artigo_recebido,autor):
+    global lock
+    dados = {}
+    with lock:
+        with open("artigos.json","r") as arquivo:
+            dados = json.load(arquivo)
+    for artigo in dados["artigos"]:
+        if artigo[0] == titulo or titulo in artigo[0]:
+            artigo[1] = str(artigo[1]+','+autor)
+            artigo[2] = artigo_recebido
+    with lock:
+        with open("artigos.json",'w') as arquivo2:
+            json.dump(dados,arquivo2)
 
 def trata_cliente(conexao,ender):
     global lock
@@ -42,7 +56,12 @@ def trata_cliente(conexao,ender):
         elif dados[0] == "-":
             dados = dados[1:]
             artigo = ler_artigo(dados)
-            conexao.sendall((f"Titulo:{artigo[0]}\nAutor:{artigo[1]}\n{artigo[2]}").encode())
+            if len(artigo) > 0:
+                conexao.sendall((f"Titulo:{artigo[0]}\nAutor:{artigo[1]};Criado em:{artigo[3]}\n{artigo[2]}").encode())
+        elif dados[0] == "%":
+            dados = dados[1:]
+            autor, titulo, artigo = dados.split("/")
+            modifica_artigo(titulo,artigo,autor)
 
     conexao.close()
 
