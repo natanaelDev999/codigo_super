@@ -7,7 +7,6 @@
     <list default="true" id="40f19d69-33a2-4c14-82a8-a0754e89c91b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Projetosproprios/WikiNatan/artigos.json" beforeDir="false" afterPath="$PROJECT_DIR$/Projetosproprios/WikiNatan/artigos.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projetosproprios/WikiNatan/cliente_WikiNatan.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projetosproprios/WikiNatan/cliente_WikiNatan.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Projetosproprios/WikiNatan/servidor_WikiNatan.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projetosproprios/WikiNatan/servidor_WikiNatan.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -144,6 +143,7 @@
     &quot;Python.RayTracing2.executor&quot;: &quot;Run&quot;,
     &quot;Python.RenderNatan.executor&quot;: &quot;Run&quot;,
     &quot;Python.Servidor_Tel-mail.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Simulador_vida.executor&quot;: &quot;Run&quot;,
     &quot;Python.__init__.executor&quot;: &quot;Run&quot;,
     &quot;Python._strings.executor&quot;: &quot;Run&quot;,
     &quot;Python.arquivosPastas.executor&quot;: &quot;Run&quot;,
@@ -372,7 +372,32 @@
       <command value="project038" />
     </option>
   </component>
-  <component name="RunManager" selected="Python.servidor_WikiNatan">
+  <component name="RunManager" selected="Python.Simulador_vida">
+    <configuration name="RayTracing" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PythonProject1" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ProjetosProprios" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="DEBUG_JUST_MY_CODE" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="RUN_TOOL" value="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ProjetosProprios/RayTracing.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="true" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="RayTracing2" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PythonProject1" />
       <option name="ENV_FILES" value="" />
@@ -398,7 +423,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Servidor_Tel-mail" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="Simulador_vida" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PythonProject1" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -407,14 +432,14 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/sistema_Tel-mail" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ProjetosProprios" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="DEBUG_JUST_MY_CODE" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="RUN_TOOL" value="" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/sistema_Tel-mail/Servidor_Tel-mail.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ProjetosProprios/Simulador_vida.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="true" />
@@ -440,31 +465,6 @@
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="RUN_TOOL" value="" />
       <option name="SCRIPT_NAME" value="" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="true" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="cliente_WikiNatan" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="PythonProject1" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ProjetosProprios/WikiNatan" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="DEBUG_JUST_MY_CODE" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="RUN_TOOL" value="" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ProjetosProprios/WikiNatan/cliente_WikiNatan.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="true" />
@@ -549,20 +549,20 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Python.testeclass" />
+      <item itemvalue="Python.RayTracing" />
+      <item itemvalue="Python.Simulador_vida" />
       <item itemvalue="Python.RayTracing2" />
-      <item itemvalue="Python.Servidor_Tel-mail" />
-      <item itemvalue="Python.cliente_WikiNatan" />
       <item itemvalue="Python.opengl10" />
       <item itemvalue="Python.servidor_WikiNatan" />
-      <item itemvalue="Python.testeclass" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.Simulador_vida" />
+        <item itemvalue="Python.RayTracing" />
+        <item itemvalue="Python.RayTracing2" />
         <item itemvalue="Python.servidor_WikiNatan" />
         <item itemvalue="Python.opengl10" />
-        <item itemvalue="Python.cliente_WikiNatan" />
-        <item itemvalue="Python.RayTracing2" />
-        <item itemvalue="Python.Servidor_Tel-mail" />
       </list>
     </recent_temporary>
   </component>

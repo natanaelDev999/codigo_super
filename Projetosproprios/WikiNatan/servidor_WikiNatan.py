@@ -49,19 +49,22 @@ def trata_cliente(conexao,ender):
     while True:
         dados = conexao.recv(1024).decode()
         print(dados)
-        if dados[0] == "=":
-            autor, titulo, artigo = dados[1:].split("/")
-            salva_artigo(titulo,artigo,autor)
-            print('[SERVIDOR] artigo criado')
-        elif dados[0] == "-":
-            dados = dados[1:]
-            artigo = ler_artigo(dados)
-            if len(artigo) > 0:
-                conexao.sendall((f"Titulo:{artigo[0]}\nAutor:{artigo[1]};Criado em:{artigo[3]}\n{artigo[2]}").encode())
-        elif dados[0] == "%":
-            dados = dados[1:]
-            autor, titulo, artigo = dados.split("/")
-            modifica_artigo(titulo,artigo,autor)
+        try:
+            if dados[0] == "=":
+                autor, titulo, artigo = dados[1:].split("/")
+                salva_artigo(titulo,artigo,autor)
+                print('[SERVIDOR] artigo criado')
+            elif dados[0] == "-":
+                dados = dados[1:]
+                artigo = ler_artigo(dados)
+                if len(artigo) > 0:
+                    conexao.sendall((f"Titulo:{artigo[0]}\nAutor:{artigo[1]};Criado em:{artigo[3]}\n{artigo[2]}").encode())
+            elif dados[0] == "%":
+                dados = dados[1:]
+                autor, titulo, artigo = dados.split("/")
+                modifica_artigo(titulo,artigo,autor)
+        except:
+            print("[SERVIDOR] houve um problema com o cliente")
 
     conexao.close()
 
