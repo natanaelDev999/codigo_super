@@ -9,6 +9,7 @@ mundo = [[0,0,0,2,0,0,0],
          [0,0,0,2,0,0,0],]
 
 
+neuronios_carga = [0,0,0,0,0,0]
 neuronios_registro = [1,2,3,4,5,6]
 conexoes_registro = []
 fome = 1
@@ -100,7 +101,7 @@ def processamento_fome():
 
 
 def cria_conexao_registro(estimulos):
-    global conexoes_registro,neuronios_registro
+    global conexoes_registro,neuronios_registro,neuronios_carga
     neuronio_2 = []
     for pos0,c in enumerate(neuronios_registro):
         if len(neuronio_2) == 2:
@@ -108,7 +109,9 @@ def cria_conexao_registro(estimulos):
             conexoes_registro.append(neuronio_2)
             break
         if len(neuronio_2) != 2:
-            neuronio_2.append(c)
+            if neuronios_carga[pos0] < 4:
+                neuronios_carga[pos0] += 1
+                neuronio_2.append(c)
 
 
 def sentido_visao():
