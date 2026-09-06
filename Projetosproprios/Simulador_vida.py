@@ -42,6 +42,7 @@ def processamento_fome():
                 if vetor_pos[1] < 5 and vetor_pos[0] + 1 < 7:
                     if mundo[vetor_pos[1]][vetor_pos[0] + 1] == 2:
                         mundo[vetor_pos[1]][vetor_pos[0] + 1] = 0
+                        print("aconteceu")
 
                 if vetor_pos[1] - 1 >= 0 and vetor_pos[0] < 7:
                     if mundo[vetor_pos[1] - 1][vetor_pos[0]] == 2:
@@ -65,7 +66,6 @@ def processamento_fome():
                      "olfato": None, "direção": vetor_dir,
                      "fome": fome,"pos":vetor_pos})
                 mundo[vetor_pos[1]][vetor_pos[0]] = 1
-                break
 
 
             if conexao[2]["visão"] == 0 and conexao[2]["tato"] == 0:
@@ -187,30 +187,33 @@ def mostra_conexoes():
 
 def main():
     global conexoes_registro,vetor_dir
-    mundo[vetor_pos[1]][vetor_pos[0]] = 1
-    respostas_sentido = []
-    respostas_nomeacoes = ["visão","tato","audição","olfato"]
-    respostas_sentido.append(sentido_visao())
-    respostas_sentido.append(sentido_tato())
-    respostas_sentido.append(sentido_audicao())
-    respostas_sentido.append(sentido_olfato())
+    for i in range(0,3):
+        mundo[vetor_pos[1]][vetor_pos[0]] = 1
+        respostas_sentido = []
+        respostas_nomeacoes = ["visão","tato","audição","olfato"]
+        respostas_sentido.append(sentido_visao())
+        respostas_sentido.append(sentido_tato())
+        respostas_sentido.append(sentido_audicao())
+        respostas_sentido.append(sentido_olfato())
 
 
-    for pos0,c in enumerate(respostas_sentido):
-        print(f"{respostas_nomeacoes[pos0]}:{c}",end=';')
-    print()
+        for pos0,c in enumerate(respostas_sentido):
+            print(f"{respostas_nomeacoes[pos0]}:{c}",end=';')
+        print()
 
 
-    cria_conexao_registro({"visão":respostas_sentido[0],"tato":respostas_sentido[1],"audição":respostas_sentido[2],"olfato":respostas_sentido[3],"direção":vetor_dir,
-                           "fome":fome,"pos":vetor_pos})
+        cria_conexao_registro({"visão":respostas_sentido[0],"tato":respostas_sentido[1],"audição":respostas_sentido[2],"olfato":respostas_sentido[3],"direção":vetor_dir,
+                               "fome":fome,"pos":vetor_pos})
 
 
-    processamento_fome()
+        processamento_fome()
 
 
-    mostra_conexoes()
+        mostra_conexoes()
 
 
-    desenha_mundo()
+        desenha_mundo()
+
+        print(fome)
 
 main()
