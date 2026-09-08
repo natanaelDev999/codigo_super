@@ -9,8 +9,8 @@ mundo = [[0,0,0,2,0,0,0],
          [0,0,0,2,0,0,0],]
 
 
-neuronios_carga = [0,0,0,0,0,0]
-neuronios_registro = [1,2,3,4,5,6]
+neuronios_carga =    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 ]
+neuronios_registro = [1,2,3,4,5,6,7,8,9,10,11,12,14,15,16,17,18,19,20]
 conexoes_registro = []
 fome = 1
 
@@ -119,7 +119,7 @@ def sentido_visao():
     vetor_atu = vetor_pos[:]
     resposta = 0
     while True:
-        if vetor_atu[1] < 5 and  vetor_atu[0] < 7:
+        if vetor_atu[1] < 5 and  vetor_atu[0] < 7 and vetor_atu[1] > 0 and vetor_atu[0] > 0:
             print(vetor_atu[1],vetor_atu[0])
             if mundo[vetor_atu[1]][vetor_atu[0]] == 2:
                 resposta = 1
@@ -190,7 +190,7 @@ def mostra_conexoes():
 
 def main():
     global conexoes_registro,vetor_dir,fome
-    for i in range(0,4):
+    for i in range(0,14):
         mundo[vetor_pos[1]][vetor_pos[0]] = 1
         if i == 0:
             desenha_mundo()
