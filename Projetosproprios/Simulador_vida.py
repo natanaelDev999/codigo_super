@@ -34,70 +34,70 @@ def processamento_fome():
         pass
     if c[2]["fome"] == 1:
         for conexao in conexoes_registro:
-            if conexao[2]["tato"] == 1:
-                fome = 0
-                if vetor_pos[1] + 1 < 5 and vetor_pos[0] < 7:
-                    if mundo[vetor_pos[1] + 1][vetor_pos[0]] == 2:
-                        mundo[vetor_pos[1] + 1][vetor_pos[0]] = 0
+            if conexao == conexoes_registro[-1]:
+                if conexao[2]["tato"] == 1:
+                    fome = 0
+                    if vetor_pos[1] + 1 < 5 and vetor_pos[0] < 7:
+                        if mundo[vetor_pos[1] + 1][vetor_pos[0]] == 2:
+                            mundo[vetor_pos[1] + 1][vetor_pos[0]] = 0
 
-                if vetor_pos[1] < 5 and vetor_pos[0] + 1 < 7:
-                    if mundo[vetor_pos[1]][vetor_pos[0] + 1] == 2:
-                        mundo[vetor_pos[1]][vetor_pos[0] + 1] = 0
-                        print("aconteceu")
+                    if vetor_pos[1] < 5 and vetor_pos[0] + 1 < 7:
+                        if mundo[vetor_pos[1]][vetor_pos[0] + 1] == 2:
+                            mundo[vetor_pos[1]][vetor_pos[0] + 1] = 0
 
-                if vetor_pos[1] - 1 >= 0 and vetor_pos[0] < 7:
-                    if mundo[vetor_pos[1] - 1][vetor_pos[0]] == 2:
-                        mundo[vetor_pos[1] - 1][vetor_pos[0]] = 0
+                    if vetor_pos[1] - 1 >= 0 and vetor_pos[0] < 7:
+                        if mundo[vetor_pos[1] - 1][vetor_pos[0]] == 2:
+                            mundo[vetor_pos[1] - 1][vetor_pos[0]] = 0
 
-                if vetor_pos[1] < 5 and vetor_pos[0] - 1 >= 0:
-                    if mundo[vetor_pos[1]][vetor_pos[0] - 1] == 2:
-                        mundo[vetor_pos[1]][vetor_pos[0] - 1] = 0
+                    if vetor_pos[1] < 5 and vetor_pos[0] - 1 >= 0:
+                        if mundo[vetor_pos[1]][vetor_pos[0] - 1] == 2:
+                            mundo[vetor_pos[1]][vetor_pos[0] - 1] = 0
 
-                cria_conexao_registro(
-                    {"visão": None, "tato": None, "audição": None,
-                     "olfato": None, "direção": vetor_dir,
-                     "fome": fome,"pos":vetor_pos})
-
-
-            if conexao[2]["visão"] == 1 and conexao[2]["tato"] == 0:
-                mundo[vetor_pos[1]][vetor_pos[0]] = 0
-                vetor_pos = lvn.soma_vetores(vetor_pos,conexao[2]["direção"])
-                cria_conexao_registro(
-                    {"visão": None, "tato": None, "audição": None,
-                     "olfato": None, "direção": vetor_dir,
-                     "fome": fome,"pos":vetor_pos})
-                mundo[vetor_pos[1]][vetor_pos[0]] = 1
-
-
-            if conexao[2]["visão"] == 0 and conexao[2]["tato"] == 0:
-                if vetor_dir == [1,0]:
-                    vetor_dir = [0,1]
                     cria_conexao_registro(
                         {"visão": None, "tato": None, "audição": None,
                          "olfato": None, "direção": vetor_dir,
                          "fome": fome,"pos":vetor_pos})
-                    return
-                if vetor_dir == [0,1]:
-                    vetor_dir = [-1,0]
+
+
+                if conexao[2]["visão"] == 1 and conexao[2]["tato"] == 0:
+                    mundo[vetor_pos[1]][vetor_pos[0]] = 0
+                    vetor_pos = lvn.soma_vetores(vetor_pos,conexao[2]["direção"])
                     cria_conexao_registro(
                         {"visão": None, "tato": None, "audição": None,
                          "olfato": None, "direção": vetor_dir,
                          "fome": fome,"pos":vetor_pos})
-                    return
-                if vetor_dir == [-1,0]:
-                    vetor_dir = [0,-1]
-                    cria_conexao_registro(
-                        {"visão": None, "tato": None, "audição": None,
-                         "olfato": None, "direção": vetor_dir,
-                         "fome": fome,"pos":vetor_pos})
-                    return
-                if vetor_dir == [0,-1]:
-                    vetor_dir = [1,0]
-                    cria_conexao_registro(
-                        {"visão": None, "tato": None, "audição": None,
-                         "olfato": None, "direção": vetor_dir,
-                         "fome": fome,"pos":vetor_pos})
-                    return
+                    mundo[vetor_pos[1]][vetor_pos[0]] = 1
+
+
+                if conexao[2]["visão"] == 0 and conexao[2]["tato"] == 0:
+                    if vetor_dir == [1,0]:
+                        vetor_dir = [0,1]
+                        cria_conexao_registro(
+                            {"visão": None, "tato": None, "audição": None,
+                             "olfato": None, "direção": vetor_dir,
+                             "fome": fome,"pos":vetor_pos})
+                        return
+                    if vetor_dir == [0,1]:
+                        vetor_dir = [-1,0]
+                        cria_conexao_registro(
+                            {"visão": None, "tato": None, "audição": None,
+                             "olfato": None, "direção": vetor_dir,
+                             "fome": fome,"pos":vetor_pos})
+                        return
+                    if vetor_dir == [-1,0]:
+                        vetor_dir = [0,-1]
+                        cria_conexao_registro(
+                            {"visão": None, "tato": None, "audição": None,
+                             "olfato": None, "direção": vetor_dir,
+                             "fome": fome,"pos":vetor_pos})
+                        return
+                    if vetor_dir == [0,-1]:
+                        vetor_dir = [1,0]
+                        cria_conexao_registro(
+                            {"visão": None, "tato": None, "audição": None,
+                             "olfato": None, "direção": vetor_dir,
+                             "fome": fome,"pos":vetor_pos})
+                        return
 
 
 def cria_conexao_registro(estimulos):
@@ -189,9 +189,11 @@ def mostra_conexoes():
 
 
 def main():
-    global conexoes_registro,vetor_dir
-    for i in range(0,3):
+    global conexoes_registro,vetor_dir,fome
+    for i in range(0,4):
         mundo[vetor_pos[1]][vetor_pos[0]] = 1
+        if i == 0:
+            desenha_mundo()
         respostas_sentido = []
         respostas_nomeacoes = ["visão","tato","audição","olfato"]
         respostas_sentido.append(sentido_visao())
@@ -218,5 +220,8 @@ def main():
         desenha_mundo()
 
         print(fome)
+
+        if i == 2:
+            fome = 1
 
 main()
