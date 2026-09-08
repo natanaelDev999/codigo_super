@@ -5,6 +5,17 @@ import datetime
 
 lock = threading.Lock()
 
+def listar_artigos():
+    global lock
+    lista = ""
+    dados = {}
+    with lock:
+        with open("artigos.json","r") as arquivo:
+            dados = json.load(arquivo)
+    for artigo in dados["artigos"]:
+        lista += f"Nome:{artigo[0]};autor:{artigo[1]}\n"
+    return lista
+
 def salva_artigo(titulo,artigo,autor):
     global lock
     dados = {}
@@ -51,7 +62,7 @@ def trata_cliente(conexao,ender):
         print(dados)
         try:
             if dados[0] == "=":
-                autor, titulo, artigo = dados[1:].split("/")
+                autor, titulo, artigo = dados[1:].split("§")
                 salva_artigo(titulo,artigo,autor)
                 print('[SERVIDOR] artigo criado')
             elif dados[0] == "-":
@@ -61,8 +72,11 @@ def trata_cliente(conexao,ender):
                     conexao.sendall((f"Titulo:{artigo[0]}\nAutor:{artigo[1]};Criado em:{artigo[3]}\n{artigo[2]}").encode())
             elif dados[0] == "%":
                 dados = dados[1:]
-                autor, titulo, artigo = dados.split("/")
+                autor, titulo, artigo = dados.split("§")
                 modifica_artigo(titulo,artigo,autor)
+            elif dados == "A§":
+                lista = listar_artigos()
+                conexao.sendall((lista).encode())
         except:
             print("[SERVIDOR] houve um problema com o cliente")
 
