@@ -1,6 +1,8 @@
 import socket
 import os
 
+#versão 1.5
+
 p = 'localhost'
 port = 9700
 nome = ""
@@ -13,7 +15,7 @@ while True:
     if mensagem == "S":
         titulo = str(input("\033[34mInsira o título do artigo\033[m: "))
         artigo = str(input("\033[34mInsira o texto do artigo\033[m: "))
-        socket.send((f"={nome}/{titulo}/{artigo}").encode())
+        socket.send((f"={nome}§{titulo}§{artigo}").encode())
         print('\033[34martigo criado e mandado ao servidor com sucesso\033[m')
 
     mensagem = str(input("\033[35mDeseja ler um artigo?\033[m: ")).upper()
@@ -27,8 +29,15 @@ while True:
     if mensagem == "S":
         titulo = str(input("\033[35mInsira o título do artigo\033[m: "))
         artigo = str(input("\033[34mInsira o texto do artigo\033[m: "))
-        socket.send((f"%{nome}/{titulo}/{artigo}").encode())
+        socket.send((f"%{nome}§{titulo}§{artigo}").encode())
         print('\033[34martigo modificado e mandado ao servidor com sucesso\033[m')
+
+    mensagem = str(input("\033[34mDeseja ver a lista de artigos?\033[m: ")).upper()
+    if mensagem == "S":
+        socket.send(("A§").encode())
+        print("\033[33mPedido feito ao servidor\033[m")
+        lista = socket.recv(1024).decode()
+        print(lista)
 
     cont = str(input("Deseja continuar?: ")).upper()
     if cont == "N":
