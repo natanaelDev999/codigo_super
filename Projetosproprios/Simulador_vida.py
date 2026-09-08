@@ -9,10 +9,16 @@ mundo = [[0,0,0,2,0,0,0],
          [0,0,0,2,0,0,0],]
 
 
-neuronios_carga =    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 ]
+neuronios_carga_resultado = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+neuronios_resultado =       [1,2,3,4,5,6,7,8,9,10,11,12,14,15,16,17,18,19,20]
+conexoes_resultado = []
+
+
+neuronios_carga_registro =    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 neuronios_registro = [1,2,3,4,5,6,7,8,9,10,11,12,14,15,16,17,18,19,20]
-conexoes_registro = []
+conexoes_registro =  []
 fome = 1
+sinapses_limites = 8
 
 
 vetor_pos = [3,2]
@@ -101,17 +107,52 @@ def processamento_fome():
 
 
 def cria_conexao_registro(estimulos):
-    global conexoes_registro,neuronios_registro,neuronios_carga
+    global conexoes_registro,neuronios_registro,neuronios_carga_registro
     neuronio_2 = []
-    for pos0,c in enumerate(neuronios_registro):
+    anterior = None
+    if len(conexoes_registro) > 0:
+        anterior = conexoes_registro[-1]
+    for pos0, c in enumerate(neuronios_registro):
         if len(neuronio_2) == 2:
             neuronio_2.append(estimulos)
-            conexoes_registro.append(neuronio_2)
+            if anterior != None:
+                if anterior[2] != neuronio_2[2]:
+                    conexoes_registro.append(neuronio_2)
+            else:
+                conexoes_registro.append(neuronio_2)
             break
         if len(neuronio_2) != 2:
-            if neuronios_carga[pos0] < 4:
-                neuronios_carga[pos0] += 1
+            if neuronios_carga_registro[pos0] < sinapses_limites:
+                neuronios_carga_registro[pos0] += 1
                 neuronio_2.append(c)
+
+
+def cria_conexao_resultado():
+    global conexoes_registro, neuronios_resultado, neuronios_carga_registro,conexoes_resultado
+    neuronio_2 = []
+    anterior = None
+    if len(conexoes_resultado) > 0:
+        anterior = conexoes_resultado[-1]
+    for pos0,neuronio in enumerate(neuronios_resultado):
+        if len(neuronio_2) != 2:
+            if neuronios_carga_resultado[pos0] < sinapses_limites:
+                neuronios_carga_resultado[pos0] += 1
+                neuronio_2.append(neuronio)
+        else:
+            neuronio_2.append({})
+            for conexao in conexoes_registro:
+                if conexao[2]["tato"] == 1:
+                    # estrutura: [estimulos(que trouxeram algo bom)]
+                    neuronio_2[2] = conexao[2]
+                    break
+            if anterior != None:
+                if anterior[2] != neuronio_2[2]:
+                    if len(neuronio_2[2]) != 0:
+                        conexoes_resultado.append(neuronio_2)
+            else:
+                if len(neuronio_2[2]) != 0:
+                    conexoes_resultado.append(neuronio_2)
+            break
 
 
 def sentido_visao():
@@ -182,15 +223,21 @@ def desenha_mundo():
         print()
 
 
-def mostra_conexoes():
+def mostra_conexoes_registro():
     global conexoes_registro
     for c in conexoes_registro:
         print(f"{c[0]};{c[1]};{c[2]}")
 
 
+def mostra_conexoes_resultado():
+    global conexoes_resultado
+    for c in conexoes_resultado:
+        print(f"\033[31m{c[0]};{c[1]};{c[2]}\033[m")
+
+
 def main():
     global conexoes_registro,vetor_dir,fome
-    for i in range(0,14):
+    for i in range(0,8):
         mundo[vetor_pos[1]][vetor_pos[0]] = 1
         if i == 0:
             desenha_mundo()
@@ -211,10 +258,16 @@ def main():
                                "fome":fome,"pos":vetor_pos})
 
 
+        cria_conexao_resultado()
+
+
         processamento_fome()
 
 
-        mostra_conexoes()
+        mostra_conexoes_registro()
+
+
+        mostra_conexoes_resultado()
 
 
         desenha_mundo()
