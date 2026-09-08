@@ -6,8 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="40f19d69-33a2-4c14-82a8-a0754e89c91b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjetosProprios/WikiNatan/cliente_WikiNatan.py" beforeDir="false" afterPath="$PROJECT_DIR$/ProjetosProprios/WikiNatan/cliente_WikiNatan.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjetosProprios/WikiNatan/servidor_WikiNatan.py" beforeDir="false" afterPath="$PROJECT_DIR$/ProjetosProprios/WikiNatan/servidor_WikiNatan.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjetosProprios/Simulador_vida.py" beforeDir="false" afterPath="$PROJECT_DIR$/ProjetosProprios/Simulador_vida.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
