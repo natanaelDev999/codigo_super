@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="40f19d69-33a2-4c14-82a8-a0754e89c91b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjetosProprios/Simulador_vida.py" beforeDir="false" afterPath="$PROJECT_DIR$/ProjetosProprios/Simulador_vida.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -336,7 +335,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.tools&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;memory.settings&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -472,7 +471,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="opengl10" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="desafioTela1D" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PythonProject1" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -488,7 +487,7 @@
       <option name="DEBUG_JUST_MY_CODE" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="RUN_TOOL" value="" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ProjetosProprios/opengl10.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ProjetosProprios/desafioTela1D.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="true" />
@@ -552,16 +551,16 @@
       <item itemvalue="Python.RayTracing2" />
       <item itemvalue="Python.RayTracing" />
       <item itemvalue="Python.Simulador_vida" />
-      <item itemvalue="Python.opengl10" />
+      <item itemvalue="Python.desafioTela1D" />
       <item itemvalue="Python.servidor_WikiNatan" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.Simulador_vida" />
+        <item itemvalue="Python.desafioTela1D" />
         <item itemvalue="Python.RayTracing" />
         <item itemvalue="Python.RayTracing2" />
         <item itemvalue="Python.servidor_WikiNatan" />
-        <item itemvalue="Python.opengl10" />
       </list>
     </recent_temporary>
   </component>
