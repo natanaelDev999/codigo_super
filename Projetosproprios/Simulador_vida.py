@@ -14,8 +14,8 @@ neuronios_resultado =       [1,2,3,4,5,6,7,8,9,10,11,12,14,15,16,17,18,19,20]
 conexoes_resultado = []
 
 
-neuronios_carga_registro =    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-neuronios_registro = [1,2,3,4,5,6,7,8,9,10,11,12,14,15,16,17,18,19,20]
+neuronios_carga_registro =  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+neuronios_registro =        [1,2,3,4,5,6,7,8,9,10,11,12,14,15,16,17,18,19,20]
 conexoes_registro =  []
 fome = 1
 sinapses_limites = 8
@@ -31,6 +31,44 @@ vetor_dir = [1,0]
 #------------------------------------------------------------
 
 #visão,tato,audição,olfato
+
+
+def processamento_resultados():
+    global conexoes_resultado,conexoes_registro,vetor_dir
+    estado_momento = None
+    for c in conexoes_registro:
+        estado_momento = c[:]
+    for conexao in conexoes_resultado:
+        if estado_momento[2]["visão"] != conexao[2]["visão"]:
+            print("llllllll")
+            if vetor_dir == [1, 0]:
+                vetor_dir = [0, 1]
+                cria_conexao_registro(
+                    {"visão": None, "tato": None, "audição": None,
+                     "olfato": None, "direção": vetor_dir,
+                     "fome": fome, "pos": vetor_pos})
+                break
+            if vetor_dir == [0, 1]:
+                vetor_dir = [-1, 0]
+                cria_conexao_registro(
+                    {"visão": None, "tato": None, "audição": None,
+                     "olfato": None, "direção": vetor_dir,
+                     "fome": fome, "pos": vetor_pos})
+                break
+            if vetor_dir == [-1, 0]:
+                vetor_dir = [0, -1]
+                cria_conexao_registro(
+                    {"visão": None, "tato": None, "audição": None,
+                     "olfato": None, "direção": vetor_dir,
+                     "fome": fome, "pos": vetor_pos})
+                break
+            if vetor_dir == [0, -1]:
+                vetor_dir = [1, 0]
+                cria_conexao_registro(
+                    {"visão": None, "tato": None, "audição": None,
+                     "olfato": None, "direção": vetor_dir,
+                     "fome": fome, "pos": vetor_pos})
+                break
 
 
 def processamento_fome():
@@ -128,7 +166,7 @@ def cria_conexao_registro(estimulos):
 
 
 def cria_conexao_resultado():
-    global conexoes_registro, neuronios_resultado, neuronios_carga_registro,conexoes_resultado
+    global conexoes_registro, neuronios_resultado, neuronios_carga_registro,conexoes_resultado,sinapses_limites
     neuronio_2 = []
     anterior = None
     if len(conexoes_resultado) > 0:
@@ -141,7 +179,7 @@ def cria_conexao_resultado():
         else:
             neuronio_2.append({})
             for conexao in conexoes_registro:
-                if conexao[2]["tato"] == 1:
+                if conexao[2]["visão"] == 1:
                     # estrutura: [estimulos(que trouxeram algo bom)]
                     neuronio_2[2] = conexao[2]
                     break
@@ -152,7 +190,8 @@ def cria_conexao_resultado():
             else:
                 if len(neuronio_2[2]) != 0:
                     conexoes_resultado.append(neuronio_2)
-            break
+            anterior = neuronio_2
+            neuronio_2 = []
 
 
 def sentido_visao():
@@ -258,10 +297,13 @@ def main():
                                "fome":fome,"pos":vetor_pos})
 
 
-        cria_conexao_resultado()
+        processamento_resultados()
 
 
         processamento_fome()
+
+
+        cria_conexao_resultado()
 
 
         mostra_conexoes_registro()
