@@ -27,7 +27,8 @@ vetor_dir = [1,0]
 
 #------------------------------------------------------------
 #                       CÉREBRO DO SER
-#Procura oque precisa:hipotálamo;função:processamento_fome()
+#Procura oque precisa:processamento_fome()
+#Trata com oque sabe:processamento_resultados
 #------------------------------------------------------------
 
 #visão,tato,audição,olfato
@@ -40,35 +41,32 @@ def processamento_resultados():
         estado_momento = c[:]
     for conexao in conexoes_resultado:
         if estado_momento[2]["visão"] != conexao[2]["visão"]:
-            print("llllllll")
             if vetor_dir == [1, 0]:
                 vetor_dir = [0, 1]
                 cria_conexao_registro(
                     {"visão": None, "tato": None, "audição": None,
                      "olfato": None, "direção": vetor_dir,
                      "fome": fome, "pos": vetor_pos})
-                break
-            if vetor_dir == [0, 1]:
+            elif vetor_dir == [0, 1]:
                 vetor_dir = [-1, 0]
                 cria_conexao_registro(
                     {"visão": None, "tato": None, "audição": None,
                      "olfato": None, "direção": vetor_dir,
                      "fome": fome, "pos": vetor_pos})
-                break
-            if vetor_dir == [-1, 0]:
+            elif vetor_dir == [-1, 0]:
                 vetor_dir = [0, -1]
                 cria_conexao_registro(
                     {"visão": None, "tato": None, "audição": None,
                      "olfato": None, "direção": vetor_dir,
                      "fome": fome, "pos": vetor_pos})
-                break
-            if vetor_dir == [0, -1]:
+
+            elif vetor_dir == [0, -1]:
                 vetor_dir = [1, 0]
                 cria_conexao_registro(
                     {"visão": None, "tato": None, "audição": None,
                      "olfato": None, "direção": vetor_dir,
                      "fome": fome, "pos": vetor_pos})
-                break
+
 
 
 def processamento_fome():
@@ -176,13 +174,12 @@ def cria_conexao_resultado():
             if neuronios_carga_resultado[pos0] < sinapses_limites:
                 neuronios_carga_resultado[pos0] += 1
                 neuronio_2.append(neuronio)
-        else:
+        if len(neuronio_2) == 2:
             neuronio_2.append({})
             for conexao in conexoes_registro:
                 if conexao[2]["visão"] == 1:
                     # estrutura: [estimulos(que trouxeram algo bom)]
                     neuronio_2[2] = conexao[2]
-                    break
             if anterior != None:
                 if anterior[2] != neuronio_2[2]:
                     if len(neuronio_2[2]) != 0:
@@ -276,7 +273,7 @@ def mostra_conexoes_resultado():
 
 def main():
     global conexoes_registro,vetor_dir,fome
-    for i in range(0,8):
+    for i in range(0,10):
         mundo[vetor_pos[1]][vetor_pos[0]] = 1
         if i == 0:
             desenha_mundo()
