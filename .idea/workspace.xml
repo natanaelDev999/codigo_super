@@ -547,12 +547,12 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.testeclass" />
       <item itemvalue="Python.RayTracing2" />
       <item itemvalue="Python.RayTracing" />
       <item itemvalue="Python.Simulador_vida" />
       <item itemvalue="Python.desafioTela1D" />
       <item itemvalue="Python.servidor_WikiNatan" />
+      <item itemvalue="Python.testeclass" />
     </list>
     <recent_temporary>
       <list>
