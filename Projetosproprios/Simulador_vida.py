@@ -35,7 +35,7 @@ vetor_dir = [1,0]
 
 
 def processamento_resultados():
-    global conexoes_resultado,conexoes_registro,vetor_dir
+    global conexoes_resultado,conexoes_registro,vetor_dir,vetor_pos
     estado_momento = None
     for c in conexoes_registro:
         estado_momento = c[:]
@@ -66,7 +66,12 @@ def processamento_resultados():
                     {"visão": None, "tato": None, "audição": None,
                      "olfato": None, "direção": vetor_dir,
                      "fome": fome, "pos": vetor_pos})
-
+            if sentido_visao() == 0 and fome == 1:
+                mundo[vetor_pos[1]][vetor_pos[0]] = 0
+                vetor_uti = lvn.soma_vetores(vetor_pos,vetor_dir)
+                if vetor_uti[1] < 4 and vetor_uti[0] < 6:
+                    vetor_pos = lvn.soma_vetores(vetor_pos,vetor_dir)
+                    mundo[vetor_uti[1]][vetor_uti[0]] = 1
 
 
 def processamento_fome():
@@ -187,8 +192,7 @@ def cria_conexao_resultado():
             else:
                 if len(neuronio_2[2]) != 0:
                     conexoes_resultado.append(neuronio_2)
-            anterior = neuronio_2
-            neuronio_2 = []
+            break
 
 
 def sentido_visao():
@@ -273,7 +277,7 @@ def mostra_conexoes_resultado():
 
 def main():
     global conexoes_registro,vetor_dir,fome
-    for i in range(0,10):
+    for i in range(0,12):
         mundo[vetor_pos[1]][vetor_pos[0]] = 1
         if i == 0:
             desenha_mundo()
@@ -314,6 +318,10 @@ def main():
         print(fome)
 
         if i == 2:
+            fome = 1
+        if i == 6:
+            fome = 1
+        if i == 9:
             fome = 1
 
 main()
