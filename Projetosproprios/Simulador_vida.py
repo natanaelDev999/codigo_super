@@ -6,7 +6,7 @@ mundo = [[0,0,0,2,0,0,0],
          [0,0,0,0,0,0,0],
          [0,2,0,0,0,2,0],
          [0,0,0,0,0,0,0],
-         [0,0,0,2,0,0,0],]
+         [0,0,2,0,0,0,0],]
 
 
 neuronios_carga_resultado = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
@@ -40,7 +40,7 @@ def processamento_resultados():
     for c in conexoes_registro:
         estado_momento = c[:]
     for conexao in conexoes_resultado:
-        if estado_momento[2]["visão"] != conexao[2]["visão"]:
+        if estado_momento[2]["visão"] != conexao[2]["visão"] and estado_momento[2]["tato"] == 0:
             if vetor_dir == [1, 0]:
                 vetor_dir = [0, 1]
                 cria_conexao_registro(
@@ -66,7 +66,7 @@ def processamento_resultados():
                     {"visão": None, "tato": None, "audição": None,
                      "olfato": None, "direção": vetor_dir,
                      "fome": fome, "pos": vetor_pos})
-            if sentido_visao() == 0 and fome == 1:
+            if sentido_visao() == 0 and fome == 1 and estado_momento[2]["tato"] == 0:
                 mundo[vetor_pos[1]][vetor_pos[0]] = 0
                 vetor_uti = lvn.soma_vetores(vetor_pos,vetor_dir)
                 if vetor_uti[1] < 4 and vetor_uti[0] < 6:
@@ -277,7 +277,7 @@ def mostra_conexoes_resultado():
 
 def main():
     global conexoes_registro,vetor_dir,fome
-    for i in range(0,12):
+    for i in range(0,11):
         mundo[vetor_pos[1]][vetor_pos[0]] = 1
         if i == 0:
             desenha_mundo()
