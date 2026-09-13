@@ -18,7 +18,7 @@ neuronios_carga_registro =  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 neuronios_registro =        [1,2,3,4,5,6,7,8,9,10,11,12,14,15,16,17,18,19,20]
 conexoes_registro =  []
 fome = 1
-sinapses_limites = 8
+sinapses_limites = 64
 
 
 vetor_pos = [3,2]
@@ -39,6 +39,7 @@ def processamento_resultados():
     estado_momento = None
     for c in conexoes_registro:
         estado_momento = c[:]
+    roda = 0
     for conexao in conexoes_resultado:
         if estado_momento[2]["visão"] != conexao[2]["visão"] and estado_momento[2]["tato"] == 0:
             if vetor_dir == [1, 0]:
@@ -47,31 +48,35 @@ def processamento_resultados():
                     {"visão": None, "tato": None, "audição": None,
                      "olfato": None, "direção": vetor_dir,
                      "fome": fome, "pos": vetor_pos})
+                roda+= 1
             elif vetor_dir == [0, 1]:
                 vetor_dir = [-1, 0]
                 cria_conexao_registro(
                     {"visão": None, "tato": None, "audição": None,
                      "olfato": None, "direção": vetor_dir,
                      "fome": fome, "pos": vetor_pos})
+                roda += 1
             elif vetor_dir == [-1, 0]:
                 vetor_dir = [0, -1]
                 cria_conexao_registro(
                     {"visão": None, "tato": None, "audição": None,
                      "olfato": None, "direção": vetor_dir,
                      "fome": fome, "pos": vetor_pos})
-
+                roda += 1
             elif vetor_dir == [0, -1]:
                 vetor_dir = [1, 0]
                 cria_conexao_registro(
                     {"visão": None, "tato": None, "audição": None,
                      "olfato": None, "direção": vetor_dir,
                      "fome": fome, "pos": vetor_pos})
-            if sentido_visao() == 0 and fome == 1 and estado_momento[2]["tato"] == 0:
+                roda += 1
+            if sentido_visao() == 0 and fome == 1 and estado_momento[2]["tato"] == 0 and roda == 4:
                 mundo[vetor_pos[1]][vetor_pos[0]] = 0
                 vetor_uti = lvn.soma_vetores(vetor_pos,vetor_dir)
                 if vetor_uti[1] < 4 and vetor_uti[0] < 6:
                     vetor_pos = lvn.soma_vetores(vetor_pos,vetor_dir)
                     mundo[vetor_uti[1]][vetor_uti[0]] = 1
+                roda = 0
 
 
 def processamento_fome():
@@ -84,6 +89,24 @@ def processamento_fome():
             if conexao == conexoes_registro[-1]:
                 if conexao[2]["tato"] == 1:
                     fome = 0
+
+                    if vetor_pos[1] + 1 < 5 and vetor_pos[0] + 1 < 7:
+                        if mundo[vetor_pos[1] + 1][vetor_pos[0] + 1] == 2:
+                            mundo[vetor_pos[1] + 1][vetor_pos[0] + 1] = 0
+
+                    if vetor_pos[1] - 1 >= 0 and vetor_pos[0] - 1 < 7:
+                        if mundo[vetor_pos[1] - 1][vetor_pos[0] - 1] == 2:
+                            mundo[vetor_pos[1] - 1][vetor_pos[0] - 1] = 0
+
+                    if vetor_pos[1] + 1 < 5 and vetor_pos[0] - 1 < 7:
+                        if mundo[vetor_pos[1] + 1][vetor_pos[0] - 1] == 2:
+                            mundo[vetor_pos[1] + 1][vetor_pos[0] - 1] = 0
+
+                    if vetor_pos[1] - 1 < 5 and vetor_pos[0] + 1 < 7:
+                        if mundo[vetor_pos[1] - 1][vetor_pos[0] + 1] == 2:
+                            mundo[vetor_pos[1] - 1][vetor_pos[0] + 1] = 0
+
+
                     if vetor_pos[1] + 1 < 5 and vetor_pos[0] < 7:
                         if mundo[vetor_pos[1] + 1][vetor_pos[0]] == 2:
                             mundo[vetor_pos[1] + 1][vetor_pos[0]] = 0
@@ -208,6 +231,10 @@ def sentido_visao():
             else:
                 vetor_atu = lvn.soma_vetores(vetor_atu,vetor_dir)
                 vetor_atu = [round(vetor_atu[0]),round(vetor_atu[1])]
+        elif vetor_atu[1]+vetor_dir[1] < 5 and  vetor_atu[0]+vetor_dir[0] < 7 and vetor_atu[1] > 0 and vetor_atu[0] > 0:
+            if mundo[vetor_atu[1]+vetor_dir[1]][vetor_atu[0]+vetor_dir[0]] == 2:
+                resposta = 1
+                break
         else:
             break
     return resposta
@@ -237,6 +264,25 @@ def sentido_olfato():
 def sentido_tato():
     global mundo, vetor_pos
     resposta = 0
+    if vetor_pos[1]+1 < 5 and vetor_pos[0]+1 < 7:
+        if mundo[vetor_pos[1]+1][vetor_pos[0]+1] == 2:
+            resposta = 1
+
+    if vetor_pos[1]-1 >= 0 and vetor_pos[0]-1 < 7:
+        if mundo[vetor_pos[1]-1][vetor_pos[0]-1] == 2:
+            resposta = 1
+
+    if vetor_pos[1]+1 < 5 and vetor_pos[0]-1 < 7:
+        if mundo[vetor_pos[1]+1][vetor_pos[0]-1] == 2:
+            resposta = 1
+
+    if vetor_pos[1]-1 < 5 and vetor_pos[0]+1 < 7:
+        if mundo[vetor_pos[1]-1][vetor_pos[0]+1] == 2:
+            resposta = 1
+
+
+
+
     if vetor_pos[1]+1 < 5 and vetor_pos[0] < 7:
         if mundo[vetor_pos[1]+1][vetor_pos[0]] == 2:
             resposta = 1
@@ -277,7 +323,7 @@ def mostra_conexoes_resultado():
 
 def main():
     global conexoes_registro,vetor_dir,fome
-    for i in range(0,11):
+    for i in range(0,33):
         mundo[vetor_pos[1]][vetor_pos[0]] = 1
         if i == 0:
             desenha_mundo()
@@ -299,6 +345,11 @@ def main():
 
 
         processamento_resultados()
+
+        cria_conexao_registro(
+            {"visão": respostas_sentido[0], "tato": respostas_sentido[1], "audição": respostas_sentido[2],
+             "olfato": respostas_sentido[3], "direção": vetor_dir,
+             "fome": fome, "pos": vetor_pos})
 
 
         processamento_fome()
@@ -322,6 +373,8 @@ def main():
         if i == 6:
             fome = 1
         if i == 9:
+            fome = 1
+        if i == 12:
             fome = 1
 
 main()
