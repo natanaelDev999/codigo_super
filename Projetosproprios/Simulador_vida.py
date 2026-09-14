@@ -224,17 +224,12 @@ def sentido_visao():
     resposta = 0
     while True:
         if vetor_atu[1] < 5 and  vetor_atu[0] < 7 and vetor_atu[1] > 0 and vetor_atu[0] > 0:
-            print(vetor_atu[1],vetor_atu[0])
             if mundo[vetor_atu[1]][vetor_atu[0]] == 2:
                 resposta = 1
                 break
             else:
                 vetor_atu = lvn.soma_vetores(vetor_atu,vetor_dir)
                 vetor_atu = [round(vetor_atu[0]),round(vetor_atu[1])]
-        elif vetor_atu[1]+vetor_dir[1] < 5 and  vetor_atu[0]+vetor_dir[0] < 7 and vetor_atu[1] > 0 and vetor_atu[0] > 0:
-            if mundo[vetor_atu[1]+vetor_dir[1]][vetor_atu[0]+vetor_dir[0]] == 2:
-                resposta = 1
-                break
         else:
             break
     return resposta
@@ -323,7 +318,7 @@ def mostra_conexoes_resultado():
 
 def main():
     global conexoes_registro,vetor_dir,fome
-    for i in range(0,33):
+    for i in range(0,15):
         mundo[vetor_pos[1]][vetor_pos[0]] = 1
         if i == 0:
             desenha_mundo()
@@ -368,13 +363,13 @@ def main():
 
         print(fome)
 
+        print(i)
+
         if i == 2:
             fome = 1
         if i == 6:
             fome = 1
         if i == 9:
-            fome = 1
-        if i == 12:
             fome = 1
 
 main()
