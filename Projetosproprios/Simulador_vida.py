@@ -318,7 +318,7 @@ def mostra_conexoes_resultado():
 
 def main():
     global conexoes_registro,vetor_dir,fome
-    for i in range(0,15):
+    for i in range(0,9):
         mundo[vetor_pos[1]][vetor_pos[0]] = 1
         if i == 0:
             desenha_mundo()
@@ -368,8 +368,6 @@ def main():
         if i == 2:
             fome = 1
         if i == 6:
-            fome = 1
-        if i == 9:
             fome = 1
 
 main()
