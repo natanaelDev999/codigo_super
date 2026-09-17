@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="40f19d69-33a2-4c14-82a8-a0754e89c91b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projetosproprios/simulador_celular.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projetosproprios/simulador_celular.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -373,7 +372,7 @@
       <command value="project038" />
     </option>
   </component>
-  <component name="RunManager" selected="Python.opengl10">
+  <component name="RunManager" selected="Python.simulador_celular">
     <configuration name="LibraryVectorNatan" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PythonProject1" />
       <option name="ENV_FILES" value="" />
@@ -550,18 +549,18 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.testeclass" />
-      <item itemvalue="Python.opengl10" />
-      <item itemvalue="Python.simulador_celular" />
       <item itemvalue="Python.LibraryVectorNatan" />
       <item itemvalue="Python.Simulador_vida" />
       <item itemvalue="Python.desafioTela1D" />
+      <item itemvalue="Python.opengl10" />
+      <item itemvalue="Python.simulador_celular" />
+      <item itemvalue="Python.testeclass" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.simulador_celular" />
         <item itemvalue="Python.opengl10" />
         <item itemvalue="Python.Simulador_vida" />
-        <item itemvalue="Python.simulador_celular" />
         <item itemvalue="Python.desafioTela1D" />
         <item itemvalue="Python.LibraryVectorNatan" />
       </list>
