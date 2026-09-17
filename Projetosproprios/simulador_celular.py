@@ -12,7 +12,7 @@ mundo = [[' ',' ',' ',' ',' ',' ',' ',' '],
          [' ',' ',' ',' ',' ',' ',' ',' '],
          [' ',' ',' ',' ',' ',' ',' ',' ']]
 
-particulas_a = [[5,5]]
+particulas_a = [[5,5],[3,5],[5,3],[3,1],[5,1],[1,1],[1,3],[1,5]]
 particulas_b = [[3,3]]
 
 def desenha_particulas_a():
@@ -27,17 +27,19 @@ def desenha_particulas_b():
 
 def trata_particulas_a():
     global mundo
-    vetor_pos1 = []
-    vetor_pos2 = []
-    vetor_dir = [0,0]
     for pos0,c in enumerate(mundo):
         for pos1,v in enumerate(c):
             if v == '1':
+                print([pos1, pos0])
+                vetor_pos1 = []
+                vetor_pos2 = []
+                vetor_dir = [0, 0]
                 vetor_pos1 = [pos1,pos0]
                 for pos2,c2 in enumerate(mundo):
                     for pos3,v2 in enumerate(c2):
                         if v2 == '2':
                             vetor_pos2 = [pos3,pos2]
+                            break
                 if len(vetor_pos1) > 0 and len(vetor_pos2) > 0:
                     deltaX = vetor_pos1[0] - vetor_pos2[0]
                     deltaY = vetor_pos1[1] - vetor_pos2[1]
@@ -52,9 +54,10 @@ def trata_particulas_a():
                         if deltaY > 0:
                             vetor_dir[1] = -1
                         vetor_novo = lvn.soma_vetores(vetor_dir,vetor_pos1)
-                        if mundo[vetor_novo[1]][vetor_novo[0]] == ' ':
-                            mundo[vetor_novo[1]][vetor_novo[0]] = '1'
-                            mundo[vetor_pos1[1]][vetor_pos1[0]] = ' '
+                        if vetor_novo[0] < 8 and vetor_novo[1] < 10:
+                            if mundo[vetor_novo[1]][vetor_novo[0]] == ' ':
+                                mundo[vetor_novo[1]][vetor_novo[0]] = '1'
+                                mundo[vetor_pos1[1]][vetor_pos1[0]] = ' '
 
 
 def desenha_mundo():
@@ -69,7 +72,6 @@ def main():
     desenha_particulas_a()
     desenha_particulas_b()
     desenha_mundo()
-    trata_particulas_a()
     trata_particulas_a()
     print('-----------------------------------')
     desenha_mundo()
