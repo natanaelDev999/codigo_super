@@ -23,7 +23,7 @@ vetor_mm = LibraryVectorNatan.multiplica_vetor_matriz(vetor,matriz1)
 pot = LibraryVectorNatan.potencia_vetores(vetor,2)
 # visualiza
 print("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=")
-print(f"soma: {soma}; subtracao: {subtracao};produto: {produto}; quociente: {quociente}; tamanho: {tamanho}; normalização: {vetor_normalizado}; produto escalar: {produto_escalar}")
+print(f"soma: {soma}; subtracao: {subtracao}; produto: {produto}; quociente: {quociente}; tamanho: {tamanho}; normalização: {vetor_normalizado}; produto escalar: {produto_escalar}")
 print(produto_escalar2)
 print(pot)
 print("resultado da multiplicação vetor e matriz",vetor_mm)
