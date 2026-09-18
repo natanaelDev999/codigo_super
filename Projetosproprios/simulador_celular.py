@@ -13,7 +13,7 @@ mundo = [[' ',' ',' ',' ',' ',' ',' ',' '],
          [' ',' ',' ',' ',' ',' ',' ',' ']]
 
 
-particulas_a = [[5,5],[3,5],[6,3],[3,1],[5,1],[1,1],[1,3],[1,5]]
+particulas_a = [[5,5],[3,5],[5,3],[3,1],[5,1],[1,1],[1,3],[1,5]]
 particulas_b = [[3,3],[7,3]]
 
 
@@ -34,10 +34,9 @@ def trata_particulas_a():
     for pos0,c in enumerate(mundo):
         for pos1,v in enumerate(c):
             if v == '1':
-                vetor_pos1 = []
-                vetor_pos2 = []
                 vetor_dir = [0, 0]
                 vetor_pos1 = [pos1,pos0]
+                vetor_novo = vetor_pos1
                 for pos2,c2 in enumerate(mundo):
                     for pos3,v2 in enumerate(c2):
                         if v2 == '2':
@@ -60,6 +59,9 @@ def trata_particulas_a():
                                         if mundo[vetor_novo[1]][vetor_novo[0]] == ' ':
                                             mundo[vetor_novo[1]][vetor_novo[0]] = '1'
                                             mundo[vetor_pos1[1]][vetor_pos1[0]] = ' '
+                                            vetor_pos1[0] = vetor_novo[0]
+                                            vetor_pos1[1] = vetor_novo[1]
+                                    vetor_dir = [0,0]
 
 
 def desenha_mundo():
