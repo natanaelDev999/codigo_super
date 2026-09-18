@@ -8,6 +8,12 @@ import math
 #---------------------------------------------------------------------
 #                        OPERAÇÕES MATEMÁTICAS
 #---------------------------------------------------------------------
+# potência de vetores
+def potencia_vetores(vetor1,elevacao):
+    vetor_saida = []
+    for c in vetor1:
+        vetor_saida.append(c**elevacao)
+    return vetor_saida
 # soma de vetores
 def soma_vetores(vetor1,vetor2):
     '''

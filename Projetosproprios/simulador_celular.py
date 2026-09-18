@@ -45,7 +45,7 @@ def trata_particulas_a():
                                 deltaX = vetor_pos1[0] - vetor_pos2[0]
                                 deltaY = vetor_pos1[1] - vetor_pos2[1]
                                 dist = math.sqrt(deltaX**2+deltaY**2)
-                                if dist <= 3:
+                                if dist <= 4:
                                     if deltaX < 0:
                                         vetor_dir[0] = 1
                                     if deltaX > 0:
@@ -77,6 +77,7 @@ def main():
     desenha_particulas_a()
     desenha_particulas_b()
     desenha_mundo()
+    trata_particulas_a()
     trata_particulas_a()
     print('-----------------------------------')
     desenha_mundo()
