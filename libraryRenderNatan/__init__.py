@@ -681,7 +681,7 @@ def trata_terminal(fps):
     elif fps == 6:
         time.sleep(0.001)
     # limpa terminal
-    sys.stdout.write("\033[H")
+    sys.stdout.write('\033[H')
     sys.stdout.flush()
     # some o cursor de digitação
     sys.stdout.write("\033[?25l")
