@@ -45,18 +45,19 @@ def adiciona_dados(tipo,dados):
         elif tipo == "BDA" or tipo == "Buffer de Dados para Aparência":
             bda = dados
 # projeta vértices
-def projeta_vertices():
+def projeta_vertices(desenha_pontos=False):
     global bdv,largura,altura,bda
     proj = []
     for pos0,p in enumerate(bdv):
         if p[2] > 0:
             proj.append([int((p[0]/p[2])+(largura/2)),
                          int((p[1]/p[2])+(altura/2)),pos0,p[2]])
-            if (p[0] / p[2]) + (largura / 2) < largura and (p[1] / p[2]) + (altura / 2) < altura:
-                if pos0 < len(bda):
-                    if trata_z_buffer(int((p[0]/p[2])+(largura/2)),int((p[1]/p[2])+(altura/2)),p[2]) == True:
-                        tela[int((p[1]/p[2])+(altura/2))][int((p[0]/p[2])+(largura/2))] = f'\033[38;2;{bda[pos0][0]};{bda[pos0][1]};{bda[pos0][2]}m█\033[m'
-                        z_buffer[int((p[1]/p[2])+(altura/2))][int((p[0]/p[2])+(largura/2))] = p[2]
+            if desenha_pontos == True:
+                if (p[0] / p[2]) + (largura / 2) < largura and (p[1] / p[2]) + (altura / 2) < altura:
+                    if pos0 < len(bda):
+                        if trata_z_buffer(int((p[0]/p[2])+(largura/2)),int((p[1]/p[2])+(altura/2)),p[2]) == True:
+                            tela[int((p[1]/p[2])+(altura/2))][int((p[0]/p[2])+(largura/2))] = f'\033[38;2;{bda[pos0][0]};{bda[pos0][1]};{bda[pos0][2]}m█\033[m'
+                            z_buffer[int((p[1]/p[2])+(altura/2))][int((p[0]/p[2])+(largura/2))] = p[2]
     return proj
 # cria linha
 def desenha_linhas(proj):
@@ -123,7 +124,6 @@ def desenha_linhas(proj):
 def perpendicular(vetor):
     return [vetor[1],-vetor[0]]
 
-
 def ponto_teste_dentro(a,b,p):
     ap = [p[0] - a[0],p[1]-a[1]]
     abPerp = perpendicular([b[0]-a[0],b[1]-a[1]])
@@ -148,13 +148,23 @@ def desenha_triangulo(proj,comeco,fim,cor):
             if len(p) != 3:
                 p.append(c)
             if len(p) == 3:
-                for y in range(0,altura):
-                    for x in range(0,largura):
+
+                y_max = max(p[0][1],p[1][1],p[2][1])+1
+                y_min = min(p[0][1],p[1][1],p[2][1])+1
+
+                x_max = max(p[0][0],p[1][0],p[2][0])+1
+                x_min = min(p[0][0],p[1][0],p[2][0])+1
+
+                ciclosy = 0
+                ciclosx = 0
+                for y in range(y_min,y_max):
+                    ciclosy +=1
+                    for x in range(x_min,x_max):
+                        ciclosx += 1
                         if ponto_triangulo(p[0],p[1],p[2],[x,y]) == True:
                             if trata_z_buffer(x,y,p[0][3]) == True:
                                 tela[y][x] = f'\033[38;2;{cor[0]};{cor[1]};{cor[2]}m█\033[m'
                                 z_buffer[y][x] = (p[0][3]+p[1][3]+p[2][3])/3
-                p = []
 
 # cria tela e z-buffer
 def cria_tela(y,x):
