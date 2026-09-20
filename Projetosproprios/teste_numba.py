@@ -1,7 +1,7 @@
 from numba import jit,njit
 import time
 
-@njit
+@njit()
 def calcula_soma():
     v = 0
     for c in range(50_000_000):

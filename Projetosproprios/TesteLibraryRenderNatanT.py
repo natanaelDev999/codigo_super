@@ -1,6 +1,11 @@
 import LibraryRenderNatanT as lvt
 import time
 
+codigo_TelShader = '''
+p=.;
+cp=255,0,0;
+'''
+
 dados_vertices = [[0,0,1],[-2,2,1],[2,2,1]]
 dados_cores = [[255,0,0],[255,0,0],[255,0,0]]
 
@@ -11,6 +16,7 @@ while True:
     comeco = time.perf_counter()
     proj = lvt.projeta_vertices(True)
     lvt.desenha_triangulo(proj,0,3,[255,0,0])
+    lvt.compila_codigo_telshader(codigo_TelShader)
     lvt.imprime_tela()
     lvt.trata_terminal(1)
     fim = time.perf_counter()
