@@ -10,8 +10,6 @@
 import sys
 # biblioteca para manipulação de fps
 import time
-# biblioteca para matemática
-import math
 # biblioteca para trabalhar com vetores
 import LibraryVectorNatan as lvn
 ###############################################################
@@ -129,7 +127,6 @@ def ponto_teste_dentro(a,b,p):
     abPerp = perpendicular([b[0]-a[0],b[1]-a[1]])
     return lvn.produto_escalar2(ap,abPerp) >= 0
 
-
 def ponto_triangulo(a,b,c,p):
     sideAB = ponto_teste_dentro(a,b,p)
 
@@ -177,6 +174,7 @@ def cria_tela(y,x):
         for r in range(0,largura):
             tela[c].append(' ')
             z_buffer[c].append(None)
+
 # imprime tela
 def imprime_tela():
     global tela
@@ -184,9 +182,24 @@ def imprime_tela():
         for x in y:
             print(x,end=' ')
         print()
+
+# limpa tela e z_buffer
+def limpa_tz():
+    global tela,z_buffer
+    for pos0,c in enumerate(tela):
+        for pos1,v in enumerate(c):
+            tela[pos0][pos1] = ' '
+            z_buffer[pos0][pos1] = None
+
 # trata terminal
-def trata_terminal():
-    time.sleep(0.016)
+def trata_terminal(fps):
+    limpa_tz()
+    if fps == 1:
+        time.sleep(0.016)
+    elif fps == 2:
+        time.sleep(0.008)
+    elif fps == 3:
+        time.sleep(0.004)
     # limpa terminal
     sys.stdout.write('\033[H')
     sys.stdout.flush()
