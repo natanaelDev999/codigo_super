@@ -12,6 +12,9 @@ import sys
 import time
 # biblioteca para trabalhar com vetores
 import LibraryVectorNatan as lvn
+import time
+# compilador TelShader
+from LibraryRenderNatanT.compilador_TelShader import compila_codigo_TelShader
 ###############################################################
 #                         buffers
 # Buffer de Dados para Vértices(BDV)
@@ -24,6 +27,17 @@ tela = []
 z_buffer = []
 largura = 0
 altura = 0
+###############################################################
+#                     FUNÇÕES PARA SHADERS
+def compila_codigo_telshader(codigo):
+    global tela
+    for pos0,y in enumerate(tela):
+        for pos1,x in enumerate(y):
+            if x != ' ':
+                comeco = time.perf_counter()
+                tela[pos0][pos1] = compila_codigo_TelShader(codigo,x)
+                fim = time.perf_counter()
+                print(f'{fim-comeco:.6f}')
 ###############################################################
 #                     FUNÇÕES UTILITÁRIAS
 # trata z-buffer
