@@ -1,6 +1,7 @@
-from numba import jit
+from numba import jit,njit
 import time
 
+@njit
 def calcula_soma():
     v = 0
     for c in range(50_000_000):
@@ -8,7 +9,8 @@ def calcula_soma():
     return v
 
 comeco = time.perf_counter()
-nova_funcao = jit()(calcula_soma)
-print(nova_funcao())
+# nova_funcao = jit()(calcula_soma)
+print(calcula_soma())
+# print(nova_funcao())
 fim = time.perf_counter()
 print(round(fim- comeco,2))

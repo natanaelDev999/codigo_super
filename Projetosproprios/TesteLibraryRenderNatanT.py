@@ -12,6 +12,6 @@ while True:
     proj = lvt.projeta_vertices(True)
     lvt.desenha_triangulo(proj,0,3,[255,0,0])
     lvt.imprime_tela()
-    lvt.trata_terminal()
+    lvt.trata_terminal(1)
     fim = time.perf_counter()
     print(f'{fim-comeco:.6f}')
