@@ -8,10 +8,9 @@
 #                 bibliotecas utilizadas
 # biblioteca para manipulação do terminal
 import sys
-# biblioteca para manipulação de fps
-import time
 # biblioteca para trabalhar com vetores
 import LibraryVectorNatan as lvn
+# biblioteca para manipulação de tempo
 import time
 # compilador TelShader
 from LibraryRenderNatanT.compilador_TelShader import compila_codigo_TelShader
@@ -31,13 +30,14 @@ altura = 0
 #                     FUNÇÕES PARA SHADERS
 def compila_codigo_telshader(codigo):
     global tela
-    for pos0,y in enumerate(tela):
-        for pos1,x in enumerate(y):
-            if x != ' ':
-                comeco = time.perf_counter()
-                tela[pos0][pos1] = compila_codigo_TelShader(codigo,x)
-                fim = time.perf_counter()
-                print(f'{fim-comeco:.6f}')
+    for pos0, c in enumerate(tela):
+        for pos1, p in enumerate(c):
+            if p != ' ':
+                tela[pos0][pos1] = ' '
+                pixel = compila_codigo_TelShader(codigo, p, pos1, pos0)
+                if pixel[2] < altura and pixel[1] < largura:
+                    tela[pixel[2]][pixel[1]] = pixel[0]
+                    print(tela[pixel[2]][pixel[1]])
 ###############################################################
 #                     FUNÇÕES UTILITÁRIAS
 # trata z-buffer
@@ -191,10 +191,10 @@ def cria_tela(y,x):
 
 # imprime tela
 def imprime_tela():
-    global tela
-    for y in tela:
-        for x in y:
-            print(x,end=' ')
+    global tela,largura,altura
+    for y in range(altura):
+        for x in range(largura):
+            print(tela[y][x],end=' ')
         print()
 
 # limpa tela e z_buffer
