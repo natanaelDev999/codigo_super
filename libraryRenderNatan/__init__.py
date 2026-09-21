@@ -649,7 +649,7 @@ def utiliza_codigo_LSLN(codigo):
             if p != ' ':
                 tela[pos0][pos1] = ' '
                 pixel = compila_codigo_LSLN(codigo, p, pos1, pos0)
-                if pixel[2] > 0 and pixel[1] > 0:
+                if pixel[2] > 0 and pixel[1] > 0 and pixel[2] < altura_tela and pixel[1] < largura_tela:
                     tela[pixel[2]][pixel[1]] = pixel[0]
 ###############################################################
 #                    FUNÇÕES DE LIMPEZA

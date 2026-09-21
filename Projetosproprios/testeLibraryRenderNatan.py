@@ -113,6 +113,7 @@ buffer_de_desenho = [
 ]
 codigo_lsln = '''
 pr=p;
+v x 1;
 //t vecto 2 1;
 //MMV 1 vecto;
 //cs x = 9 ;
@@ -152,7 +153,7 @@ libraryRenderNatan.adiciona_dados('BDV',buffer_de_desenho)# 0.000013
 libraryRenderNatan.adiciona_dados('BDA',cores_pontos)# 0.000008
 libraryRenderNatan.adiciona_dados('BDM',matriz_id_1,1)# 0.000009
 libraryRenderNatan.adiciona_dados('BDM',matriz_id_2,2)# 0.000012
-libraryRenderNatan.cria_tela(16, 18)# 0.000063
+libraryRenderNatan.cria_tela(9, 10)# 0.000063
 libraryRenderNatan.utiliza_codigo_LMLN(codigo_lmln)# 0.000116
 # Loop principal
 # Utiliza os dados da inicialização para renderização
@@ -167,6 +168,6 @@ while True:
     print(36*'-')
     libraryRenderNatan.desenha_tela(tela)# print() -> 0.029529; sys.stdout.write() -> 0.016820 ; Δ = 0.012709
     print(36 * '-')
-    libraryRenderNatan.trata_terminal(6)# 0.016236
+    libraryRenderNatan.trata_terminal(1)# 0.016236
     fim = time.perf_counter()
     print(f'{fim-comeco:.6f}\n')
