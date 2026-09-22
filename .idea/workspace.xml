@@ -6,8 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="40f19d69-33a2-4c14-82a8-a0754e89c91b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projetosproprios/LibraryRenderNatanT/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projetosproprios/LibraryRenderNatanT/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projetosproprios/LibraryRenderNatanT/compilador_TelShader.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projetosproprios/LibraryRenderNatanT/compilador_TelShader.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Projetosproprios/TesteLibraryRenderNatanT.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projetosproprios/TesteLibraryRenderNatanT.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libraryRenderNatan/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/libraryRenderNatan/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projetosproprios/jogadores_socket.json" beforeDir="false" afterPath="$PROJECT_DIR$/Projetosproprios/jogadores_socket.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projetosproprios/opengl23.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projetosproprios/opengl23.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -452,7 +455,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="opengl10" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="opengl23" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PythonProject1" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -468,7 +471,7 @@
       <option name="DEBUG_JUST_MY_CODE" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="RUN_TOOL" value="" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ProjetosProprios/opengl10.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ProjetosProprios/opengl23.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="true" />
@@ -554,8 +557,8 @@
     </configuration>
     <list>
       <item itemvalue="Python.testeclass" />
+      <item itemvalue="Python.opengl23" />
       <item itemvalue="Python.Simulador_vida" />
-      <item itemvalue="Python.opengl10" />
       <item itemvalue="Python.teste_numba" />
       <item itemvalue="Python.testeLibraryRenderNatan" />
       <item itemvalue="Python.TesteLibraryRenderNatanT" />
@@ -563,10 +566,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.TesteLibraryRenderNatanT" />
+        <item itemvalue="Python.opengl23" />
         <item itemvalue="Python.testeLibraryRenderNatan" />
         <item itemvalue="Python.Simulador_vida" />
         <item itemvalue="Python.teste_numba" />
-        <item itemvalue="Python.opengl10" />
       </list>
     </recent_temporary>
   </component>

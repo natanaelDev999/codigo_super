@@ -4,7 +4,8 @@ import time
 codigo_TelShader = '''
 p=#;
 cp=0,0,255;
-v x 1;
+ptf p 2;
+s x p;
 '''
 
 dados_vertices = [[0,0,1],[-2,2,1],[2,2,1]]

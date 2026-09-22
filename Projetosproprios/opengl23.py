@@ -247,7 +247,6 @@ def init():
         // comandos e declarações da função inicial
         // CÁLCULOS DE ILUMINAÇÃO
 
-
         float constante = 1.0;
         float linear = 0.09;
         float quadratica = 0.032;
