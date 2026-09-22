@@ -30,14 +30,23 @@ altura = 0
 #                     FUNÇÕES PARA SHADERS
 def compila_codigo_telshader(codigo):
     global tela
-    for pos0, c in enumerate(tela):
-        for pos1, p in enumerate(c):
+
+    tela_original = []
+    for v in tela:
+        tela_original.append(v)
+
+    for i in tela:
+        for j in tela:
+            j = ' '
+
+    for pos0, linha in enumerate(tela_original):
+        for pos1, p in enumerate(linha):
             if p != ' ':
                 tela[pos0][pos1] = ' '
-                pixel = compila_codigo_TelShader(codigo, p, pos1, pos0)
-                if pixel[2] < altura and pixel[1] < largura:
+                pixel = compila_codigo_TelShader(codigo,p,pos1,pos0)
+
+                if 0 <= pixel[2] < altura and 0 <= pixel[1] < largura:
                     tela[pixel[2]][pixel[1]] = pixel[0]
-                    print(tela[pixel[2]][pixel[1]])
 ###############################################################
 #                     FUNÇÕES UTILITÁRIAS
 # trata z-buffer
