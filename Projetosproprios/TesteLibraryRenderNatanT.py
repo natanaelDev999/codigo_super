@@ -2,10 +2,11 @@ import LibraryRenderNatanT as lvt
 import time
 
 codigo_TelShader = '''
-p=#;
-cp=0,0,255;
-ptf p 2;
-s x p;
+p=█;
+3ptf v;
+mdf v 0 255;
+mdf v 2 255;
+cp=v;
 '''
 
 dados_vertices = [[0,0,1],[-2,2,1],[2,2,1]]
@@ -13,7 +14,7 @@ dados_cores = [[255,0,0],[255,0,0],[255,0,0]]
 
 lvt.adiciona_dados("BDV",dados_vertices)
 lvt.adiciona_dados("BDA",dados_cores)
-lvt.cria_tela(10,10)
+lvt.cria_tela(20,20)
 while True:
     comeco = time.perf_counter()
     proj = lvt.projeta_vertices(True)# 0.000035
