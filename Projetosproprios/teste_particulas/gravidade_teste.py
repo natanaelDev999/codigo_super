@@ -8,7 +8,7 @@ visao = [[' ',' ',' ',' ',' ',' ',' ',' '],
          [' ',' ',' ',' ',' ',' ',' ',' '],
          [' ',' ',' ',' ',' ',' ',' ',' '],
          [' ',' ',' ','=',' ',' ',' ',' '],
-         [' ',' ',' ',' ',' ',' ',' ',' '],]
+         [' ',' ',' ',' ',' ',' ',' ',' ']]
 
 pontos = [[3,0]]
 velocidades = [0]
@@ -46,7 +46,6 @@ def atua_gravidade():
                     visao[p[1]][p[0]] = '\033[31m0\033[m'
 
                     velocidades[pos0] -= 1
-        print(velocidades[pos0],' ',p)
 
 def renderiza_particulas():
     global pontos
