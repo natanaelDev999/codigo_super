@@ -7,36 +7,46 @@ visao = [[' ',' ',' ',' ',' ',' ',' ',' '],
          [' ',' ',' ',' ',' ',' ',' ',' '],
          [' ',' ',' ',' ',' ',' ',' ',' '],
          [' ',' ',' ',' ',' ',' ',' ',' '],
-         [' ',' ',' ',' ',' ',' ',' ',' '],
+         [' ',' ',' ','=',' ',' ',' ',' '],
          [' ',' ',' ',' ',' ',' ',' ',' '],]
 
-pontos = [[3,3]]
+pontos = [[3,0]]
 velocidades = [0]
-fator = 2
 
 def atua_gravidade():
-    global pontos,velocidades, visao,fator
+    global pontos,velocidades, visao
     for pos0,p in enumerate(pontos):
         if p[0] < 6 and p[1] < 6:
-            if p[1]+ 1 < 7:
-                visao[p[1]][p[0]] = '.'
+            if p[1]+1 < 8:
+                if visao[p[1]+1][p[0]] == ' ':
+                    visao[p[1]][p[0]] = ' '
 
-                p[1] += 1
+                    p[1] += 1
 
-                visao[p[1]][p[0]] = '\033[31m0\033[m'
+                    visao[p[1]][p[0]] = '\033[31m0\033[m'
 
-                velocidades[pos0] += 1
+                    velocidades[pos0] += 1
+                else:
+                    if velocidades[pos0] > 0:
+                        if p[1] - 1 > 0:
+                            visao[p[1]][p[0]] = ' '
+
+                            p[1] -= 1
+
+                            visao[p[1]][p[0]] = '\033[31m0\033[m'
+
+                            velocidades[pos0] -= 2
         else:
             if velocidades[pos0] > 0:
                 if p[1]-1 > 0:
-                    visao[p[1]][p[0]] = '.'
+                    visao[p[1]][p[0]] = ' '
 
                     p[1] -= 1
 
                     visao[p[1]][p[0]] = '\033[31m0\033[m'
 
-                    velocidades[pos0] = -velocidades[pos0] + fator
-        print(velocidades[pos0])
+                    velocidades[pos0] -= 1
+        print(velocidades[pos0],' ',p)
 
 def renderiza_particulas():
     global pontos
