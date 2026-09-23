@@ -201,9 +201,9 @@ def cria_tela(y,x):
 # imprime tela
 def imprime_tela():
     global tela,largura,altura
-    for y in range(altura):
-        for x in range(largura):
-            print(tela[y][x],end=' ')
+    for y in tela:
+        for x in y:
+            print(x,end=' ')
         print()
 
 # limpa tela e z_buffer
