@@ -102,5 +102,75 @@ def compila_codigo_TelShader(codigo_TelShader,pixel,x,y):
                     if v[0] == nome:
                         v[1][f"{pos}"] = float(valor)
                         break
+            elif linha.startswith('unv'):
+                comando, vetor1, vetor2 = linha.split(' ')
+                for v in vetor:
+                    if v[0] == vetor1:
+                        for v2 in vetor:
+                            if v2[0] == vetor2:
+                                if v[2] == "vec3":
+                                    v[1]["0"] = v[1]["0"] + v2[1]["0"]
+                                    v[1]["1"] = v[1]["1"] + v2[1]["1"]
+                                    v[1]["2"] = v[1]["2"] + v2[1]["2"]
+                                elif v[2] == 'vec2':
+                                    v[1]["0"] = v[1]["0"] + v2[1]["0"]
+                                    v[1]["1"] = v[1]["1"] + v2[1]["1"]
+            elif linha.startswith('uns'):
+                comando, vetor1, vetor2 = linha.split(' ')
+                for v in vetor:
+                    if v[0] == vetor1:
+                        for v2 in vetor:
+                            if v2[0] == vetor2:
+                                if v[2] == "vec3":
+                                    v[1]["0"] = v[1]["0"] - v2[1]["0"]
+                                    v[1]["1"] = v[1]["1"] - v2[1]["1"]
+                                    v[1]["2"] = v[1]["2"] - v2[1]["2"]
+                                elif v[2] == 'vec2':
+                                    v[1]["0"] = v[1]["0"] - v2[1]["0"]
+                                    v[1]["1"] = v[1]["1"] - v2[1]["1"]
+            elif linha.startswith('muv'):
+                comando, vetor1, vetor2 = linha.split(' ')
+                for v in vetor:
+                    if v[0] == vetor1:
+                        for v2 in vetor:
+                            if v2[0] == vetor2:
+                                if v[2] == "vec3":
+                                    v[1]["0"] = v[1]["0"] * v2[1]["0"]
+                                    v[1]["1"] = v[1]["1"] * v2[1]["1"]
+                                    v[1]["2"] = v[1]["2"] * v2[1]["2"]
+                                elif v[2] == 'vec2':
+                                    v[1]["0"] = v[1]["0"] * v2[1]["0"]
+                                    v[1]["1"] = v[1]["1"] * v2[1]["1"]
+            elif linha.startswith('fiv'):
+                comando, vetor1, vetor2 = linha.split(' ')
+                for v in vetor:
+                    if v[0] == vetor1:
+                        for v2 in vetor:
+                            if v2[0] == vetor2:
+                                if v[2] == "vec3":
+                                    if v2[1]["0"] != 0:
+                                        v[1]["0"] = v[1]["0"] / v2[1]["0"]
+                                    else:
+                                        v[1]["0"] = v[1]["0"] / 1
+
+                                    if v2[1]["1"] != 0:
+                                        v[1]["1"] = v[1]["1"] / v2[1]["1"]
+                                    else:
+                                        v[1]["1"] = v[1]["1"] / 1
+
+                                    if v2[1]["2"] != 0:
+                                        v[1]["2"] = v[1]["2"] / v2[1]["2"]
+                                    else:
+                                        v[1]["2"] = v[1]["2"] / 1
+                                elif v[2] == 'vec2':
+                                    if v2[1]["0"] != 0:
+                                        v[1]["0"] = v[1]["0"] / v2[1]["0"]
+                                    else:
+                                        v[1]["0"] = v[1]["0"] / 1
+
+                                    if v2[1]["1"] != 0:
+                                        v[1]["1"] = v[1]["1"] / v2[1]["1"]
+                                    else:
+                                        v[1]["1"] = v[1]["1"] / 1
             linha = ''
     return [pixel_saida,int(x),int(y)]
