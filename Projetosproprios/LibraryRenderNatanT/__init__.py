@@ -66,19 +66,19 @@ def adiciona_dados(tipo,dados):
         elif tipo == "BDA" or tipo == "Buffer de Dados para Aparência":
             bda = dados
 # projeta vértices
-def projeta_vertices(desenha_pontos=False):
+def projeta_vertices(fov,desenha_pontos=False):
     global bdv,largura,altura,bda
     proj = []
     for pos0,p in enumerate(bdv):
         if p[2] > 0:
-            proj.append([int((p[0]/p[2])+(largura/2)),
-                         int((p[1]/p[2])+(altura/2)),pos0,p[2]])
+            proj.append([int((p[0]/(p[2]+fov))+(largura/2)),
+                         int((p[1]/(p[2]+fov))+(altura/2)),pos0,p[2]])
             if desenha_pontos == True:
-                if (p[0] / p[2]) + (largura / 2) < largura and (p[1] / p[2]) + (altura / 2) < altura:
+                if (p[0] / (p[2]+fov)) + (largura / 2) < largura and (p[1] / (p[2]+fov)) + (altura / 2) < altura:
                     if pos0 < len(bda):
-                        if trata_z_buffer(int((p[0]/p[2])+(largura/2)),int((p[1]/p[2])+(altura/2)),p[2]) == True:
-                            tela[int((p[1]/p[2])+(altura/2))][int((p[0]/p[2])+(largura/2))] = f'\033[38;2;{bda[pos0][0]};{bda[pos0][1]};{bda[pos0][2]}m█\033[m'
-                            z_buffer[int((p[1]/p[2])+(altura/2))][int((p[0]/p[2])+(largura/2))] = p[2]
+                        if trata_z_buffer(int((p[0]/(p[2]+fov))+(largura/2)),int((p[1]/(p[2]+fov))+(altura/2)),p[2]) == True:
+                            tela[int((p[1]/(p[2]+fov))+(altura/2))][int((p[0]/(p[2]+fov))+(largura/2))] = f'\033[38;2;{bda[pos0][0]};{bda[pos0][1]};{bda[pos0][2]}m█\033[m'
+                            z_buffer[int((p[1]/(p[2]+fov))+(altura/2))][int((p[0]/(p[2]+fov))+(largura/2))] = p[2]
     return proj
 # cria linha
 def desenha_linhas(proj):
@@ -159,7 +159,7 @@ def ponto_triangulo(a,b,c,p):
 
     return sideAB and sideBC and sideCA
 
-def desenha_triangulo(proj,comeco,fim,cor):
+def desenha_triangulo(proj,comeco,fim):
     global tela,largura,altura,bda
 
     if len(proj) % 3 == 0:
@@ -183,7 +183,7 @@ def desenha_triangulo(proj,comeco,fim,cor):
                         ciclosx += 1
                         if ponto_triangulo(p[0],p[1],p[2],[x,y]) == True:
                             if trata_z_buffer(x,y,p[0][3]) == True:
-                                tela[y][x] = f'\033[38;2;{cor[0]};{cor[1]};{cor[2]}m█\033[m'
+                                tela[y][x] = f'\033[38;2;{bda[p[0][3]][0]};{bda[p[0][3]][1]};{bda[p[0][3]][2]}m█\033[m'
                                 z_buffer[y][x] = (p[0][3]+p[1][3]+p[2][3])/3
 
 # cria tela e z-buffer
