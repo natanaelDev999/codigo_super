@@ -212,5 +212,4 @@ def compila_codigo_TelShader(codigo_TelShader,pixel,x,y):
                                         i[1] = dot
                                         break
             linha = ''
-            print(variaveis)
     return [pixel_saida,int(x),int(y)]
