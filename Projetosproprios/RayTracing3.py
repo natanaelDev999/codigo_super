@@ -27,10 +27,12 @@ viewport_upper_left = lvt.subtrai_vetores(
                         lvt.divide_vetores(viewport_u,
                   [2,2,2])),
                         lvt.divide_vetores(viewport_v,[2,2,2]))
-pixel00_loc = lvt.multiplica_vetores(
-    lvt.soma_vetores(viewport_upper_left,[0.5,0.5,0.5]),
-    lvt.soma_vetores(pixel_delta_u,pixel_delta_v)
-    )
+
+pixel00_loc = lvt.soma_vetores(viewport_upper_left,
+                               lvt.multiplica_vetores([0.5,0.5,0.5],
+                               lvt.soma_vetores(pixel_delta_u,
+                                                pixel_delta_v)
+                                                      ))
 
 def hit_sphere(center,radius,ray):
     oc = lvt.subtrai_vetores(center,ray[0])
@@ -52,9 +54,9 @@ def renderRayTracing():
             raio = [camera_center,direcao]
 
             cor = [0,0,0]
-            if hit_sphere([0,0,-1],0.5,raio) == True:
+            if hit_sphere([0,0,1],0.75,raio) == True:
                 cor = [255,0,0]
-            print(f'\033[38;2;{cor[0]};{cor[0]};{cor[2]}m#\033[m',end=' ')
+            print(f'\033[38;2;{cor[0]};{cor[1]};{cor[2]}m#\033[m',end=' ')
         print()
 
 def at(orig,t,dir):
