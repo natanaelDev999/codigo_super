@@ -1,3 +1,6 @@
+import math
+
+#                           TelShader
 
 def compila_codigo_TelShader(codigo_TelShader,pixel,x,y):
     pixel_saida = ' '
@@ -211,5 +214,21 @@ def compila_codigo_TelShader(codigo_TelShader,pixel,x,y):
                                             dot += float(v[1]["1"]) * float(v2[1]["1"])
                                         i[1] = dot
                                         break
+            elif linha.startswith('nrm'):
+                comando, vetor1 = linha.split(' ')
+                divisor = 0
+                for v in vetor:
+                    if v[0] == vetor1:
+                        if v[2] == 'vec3':
+                            divisor += v[1]["0"]**2
+                            divisor += v[1]["1"] ** 2
+                            divisor += v[1]["2"] ** 2
+
+                            divisor = math.sqrt(divisor)
+
+                            v[1]["0"] = v[1]["0"]/divisor
+                            v[1]["1"] = v[1]["1"] / divisor
+                            v[1]["2"] = v[1]["2"] / divisor
             linha = ''
+    print(vetor)
     return [pixel_saida,int(x),int(y)]

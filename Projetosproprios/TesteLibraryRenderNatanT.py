@@ -12,11 +12,13 @@ ptf i 0;
 3ptf v5;
 
 mdf v5 0 2;
-mdf v4 0 2;
+mdf v5 1 2;
 
 mdf v 2 255;
 
 mdf v2 0 2;
+
+nrm v5;
 
 cp=v;
 '''
