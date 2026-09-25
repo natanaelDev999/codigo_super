@@ -3,47 +3,52 @@ import LibraryVectorNatan as lvt
 
 tela = []
 
-vetor_pos = [0,0,0]
-vetor_dir = [0,0,1]
 
 esfera = [[0,0,3,6]]
 
-y_tela = 10
-x_tela = 10
+y_tela = 9
+x_tela = 16
 
-def raytracing():
-    global tela,y_tela,x_tela,vetor_pos,vetor_dir,esfera
-    for c in range(0,y_tela*2):
-        for v in range(0,x_tela*2):
-            ponto = lvt.soma_vetores(lvt.soma_vetores(vetor_pos,vetor_dir),[c,v,0])
-            cont = 0
-            while True:
-                for i in esfera:
-                    if math.sqrt((i[0]-ponto[0])**2+
-                                 (i[1]-ponto[1])**2+
-                                 (i[2]-ponto[2])**2) < i[3]:
-                        tela[int((ponto[1]+(y_tela/2)))][int((ponto[0]+(x_tela/2)))] = '\033[38;2;255;0;0m█\033[m'
-                        break
-                cont += 1
-                if cont < 4:
-                    ponto = lvt.soma_vetores(ponto,vetor_dir)
-                else:
-                    break
+raios = []
 
-def cria_tela():
-    global tela,y_tela,x_tela
+#camera
+viewport_h = 2.0
+viewport_w = viewport_h * (x_tela/y_tela)
+focal_l = 1.0
+camera_center = [0,0,0]
+
+viewport_u = [viewport_w,0,0]
+viewport_v = [0, -viewport_h, 0]
+
+pixel_delta_u = lvt.divide_vetores(viewport_u, [y_tela,y_tela,y_tela])
+pixel_delta_v = lvt.divide_vetores(viewport_v, [x_tela,x_tela,x_tela])
+
+viewport_upper_left = lvt.subtrai_vetores(
+                        lvt.subtrai_vetores(
+                        lvt.subtrai_vetores(camera_center,
+                 [0,0,focal_l]),
+                        lvt.divide_vetores(viewport_u,
+                  [2,2,2])),
+                        lvt.divide_vetores(viewport_v,[2,2,2]))
+pixel00_loc = lvt.multiplica_vetores(
+    lvt.soma_vetores(viewport_upper_left,[0.5,0.5,0.5]),
+    lvt.soma_vetores(pixel_delta_u,pixel_delta_v)
+    )
+
+def renderRayTracing():
+    global y_tela,x_tela,tela
     for c in range(0,y_tela):
-        tela.append([])
         for v in range(0,x_tela):
-            tela[c].append(' ')
-def desenha_tela():
-    global tela
-    for c in tela:
-        for v in c:
-            print(v,end=' ')
+            pixel_c = lvt.soma_vetores(lvt.soma_vetores(pixel00_loc,
+                                       lvt.multiplica_vetores(
+                                           [v,v,v],pixel_delta_u)),
+                                       lvt.multiplica_vetores([c,c,c],pixel_delta_v))
+            direcao = lvt.subtrai_vetores(pixel_c,camera_center)
+            print(f'\033[38;2;{0};{0};{c*30}m#\033[m',end=' ')
         print()
+
+def at(orig,t,dir):
+    return orig + t*dir
 def main():
-    cria_tela()
-    raytracing()
-    desenha_tela()
+    renderRayTracing()
 main()
