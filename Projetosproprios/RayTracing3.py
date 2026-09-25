@@ -3,7 +3,7 @@ import LibraryVectorNatan as lvt
 tela = []
 
 
-esfera = [[0,0,3,6]]
+esferas = [[[0.5,0,1],0.5,[0,0,255]],[[0,0,2],0.5,[255,0,0]],[[2,0,3],0.5,[0,255,0]]]
 
 y_tela = 9
 x_tela = 16
@@ -43,7 +43,7 @@ def hit_sphere(center,radius,ray):
     return discriminate >= 0
 
 def renderRayTracing():
-    global y_tela,x_tela,tela
+    global y_tela,x_tela,tela,esferas
     for c in range(0,y_tela):
         for v in range(0,x_tela):
             pixel_c = lvt.soma_vetores(lvt.soma_vetores(pixel00_loc,
@@ -54,8 +54,10 @@ def renderRayTracing():
             raio = [camera_center,direcao]
 
             cor = [0,0,0]
-            if hit_sphere([0,0,1],0.75,raio) == True:
-                cor = [255,0,0]
+            for j in esferas:
+                if hit_sphere(j[0],j[1],raio) == True:
+                    cor = j[2]
+                    break
             print(f'\033[38;2;{cor[0]};{cor[1]};{cor[2]}m#\033[m',end=' ')
         print()
 
