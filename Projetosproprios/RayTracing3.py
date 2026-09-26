@@ -3,7 +3,7 @@ import LibraryVectorNatan as lvt
 tela = []
 
 
-esferas = [[[0.5,0,1],0.5,[0,0,255]],[[0,0,2],0.5,[255,0,0]],[[2,0,3],0.5,[0,255,0]]]
+esferas = [[[0,0,2],0.5,[255,0,0]],[[2,0,3],0.5,[0,255,0]],[[0.5,0,1],0.5,[0,0,255]]]
 
 y_tela = 9
 x_tela = 16
@@ -57,7 +57,6 @@ def renderRayTracing():
             for j in esferas:
                 if hit_sphere(j[0],j[1],raio) == True:
                     cor = j[2]
-                    break
             print(f'\033[38;2;{cor[0]};{cor[1]};{cor[2]}m#\033[m',end=' ')
         print()
 

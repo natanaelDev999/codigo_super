@@ -250,12 +250,12 @@ def init():
         float constante = 1.0;
         float linear = 0.09;
         float quadratica = 0.032;
-        float distancia = length(pos_luz - fragmento_pos);
+        float distancia = length(pos_luz - fragmento_pos)/0.75;
 
-        float atenuacao = 8.0 / (constante+linear*distancia+quadratica*(distancia*distancia));
+        float atenuacao = 14.0 / (constante+linear*distancia+quadratica*(distancia*distancia));
 
         vec3 direcao_luz = normalize(pos_luz-fragmento_pos);
-        float delta = max(dot(fragmento_normal, direcao_luz),0.0);
+        float delta = max(dot(fragmento_normal, direcao_luz),0.0)+0.025;
         vec3 iluminacao_difusa = (delta * v_cor_luz);
 
         iluminacao_difusa *= atenuacao;

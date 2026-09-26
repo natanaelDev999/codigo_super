@@ -2,28 +2,12 @@ import LibraryRenderNatanT as lvt
 import time
 
 codigo_TelShader = '''
-p=█;
-
-ptf i 0;
-3ptf v;
-3ptf v2;
-3ptf v3;
-3ptf v4;
-3ptf v5;
-
-mdf v5 0 2;
-mdf v5 1 2;
-
-mdf v 2 255;
-
-mdf v2 0 2;
-
-nrm v5;
-
-cp=v;
+p=pr;
+case x == 9;
+$p=#;
 '''
 
-dados_vertices = [[0,0,1],[-2,2,1],[2,2,1]]
+dados_vertices = [[0,-2,1],[-2,2,1],[2,2,1]]
 dados_cores = [[255,0,0],[255,0,0],[255,0,0]]
 
 lvt.adiciona_dados("BDV",dados_vertices)
