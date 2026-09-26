@@ -113,7 +113,7 @@ buffer_de_desenho = [
 ]
 codigo_lsln = '''
 pr=p;
-v x 1;
+//v x 1;
 //t vecto 2 1;
 //MMV 1 vecto;
 //cs x = 9 ;
@@ -153,7 +153,7 @@ libraryRenderNatan.adiciona_dados('BDV',buffer_de_desenho)# 0.000013
 libraryRenderNatan.adiciona_dados('BDA',cores_pontos)# 0.000008
 libraryRenderNatan.adiciona_dados('BDM',matriz_id_1,1)# 0.000009
 libraryRenderNatan.adiciona_dados('BDM',matriz_id_2,2)# 0.000012
-libraryRenderNatan.cria_tela(9, 10)# 0.000063
+libraryRenderNatan.cria_tela(13, 18)# 0.000063
 libraryRenderNatan.utiliza_codigo_LMLN(codigo_lmln)# 0.000116
 # Loop principal
 # Utiliza os dados da inicialização para renderização
