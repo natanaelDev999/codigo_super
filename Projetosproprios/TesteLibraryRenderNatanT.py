@@ -7,18 +7,25 @@ ptf c1 0;
 3ptf co1;
 3ptf color;
 
+mvm 0 vecXY;
+
 mdf co1 0 255;
 dva co1 0 c1;
-mdf color 1 c1;
+mdf color 0 c1;
 
 cp=color;
 '''
+
+matriz_id_0 = [[1,0,0],
+               [0,1,0],
+               [0,0,1]]
 
 dados_vertices = [[0,-2,1],[-2,2,1],[2,2,1]]
 dados_cores = [[255,0,0],[255,0,0],[255,0,0]]
 
 lvt.adiciona_dados("BDV",dados_vertices)
 lvt.adiciona_dados("BDA",dados_cores)
+lvt.adiciona_dados("BDM",matriz_id_0,0)
 lvt.cria_tela(20,20)
 while True:
     comeco = time.perf_counter()

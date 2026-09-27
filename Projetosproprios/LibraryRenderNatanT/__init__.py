@@ -20,6 +20,9 @@ from LibraryRenderNatanT.compilador_TelShader import compila_codigo_TelShader
 bdv = []
 # Buffer de Dados para Aparência(BDA)
 bda = []
+# Buffer de Dados para Matrizes(BDM)
+bdm = {"0":[],"1":[],"2":[],"3":[],"4":[],"5":[],"6":[],"7":[],"8":[],'9':[],'10':[],'11':[],'12':[],'13':[],
+            '14':[],'15':[],'16':[]}
 ###############################################################
 #                          tela
 tela = []
@@ -29,7 +32,7 @@ altura = 0
 ###############################################################
 #                     FUNÇÕES PARA SHADERS
 def compila_codigo_telshader(codigo):
-    global tela
+    global tela,bdm
 
     tela_original = []
     for v in tela:
@@ -43,7 +46,7 @@ def compila_codigo_telshader(codigo):
         for pos1, p in enumerate(linha):
             if p != ' ':
                 tela[pos0][pos1] = ' '
-                pixel = compila_codigo_TelShader(codigo,p,pos1,pos0)
+                pixel = compila_codigo_TelShader(codigo,p,pos1,pos0,bdm)
 
                 if 0 <= pixel[2] < altura and 0 <= pixel[1] < largura:
                     tela[pixel[2]][pixel[1]] = pixel[0]
@@ -58,27 +61,29 @@ def trata_z_buffer(x,y,z):
             resposta = False
     return resposta
 # função para adicionar dados aos bufffers
-def adiciona_dados(tipo,dados):
+def adiciona_dados(tipo,dados,pos=0):
     global bdv,bda
     if len(dados) > 0:
         if tipo == "BDV" or tipo == "Buffer de Dados para Vértices":
             bdv = dados
         elif tipo == "BDA" or tipo == "Buffer de Dados para Aparência":
             bda = dados
+        elif tipo == "BDM" or tipo == "Buffer de Dados para Matrizes":
+            bdm[f"{pos}"] = dados
 # projeta vértices
-def projeta_vertices(fov,desenha_pontos=False):
+def projeta_vertices(dist,desenha_pontos=False):
     global bdv,largura,altura,bda
     proj = []
     for pos0,p in enumerate(bdv):
         if p[2] > 0:
-            proj.append([int((p[0]/(p[2]+fov))+(largura/2)),
-                         int((p[1]/(p[2]+fov))+(altura/2)),pos0,p[2]])
+            proj.append([int((p[0]/(p[2]+dist))+(largura/2)),
+                         int((p[1]/(p[2]+dist))+(altura/2)),pos0,p[2]])
             if desenha_pontos == True:
-                if (p[0] / (p[2]+fov)) + (largura / 2) < largura and (p[1] / (p[2]+fov)) + (altura / 2) < altura:
+                if (p[0] / (p[2]+dist)) + (largura / 2) < largura and (p[1] / (p[2]+dist)) + (altura / 2) < altura:
                     if pos0 < len(bda):
-                        if trata_z_buffer(int((p[0]/(p[2]+fov))+(largura/2)),int((p[1]/(p[2]+fov))+(altura/2)),p[2]) == True:
-                            tela[int((p[1]/(p[2]+fov))+(altura/2))][int((p[0]/(p[2]+fov))+(largura/2))] = f'\033[38;2;{bda[pos0][0]};{bda[pos0][1]};{bda[pos0][2]}m█\033[m'
-                            z_buffer[int((p[1]/(p[2]+fov))+(altura/2))][int((p[0]/(p[2]+fov))+(largura/2))] = p[2]
+                        if trata_z_buffer(int((p[0]/(p[2]+dist))+(largura/2)),int((p[1]/(p[2]+dist))+(altura/2)),p[2]) == True:
+                            tela[int((p[1]/(p[2]+dist))+(altura/2))][int((p[0]/(p[2]+dist))+(largura/2))] = f'\033[38;2;{bda[pos0][0]};{bda[pos0][1]};{bda[pos0][2]}m█\033[m'
+                            z_buffer[int((p[1]/(p[2]+dist))+(altura/2))][int((p[0]/(p[2]+dist))+(largura/2))] = p[2]
     return proj
 # cria linha
 def desenha_linhas(proj):
