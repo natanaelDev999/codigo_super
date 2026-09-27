@@ -18,7 +18,19 @@ def compila_codigo_TelShader(codigo_TelShader,pixel,x,y):
                 if ativ_case == True or not linha.startswith('$'):
                     if linha.startswith('$'):
                         linha = linha[1:]
-                    if linha.startswith('case'):
+                    # dá a uma variável o valor de um vetor
+                    if linha.startswith('dva'):
+                        comando , vetor1 , pos , var = linha.split(' ')
+                        for v in vetor:
+                            if v[0] == vetor1:
+                                for i in variaveis:
+                                    if i[0] == var:
+                                        i[1] = v[1][f"{pos}"]
+                     # termina condicional
+                    elif linha.startswith('ec'):
+                        ativ_case = False
+                    # trata condicionais
+                    elif linha.startswith('case'):
                         comando, valor1 , comp , valor2 = linha.split(' ')
                         if valor1 == 'x':
                             valor1 = float(x)
@@ -54,13 +66,14 @@ def compila_codigo_TelShader(codigo_TelShader,pixel,x,y):
                             elif  comp  == '!':
                                 if valor1 != valor2:
                                     ativ_case = True
-
+                    # modifica o caractere do pixel
                     if linha.startswith('p=') or linha.startswith('p ='):
                         vars,chr = linha.split('=')
                         if chr == 'pr':
                             pixel_saida = pixel
                         else:
                             pixel_saida = chr
+                    # modifica a cor do pixel
                     elif linha.startswith('cp=') or linha.startswith('cp ='):
                         vars,chr = linha.split('=')
                         if ',' in chr:
@@ -74,6 +87,7 @@ def compila_codigo_TelShader(codigo_TelShader,pixel,x,y):
                                         g = v[1]["1"]
                                         b = v[1]["2"]
                                         pixel_saida = f'\033[38;2;{int(r)};{int(g)};{int(b)}m{pixel_saida}\033[m'
+                    # dá valor ao x
                     elif linha.startswith('x=') or linha.startswith('x ='):
                         vars,pos = linha.split('=')
                         if pos.isnumeric():
@@ -83,6 +97,7 @@ def compila_codigo_TelShader(codigo_TelShader,pixel,x,y):
                                 if i[0] == pos:
                                     x = i[1]
                                     break
+                    # dá valor ao y
                     elif linha.startswith('y=') or linha.startswith('y ='):
                         vars,pos = linha.split('=')
                         if pos.isnumeric():
@@ -91,6 +106,7 @@ def compila_codigo_TelShader(codigo_TelShader,pixel,x,y):
                             for i in variaveis:
                                 if i[0] == pos:
                                     y = i[1]
+                    # soma um certo valor de algum elemento do vecXY
                     elif linha.startswith('v'):
                         operacao, valor1, valor2 = linha.split(' ')
                         if valor1 == 'x':
@@ -109,6 +125,7 @@ def compila_codigo_TelShader(codigo_TelShader,pixel,x,y):
                                     if i[0] == valor2:
                                         y += i[1]
                                         break
+                    # subrai um certo valor de algum elemento do vecXY
                     elif linha.startswith('s'):
                         operacao, valor1, valor2 = linha.split(' ')
                         if valor1 == 'x':
@@ -127,6 +144,7 @@ def compila_codigo_TelShader(codigo_TelShader,pixel,x,y):
                                     if i[0] == valor2:
                                         y -= i[1]
                                         break
+                    # cria uma variavel do tipo float
                     elif linha.startswith('ptf'):
                         comando, nome , valor = linha.split(' ')
                         if valor.isnumeric():
@@ -136,20 +154,33 @@ def compila_codigo_TelShader(codigo_TelShader,pixel,x,y):
                                 if i[0] == valor:
                                     variaveis.append([nome,i[1]])
                                     break
+                    # criar um vec2 que suport float
                     elif linha.startswith('2ptf'):
                         comando, nome = linha.split(' ')
                         if nome != 'vecXY':
                             vetor.append([nome,{"0":0,"1":0},"vec2"])
+                    # cria um vec3 que suporta float
                     elif linha.startswith('3ptf'):
                         comando, nome = linha.split(' ')
                         if nome != 'vecXY':
                             vetor.append([nome,{"0":0,"1":0,"2":0},"vec3"])
+                    # modifica um vetor
                     elif linha.startswith('mdf'):
                         comando, nome , pos , valor = linha.split(' ')
-                        for v in vetor:
-                            if v[0] == nome:
-                                v[1][f"{pos}"] = float(valor)
-                                break
+                        if valor.isnumeric():
+                            for v in vetor:
+                                if v[0] == nome:
+                                    v[1][f"{pos}"] = float(valor)
+                                    break
+                        else:
+                            for v in vetor:
+                                if v[0] == nome:
+                                    for l in variaveis:
+                                        if l[0] == valor:
+                                            v[1][f"{pos}"] = float(l[1])
+                                            break
+                                    break
+                    # soma vetores
                     elif linha.startswith('unv'):
                         comando, vetor1, vetor2 = linha.split(' ')
                         for v in vetor:
@@ -163,6 +194,7 @@ def compila_codigo_TelShader(codigo_TelShader,pixel,x,y):
                                         elif v[2] == 'vec2':
                                             v[1]["0"] = v[1]["0"] + v2[1]["0"]
                                             v[1]["1"] = v[1]["1"] + v2[1]["1"]
+                    # subtrai vetores
                     elif linha.startswith('uns'):
                         comando, vetor1, vetor2 = linha.split(' ')
                         for v in vetor:
@@ -176,6 +208,7 @@ def compila_codigo_TelShader(codigo_TelShader,pixel,x,y):
                                         elif v[2] == 'vec2':
                                             v[1]["0"] = v[1]["0"] - v2[1]["0"]
                                             v[1]["1"] = v[1]["1"] - v2[1]["1"]
+                    # multiplica vetores
                     elif linha.startswith('muv'):
                         comando, vetor1, vetor2 = linha.split(' ')
                         for v in vetor:
@@ -189,6 +222,7 @@ def compila_codigo_TelShader(codigo_TelShader,pixel,x,y):
                                         elif v[2] == 'vec2':
                                             v[1]["0"] = v[1]["0"] * v2[1]["0"]
                                             v[1]["1"] = v[1]["1"] * v2[1]["1"]
+                    # divide vetores
                     elif linha.startswith('fiv'):
                         comando, vetor1, vetor2 = linha.split(' ')
                         for v in vetor:
@@ -220,6 +254,7 @@ def compila_codigo_TelShader(codigo_TelShader,pixel,x,y):
                                                 v[1]["1"] = v[1]["1"] / v2[1]["1"]
                                             else:
                                                 v[1]["1"] = v[1]["1"] / 1
+                    # copia vetor
                     elif linha.startswith('pyc'):
                         comando, vetor1, vetor2 = linha.split(' ')
                         if vetor1 != 'vecXY':
@@ -239,6 +274,7 @@ def compila_codigo_TelShader(codigo_TelShader,pixel,x,y):
                                 if v[0] == vetor2:
                                     x = v[1]["0"]
                                     y = v[1]["1"]
+                    # atribui a uma variavel o produto escalar de um vetor
                     elif linha.startswith('dot'):
                         comando, var, vetor1, vetor2 = linha.split(' ')
                         for i in variaveis:
@@ -257,6 +293,7 @@ def compila_codigo_TelShader(codigo_TelShader,pixel,x,y):
                                                     dot += float(v[1]["1"]) * float(v2[1]["1"])
                                                 i[1] = dot
                                                 break
+                    # normaliza um vetor
                     elif linha.startswith('nrm'):
                         comando, vetor1 = linha.split(' ')
                         divisor = 0

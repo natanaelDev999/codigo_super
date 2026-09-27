@@ -2,9 +2,16 @@ import LibraryRenderNatanT as lvt
 import time
 
 codigo_TelShader = '''
-p=pr;
-case x == 9;
-$p=#;
+p=█;
+ptf c1 0;
+3ptf co1;
+3ptf color;
+
+mdf co1 0 255;
+dva co1 0 c1;
+mdf color 1 c1;
+
+cp=color;
 '''
 
 dados_vertices = [[0,-2,1],[-2,2,1],[2,2,1]]
