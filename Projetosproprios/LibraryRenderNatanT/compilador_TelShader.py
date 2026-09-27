@@ -3,7 +3,7 @@ import math
 #                           TelShader
 #A linguagem de sombreamento do terminal
 
-def compila_codigo_TelShader(codigo_TelShader,pixel,x,y):
+def compila_codigo_TelShader(codigo_TelShader,pixel,x,y,bdm={}):
     pixel_saida = ' '
     linha = ''
     variaveis = []
@@ -26,7 +26,31 @@ def compila_codigo_TelShader(codigo_TelShader,pixel,x,y):
                                 for i in variaveis:
                                     if i[0] == var:
                                         i[1] = v[1][f"{pos}"]
-                     # termina condicional
+                    # multiplica um vetor por uma matriz
+                    elif linha.startswith('mvm'):
+                        comando , pos_m , vetor1 = linha.split(' ')
+                        if vetor1 != "vecXY":
+                            for v in vetor:
+                                if v[0] == vetor1:
+                                    for pos0,n in enumerate(bdm[f"{pos_m}"]):
+                                        soma = 0
+                                        for pos1, n1 in enumerate(n):
+                                            soma += n1 * v[1][f"{pos1}"]
+                                        v[1][f"{pos0}"] = soma
+                                    break
+                        else:
+                            for pos0, n in enumerate(bdm[f"{pos_m}"]):
+                                soma = 0
+                                for pos1, n1 in enumerate(n):
+                                    if pos1 == 0:
+                                        soma += n1 * x
+                                    elif pos1 == 1:
+                                        soma += n1 * y
+                                if pos0 == 0:
+                                    x = soma
+                                elif pos0 == 1:
+                                    y = soma
+                    # termina condicional
                     elif linha.startswith('ec'):
                         ativ_case = False
                     # trata condicionais
