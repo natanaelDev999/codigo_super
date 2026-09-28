@@ -180,16 +180,13 @@ def desenha_triangulo(proj,comeco,fim):
                 x_max = max(p[0][0],p[1][0],p[2][0])+1
                 x_min = min(p[0][0],p[1][0],p[2][0])+1
 
-                ciclosy = 0
-                ciclosx = 0
                 for y in range(y_min,y_max):
-                    ciclosy +=1
                     for x in range(x_min,x_max):
-                        ciclosx += 1
                         if ponto_triangulo(p[0],p[1],p[2],[x,y]) == True:
                             if trata_z_buffer(x,y,p[0][3]) == True:
                                 tela[y][x] = f'\033[38;2;{bda[p[0][3]][0]};{bda[p[0][3]][1]};{bda[p[0][3]][2]}m█\033[m'
                                 z_buffer[y][x] = (p[0][3]+p[1][3]+p[2][3])/3
+                p = []
 
 # cria tela e z-buffer
 def cria_tela(y,x):
