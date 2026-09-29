@@ -31,6 +31,7 @@ largura = 0
 altura = 0
 ###############################################################
 #                     FUNÇÕES PARA SHADERS
+# TelShader
 def compila_codigo_telshader(codigo):
     global tela,bdm
 
@@ -47,6 +48,26 @@ def compila_codigo_telshader(codigo):
             if p != ' ':
                 tela[pos0][pos1] = ' '
                 pixel = compila_codigo_TelShader(codigo,p,pos1,pos0,bdm)
+
+                if 0 <= pixel[2] < altura and 0 <= pixel[1] < largura:
+                    tela[pixel[2]][pixel[1]] = pixel[0]
+# TelTShader
+def compila_codigo_teltshader(codigo):
+    global tela
+
+    tela_original = []
+    for v in tela:
+        tela_original.append(v)
+
+    for i in tela:
+        for j in tela:
+            j = ' '
+
+    for pos0, linha in enumerate(tela_original):
+        for pos1, p in enumerate(linha):
+            if p == ' ':
+                tela[pos0][pos1] = ' '
+                pixel = compila_codigo_TelShader(codigo, p, pos1, pos0, bdm)
 
                 if 0 <= pixel[2] < altura and 0 <= pixel[1] < largura:
                     tela[pixel[2]][pixel[1]] = pixel[0]
@@ -205,7 +226,7 @@ def imprime_tela():
     global tela,largura,altura
     for y in tela:
         for x in y:
-            print(x,end=' ')
+            print(x,end='')
         print()
 
 # limpa tela e z_buffer

@@ -69,10 +69,18 @@ def compila_codigo_TelShader(codigo_TelShader,pixel,x,y,bdm={}):
                         if type(valor1) == str:
                             if valor1.isnumeric():
                                 valor1 = float(valor1)
+                            else:
+                                for i in variaveis:
+                                    if i[0] == valor1:
+                                        valor1 = float(i[1])
 
                         if type(valor2) == str:
                             if valor2.isnumeric():
                                 valor2 = float(valor2)
+                            else:
+                                for i in variaveis:
+                                    if i[0] == valor1:
+                                        valor2 = float(i[1])
 
                         if type(valor1) == float and type(valor2) == float:
                             if comp == '==':
@@ -89,6 +97,14 @@ def compila_codigo_TelShader(codigo_TelShader,pixel,x,y,bdm={}):
 
                             elif  comp  == '!':
                                 if valor1 != valor2:
+                                    ativ_case = True
+
+                            elif comp == '%':
+                                if valor1 % valor2 == 0:
+                                    ativ_case = True
+
+                            elif comp == '%?':
+                                if valor1 % valor2 != 0:
                                     ativ_case = True
                     # modifica o caractere do pixel
                     if linha.startswith('p=') or linha.startswith('p ='):
