@@ -160,7 +160,7 @@ def init():
     #  o fragment shader não recebe os atributos diretamente, apenas pelo vertex shader
     shader_fragmento = '''
 
-    #version 330 core 
+    #version 430
 
     // recebimento e inserimento de valores
     // cria a variável de saída da cor
@@ -204,7 +204,7 @@ def init():
 
     shader_vertices = '''
 
-    #version 330 core
+    #version 430
 
     // carrega o atributo de posição
     layout(location = 0) in vec3 atributo_pos;
