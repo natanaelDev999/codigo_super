@@ -12,8 +12,10 @@ import sys
 import LibraryVectorNatan as lvn
 # biblioteca para manipulação de tempo
 import time
-# compilador TelShader
-from LibraryRenderNatanT.compilador_TelShader import compila_codigo_TelShader
+# compilador TelShader e do TelTShader
+from LibraryRenderNatanT.compilador_TelShader import compila_codigo_telshader
+# compilador TelMatrixShader
+from LibraryRenderNatanT.compilador_TelMatrixShader import compila_codigo_telmatrixshader
 ###############################################################
 #                         buffers
 # Buffer de Dados para Vértices(BDV)
@@ -32,7 +34,7 @@ altura = 0
 ###############################################################
 #                     FUNÇÕES PARA SHADERS
 # TelShader
-def compila_codigo_telshader(codigo):
+def compila_codigo_TelShader(codigo):
     global tela,bdm
 
     tela_original = []
@@ -47,12 +49,12 @@ def compila_codigo_telshader(codigo):
         for pos1, p in enumerate(linha):
             if p != ' ':
                 tela[pos0][pos1] = ' '
-                pixel = compila_codigo_TelShader(codigo,p,pos1,pos0,bdm)
+                pixel = compila_codigo_telshader(codigo,p,pos1,pos0,bdm)
 
                 if 0 <= pixel[2] < altura and 0 <= pixel[1] < largura:
                     tela[pixel[2]][pixel[1]] = pixel[0]
 # TelTShader
-def compila_codigo_teltshader(codigo):
+def compila_codigo_TelTShader(codigo):
     global tela
 
     tela_original = []
@@ -67,10 +69,15 @@ def compila_codigo_teltshader(codigo):
         for pos1, p in enumerate(linha):
             if p == ' ':
                 tela[pos0][pos1] = ' '
-                pixel = compila_codigo_TelShader(codigo, p, pos1, pos0, bdm)
+                pixel = compila_codigo_telshader(codigo, p, pos1, pos0, bdm)
 
                 if 0 <= pixel[2] < altura and 0 <= pixel[1] < largura:
                     tela[pixel[2]][pixel[1]] = pixel[0]
+# TelMatrixShader
+def compila_codigo_TelMatrixShader(codigo):
+    global tela
+    for pos0,c in enumerate(bdv):
+        bdv[pos0] = compila_codigo_telmatrixshader(codigo,c)
 ###############################################################
 #                     FUNÇÕES UTILITÁRIAS
 # trata z-buffer
