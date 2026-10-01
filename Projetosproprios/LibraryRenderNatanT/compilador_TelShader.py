@@ -3,7 +3,7 @@ import math
 #                           TelShader
 #A linguagem de sombreamento do terminal
 
-def compila_codigo_TelShader(codigo_TelShader,pixel,x,y,bdm={}):
+def compila_codigo_telshader(codigo_TelShader,pixel,x,y,bdm={}):
     pixel_saida = ' '
     linha = ''
     variaveis = []
