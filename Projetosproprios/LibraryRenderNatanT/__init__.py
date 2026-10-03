@@ -20,6 +20,8 @@ from LibraryRenderNatanT.compilador_TelMatrixShader import compila_codigo_telmat
 #                         buffers
 # Buffer de Dados para Vértices(BDV)
 bdv = []
+#  Buffer reserva
+bdv_c = []
 # Buffer de Dados para Aparência(BDA)
 bda = []
 # Buffer de Dados para Matrizes(BDM)
@@ -28,6 +30,8 @@ bdm = {"0":[],"1":[],"2":[],"3":[],"4":[],"5":[],"6":[],"7":[],"8":[],'9':[],'10
 ###############################################################
 #                          tela
 tela = []
+# tela reserva
+tela_c = []
 z_buffer = []
 largura = 0
 altura = 0
@@ -82,18 +86,20 @@ def compila_codigo_TelMatrixShader(codigo):
 #                     FUNÇÕES UTILITÁRIAS
 # trata z-buffer
 def trata_z_buffer(x,y,z):
-    global z_buffer
+    global z_buffer, largura, altura
     resposta = True
-    if z_buffer[y][x] != None:
-        if z_buffer[y][x] < z:
-            resposta = False
+    if x < largura and y < altura:
+        if z_buffer[y][x] != None:
+            if z_buffer[y][x] < z:
+                resposta = False
     return resposta
 # função para adicionar dados aos bufffers
 def adiciona_dados(tipo,dados,pos=0):
-    global bdv,bda
+    global bdv,bda,bdv_c
     if len(dados) > 0:
         if tipo == "BDV" or tipo == "Buffer de Dados para Vértices":
             bdv = dados
+            bdv_c = bdv
         elif tipo == "BDA" or tipo == "Buffer de Dados para Aparência":
             bda = dados
         elif tipo == "BDM" or tipo == "Buffer de Dados para Matrizes":
@@ -212,13 +218,31 @@ def desenha_triangulo(proj,comeco,fim):
                     for x in range(x_min,x_max):
                         if ponto_triangulo(p[0],p[1],p[2],[x,y]) == True:
                             if trata_z_buffer(x,y,p[0][3]) == True:
-                                tela[y][x] = f'\033[38;2;{bda[p[0][3]][0]};{bda[p[0][3]][1]};{bda[p[0][3]][2]}m█\033[m'
-                                z_buffer[y][x] = (p[0][3]+p[1][3]+p[2][3])/3
+                                if y < altura and x < largura:
+                                    tela[y][x] = f'\033[38;2;{bda[p[0][3]][0]};{bda[p[0][3]][1]};{bda[p[0][3]][2]}m█\033[m'
+                                    z_buffer[y][x] = (p[0][3]+p[1][3]+p[2][3])/3
                 p = []
 
+
+# preserva estado anterior dos dados
+def preserva_dados():
+    global tela, tela_c , bdv, bdv_c
+    tela = tela_c.copy()
+    bdv = bdv_c.copy()
+# carrega novos dados
+def carrega_novos_dados():
+    global tela, tela_c , bdv, bdv_c
+    tela_c = tela.copy()
+    bdv_c = bdv.copy()
+# limpa dados
+def limpa_dados():
+    global tela, bdv, bda
+    tela = []
+    bdv = []
+    bda = []
 # cria tela e z-buffer
 def cria_tela(y,x):
-    global tela,largura,altura,z_buffer
+    global tela,largura,altura,z_buffer,tela_c
     altura = y
     largura = x
     for c in range(0,altura):
@@ -227,13 +251,14 @@ def cria_tela(y,x):
         for r in range(0,largura):
             tela[c].append(' ')
             z_buffer[c].append(None)
+    tela_c = tela.copy()
 
 # imprime tela
 def imprime_tela():
     global tela,largura,altura
     for y in tela:
         for x in y:
-            print(x,end='')
+            print(x,end=' ')
         print()
 
 # limpa tela e z_buffer
