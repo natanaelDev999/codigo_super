@@ -39,6 +39,17 @@ def compila_codigo_telmatrixshader(codigo_TelMatrixShader, vertice):
             elif linha.startswith('3ptf'):
                 comando, nome = linha.split(' ')
                 vetores.append([nome, {'x':0,'y':0,'z':0}])
+            elif linha.startswith('sun'):
+                comando, vetor1, vetor2 = linha.split(' ')
+                for v in vetores:
+                    if v[0] == vetor1:
+                        for v1 in vetores:
+                            if v1[0] == vetor2:
+                                v[1]['x'] += v1[1]['x']
+                                v[1]['y'] += v1[1]['y']
+                                v[1]['z'] += v1[1]['z']
+                                break
+                        break
             linha = ''
     for v in vetores:
         if v[0] == 'vecO':
@@ -46,5 +57,5 @@ def compila_codigo_telmatrixshader(codigo_TelMatrixShader, vertice):
             vertice_saida.append(v[1]['y'])
             vertice_saida.append(v[1]['z'])
             break
-    print(vetores)
+    # print(vetores)
     return vertice_saida
