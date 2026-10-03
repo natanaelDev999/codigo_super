@@ -79,7 +79,7 @@ def compila_codigo_TelTShader(codigo):
                     tela[pixel[2]][pixel[1]] = pixel[0]
 # TelMatrixShader
 def compila_codigo_TelMatrixShader(codigo):
-    global tela
+    global tela, altura, largura
     for pos0,c in enumerate(bdv):
         bdv[pos0] = compila_codigo_telmatrixshader(codigo,c)
 ###############################################################
@@ -219,7 +219,7 @@ def desenha_triangulo(proj,comeco,fim):
                         if ponto_triangulo(p[0],p[1],p[2],[x,y]) == True:
                             if trata_z_buffer(x,y,p[0][3]) == True:
                                 if y < altura and x < largura:
-                                    tela[y][x] = f'\033[38;2;{bda[p[0][3]][0]};{bda[p[0][3]][1]};{bda[p[0][3]][2]}m█\033[m'
+                                    tela[y][x] = f'\033[38;2;{bda[p[0][2]][0]};{bda[p[0][2]][1]};{bda[p[0][2]][2]}m█\033[m'
                                     z_buffer[y][x] = (p[0][3]+p[1][3]+p[2][3])/3
                 p = []
 
