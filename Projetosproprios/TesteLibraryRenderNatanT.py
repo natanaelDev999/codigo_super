@@ -20,8 +20,10 @@ ec;
 codigo_tms = '''
 ful vecO vecI;
 3ptf vecS;
-mdf vecS x 5;
-sun vecO vecS;
+mdf vecS x 1;
+mdf vecS y 1;
+mdf vecS z 1;
+div vecO vecS;
 '''
 
 matriz_id_0 = [[1,0,0],
