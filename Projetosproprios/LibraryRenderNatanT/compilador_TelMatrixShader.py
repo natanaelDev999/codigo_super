@@ -83,6 +83,22 @@ def compila_codigo_telmatrixshader(codigo_TelMatrixShader, vertice):
                                 v[1]['z'] /= v1[1]['z']
                                 break
                         break
+            elif linha.startswith('dot'):
+                comando, vetor1, vetor2, var = linha.split(' ')
+                for v in vetores:
+                    if v[0] == vetor1:
+                        for v1 in vetores:
+                            if v1[0] == vetor2:
+                                dot = 0
+                                dot += v[1]['x'] * v1[1]['x']
+                                dot += v[1]['y'] * v1[1]['y']
+                                dot += v[1]['z'] * v1[1]['z']
+                                for v2 in variaveis:
+                                    if v2[0] == var:
+                                        v2[1] = dot
+                                        break
+                                break
+                        break
             linha = ''
     for v in vetores:
         if v[0] == 'vecO':
