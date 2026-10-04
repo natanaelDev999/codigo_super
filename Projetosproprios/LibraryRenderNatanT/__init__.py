@@ -81,7 +81,7 @@ def compila_codigo_TelTShader(codigo):
 def compila_codigo_TelMatrixShader(codigo):
     global tela, altura, largura
     for pos0,c in enumerate(bdv):
-        bdv[pos0] = compila_codigo_telmatrixshader(codigo,c)
+        bdv[pos0] = compila_codigo_telmatrixshader(codigo,c,bdm)
 ###############################################################
 #                     FUNÇÕES UTILITÁRIAS
 # trata z-buffer

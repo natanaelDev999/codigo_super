@@ -6,9 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="40f19d69-33a2-4c14-82a8-a0754e89c91b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projetosproprios/LibraryRenderNatanT/compilador_TelMatrixShader.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projetosproprios/LibraryRenderNatanT/compilador_TelMatrixShader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projetosproprios/RayTracing3.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projetosproprios/RayTracing3.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projetosproprios/TesteLibraryRenderNatanT.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projetosproprios/TesteLibraryRenderNatanT.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -780,7 +777,7 @@
       <workItem from="1790857934719" duration="9733000" />
       <workItem from="1790964216955" duration="3588000" />
       <workItem from="1791046312700" duration="10571000" />
-      <workItem from="1791109739105" duration="2851000" />
+      <workItem from="1791109739105" duration="4193000" />
     </task>
     <servers />
   </component>

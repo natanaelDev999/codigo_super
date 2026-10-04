@@ -19,23 +19,8 @@ ec;
 
 codigo_tms = '''
 ful vecO vecI;
-ptf d 0;
 
-3ptf vec1;
-3ptf vec2;
-
-mdf vec2 x 2;
-mdf vec1 x 2;
-
-
-dot vec1 vec2 d;
-
-
-3ptf vecS;
-mdf vecS x 1;
-mdf vecS y 1;
-mdf vecS z 1;
-mulv vecO vecS;
+mulm 0 vecO;
 '''
 
 matriz_id_0 = [[1,0,0],
