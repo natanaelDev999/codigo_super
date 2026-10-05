@@ -3,7 +3,6 @@ import time
 
 codigo_TelShader = '''
 p=pr;
-mvm 0 vecXY;
 '''
 
 codigo_TelTShader = '''
@@ -19,13 +18,15 @@ ec;
 
 codigo_tms = '''
 ful vecO vecI;
-
-mulm 0 vecO;
+case 2 < 3;
+$mulm 0 vecO;
 '''
 
-matriz_id_0 = [[1,0,0],
-               [0,1,0],
-               [0,0,1]]
+matriz_id_0 = [
+               [1,1,0],
+               [0,2,0],
+               [0,0,1]
+              ]
 
 dados_vertices = [[-2,-2,1],[-2,2,1],[2,2,1],
                   [2,-2,1],[-2,-2,1],[2,2,1]]
