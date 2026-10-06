@@ -18,6 +18,13 @@ def compila_codigo_telshader(codigo_TelShader,pixel,x,y,bdm={}):
                 if ativ_case == True or not linha.startswith('$'):
                     if linha.startswith('$'):
                         linha = linha[1:]
+                    # modifica o valor de uma variável
+                    if linha.startswith('mdv'):
+                            comando, variavel, valor = linha.split(' ')
+                            for v in variaveis:
+                                if v[0] == variavel:
+                                    v[1] = float(valor)
+                                    break
                     # dá a uma variável o valor de um vetor
                     if linha.startswith('dva'):
                         comando , vetor1 , pos , var = linha.split(' ')

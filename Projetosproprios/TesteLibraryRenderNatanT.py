@@ -18,6 +18,9 @@ ec;
 
 codigo_tms = '''
 ful vecO vecI;
+ptf t1 1;
+mdv t1 2;
+
 case 2 < 3;
 $mulm 0 vecO;
 ec;
