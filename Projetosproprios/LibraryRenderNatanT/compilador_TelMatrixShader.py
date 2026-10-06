@@ -21,6 +21,8 @@ def compila_codigo_telmatrixshader(codigo_TelMatrixShader, vertice,bdm):
                     if linha.startswith('$'):
                         linha = linha[1:]
                     # trata condicionais
+                    if linha.startswith('ec'):
+                        ativ_case = False
                     if linha.startswith('case'):
                         comando, valor1, comp, valor2 = linha.split(' ')
 
