@@ -99,6 +99,14 @@ def compila_codigo_telshader(codigo_TelShader,pixel,x,y,bdm={}):
                                 if valor1 != valor2:
                                     ativ_case = True
 
+                            elif comp == '>=':
+                                if valor1 >= valor2:
+                                    ativ_case = True
+
+                            elif comp == '<=':
+                                if valor1 <= valor2:
+                                    ativ_case = True
+
                             elif comp == '%':
                                 if valor1 % valor2 == 0:
                                     ativ_case = True
