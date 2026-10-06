@@ -5,14 +5,14 @@ tela = []
 
 esferas = [[[0,0,2],0.5,[255,0,0]],[[2,0,3],0.5,[0,255,0]],[[0.5,0,1],0.5,[0,0,255]]]
 
-y_tela = 20
-x_tela = 52
+y_tela = 40
+x_tela = 104
 
 #camera
 viewport_h = 2.0
 viewport_w = viewport_h * (x_tela/y_tela)
 focal_l = 1.0
-camera_center = [0,0,0]
+camera_center = [1,0,0]
 
 viewport_u = [viewport_w,0,0]
 viewport_v = [0, -viewport_h, 0]
@@ -50,14 +50,37 @@ def renderRayTracing():
             z = at(raio[0][2],1,camera_center[2]-raio[1][2])
 
             cor = [0,0,0]
-            for j in esferas:
-                if hit_sphere(j[0],j[1],[camera_center,[x,y,z]]) == True:
-                    cor = j[2]
+            # for j in esferas:
+            #     if hit_sphere(j[0],j[1],[camera_center,[x,y,z]]) == True:
+            #         cor = j[2]
+            if hit_cube(raio,[-0.25,-0.25,1],[0.25,0.25,1.5]):
+                cor = [255,0,0]
             print(f'\033[38;2;{cor[0]};{cor[1]};{cor[2]}m#\033[m',end=' ')
         print()
 
 def at(orig,t,dir):
     return orig + t*dir
+
+def hit_cube(raio,c_min,c_max):
+    t_x1 = (c_min[0]-raio[0][0]) * 1./ raio[1][0]
+    t_x2 = (c_max[0]-raio[0][0]) * 1./ raio[1][0]
+
+    tmin = min(t_x1,t_x2)
+    tmax = max(t_x1,t_x2)
+
+    t_y1 = (c_min[1] - raio[0][1]) * 1. / raio[1][1]
+    t_y2 = (c_max[1] - raio[0][1]) * 1. / raio[1][1]
+
+    tmin = max(tmin,min(t_y1,t_y2))
+    tmax = min(tmax,max(t_y1,t_y2))
+
+    t_z1 = (c_min[2] - raio[0][2]) * 1. / raio[1][2]
+    t_z2 = (c_max[2] - raio[0][2]) * 1. / raio[1][2]
+
+    tmin = max(tmin,min(t_z1,t_z2))
+    tmax = min(tmax, max(t_z1,t_z2))
+
+    return tmax >= min(tmin,0.) and tmin <= 10
 
 def hit_sphere(center,radius,ray):
     oc = lvt.subtrai_vetores(center,ray[0])

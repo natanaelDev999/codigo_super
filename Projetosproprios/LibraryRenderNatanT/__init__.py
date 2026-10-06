@@ -88,7 +88,7 @@ def compila_codigo_TelMatrixShader(codigo):
 def trata_z_buffer(x,y,z):
     global z_buffer, largura, altura
     resposta = True
-    if x < largura and y < altura:
+    if x < largura and y < altura and x > 0 and y > 0:
         if z_buffer[y][x] != None:
             if z_buffer[y][x] < z:
                 resposta = False
@@ -218,7 +218,7 @@ def desenha_triangulo(proj,comeco,fim):
                     for x in range(x_min,x_max):
                         if ponto_triangulo(p[0],p[1],p[2],[x,y]) == True:
                             if trata_z_buffer(x,y,p[0][3]) == True:
-                                if y < altura and x < largura:
+                                if y < altura and x < largura and y > 0 and x > 0:
                                     tela[y][x] = f'\033[38;2;{bda[p[0][2]][0]};{bda[p[0][2]][1]};{bda[p[0][2]][2]}m█\033[m'
                                     z_buffer[y][x] = (p[0][3]+p[1][3]+p[2][3])/3
                 p = []

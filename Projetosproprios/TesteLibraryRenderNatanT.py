@@ -20,11 +20,12 @@ codigo_tms = '''
 ful vecO vecI;
 case 2 < 3;
 $mulm 0 vecO;
+ec;
 '''
 
 matriz_id_0 = [
-               [1,1,0],
-               [0,2,0],
+               [1,0,0],
+               [0,1,0],
                [0,0,1]
               ]
 
