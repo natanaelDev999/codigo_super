@@ -1,18 +1,17 @@
 import LibraryVectorNatan as lvt
-
-tela = []
-
+import os
+import time
 
 esferas = [[[0,0,2],0.5,[255,0,0]],[[2,0,3],0.5,[0,255,0]],[[0.5,0,1],0.5,[0,0,255]]]
 
-y_tela = 40
+y_tela = 36
 x_tela = 104
 
 #camera
 viewport_h = 2.0
 viewport_w = viewport_h * (x_tela/y_tela)
 focal_l = 1.0
-camera_center = [1,0,0]
+camera_center = [0,0,0]
 
 viewport_u = [viewport_w,0,0]
 viewport_v = [0, -viewport_h, 0]
@@ -90,5 +89,8 @@ def hit_sphere(center,radius,ray):
     discriminate = b*b - 4*a*c
     return discriminate >= 0
 def main():
-    renderRayTracing()
+    while True:
+        renderRayTracing()
+        time.sleep(.5)
+        os.system('cls')
 main()

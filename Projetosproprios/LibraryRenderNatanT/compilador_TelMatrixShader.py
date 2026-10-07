@@ -75,12 +75,21 @@ def compila_codigo_telmatrixshader(codigo_TelMatrixShader, vertice,bdm):
                                 if valor1 % valor2 != 0:
                                     ativ_case = True
                     # modifica o valor de uma variável
-                    if linha.startswith('mdv'):
-                        comando, variavel , valor = linha.split(' ')
-                        for v in variaveis:
-                            if v[0] == variavel:
-                                v[1] = float(valor)
-                                break
+                    if linha.startswith('mdv') :
+                        l = linha.split(' ')
+                        if len(l) == 3:
+                            comando, variavel , valor = linha.split(' ')
+                            for v in variaveis:
+                                if v[0] == variavel:
+                                    v[1] = float(valor)
+                                    break
+                        else:
+                            comando, variavel, vetor, pos = linha.split(' ')
+                            for v in vetores:
+                                if v[0] == vetor:
+                                    for v2 in variaveis:
+                                        if v2[0] == variavel:
+                                            v2[1] = v[1][f'{pos}']
                     # modifica o valor de um vetor
                     elif linha.startswith('mdf'):
                         comando, vetor , pos , valor = linha.split(' ')

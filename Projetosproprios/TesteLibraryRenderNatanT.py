@@ -9,6 +9,7 @@ codigo_TelTShader = '''
 p=.;
 3ptf cor;
 case x % 2;
+$p=*;
 $cp=255,255,0;
 ec;
 case x %? 2;
@@ -19,7 +20,7 @@ ec;
 codigo_tms = '''
 ful vecO vecI;
 ptf t1 1;
-mdv t1 2;
+mdv t1 vecO x;
 
 case 2 < 3;
 $mulm 0 vecO;
