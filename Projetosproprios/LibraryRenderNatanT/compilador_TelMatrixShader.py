@@ -74,8 +74,51 @@ def compila_codigo_telmatrixshader(codigo_TelMatrixShader, vertice,bdm):
                             elif comp == '%?':
                                 if valor1 % valor2 != 0:
                                     ativ_case = True
+                    # modifica o valor de uma variável por o valor de uma operação matemática
+                    elif  linha.startswith('loc'):
+                        comando, variavel, operacao = linha.split(' ')
+                        '''
+                        Primeiro dividimos a operação , em números e operações, após isso se conclui a operação e a variavel recebe o valor 
+                        '''
+                        # adquire os valores
+                        valores = []
+                        operadores = []
+                        numero = ''
+                        for j in operacao:
+                            if j != '+' and j != '-' and j != '*' and j != '/' and j.isnumeric() == True:
+                                valores.append(int(j))
+                            else:
+                                operadores.append(j)
+                        # faz as operações
+                        valor1 = 0
+                        valor2 = 0
+                        resultado = 0
+                        for pos0,valor in enumerate(valores):
+                            if pos0 % 2 == 0:
+                                valor1 = valor
+                            elif pos0 %2 != 0:
+                                valor2 = valor
+                                if operadores[pos0-1] == '+':
+                                    resultado = valor1+valor2
+                                elif operadores[pos0-1] == '-':
+                                    resultado = valor1-valor2
+                                elif operadores[pos0-1] == '*':
+                                    resultado = valor1*valor2
+                                elif operadores[pos0-1] == '/':
+                                    resultado = valor1/valor2
+                                elif operadores[pos0-1] == '|':
+                                    resultado = valor1//valor2
+                                elif operadores[pos0-1] == '%':
+                                    resultado = valor1 % valor2
+                                elif operadores[pos0-1] == '^':
+                                    resultado = valor1 ** valor2
+                        # modifica o valor da variável
+                        for v in variaveis:
+                            if v[0] == variavel:
+                                v[1] = resultado
+                                break
                     # modifica o valor de uma variável
-                    if linha.startswith('mdv') :
+                    elif linha.startswith('mdv') :
                         l = linha.split(' ')
                         if len(l) == 3:
                             comando, variavel , valor = linha.split(' ')
