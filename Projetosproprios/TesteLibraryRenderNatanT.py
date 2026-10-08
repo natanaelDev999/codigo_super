@@ -10,21 +10,25 @@ p=.;
 3ptf cor;
 case x % 2;
 $p=*;
-$cp=255,255,0;
+$cp=155,155,0;
 ec;
 case x %? 2;
-$cp=255,0,255;
+$cp=155,0,155;
+ec;
+case y % 2;
+$p=*;
+$cp=155,155,0;
+ec;
+case y %? 2;
+$cp=155,0,155;
 ec;
 '''
 
 codigo_tms = '''
 ful vecO vecI;
 ptf t1 1;
-mdv t1 vecO x;
-
-case 2 < 3;
-$mulm 0 vecO;
-ec;
+loc t1 2^2;
+mulm 0 vecO;
 '''
 
 matriz_id_0 = [

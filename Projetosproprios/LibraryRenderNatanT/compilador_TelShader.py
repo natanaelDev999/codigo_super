@@ -20,13 +20,65 @@ def compila_codigo_telshader(codigo_TelShader,pixel,x,y,bdm={}):
                         linha = linha[1:]
                     # modifica o valor de uma variável
                     if linha.startswith('mdv'):
-                            comando, variavel, valor = linha.split(' ')
-                            for v in variaveis:
-                                if v[0] == variavel:
-                                    v[1] = float(valor)
-                                    break
+                            l = linha.split(' ')
+                            if len(l) == 3:
+                                comando, variavel, valor = linha.split(' ')
+                                for v in variaveis:
+                                    if v[0] == variavel:
+                                        v[1] = float(valor)
+                                        break
+                            else:
+                                comando, variavel, vetor1, pos = linha.split(' ')
+                                for v in vetor:
+                                    if v[0] == vetor1:
+                                        for v2 in variaveis:
+                                            if v2[0] == variavel:
+                                                v2[1] = v[1][f'{pos}']
+                    # modifica o valor de uma variável por o valor de uma operação matemática
+                    elif  linha.startswith('loc'):
+                        comando, variavel, operacao = linha.split(' ')
+                        '''
+                        Primeiro dividimos a operação , em números e operações, após isso se conclui a operação e a variavel recebe o valor 
+                        '''
+                        # adquire os valores
+                        valores = []
+                        operadores = []
+                        numero = ''
+                        for j in operacao:
+                            if j != '+' and j != '-' and j != '*' and j != '/' and j.isnumeric() == True:
+                                valores.append(int(j))
+                            else:
+                                operadores.append(j)
+                        # faz as operações
+                        valor1 = 0
+                        valor2 = 0
+                        resultado = 0
+                        for pos0,valor in enumerate(valores):
+                            if pos0 % 2 == 0:
+                                valor1 = valor
+                            elif pos0 %2 != 0:
+                                valor2 = valor
+                                if operadores[pos0-1] == '+':
+                                    resultado = valor1+valor2
+                                elif operadores[pos0-1] == '-':
+                                    resultado = valor1-valor2
+                                elif operadores[pos0-1] == '*':
+                                    resultado = valor1*valor2
+                                elif operadores[pos0-1] == '/':
+                                    resultado = valor1/valor2
+                                elif operadores[pos0-1] == '|':
+                                    resultado = valor1//valor2
+                                elif operadores[pos0-1] == '%':
+                                    resultado = valor1 % valor2
+                                elif operadores[pos0-1] == '^':
+                                    resultado = valor1 ** valor2
+                        # modifica o valor da variável
+                        for v in variaveis:
+                            if v[0] == variavel:
+                                v[1] = resultado
+                                break
                     # dá a uma variável o valor de um vetor
-                    if linha.startswith('dva'):
+                    elif linha.startswith('dva'):
                         comando , vetor1 , pos , var = linha.split(' ')
                         for v in vetor:
                             if v[0] == vetor1:

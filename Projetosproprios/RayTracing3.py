@@ -1,8 +1,8 @@
 import LibraryVectorNatan as lvt
-import os
+import sys
 import time
 
-esferas = [[[0,0,2],0.5,[255,0,0]],[[2,0,3],0.5,[0,255,0]],[[0.5,0,1],0.5,[0,0,255]]]
+esferas = [[[2,0,3],0.5,[0,255,0]],[[0,0,2],0.5,[255,0,0]],[[0.5,0,1],0.5,[0,0,255]]]
 
 y_tela = 36
 x_tela = 104
@@ -50,10 +50,10 @@ def renderRayTracing():
 
             cor = [0,0,0]
             # for j in esferas:
-            #     if hit_sphere(j[0],j[1],[camera_center,[x,y,z]]) == True:
-            #         cor = j[2]
-            if hit_cube(raio,[-0.25,-0.25,1],[0.25,0.25,1.5]):
-                cor = [255,0,0]
+            #      if hit_sphere(j[0],j[1],[camera_center,[x,y,z]]) == True:
+            #          cor = j[2]
+            if hit_cube(raio,[-0.25,-0.25,1],[-0.75,0.25,1.5]):
+                 cor = [255,0,0]
             print(f'\033[38;2;{cor[0]};{cor[1]};{cor[2]}m#\033[m',end=' ')
         print()
 
@@ -91,6 +91,7 @@ def hit_sphere(center,radius,ray):
 def main():
     while True:
         renderRayTracing()
-        time.sleep(.5)
-        os.system('cls')
+        time.sleep(0.016)
+        sys.stdout.write('\033[H')
+        sys.stdout.flush()
 main()
