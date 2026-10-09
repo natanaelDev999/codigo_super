@@ -27,7 +27,7 @@ ec;
 codigo_tms = '''
 ful vecO vecI;
 ptf t1 1;
-loc t1 2^2;
+loc t1 10*2;
 mulm 0 vecO;
 '''
 
