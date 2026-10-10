@@ -85,11 +85,19 @@ def compila_codigo_telmatrixshader(codigo_TelMatrixShader, vertice,bdm):
                         operadores = []
                         numero = ''
                         for j in operacao:
-                            if j != '+' and j != '-' and j != '*' and j != '/' and j.isnumeric() == True:
+                            if j != '+' and j != '-' and j != '*' and j != '/':
                                 numero += j
                             else:
-                                valores.append(int(numero))
-                                numero = ''
+                                print(numero)
+                                if numero.isnumeric():
+                                    valores.append(int(numero))
+                                    numero = ''
+                                else:
+                                    for v in variaveis:
+                                        if v[0] == numero:
+                                            valores.append(int(v[1]))
+                                            numero = ''
+                                            break
                                 operadores.append(j)
                         valores.append(int(numero))
                         # faz as operações
