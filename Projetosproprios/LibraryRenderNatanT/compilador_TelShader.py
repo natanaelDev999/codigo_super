@@ -35,7 +35,7 @@ def compila_codigo_telshader(codigo_TelShader,pixel,x,y,bdm={}):
                                             if v2[0] == variavel:
                                                 v2[1] = v[1][f'{pos}']
                     # modifica o valor de uma variável por o valor de uma operação matemática
-                    elif  linha.startswith('loc'):
+                    elif linha.startswith('loc'):
                         comando, variavel, operacao = linha.split(' ')
                         '''
                         Primeiro dividimos a operação , em números e operações, após isso se conclui a operação e a variavel recebe o valor 
@@ -46,31 +46,34 @@ def compila_codigo_telshader(codigo_TelShader,pixel,x,y,bdm={}):
                         numero = ''
                         for j in operacao:
                             if j != '+' and j != '-' and j != '*' and j != '/' and j.isnumeric() == True:
-                                valores.append(int(j))
+                                numero += j
                             else:
+                                valores.append(int(numero))
+                                numero = ''
                                 operadores.append(j)
+                        valores.append(int(numero))
                         # faz as operações
                         valor1 = 0
                         valor2 = 0
                         resultado = 0
-                        for pos0,valor in enumerate(valores):
+                        for pos0, valor in enumerate(valores):
                             if pos0 % 2 == 0:
                                 valor1 = valor
-                            elif pos0 %2 != 0:
+                            elif pos0 % 2 != 0:
                                 valor2 = valor
-                                if operadores[pos0-1] == '+':
-                                    resultado = valor1+valor2
-                                elif operadores[pos0-1] == '-':
-                                    resultado = valor1-valor2
-                                elif operadores[pos0-1] == '*':
-                                    resultado = valor1*valor2
-                                elif operadores[pos0-1] == '/':
-                                    resultado = valor1/valor2
-                                elif operadores[pos0-1] == '|':
-                                    resultado = valor1//valor2
-                                elif operadores[pos0-1] == '%':
+                                if operadores[pos0 - 1] == '+':
+                                    resultado = valor1 + valor2
+                                elif operadores[pos0 - 1] == '-':
+                                    resultado = valor1 - valor2
+                                elif operadores[pos0 - 1] == '*':
+                                    resultado = valor1 * valor2
+                                elif operadores[pos0 - 1] == '/':
+                                    resultado = valor1 / valor2
+                                elif operadores[pos0 - 1] == '|':
+                                    resultado = valor1 // valor2
+                                elif operadores[pos0 - 1] == '%':
                                     resultado = valor1 % valor2
-                                elif operadores[pos0-1] == '^':
+                                elif operadores[pos0 - 1] == '^':
                                     resultado = valor1 ** valor2
                         # modifica o valor da variável
                         for v in variaveis:
