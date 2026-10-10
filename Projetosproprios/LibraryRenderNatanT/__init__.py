@@ -16,7 +16,6 @@ import time
 from LibraryRenderNatanT.compilador_TelShader import compila_codigo_telshader
 # compilador TelMatrixShader
 from LibraryRenderNatanT.compilador_TelMatrixShader import compila_codigo_telmatrixshader
-import threading
 ###############################################################
 #                         buffers
 # Buffer de Dados para Vértices(BDV)
