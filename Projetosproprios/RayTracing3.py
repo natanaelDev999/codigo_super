@@ -52,33 +52,13 @@ def renderRayTracing():
             # for j in esferas:
             #      if hit_sphere(j[0],j[1],[camera_center,[x,y,z]]) == True:
             #          cor = j[2]
-            if hit_quad(raio,[-0.5,-0.5,1],[0.5,0.5,1.5]):
+            if hit_cube(raio,[-1,-0.25,1],[-0.25,0.25,1.5]):
                  cor = [255,0,0]
             print(f'\033[38;2;{cor[0]};{cor[1]};{cor[2]}m#\033[m',end=' ')
         print()
 
 def at(orig,t,dir):
     return orig + t*dir
-
-def hit_quad(raio, c_min , c_max):
-    t = False
-    for c in range(0,3):
-        # para o x
-        if round(raio[1][0]+raio[1][0]) >= c_min[0] and round(raio[1][0]+raio[1][0]) <= c_max[0]:
-            t = True
-
-        # para o y
-        if round(raio[1][1]+raio[1][1]) >= c_min[1] and round(raio[1][1]+raio[1][1]) <= c_max[1]:
-            t = True
-        else:
-            t = False
-
-        # para o z
-        if round(raio[1][2]+raio[1][2]) >= c_min[2] and round(raio[1][2]+raio[1][2]) <= c_max[2]:
-            t = True
-
-    return t
-
 def hit_cube(raio,c_min,c_max):
     t_x1 = (c_min[0]-raio[0][0]) * 1./ raio[1][0]
     t_x2 = (c_max[0]-raio[0][0]) * 1./ raio[1][0]

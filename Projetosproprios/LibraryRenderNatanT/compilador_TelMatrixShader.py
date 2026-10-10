@@ -97,7 +97,6 @@ def compila_codigo_telmatrixshader(codigo_TelMatrixShader, vertice,bdm):
                         valor2 = 0
                         resultado = 0
                         for pos0,valor in enumerate(valores):
-                            print(valores)
                             if pos0 % 2 == 0:
                                 valor1 = valor
                             elif pos0 %2 != 0:
@@ -259,5 +258,4 @@ def compila_codigo_telmatrixshader(codigo_TelMatrixShader, vertice,bdm):
             vertice_saida.append(v[1]['y'])
             vertice_saida.append(v[1]['z'])
             break
-    print(variaveis)
     return vertice_saida

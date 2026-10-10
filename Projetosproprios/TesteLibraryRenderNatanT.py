@@ -27,7 +27,7 @@ ec;
 codigo_tms = '''
 ful vecO vecI;
 ptf t1 1;
-loc t1 10*2;
+loc t1 10*10;
 mulm 0 vecO;
 '''
 
@@ -36,6 +36,17 @@ matriz_id_0 = [
                [0,1,0],
                [0,0,1]
               ]
+'''
+
+ 'Anatomia' de uma matriz
+         eX dX tx
+         dY eY ty 
+         0  0  eZ
+         
+ 'e' é escala
+ 't' é translação 
+ 'd' é distorção adiagonal 
+'''
 
 dados_vertices = [[-2,-2,1],[-2,2,1],[2,2,1],
                   [2,-2,1],[-2,-2,1],[2,2,1]]
