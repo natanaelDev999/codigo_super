@@ -5,8 +5,8 @@ saidas = [0,1]
 # resultado
 resultado = 0
 # lista de neurônios
-neuronios = [{'entradas':[entradas[0],entradas[1]],'distancias':[.2,.5],'bias':2},
-             {'entradas':[entradas[0],entradas[1]],'distancias':[.5,.2],'bias':1.5}]
+neuronios = [{'entradas':[entradas[0],entradas[1]],'distancias':[.02,.05],'bias':.02},
+             {'entradas':[entradas[0],entradas[1]],'distancias':[.05,.02],'bias':1.05}]
 # estrutura do neurônio: entradas ; distâncias ; bias ; saída.
 # cálcula a saída
 def calcula_saida():
