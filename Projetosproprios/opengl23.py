@@ -291,7 +291,7 @@ def init():
     void main(){
         // comandos e declarações da função inicial
         // informa posição do vértice
-        gl_Position = matriz*vec4(atributo_pos,1.0);
+        gl_Position = matriz*vec4(atributo_pos+vec3(1.,0.,0.),1.0);
         // inseri valor ao vetor de saída para cor
         fragmento_cor = vec3(atributo_cor);
         // inseri valor ao vetor de saída para a cor da luz
