@@ -105,13 +105,19 @@ def adiciona_dados(tipo,dados,pos=0):
         elif tipo == "BDM" or tipo == "Buffer de Dados para Matrizes":
             bdm[f"{pos}"] = dados
 # projeta vértices
-def projeta_vertices(dist,desenha_pontos=False):
+def projeta_vertices(dist,desenha_pontos=False,camera=False,campo_visao=0,direcao_raio=[0,0,1]):
     global bdv,largura,altura,bda
     proj = []
     for pos0,p in enumerate(bdv):
         if p[2] > 0:
-            proj.append([int((p[0]/(p[2]+dist))+(largura/2)),
-                         int((p[1]/(p[2]+dist))+(altura/2)),pos0,p[2]])
+            if camera == True:
+                if lvn.angulo_vetores_graus(p,direcao_raio) < campo_visao:
+                    print(lvn.angulo_vetores_graus(p, [0, 0, 1]))
+                    proj.append([int((p[0]/(p[2]+dist))+(largura/2)),
+                                    int((p[1]/(p[2]+dist))+(altura/2)),pos0,p[2]])
+            else:
+                proj.append([int((p[0] / (p[2] + dist)) + (largura / 2)),
+                             int((p[1] / (p[2] + dist)) + (altura / 2)), pos0, p[2]])
             if desenha_pontos == True:
                 if (p[0] / (p[2]+dist)) + (largura / 2) < largura and (p[1] / (p[2]+dist)) + (altura / 2) < altura:
                     if pos0 < len(bda):
