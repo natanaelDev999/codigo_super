@@ -1,3 +1,4 @@
+import random
 # camadas
 camadas = [{'distancias':[],'biases':[],'no':[],'n_no':0,'n_et':0},
            {'distancias':[],'biases':[],'no':[],'n_no':0,'n_et':0},
@@ -9,9 +10,9 @@ def ini_camadas(pos,entradas,nos):
     for c in range(nos):
         camadas[pos]['distancias'].append([])
         for d in range(entradas):
-            camadas[pos]['distancias'][c].append(c+d)
+            camadas[pos]['distancias'][c].append(random.uniform(1,-1))
     for i in range(nos):
-        camadas[pos]['biases'].append(0.)
+        camadas[pos]['biases'].append(random.uniform(1,-1))
         camadas[pos]['no'].append(0.)
     camadas[pos]['n_no'] = nos
     camadas[pos]['n_et'] = entradas
@@ -28,7 +29,7 @@ def avanca(pos,entradas):
     for c in range(camadas[pos]['n_no']):
         # soma das distâncias com as entradas
         for v in range(camadas[pos]['n_et']):
-            print(camadas[pos]['distancias'][c])
+            #print(camadas[pos]['distancias'][c])
             camadas[pos]['no'][c] += camadas[pos]['distancias'][c][v] * entradas[v]
 
         # adiciona o bias
@@ -37,7 +38,12 @@ def avanca(pos,entradas):
 def ativacao(pos):
     for c in range(camadas[pos]['n_no']):
         if camadas[pos]['no'][c] < 0:
-            camadas[pos]['no'][c]
+            camadas[pos]['no'][c] = 0
+        else:
+            if camadas[pos]['no'][c] > 0.5:
+                camadas[pos]['no'][c] = 1
+            else:
+                camadas[pos]['no'][c] = 0
 #
 def inicia_camadas():
     # camada 1
@@ -58,6 +64,7 @@ def cerebro(entradas,pos1,pos2,pos3):
     ativacao(pos2)
     # camada para saída
     avanca(pos3, camadas[pos2]['no'])
+    ativacao(pos3)
 
     return camadas[pos3]['no']
 
@@ -68,9 +75,9 @@ def main():
 
     inicia_camadas()
     resul = cerebro(entradas,0,1,2)
-    # print(camadas[0])
-    # print(camadas[1])
-    # print(camadas[2])
+    print(camadas[0])
+    print(camadas[1])
+    print(camadas[2])
     print(resul)
 
 main()
