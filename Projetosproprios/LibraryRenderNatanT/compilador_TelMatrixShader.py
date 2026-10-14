@@ -265,5 +265,5 @@ def compila_codigo_telmatrixshader(codigo_TelMatrixShader, vertice,bdm):
             vertice_saida.append(v[1]['y'])
             vertice_saida.append(v[1]['z'])
             break
-    print(variaveis)
+    #print(variaveis)
     return vertice_saida
