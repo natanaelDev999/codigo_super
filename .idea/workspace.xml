@@ -6,6 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="40f19d69-33a2-4c14-82a8-a0754e89c91b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projetosproprios/LibraryRenderNatanT/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projetosproprios/LibraryRenderNatanT/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Projetosproprios/TesteLibraryRenderNatanT.py" beforeDir="false" afterPath="$PROJECT_DIR$/Projetosproprios/TesteLibraryRenderNatanT.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -793,7 +795,8 @@
       <workItem from="1791632953182" duration="13376000" />
       <workItem from="1791667396651" duration="4056000" />
       <workItem from="1791925725102" duration="4348000" />
-      <workItem from="1791993567515" duration="6814000" />
+      <workItem from="1791993567515" duration="8792000" />
+      <workItem from="1792057776805" duration="1383000" />
     </task>
     <servers />
   </component>
@@ -845,7 +848,7 @@
     <SUITE FILE_PATH="coverage/opengl10_py$testeclass.coverage" NAME="testeclass Coverage Results" MODIFIED="1784990144575" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PythonProject1$project022.coverage" NAME="project022 Coverage Results" MODIFIED="1760818627467" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/opengl10_py$opengl12.coverage" NAME="opengl12 Coverage Results" MODIFIED="1790884358089" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ProjetosProprios" />
-    <SUITE FILE_PATH="coverage/opengl10_py$TesteLibraryRenderNatanT.coverage" NAME="TesteLibraryRenderNatanT Coverage Results" MODIFIED="1792005026411" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ProjetosProprios" />
+    <SUITE FILE_PATH="coverage/opengl10_py$TesteLibraryRenderNatanT.coverage" NAME="TesteLibraryRenderNatanT Coverage Results" MODIFIED="1792016553761" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ProjetosProprios" />
     <SUITE FILE_PATH="coverage/opengl10_py$opengl16.coverage" NAME="opengl16 Coverage Results" MODIFIED="1783703065323" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Projetosproprios" />
     <SUITE FILE_PATH="coverage/PythonProject1$projeto_python0002.coverage" NAME="projeto python0002 Coverage Results" MODIFIED="1759659217052" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/opengl10_py$gravidade_teste.coverage" NAME="gravidade_teste Coverage Results" MODIFIED="1790196005112" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ProjetosProprios/teste_particulas" />
