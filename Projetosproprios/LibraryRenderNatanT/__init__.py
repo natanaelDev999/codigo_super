@@ -105,25 +105,36 @@ def adiciona_dados(tipo,dados,pos=0):
         elif tipo == "BDM" or tipo == "Buffer de Dados para Matrizes":
             bdm[f"{pos}"] = dados
 # projeta vértices
-def projeta_vertices(dist,desenha_pontos=False,camera=False,campo_visao=0,direcao_raio=[0,0,1]):
+def projeta_vertices(dist,desenha_pontos=False,camera=False,campo_visao=0,direcao_camera=[0,0,1],posicao_camera=[0,0,0]):
     global bdv,largura,altura,bda
     proj = []
     for pos0,p in enumerate(bdv):
         if p[2] > 0:
             if camera == True:
-                if lvn.angulo_vetores_graus(p,direcao_raio) < campo_visao:
-                    print(lvn.angulo_vetores_graus(p, [0, 0, 1]))
+                if lvn.angulo_vetores_graus(lvn.subtrai_vetores(p,posicao_camera),direcao_camera) < campo_visao:
                     proj.append([int((p[0]/(p[2]+dist))+(largura/2)),
                                     int((p[1]/(p[2]+dist))+(altura/2)),pos0,p[2]])
+                    # desenha pontos
+                    if desenha_pontos == True:
+                        if (p[0] / (p[2] + dist)) + (largura / 2) < largura and (p[1] / (p[2] + dist)) + (
+                                altura / 2) < altura:
+                            if pos0 < len(bda):
+                                if trata_z_buffer(int((p[0] / (p[2] + dist)) + (largura / 2)),
+                                                  int((p[1] / (p[2] + dist)) + (altura / 2)), p[2]) == True:
+                                    tela[int((p[1] / (p[2] + dist)) + (altura / 2))][int((p[0] / (p[2] + dist)) + (
+                                                largura / 2))] = f'\033[38;2;{bda[pos0][0]};{bda[pos0][1]};{bda[pos0][2]}m█\033[m'
+                                    z_buffer[int((p[1] / (p[2] + dist)) + (altura / 2))][
+                                        int((p[0] / (p[2] + dist)) + (largura / 2))] = p[2]
             else:
                 proj.append([int((p[0] / (p[2] + dist)) + (largura / 2)),
                              int((p[1] / (p[2] + dist)) + (altura / 2)), pos0, p[2]])
-            if desenha_pontos == True:
-                if (p[0] / (p[2]+dist)) + (largura / 2) < largura and (p[1] / (p[2]+dist)) + (altura / 2) < altura:
-                    if pos0 < len(bda):
-                        if trata_z_buffer(int((p[0]/(p[2]+dist))+(largura/2)),int((p[1]/(p[2]+dist))+(altura/2)),p[2]) == True:
-                            tela[int((p[1]/(p[2]+dist))+(altura/2))][int((p[0]/(p[2]+dist))+(largura/2))] = f'\033[38;2;{bda[pos0][0]};{bda[pos0][1]};{bda[pos0][2]}m█\033[m'
-                            z_buffer[int((p[1]/(p[2]+dist))+(altura/2))][int((p[0]/(p[2]+dist))+(largura/2))] = p[2]
+                # desenha pontos
+                if desenha_pontos == True:
+                    if (p[0] / (p[2]+dist)) + (largura / 2) < largura and (p[1] / (p[2]+dist)) + (altura / 2) < altura:
+                        if pos0 < len(bda):
+                            if trata_z_buffer(int((p[0]/(p[2]+dist))+(largura/2)),int((p[1]/(p[2]+dist))+(altura/2)),p[2]) == True:
+                                tela[int((p[1]/(p[2]+dist))+(altura/2))][int((p[0]/(p[2]+dist))+(largura/2))] = f'\033[38;2;{bda[pos0][0]};{bda[pos0][1]};{bda[pos0][2]}m█\033[m'
+                                z_buffer[int((p[1]/(p[2]+dist))+(altura/2))][int((p[0]/(p[2]+dist))+(largura/2))] = p[2]
     return proj
 # cria linha
 def desenha_linhas(proj):
