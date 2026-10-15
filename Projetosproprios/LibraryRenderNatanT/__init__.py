@@ -5,6 +5,11 @@
 # termino do projeto:
 # intervalo de tempo:
 ###############################################################
+# DADOS DOS SHADERS
+# criação do TelShader: 20/09/2026
+# criação do TelTShader: 29/09/2026
+# criação do TelMatrixShader: 01/10/2026
+###############################################################
 #                 bibliotecas utilizadas
 # biblioteca para manipulação do terminal
 import sys
