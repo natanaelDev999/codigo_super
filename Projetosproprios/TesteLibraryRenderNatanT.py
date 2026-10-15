@@ -44,7 +44,7 @@ matriz_id_0 = [
          dY eY ty 
          0  0  eZ
          
- 'e' é escala
+ 'e' é escala 
  't' é translação 
  'd' é distorção adiagonal 
 '''
@@ -60,8 +60,8 @@ lvt.adiciona_dados("BDM",matriz_id_0,0)
 lvt.cria_tela(20,20)
 while True:
     comeco = time.perf_counter()
-    lvt.compila_codigo_TelMatrixShader(codigo_tms)# 0.000118
-    proj = lvt.projeta_vertices(0,True,True,90)# 0.000035
+    lvt.compila_codigo_TelMatrixShader(codigo_tms,'BDV')# 0.000118
+    proj = lvt.projeta_vertices(0,False,True,90,posicao_camera=[0,0,0])# 0.000035
     lvt.desenha_triangulo(proj,0,6)# 0.000071
     lvt.compila_codigo_TelShader(codigo_TelShader)# 0.000071
     lvt.compila_codigo_TelTShader(codigo_TelTShader)
