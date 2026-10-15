@@ -78,10 +78,14 @@ def compila_codigo_TelTShader(codigo):
                 if 0 <= pixel[2] < altura and 0 <= pixel[1] < largura:
                     tela[pixel[2]][pixel[1]] = pixel[0]
 # TelMatrixShader
-def compila_codigo_TelMatrixShader(codigo):
+def compila_codigo_TelMatrixShader(codigo,tipo):
     global tela, altura, largura
-    for pos0,c in enumerate(bdv):
-        bdv[pos0] = compila_codigo_telmatrixshader(codigo,c,bdm)
+    if tipo == "BDV" or tipo == "Buffer de Dados para Vértices":
+        for pos0,c in enumerate(bdv):
+            bdv[pos0] = compila_codigo_telmatrixshader(codigo,c,bdm)
+    elif tipo == "BDA" or tipo == "Buffer de Dados para Aparência":
+        for pos0,c in enumerate(bda):
+            bda[pos0] = compila_codigo_telmatrixshader(codigo,c,bdm)
 ###############################################################
 #                     FUNÇÕES UTILITÁRIAS
 # trata z-buffer
@@ -109,9 +113,10 @@ def projeta_vertices(dist,desenha_pontos=False,camera=False,campo_visao=0,direca
     global bdv,largura,altura,bda
     proj = []
     for pos0,p in enumerate(bdv):
-        if p[2] > 0:
+        if p[2] > 0 and len(p) == 3:
             if camera == True:
-                if lvn.angulo_vetores_graus(lvn.subtrai_vetores(p,posicao_camera),direcao_camera) < campo_visao:
+                if (lvn.angulo_vetores_graus(lvn.subtrai_vetores(p,posicao_camera),lvn.subtrai_vetores(direcao_camera,posicao_camera)) < campo_visao
+                        and lvn.angulo_vetores_graus(lvn.subtrai_vetores(p,posicao_camera),lvn.subtrai_vetores(direcao_camera,posicao_camera)) > 0):
                     proj.append([int((p[0]/(p[2]+dist))+(largura/2)),
                                     int((p[1]/(p[2]+dist))+(altura/2)),pos0,p[2]])
                     # desenha pontos
@@ -235,7 +240,7 @@ def desenha_triangulo(proj,comeco,fim):
                     for x in range(x_min,x_max):
                         if ponto_triangulo(p[0],p[1],p[2],[x,y]) == True:
                             if trata_z_buffer(x,y,p[0][3]) == True:
-                                if y < altura and x < largura and y > 0 and x > 0:
+                                if y < altura and x < largura and y >= 0 and x >= 0:
                                     tela[y][x] = f'\033[38;2;{bda[p[0][2]][0]};{bda[p[0][2]][1]};{bda[p[0][2]][2]}m█\033[m'
                                     z_buffer[y][x] = (p[0][3]+p[1][3]+p[2][3])/3
                 p = []
