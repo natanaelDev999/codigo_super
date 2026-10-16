@@ -16,10 +16,11 @@ def compila_codigo_telmatrixshader(codigo_TelMatrixShader, vertice,bdm):
             linha += c
         else:
             linha = linha.strip()
-            if linha.startswith('$') or not linha.startswith('$'):
-                if ativ_case == True or not linha.startswith('$'):
-                    if linha.startswith('$'):
+            if linha.startswith('|') or not linha.startswith('|'):
+                if ativ_case == True or not linha.startswith('|'):
+                    if linha.startswith('|'):
                         linha = linha[1:]
+                        linha = linha.strip()
                     # trata condicionais
                     if linha.startswith('ec'):
                         ativ_case = False
