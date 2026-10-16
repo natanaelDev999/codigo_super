@@ -38,7 +38,6 @@ def avanca(pos,entradas):
         camadas[pos]['no'][c] += camadas[pos]['biases'][c]
 # função de ativação
 def ativacao(pos):
-    pass
     for c in range(camadas[pos]['n_no']):
 
        if camadas[pos]['no'][c] < 0:
@@ -82,10 +81,10 @@ def armazena_dados_seed(seed):
     with open('camadas_testeIA2.json','w') as arquivo2:
         json.dump(dados_json,arquivo2)
 #================================================================
-#   PARTE QUE TRATA DO SER
+#                     PARTE QUE TRATA DO SER
 mundo = [[' ',' ',' ',' ',' ',' ',' '],
+         [' ',' ',' ','c',' ',' ',' '],
          [' ',' ',' ',' ',' ',' ',' '],
-         [' ',' ',' ',' ','c',' ',' '],
          [' ',' ',' ',' ',' ',' ',' '],
          [' ',' ',' ',' ',' ',' ',' '],]
 # informações do ser

@@ -21,6 +21,8 @@ import time
 from LibraryRenderNatanT.compilador_TelShader import compila_codigo_telshader
 # compilador TelMatrixShader
 from LibraryRenderNatanT.compilador_TelMatrixShader import compila_codigo_telmatrixshader
+# biblioteca para controle de memória
+import psutil as pt
 ###############################################################
 #                         buffers
 # Buffer de Dados para Vértices(BDV)
@@ -32,6 +34,8 @@ bda = []
 # Buffer de Dados para Matrizes(BDM)
 bdm = {"0":[],"1":[],"2":[],"3":[],"4":[],"5":[],"6":[],"7":[],"8":[],'9':[],'10':[],'11':[],'12':[],'13':[],
             '14':[],'15':[],'16':[]}
+# Lista para Buffers Adicionais(LBA)
+lba = []
 ###############################################################
 #                          tela
 tela = []
@@ -40,6 +44,45 @@ tela_c = []
 z_buffer = []
 largura = 0
 altura = 0
+###############################################################
+#              CRIAÇÃO DE BUFFERS ADICIONAIS E MAIS
+def cria_buffer_adicional(nome,tamanho):
+    global lba
+    # 56 -> valor inicial que ocupa uma lista
+    # 8 -> tamanho de um ponteiro(que é o que guarda uma lista)
+    memoria_utilizada_buffer = 56+(tamanho*8)
+    mem_info = pt.virtual_memory()
+    # verifica se o tamanho do buffer é menor do que metade da memória disponível
+    if mem_info.available / 2 > memoria_utilizada_buffer:
+        lba.append([nome,[],tamanho])
+def adiciona_valor_buffer(nome,valor):
+    global lba
+    for pos0,b in enumerate(lba):
+        if b[0] == nome and len(b[1]) < b[2]:
+            lba[pos0][1].append(valor)
+            break
+
+
+def retira_valor_buffer(nome,pos):
+    global lba
+    for pos0,b in enumerate(lba):
+        if b[0] == nome and len(b[1]) > pos and pos < b[2]:
+            del lba[pos0][1][pos]
+def copia_buffer(nome1,nome2,fim,comeco=0):
+    global lba
+    for pos0, b1 in enumerate(lba):
+        if b1[0] == nome1:
+            for pos1, b2 in enumerate(lba):
+                if b2[0] == nome2 and b1[2] == b2[2]:
+                    lba[pos0][1] = lba[pos1][1][comeco:fim+1]
+                    break
+            break
+def apaga_buffer(nome):
+    global lba
+    for pos0,b in enumerate(lba):
+        if b[0] == nome:
+            del lba[pos0]
+            break
 ###############################################################
 #                     FUNÇÕES PARA SHADERS
 # TelShader

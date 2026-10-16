@@ -9,18 +9,18 @@ codigo_TelTShader = '''
 p=.;
 3ptf cor;
 case x % 2;
-$p=*;
-$cp=155,155,0;
+|   p=*;
+|   cp=155,155,0;
 ec;
 case x %? 2;
-$cp=155,0,155;
+|   cp=155,0,155;
 ec;
 case y % 2;
-$p=*;
-$cp=155,155,0;
+|   p=*;
+|   cp=155,155,0;
 ec;
 case y %? 2;
-$cp=155,0,155;
+|   cp=155,0,155;
 ec;
 '''
 
@@ -33,8 +33,8 @@ mulm 0 vecO;
 '''
 
 matriz_id_0 = [
-               [1,0,0],
-               [0,1,0],
+               [1.15,0.15,0],
+               [0.15,1.15,0],
                [0,0,1]
               ]
 '''
@@ -58,8 +58,13 @@ lvt.adiciona_dados("BDV",dados_vertices)
 lvt.adiciona_dados("BDA",dados_cores)
 lvt.adiciona_dados("BDM",matriz_id_0,0)
 lvt.cria_tela(20,20)
+lvt.cria_buffer_adicional('j',5)
+lvt.cria_buffer_adicional('i',5)
 while True:
     comeco = time.perf_counter()
+    lvt.adiciona_valor_buffer('j',5)
+    lvt.adiciona_valor_buffer('j', 6)
+    lvt.copia_buffer('i','j',1,0)
     lvt.compila_codigo_TelMatrixShader(codigo_tms,'BDV')# 0.000118
     proj = lvt.projeta_vertices(0,False,True,90,posicao_camera=[0,0,0])# 0.000035
     lvt.desenha_triangulo(proj,0,6)# 0.000071
@@ -69,4 +74,6 @@ while True:
     lvt.trata_terminal(1)# 0.016459
     lvt.preserva_dados()
     fim = time.perf_counter()
+    print(lvt.lba)
+    break
     print(f'{fim-comeco:.6f}')

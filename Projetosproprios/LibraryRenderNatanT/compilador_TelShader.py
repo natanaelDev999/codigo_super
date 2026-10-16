@@ -14,10 +14,11 @@ def compila_codigo_telshader(codigo_TelShader,pixel,x,y,bdm={}):
             linha += c
         else:
             linha = linha.strip()
-            if linha.startswith('$') or not linha.startswith('$'):
-                if ativ_case == True or not linha.startswith('$'):
-                    if linha.startswith('$'):
+            if linha.startswith('|') or not linha.startswith('|'):
+                if ativ_case == True or not linha.startswith('|'):
+                    if linha.startswith('|'):
                         linha = linha[1:]
+                        linha = linha.strip()
                     # modifica o valor de uma variável
                     if linha.startswith('mdv'):
                             l = linha.split(' ')
