@@ -1,7 +1,7 @@
 
 #                           TelMatrixShader
 #A linguagem de vértice do terminal
-def compila_codigo_telmatrixshader(codigo_TelMatrixShader, vertice,bdm):
+def compila_codigo_telmatrixshader(codigo_TelMatrixShader, vertice,bdm,rec=False,pos=0,lba=[],modo_armazenamento=''):
     vertice_saida = []
     # vetores
     vetores = [['vecI',{'x':vertice[0],'y':vertice[1],'z':vertice[2]}],['vecO',{'x':0,'y':0,'z':0}]]
@@ -10,6 +10,15 @@ def compila_codigo_telmatrixshader(codigo_TelMatrixShader, vertice,bdm):
     # lê código
     linha = ''
     # codição
+    # carrega dados do buffer selecionado
+    if rec == True:
+        if modo_armazenamento == 'VEC':
+            for pos0,d in enumerate(lba[pos][1]):
+                vetores.append([f'{lba[pos][0]}_{pos0}',{'x':0,'y':0,'z':0}])
+        elif modo_armazenamento == 'VAR':
+            for pos0, d in enumerate(lba[pos][1]):
+                variaveis.append([f'{lba[pos][0]}_{pos0}',float(d)])
+
     ativ_case = False
     for c in codigo_TelMatrixShader:
         if c != ';':
@@ -266,5 +275,5 @@ def compila_codigo_telmatrixshader(codigo_TelMatrixShader, vertice,bdm):
             vertice_saida.append(v[1]['y'])
             vertice_saida.append(v[1]['z'])
             break
-    #print(variaveis)
+    print(variaveis)
     return vertice_saida
