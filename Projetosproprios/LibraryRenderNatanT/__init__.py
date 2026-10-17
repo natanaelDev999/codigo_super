@@ -61,8 +61,6 @@ def adiciona_valor_buffer(nome,valor):
         if b[0] == nome and len(b[1]) < b[2]:
             lba[pos0][1].append(valor)
             break
-
-
 def retira_valor_buffer(nome,pos):
     global lba
     for pos0,b in enumerate(lba):
@@ -126,14 +124,14 @@ def compila_codigo_TelTShader(codigo):
                 if 0 <= pixel[2] < altura and 0 <= pixel[1] < largura:
                     tela[pixel[2]][pixel[1]] = pixel[0]
 # TelMatrixShader
-def compila_codigo_TelMatrixShader(codigo,tipo):
-    global tela, altura, largura
+def compila_codigo_TelMatrixShader(codigo,tipo,rec=False,pos=0,modo_armazenamento=''):
+    global tela, altura, largura,lba
     if tipo == "BDV" or tipo == "Buffer de Dados para Vértices":
         for pos0,c in enumerate(bdv):
-            bdv[pos0] = compila_codigo_telmatrixshader(codigo,c,bdm)
+            bdv[pos0] = compila_codigo_telmatrixshader(codigo,c,bdm,rec,pos,lba,modo_armazenamento)
     elif tipo == "BDA" or tipo == "Buffer de Dados para Aparência":
         for pos0,c in enumerate(bda):
-            bda[pos0] = compila_codigo_telmatrixshader(codigo,c,bdm)
+            bda[pos0] = compila_codigo_telmatrixshader(codigo,c,bdm,rec,pos,lba,modo_armazenamento)
 ###############################################################
 #                     FUNÇÕES UTILITÁRIAS
 # trata z-buffer
