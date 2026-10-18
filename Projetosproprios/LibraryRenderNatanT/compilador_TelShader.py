@@ -3,12 +3,21 @@ import math
 #                           TelShader
 #A linguagem de sombreamento do terminal
 
-def compila_codigo_telshader(codigo_TelShader,pixel,x,y,bdm={}):
+def compila_codigo_telshader(codigo_TelShader,pixel,x,y,bdm={},rec=False,pos=0,lba=[],modo_armazenamento=''):
     pixel_saida = ' '
     linha = ''
     variaveis = []
     vetor = []
     ativ_case = False
+    # carrega dados do buffer selecionado
+    if rec == True:
+        if modo_armazenamento == 'VEC':
+            for pos0, d in enumerate(lba[pos][1]):
+                vetor.append([f'{lba[pos][0]}_{pos0}', {'0': 0, '1': 0, '2': 0}])
+        elif modo_armazenamento == 'VAR':
+            for pos0, d in enumerate(lba[pos][1]):
+                variaveis.append([f'{lba[pos][0]}_{pos0}', float(d)])
+
     for c in codigo_TelShader:
         if c != ';':
             linha += c

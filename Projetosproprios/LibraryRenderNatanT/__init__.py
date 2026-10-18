@@ -46,6 +46,11 @@ largura = 0
 altura = 0
 ###############################################################
 #              CRIAÇÃO DE BUFFERS ADICIONAIS E MAIS
+def captura_posicao_buffer(nome):
+    global lba
+    for pos0,b in enumerate(lba):
+        if b[0] == nome:
+            return pos0
 def cria_buffer_adicional(nome,tamanho):
     global lba
     # 56 -> valor inicial que ocupa uma lista
@@ -84,7 +89,7 @@ def apaga_buffer(nome):
 ###############################################################
 #                     FUNÇÕES PARA SHADERS
 # TelShader
-def compila_codigo_TelShader(codigo):
+def compila_codigo_TelShader(codigo,rec=False,pos=0,modo_armazenamento=''):
     global tela,bdm
 
     tela_original = []
@@ -99,12 +104,12 @@ def compila_codigo_TelShader(codigo):
         for pos1, p in enumerate(linha):
             if p != ' ':
                 tela[pos0][pos1] = ' '
-                pixel = compila_codigo_telshader(codigo,p,pos1,pos0,bdm)
+                pixel = compila_codigo_telshader(codigo,p,pos1,pos0,bdm,rec,pos,lba,modo_armazenamento)
 
                 if 0 <= pixel[2] < altura and 0 <= pixel[1] < largura:
                     tela[pixel[2]][pixel[1]] = pixel[0]
 # TelTShader
-def compila_codigo_TelTShader(codigo):
+def compila_codigo_TelTShader(codigo,rec=False,pos=0,modo_armazenamento=''):
     global tela
 
     tela_original = []
@@ -119,7 +124,7 @@ def compila_codigo_TelTShader(codigo):
         for pos1, p in enumerate(linha):
             if p == ' ':
                 tela[pos0][pos1] = ' '
-                pixel = compila_codigo_telshader(codigo, p, pos1, pos0, bdm)
+                pixel = compila_codigo_telshader(codigo, p, pos1, pos0, bdm,rec,pos,lba,modo_armazenamento)
 
                 if 0 <= pixel[2] < altura and 0 <= pixel[1] < largura:
                     tela[pixel[2]][pixel[1]] = pixel[0]
