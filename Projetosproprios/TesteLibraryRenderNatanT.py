@@ -23,14 +23,14 @@ case y %? 2;
 |   cp=155,0,155;
 ec;
 '''
-
-codigo_tms = '''
-ful vecO vecI;
-ptf t1 1;
-ptf t2 10;
-loc t1 t2*10;
-mulm 0 vecO;
-'''
+#
+# codigo_tms = '''
+# ful vecO vecI;
+# ptf t1 1;
+# ptf t2 10;
+# loc t1 t2*10;
+# mulm 0 vecO;
+# '''
 
 matriz_id_0 = [
                [1.15,0.15,0],
@@ -64,7 +64,8 @@ while True:
     lvt.adiciona_valor_buffer('j',[5,5,5])
     lvt.adiciona_valor_buffer('j', [5,5,5])
     lvt.adiciona_valor_buffer('j', [5,5,5])
-    lvt.compila_codigo_TelMatrixShader(codigo_tms,'BDV',True,0,'VEC')# 0.000118
+    codigo_tmsf = lvt.carrega_arquivo('D:\\Nova pasta\\arquivos python\\Projetosproprios\\ProjetosProprios\\codigo_TelMatrixShader')
+    lvt.compila_codigo_TelMatrixShader(codigo_tmsf,'BDV',True,0,'VEC')# 0.000118
     proj = lvt.projeta_vertices(0,False,True,90,posicao_camera=[0,0,0])# 0.000035
     lvt.desenha_triangulo(proj,0,6)# 0.000071
     lvt.compila_codigo_TelShader(codigo_TelShader)# 0.000071
@@ -73,5 +74,4 @@ while True:
     lvt.trata_terminal(1)# 0.016459
     lvt.preserva_dados()
     fim = time.perf_counter()
-    break
     print(f'{fim-comeco:.6f}')

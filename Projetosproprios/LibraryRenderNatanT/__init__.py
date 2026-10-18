@@ -45,6 +45,17 @@ z_buffer = []
 largura = 0
 altura = 0
 ###############################################################
+#                 CARREGA ARQUIVOS DE CÓDIGO
+def carrega_arquivo(caminho):
+    arquivo1 = open(caminho,'r')
+    arquivo1.seek(0)
+
+    arquivo_codigo = str(arquivo1.read())
+
+    arquivo1.close()
+
+    return arquivo_codigo
+###############################################################
 #              CRIAÇÃO DE BUFFERS ADICIONAIS E MAIS
 def captura_posicao_buffer(nome):
     global lba

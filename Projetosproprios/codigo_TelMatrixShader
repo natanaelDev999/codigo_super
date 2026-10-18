@@ -1,0 +1,5 @@
+ful vecO vecI;
+ptf t1 1;
+ptf t2 10;
+loc t1 t2*10;
+mulm 0 vecO;

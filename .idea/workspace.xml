@@ -557,12 +557,12 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.testeclass" />
-      <item itemvalue="Python.testeMemoria" />
       <item itemvalue="Python.TesteIA2" />
       <item itemvalue="Python.TesteLibraryRenderNatanT" />
       <item itemvalue="Python.opengl23" />
       <item itemvalue="Python.opengl24" />
+      <item itemvalue="Python.testeMemoria" />
+      <item itemvalue="Python.testeclass" />
     </list>
     <recent_temporary>
       <list>
