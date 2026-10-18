@@ -13,7 +13,10 @@ def compila_codigo_telshader(codigo_TelShader,pixel,x,y,bdm={},rec=False,pos=0,l
     if rec == True:
         if modo_armazenamento == 'VEC':
             for pos0, d in enumerate(lba[pos][1]):
-                vetor.append([f'{lba[pos][0]}_{pos0}', {'0': 0, '1': 0, '2': 0}])
+                if len(d) == 3:
+                    vetor.append([f'{lba[pos][0]}_{pos0}', {'0': d[0], '1': d[1], '2': d[2]}])
+                elif len(d) == 2:
+                    vetor.append([f'{lba[pos][0]}_{pos0}', {'0': d[0], '1': d[1]}])
         elif modo_armazenamento == 'VAR':
             for pos0, d in enumerate(lba[pos][1]):
                 variaveis.append([f'{lba[pos][0]}_{pos0}', float(d)])

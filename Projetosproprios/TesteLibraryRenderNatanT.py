@@ -61,10 +61,10 @@ lvt.cria_tela(20,20)
 lvt.cria_buffer_adicional('j',5)
 while True:
     comeco = time.perf_counter()
-    lvt.adiciona_valor_buffer('j',5)
-    lvt.adiciona_valor_buffer('j', 5)
-    lvt.adiciona_valor_buffer('j', 5)
-    lvt.compila_codigo_TelMatrixShader(codigo_tms,'BDV',False,0,'VAR')# 0.000118
+    lvt.adiciona_valor_buffer('j',[5,5,5])
+    lvt.adiciona_valor_buffer('j', [5,5,5])
+    lvt.adiciona_valor_buffer('j', [5,5,5])
+    lvt.compila_codigo_TelMatrixShader(codigo_tms,'BDV',True,0,'VEC')# 0.000118
     proj = lvt.projeta_vertices(0,False,True,90,posicao_camera=[0,0,0])# 0.000035
     lvt.desenha_triangulo(proj,0,6)# 0.000071
     lvt.compila_codigo_TelShader(codigo_TelShader)# 0.000071

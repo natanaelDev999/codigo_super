@@ -14,7 +14,7 @@ def compila_codigo_telmatrixshader(codigo_TelMatrixShader, vertice,bdm,rec=False
     if rec == True:
         if modo_armazenamento == 'VEC':
             for pos0,d in enumerate(lba[pos][1]):
-                vetores.append([f'{lba[pos][0]}_{pos0}',{'x':0,'y':0,'z':0}])
+                vetores.append([f'{lba[pos][0]}_{pos0}',{'x':d[0],'y':d[1],'z':d[2]}])
         elif modo_armazenamento == 'VAR':
             for pos0, d in enumerate(lba[pos][1]):
                 variaveis.append([f'{lba[pos][0]}_{pos0}',float(d)])
