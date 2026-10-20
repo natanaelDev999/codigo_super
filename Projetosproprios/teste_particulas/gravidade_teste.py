@@ -64,7 +64,7 @@ def main():
     while True:
         desenha_visao()
         atua_gravidade()
-        time.sleep(1)
+        time.sleep(0.2)
         os.system('cls')
 
 main()
