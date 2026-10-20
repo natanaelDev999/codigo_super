@@ -23,6 +23,8 @@ from LibraryRenderNatanT.compilador_TelShader import compila_codigo_telshader
 from LibraryRenderNatanT.compilador_TelMatrixShader import compila_codigo_telmatrixshader
 # biblioteca para controle de memória
 import psutil as pt
+# biblioteca para controle de arquivos
+import os
 ###############################################################
 #                         buffers
 # Buffer de Dados para Vértices(BDV)
@@ -47,6 +49,8 @@ altura = 0
 ###############################################################
 #                 CARREGA ARQUIVOS DE CÓDIGO
 def carrega_arquivo(caminho):
+    if not os.path.basename(caminho).endswith('.ns') == True:
+        return ''
     arquivo1 = open(caminho,'r')
     arquivo1.seek(0)
 
