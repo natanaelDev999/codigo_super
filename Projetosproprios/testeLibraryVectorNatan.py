@@ -27,4 +27,4 @@ print(f"soma: {soma}; subtracao: {subtracao}; produto: {produto}; quociente: {qu
 print(produto_escalar2)
 print(pot)
 print("resultado da multiplicação vetor e matriz",vetor_mm)
-print(LibraryVectorNatan.angulo_vetores_graus([1,0],[0,1]))
+print(LibraryVectorNatan.angulo_vetores_radianos([1,0],[0,1]))
