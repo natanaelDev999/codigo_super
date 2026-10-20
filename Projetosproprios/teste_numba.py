@@ -4,7 +4,7 @@ import time
 @njit()
 def calcula_soma():
     v = 0
-    for c in range(50_000_000):
+    for c in range(500_000_000):
         v+=1
     return v
 

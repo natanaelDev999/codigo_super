@@ -138,7 +138,7 @@ def angulo_vetores_radianos(vetor1,vetor2):
         norma_1 = norma3(vetor1)
         norma_2 = norma3(vetor2)
     if norma_1 * norma_2 != 0:
-        return math.degrees(math.acos(produto / (norma_1 * norma_2)))
+        return math.acos(produto / (norma_1 * norma_2))
     else:
         return 0
 #---------------------------------------------------------------------
