@@ -73,9 +73,8 @@ while True:
     lvt.desenha_triangulo(proj,0,6)# 0.000071
     lvt.compila_codigo_TelShader(codigo_TelShader)# 0.000071
     lvt.compila_codigo_TelTShader(codigo_TelTShader)
-    lvt.compila_codigo_TelComputerShader(codigo_tcs,'TexO',[20,20],[20,20])
+    image = lvt.compila_codigo_TelComputerShader(codigo_tcs,'TexO',[20,20],[20,20])
     lvt.imprime_tela()# 0.009806
-    break
     lvt.trata_terminal(1)# 0.016459
     lvt.preserva_dados()
     fim = time.perf_counter()

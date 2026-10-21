@@ -163,7 +163,6 @@ def compila_codigo_TelComputerShader(codigo,entrada,grupos,veref):
     global tela,lba
     saida = []
     # o shader receberá o valor de entrada, sua posição na matriz de Workgroups
-    comeco = time.perf_counter()
     if type(entrada) == str:
         if entrada == 'TexO':
             entrada = tela[:]
@@ -181,25 +180,31 @@ def compila_codigo_TelComputerShader(codigo,entrada,grupos,veref):
                     tipo = 'list'
 
                 entrada[py] = compila_codigo_telcomputershader(codigo,entrada[py],tipo,bdm)
+
+                saida.append(compila_codigo_telcomputershader(codigo,entrada[py],tipo,bdm))
     elif len(grupos) == 2 and len(grupos) == len(veref):
         for py in range(grupos[1]):
+            saida.append([])
             for px in range(grupos[0]):
                 if py < veref[0] and px < veref[1]:
                     tipo = ''
                     if type(entrada[py][px]) == list:
                         tipo = 'list'
                     entrada[py][px] = compila_codigo_telcomputershader(codigo,entrada[py][px],tipo,bdm)
+                    saida[py].append(compila_codigo_telcomputershader(codigo,entrada[py][px],tipo,bdm))
     elif len(grupos) == 3 and len(grupos) == len(veref):
         for pz in range(grupos[2]):
+            saida.append([])
             for py in range(grupos[1]):
+                saida[pz].append([])
                 for px in range(grupos[0]):
                     if py < veref[1] and px < veref[0] and pz < veref[2]:
                         tipo = ''
                         if type(entrada[pz][py][px]) == list:
                             tipo = 'list'
                         entrada[pz][py][px] = compila_codigo_telcomputershader(codigo,entrada[pz][py][px],tipo,bdm)
-    fim = time.perf_counter()
-    print(f"{fim-comeco:.6f}")
+                        saida[pz][py].append(compila_codigo_telcomputershader(codigo,entrada[pz][py][px],tipo,bdm))
+    return saida
 ###############################################################
 #                     FUNÇÕES UTILITÁRIAS
 # trata z-buffer
