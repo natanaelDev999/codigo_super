@@ -23,6 +23,9 @@ case y %? 2;
 |   cp=155,0,155;
 ec;
 '''
+codigo_tcs = '''
+vul VarI out;
+'''
 #
 # codigo_tms = '''
 # ful vecO vecI;
@@ -46,7 +49,7 @@ matriz_id_0 = [
          0  0  eZ
          
  'e' é escala 
- 't' é translação 
+ 't' é translação(meio falha com z diferentes de 1)
  'd' é distorção adiagonal 
 '''
 
@@ -70,7 +73,9 @@ while True:
     lvt.desenha_triangulo(proj,0,6)# 0.000071
     lvt.compila_codigo_TelShader(codigo_TelShader)# 0.000071
     lvt.compila_codigo_TelTShader(codigo_TelTShader)
+    lvt.compila_codigo_TelComputerShader(codigo_tcs,'TexO',[20,20],[20,20])
     lvt.imprime_tela()# 0.009806
+    break
     lvt.trata_terminal(1)# 0.016459
     lvt.preserva_dados()
     fim = time.perf_counter()

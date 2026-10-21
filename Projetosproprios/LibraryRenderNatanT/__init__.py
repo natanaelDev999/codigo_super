@@ -9,6 +9,7 @@
 # criação do TelShader: 20/09/2026
 # criação do TelTShader: 29/09/2026
 # criação do TelMatrixShader: 01/10/2026
+# criação do TelComputerShader: 20/10/2026
 ###############################################################
 #                 bibliotecas utilizadas
 # biblioteca para manipulação do terminal
@@ -21,10 +22,13 @@ import time
 from LibraryRenderNatanT.compilador_TelShader import compila_codigo_telshader
 # compilador TelMatrixShader
 from LibraryRenderNatanT.compilador_TelMatrixShader import compila_codigo_telmatrixshader
+# compilador TelComputerShader
+from LibraryRenderNatanT.compilador_TelComputerShader import compila_codigo_telcomputershader
 # biblioteca para controle de memória
 import psutil as pt
 # biblioteca para controle de arquivos
 import os
+
 ###############################################################
 #                         buffers
 # Buffer de Dados para Vértices(BDV)
@@ -77,6 +81,8 @@ def cria_buffer_adicional(nome,tamanho):
         lba.append([nome,[],tamanho])
 def adiciona_valor_buffer(nome,valor):
     global lba
+    if type(valor) == dict:
+        return
     for pos0,b in enumerate(lba):
         if b[0] == nome and len(b[1]) < b[2]:
             lba[pos0][1].append(valor)
@@ -152,6 +158,48 @@ def compila_codigo_TelMatrixShader(codigo,tipo,rec=False,pos=0,modo_armazenament
     elif tipo == "BDA" or tipo == "Buffer de Dados para Aparência":
         for pos0,c in enumerate(bda):
             bda[pos0] = compila_codigo_telmatrixshader(codigo,c,bdm,rec,pos,lba,modo_armazenamento)
+# TelComputerShader
+def compila_codigo_TelComputerShader(codigo,entrada,grupos,veref):
+    global tela,lba
+    saida = []
+    # o shader receberá o valor de entrada, sua posição na matriz de Workgroups
+    comeco = time.perf_counter()
+    if type(entrada) == str:
+        if entrada == 'TexO':
+            entrada = tela[:]
+    # se entrada for do tipo int , será considerada como o endereço de um buffer adicinonal
+    elif type(entrada) == int:
+        if entrada < len(lba):
+            entrada = lba[entrada][1]
+    # passa pela quantidade de Workgroups
+    if len(grupos) == 1 and len(grupos) == len(veref):
+        for py in range(grupos[0]):
+            if py < veref[0]:
+                tipo = ''
+
+                if type(entrada[py]) == list:
+                    tipo = 'list'
+
+                entrada[py] = compila_codigo_telcomputershader(codigo,entrada[py],tipo,bdm)
+    elif len(grupos) == 2 and len(grupos) == len(veref):
+        for py in range(grupos[1]):
+            for px in range(grupos[0]):
+                if py < veref[0] and px < veref[1]:
+                    tipo = ''
+                    if type(entrada[py][px]) == list:
+                        tipo = 'list'
+                    entrada[py][px] = compila_codigo_telcomputershader(codigo,entrada[py][px],tipo,bdm)
+    elif len(grupos) == 3 and len(grupos) == len(veref):
+        for pz in range(grupos[2]):
+            for py in range(grupos[1]):
+                for px in range(grupos[0]):
+                    if py < veref[1] and px < veref[0] and pz < veref[2]:
+                        tipo = ''
+                        if type(entrada[pz][py][px]) == list:
+                            tipo = 'list'
+                        entrada[pz][py][px] = compila_codigo_telcomputershader(codigo,entrada[pz][py][px],tipo,bdm)
+    fim = time.perf_counter()
+    print(f"{fim-comeco:.6f}")
 ###############################################################
 #                     FUNÇÕES UTILITÁRIAS
 # trata z-buffer
