@@ -1,0 +1,292 @@
+
+#                           TelComputerShader
+#A linguagem de computação do terminal
+def compila_codigo_telcomputershader(codigo_telcomputershader,entrada,tipo,bdm):
+    # vetores
+    vetores = []
+    # variáveis
+    variaveis = []
+    # lê código
+    linha = ''
+    # saída
+    saida = False
+    # carrega dados da entrada
+    if tipo == 'list':
+        vetores.append(['VecI',entrada])
+    else:
+        variaveis.append(['VarI',entrada])
+    # condição
+    ativ_case = False
+    for c in codigo_telcomputershader:
+        if c != ';':
+            linha += c
+        else:
+            linha = linha.strip()
+            if linha.startswith('|') or not linha.startswith('|'):
+                if ativ_case == True or not linha.startswith('|'):
+                    if linha.startswith('|'):
+                        linha = linha[1:]
+                        linha = linha.strip()
+                    # trata condicionais
+                    if linha.startswith('ec'):
+                        ativ_case = False
+                    if linha.startswith('case'):
+                        comando, valor1, comp, valor2 = linha.split(' ')
+
+                        if type(valor1) == str:
+                            if valor1.isnumeric():
+                                valor1 = float(valor1)
+                            else:
+                                for i in variaveis:
+                                    if i[0] == valor1:
+                                        valor1 = float(i[1])
+
+                        if type(valor2) == str:
+                            if valor2.isnumeric():
+                                valor2 = float(valor2)
+                            else:
+                                for i in variaveis:
+                                    if i[0] == valor1:
+                                        valor2 = float(i[1])
+
+                        if type(valor1) == float and type(valor2) == float:
+                            if comp == '==':
+                                if valor1 == valor2:
+                                    ativ_case = True
+
+                            elif comp == '>':
+                                if valor1 > valor2:
+                                    ativ_case = True
+
+                            elif comp == '<':
+                                if valor1 < valor2:
+                                    ativ_case = True
+
+                            elif comp == '!':
+                                if valor1 != valor2:
+                                    ativ_case = True
+
+                            elif comp == '>=':
+                                if valor1 >= valor2:
+                                    ativ_case = True
+
+                            elif comp == '<=':
+                                if valor1 <= valor2:
+                                    ativ_case = True
+
+                            elif comp == '%':
+                                if valor1 % valor2 == 0:
+                                    ativ_case = True
+
+                            elif comp == '%?':
+                                if valor1 % valor2 != 0:
+                                    ativ_case = True
+                    # modifica o valor de uma variável por o valor de uma operação matemática
+                    elif linha.startswith('loc'):
+                        comando, variavel, operacao = linha.split(' ')
+                        '''
+                        Primeiro dividimos a operação , em números e operações, após isso se conclui a operação e a variavel recebe o valor 
+                        '''
+                        # adquire os valores
+                        valores = []
+                        operadores = []
+                        numero = ''
+                        for j in operacao:
+                            if j != '+' and j != '-' and j != '*' and j != '/':
+                                numero += j
+                            else:
+                                if numero.isnumeric():
+                                    valores.append(int(numero))
+                                    numero = ''
+                                else:
+                                    for v in variaveis:
+                                        if v[0] == numero:
+                                            valores.append(int(v[1]))
+                                            numero = ''
+                                            break
+                                operadores.append(j)
+                        valores.append(int(numero))
+                        # faz as operações
+                        valor1 = 0
+                        valor2 = 0
+                        resultado = 0
+                        for pos0, valor in enumerate(valores):
+                            if pos0 % 2 == 0:
+                                valor1 = valor
+                            elif pos0 % 2 != 0:
+                                valor2 = valor
+                                if operadores[pos0 - 1] == '+':
+                                    resultado = valor1 + valor2
+                                elif operadores[pos0 - 1] == '-':
+                                    resultado = valor1 - valor2
+                                elif operadores[pos0 - 1] == '*':
+                                    resultado = valor1 * valor2
+                                elif operadores[pos0 - 1] == '/':
+                                    resultado = valor1 / valor2
+                                elif operadores[pos0 - 1] == '|':
+                                    resultado = valor1 // valor2
+                                elif operadores[pos0 - 1] == '%':
+                                    resultado = valor1 % valor2
+                                elif operadores[pos0 - 1] == '^':
+                                    resultado = valor1 ** valor2
+                        # modifica o valor da variável
+                        for v in variaveis:
+                            if v[0] == variavel:
+                                v[1] = resultado
+                                break
+                    # modifica o valor de uma variável
+                    elif linha.startswith('mdv'):
+                        l = linha.split(' ')
+                        if len(l) == 3:
+                            comando, variavel, valor = linha.split(' ')
+                            for v in variaveis:
+                                if v[0] == variavel:
+                                    v[1] = float(valor)
+                                    break
+                        else:
+                            comando, variavel, vetor, pos = linha.split(' ')
+                            for v in vetores:
+                                if v[0] == vetor:
+                                    for v2 in variaveis:
+                                        if v2[0] == variavel:
+                                            v2[1] = v[1][f'{pos}']
+                    # modifica o valor de um vetor
+                    elif linha.startswith('mdf'):
+                        comando, vetor, pos, valor = linha.split(' ')
+                        for v in vetores:
+                            if v[0] == vetor:
+                                if valor.isnumeric():
+                                    v[1][f'{pos}'] = float(valor)
+                                else:
+                                    for l in variaveis:
+                                        if l[0] == valor:
+                                            v[1][f'{pos}'] = l[1]
+                                            break
+                                break
+                    # copia o valor de um vetor para outro
+                    elif linha.startswith('ful'):
+                        comando, vetor, vetor2 = linha.split(' ')
+                        if var1 == 'VarI' and var2 == 'out':
+                            saida = True
+                        else:
+                            for v in vetores:
+                                if v[0] == vetor:
+                                    for v1 in vetores:
+                                        if v1[0] == vetor2:
+                                            v[1] = v1[1]
+                                            break
+                                    break
+                    # copia o valor de uma variável para outra
+                    elif linha.startswith('vul'):
+                        comando, var1, var2 = linha.split(' ')
+                        if var1 == 'VarI' and var2 == 'out':
+                            saida = True
+                        else:
+                            for v in variaveis:
+                                if v[0] == var1:
+                                    for v2 in variaveis:
+                                        if v2[0] == var2:
+                                            v[1] = v2[1]
+                                            break
+                                    break
+                    # cria uma variável do tipo float
+                    elif linha.startswith('ptf'):
+                        comando, nome, valor = linha.split(' ')
+                        variaveis.append([nome, float(valor)])
+                    # criar um vetor tridimensional
+                    elif linha.startswith('3ptf'):
+                        comando, nome = linha.split(' ')
+                        vetores.append([nome, {'x': 0, 'y': 0, 'z': 0}])
+                    # soma vetores
+                    elif linha.startswith('sun'):
+                        comando, vetor1, vetor2 = linha.split(' ')
+                        for v in vetores:
+                            if v[0] == vetor1:
+                                for v1 in vetores:
+                                    if v1[0] == vetor2:
+                                        v[1]['x'] += v1[1]['x']
+                                        v[1]['y'] += v1[1]['y']
+                                        v[1]['z'] += v1[1]['z']
+                                        break
+                                break
+                    # subtrai vetores
+                    elif linha.startswith('sub'):
+                        comando, vetor1, vetor2 = linha.split(' ')
+                        for v in vetores:
+                            if v[0] == vetor1:
+                                for v1 in vetores:
+                                    if v1[0] == vetor2:
+                                        v[1]['x'] -= v1[1]['x']
+                                        v[1]['y'] -= v1[1]['y']
+                                        v[1]['z'] -= v1[1]['z']
+                                        break
+                                break
+                    # multiplica vetores
+                    elif linha.startswith('mulv'):
+                        comando, vetor1, vetor2 = linha.split(' ')
+                        for v in vetores:
+                            if v[0] == vetor1:
+                                for v1 in vetores:
+                                    if v1[0] == vetor2:
+                                        v[1]['x'] *= v1[1]['x']
+                                        v[1]['y'] *= v1[1]['y']
+                                        v[1]['z'] *= v1[1]['z']
+                                        break
+                                break
+                    # divide vetores
+                    elif linha.startswith('div'):
+                        comando, vetor1, vetor2 = linha.split(' ')
+                        for v in vetores:
+                            if v[0] == vetor1:
+                                for v1 in vetores:
+                                    if v1[0] == vetor2:
+                                        v[1]['x'] /= v1[1]['x']
+                                        v[1]['y'] /= v1[1]['y']
+                                        v[1]['z'] /= v1[1]['z']
+                                        break
+                                break
+                    # atribui o produto escalar de um vetor a uma variável
+                    elif linha.startswith('dot'):
+                        comando, vetor1, vetor2, var = linha.split(' ')
+                        for v in vetores:
+                            if v[0] == vetor1:
+                                for v1 in vetores:
+                                    if v1[0] == vetor2:
+                                        dot = 0
+                                        dot += v[1]['x'] * v1[1]['x']
+                                        dot += v[1]['y'] * v1[1]['y']
+                                        dot += v[1]['z'] * v1[1]['z']
+                                        for v2 in variaveis:
+                                            if v2[0] == var:
+                                                v2[1] = dot
+                                                break
+                                        break
+                                break
+                    # multiplica um vetor com uma matriz do bdm
+                    elif linha.startswith('mulm'):
+                        comando, pos_m, vetor1 = linha.split(' ')
+                        for v in vetores:
+                            if v[0] == vetor1:
+                                for pos0, n in enumerate(bdm[f"{pos_m}"]):
+                                    soma = 0
+                                    for pos1, n1 in enumerate(n):
+                                        if pos1 == 0:
+                                            soma += n1 * v[1]["x"]
+                                        elif pos1 == 1:
+                                            soma += n1 * v[1]["y"]
+                                        elif pos1 == 2:
+                                            soma += n1 * v[1]["z"]
+                                    if pos0 == 0:
+                                        v[1]["x"] = soma
+                                    elif pos0 == 1:
+                                        v[1]['y'] = soma
+                                    elif pos0 == 2:
+                                        v[1]['z'] = soma
+                                break
+                    linha = ''
+    if saida == False:
+        return 0
+    if tipo == 'list':
+        return vetores[0][1]
+    else:
+        return variaveis[0][1]

@@ -9,7 +9,6 @@ def compila_codigo_telmatrixshader(codigo_TelMatrixShader, vertice,bdm,rec=False
     variaveis = []
     # lê código
     linha = ''
-    # codição
     # carrega dados do buffer selecionado
     if rec == True:
         if modo_armazenamento == 'VEC':
@@ -19,6 +18,7 @@ def compila_codigo_telmatrixshader(codigo_TelMatrixShader, vertice,bdm,rec=False
             for pos0,d in enumerate(lba[pos][1]):
                 variaveis.append([f'{lba[pos][0]}_{pos0}',float(d)])
 
+    # codição
     ativ_case = False
     for c in codigo_TelMatrixShader:
         if c != ';':
@@ -174,6 +174,18 @@ def compila_codigo_telmatrixshader(codigo_TelMatrixShader, vertice,bdm,rec=False
                                 for v1 in vetores:
                                     if v1[0] == vetor2:
                                         v[1] = v1[1]
+                                        break
+                                break
+                    # copia o valor de uma variável para outra
+                    elif linha.startswith('vul'):
+                        comando, var1, var2 = linha.split(' ')
+                        for v in variaveis:
+                            if v[0] == var1:
+                                for v2 in variaveis:
+                                    if v2[0] == var2:
+                                        v[1] = v2[1]
+                                        break
+                                break
                     # cria uma variável do tipo float
                     elif linha.startswith('ptf'):
                         comando, nome , valor = linha.split(' ')
