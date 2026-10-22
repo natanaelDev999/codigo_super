@@ -37,8 +37,8 @@ vul VarI out;
 codigo_tmsf = lvt.carrega_arquivo('D:\\Nova pasta\\arquivos python\\Projetosproprios\\ProjetosProprios\\codigo_TelMatrixShader.ns')
 
 matriz_id_0 = [
-               [1.15,0.15,0],
-               [0.15,1.15,0],
+               [1,0,0],
+               [0,1,0],
                [0,0,1]
               ]
 '''
@@ -54,9 +54,15 @@ matriz_id_0 = [
 '''
 
 dados_vertices = [[-2,-2,1],[-2,2,1],[2,2,1],
-                  [2,-2,1],[-2,-2,1],[2,2,1]]
+                  [2,-2,1],[-2,-2,1],[2,2,1],
+                  [-2, -2, 2], [-2, 2, 2], [2, 2, 2],
+                  [2, -2, 2], [-2, -2, 2], [2, 2, 2]
+                  ]
 dados_cores = [[255,0,0],[255,0,0],[255,0,0],
-               [255,255,0],[255,255,0],[255,255,0]]
+               [255,0,0],[255,0,0],[255,0,0],
+
+                [0,255,0],[0,255,0],[0,255,0],
+               [0,255,0],[0,255,0],[0,255,0],]
 
 lvt.adiciona_dados("BDV",dados_vertices)
 lvt.adiciona_dados("BDA",dados_cores)
@@ -70,12 +76,12 @@ while True:
     comeco = time.perf_counter()
     lvt.compila_codigo_TelMatrixShader(codigo_tmsf,'BDV',True,0,'VEC')# 0.000118
     proj = lvt.projeta_vertices(0,False,True,90,posicao_camera=[0,0,0])# 0.000035
-    lvt.desenha_triangulo(proj,0,6,True)# 0.000071
+    lvt.desenha_triangulo(proj,0,12,False)# 0.000071
     lvt.compila_codigo_TelShader(codigo_TelShader)# 0.000071
+    lvt.preserva_dados()
     lvt.compila_codigo_TelTShader(codigo_TelTShader)
     image = lvt.compila_codigo_TelComputerShader(codigo_tcs,'TexO',[20,20],[20,20])
     lvt.imprime_tela()# 0.009806
     lvt.trata_terminal(1)# 0.016459
-    lvt.preserva_dados()
     fim = time.perf_counter()
     print(f'{fim-comeco:.6f}')
