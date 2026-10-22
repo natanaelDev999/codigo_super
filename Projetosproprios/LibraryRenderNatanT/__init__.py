@@ -11,6 +11,15 @@
 # criação do TelMatrixShader: 01/10/2026
 # criação do TelComputerShader: 20/10/2026
 ###############################################################
+#                         PIPELINE
+#Inicialização -> carrega dados -> cria tela -> cria buffer
+#adicional(opcional) ou execução do TelMatrixShader
+
+#Renderização -> TelMatrixShader -> projeção dos vértices ->
+#desenha linha -> desenha triângulos -> TelShader -> TelTShader
+
+#TelComputerShader: entrada -> TelComputerShader -> saída
+###############################################################
 #                 bibliotecas utilizadas
 # biblioteca para manipulação do terminal
 import sys
@@ -28,7 +37,6 @@ from LibraryRenderNatanT.compilador_TelComputerShader import compila_codigo_telc
 import psutil as pt
 # biblioteca para controle de arquivos
 import os
-
 ###############################################################
 #                         buffers
 # Buffer de Dados para Vértices(BDV)
@@ -160,12 +168,14 @@ def compila_codigo_TelMatrixShader(codigo,tipo,rec=False,pos=0,modo_armazenament
             bda[pos0] = compila_codigo_telmatrixshader(codigo,c,bdm,rec,pos,lba,modo_armazenamento)
 # TelComputerShader
 def compila_codigo_TelComputerShader(codigo,entrada,grupos,veref):
-    global tela,lba
+    global tela,lba,z_buffer
     saida = []
     # o shader receberá o valor de entrada, sua posição na matriz de Workgroups
     if type(entrada) == str:
         if entrada == 'TexO':
             entrada = tela[:]
+        elif entrada == 'TexZ':
+            entrada = z_buffer[:]
     # se entrada for do tipo int , será considerada como o endereço de um buffer adicinonal
     elif type(entrada) == int:
         if entrada < len(lba):
