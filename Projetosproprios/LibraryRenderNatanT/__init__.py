@@ -179,9 +179,9 @@ def compila_codigo_TelComputerShader(codigo,entrada,grupos,veref):
                 if type(entrada[py]) == list:
                     tipo = 'list'
 
-                entrada[py] = compila_codigo_telcomputershader(codigo,entrada[py],tipo,bdm)
+                entrada[py] = compila_codigo_telcomputershader(codigo,entrada[py],tipo,bdm,[py])
 
-                saida.append(compila_codigo_telcomputershader(codigo,entrada[py],tipo,bdm))
+                saida.append(compila_codigo_telcomputershader(codigo,entrada[py],tipo,bdm,[py]))
     elif len(grupos) == 2 and len(grupos) == len(veref):
         for py in range(grupos[1]):
             saida.append([])
@@ -190,8 +190,8 @@ def compila_codigo_TelComputerShader(codigo,entrada,grupos,veref):
                     tipo = ''
                     if type(entrada[py][px]) == list:
                         tipo = 'list'
-                    entrada[py][px] = compila_codigo_telcomputershader(codigo,entrada[py][px],tipo,bdm)
-                    saida[py].append(compila_codigo_telcomputershader(codigo,entrada[py][px],tipo,bdm))
+                    entrada[py][px] = compila_codigo_telcomputershader(codigo,entrada[py][px],tipo,bdm,[px,py])
+                    saida[py].append(compila_codigo_telcomputershader(codigo,entrada[py][px],tipo,bdm,[px,py]))
     elif len(grupos) == 3 and len(grupos) == len(veref):
         for pz in range(grupos[2]):
             saida.append([])
@@ -202,8 +202,8 @@ def compila_codigo_TelComputerShader(codigo,entrada,grupos,veref):
                         tipo = ''
                         if type(entrada[pz][py][px]) == list:
                             tipo = 'list'
-                        entrada[pz][py][px] = compila_codigo_telcomputershader(codigo,entrada[pz][py][px],tipo,bdm)
-                        saida[pz][py].append(compila_codigo_telcomputershader(codigo,entrada[pz][py][px],tipo,bdm))
+                        entrada[pz][py][px] = compila_codigo_telcomputershader(codigo,entrada[pz][py][px],tipo,bdm,[px,py,pz])
+                        saida[pz][py].append(compila_codigo_telcomputershader(codigo,entrada[pz][py][px],tipo,bdm,[px,py,pz]))
     return saida
 ###############################################################
 #                     FUNÇÕES UTILITÁRIAS

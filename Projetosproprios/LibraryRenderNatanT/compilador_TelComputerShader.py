@@ -1,7 +1,7 @@
 
 #                           TelComputerShader
 #A linguagem de computação do terminal
-def compila_codigo_telcomputershader(codigo_telcomputershader,entrada,tipo,bdm):
+def compila_codigo_telcomputershader(codigo_telcomputershader,entrada,tipo,bdm,pos=[]):
     # vetores
     vetores = []
     # variáveis
@@ -15,6 +15,14 @@ def compila_codigo_telcomputershader(codigo_telcomputershader,entrada,tipo,bdm):
         vetores.append(['VecI',entrada])
     else:
         variaveis.append(['VarI',entrada])
+    # carrega variáveis de posição
+    for pos0,p in enumerate(pos):
+        if pos0 == 0:
+            variaveis.append(['px',p])
+        elif pos0 == 1:
+            variaveis.append(['py',p])
+        elif pos0 == 2:
+            variaveis.append(['pz',p])
     # condição
     ativ_case = False
     for c in codigo_telcomputershader:
