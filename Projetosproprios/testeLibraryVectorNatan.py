@@ -28,3 +28,11 @@ print(produto_escalar2)
 print(pot)
 print("resultado da multiplicação vetor e matriz",vetor_mm)
 print(LibraryVectorNatan.angulo_vetores_radianos([1,0],[0,1]))
+print('-------------------------------')
+matriz2 = [[1,2],
+           [3,4]]
+
+matriz3 = [[5,6],
+           [7,8]]
+
+print(LibraryVectorNatan.multiplica_matriz_matriz(matriz2,matriz3))

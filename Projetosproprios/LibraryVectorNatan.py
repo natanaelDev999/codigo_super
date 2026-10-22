@@ -160,6 +160,24 @@ def multiplica_vetor_matriz(vetor,matriz):
             soma += vetor[pos0]*j
         vetor_saida.append(soma)
     return vetor_saida
+def multiplica_matriz_matriz(matriz1,matriz2):
+    '''
+
+    :param matriz1: Pode ser uma matriz de tuplas ou listas, e pode ser 4x4 ,3x3 ...
+    :param matriz2: Pode ser uma matriz de tuplas ou listas, e pode ser 4x4 ,3x3 ...
+    :return: retorna a matriz resultante da multiplicação de matriz1 e matriz2
+    '''
+    matriz_saida = []
+    for pos0,l in enumerate(matriz1):
+        linha = []
+        for i in range(len(matriz1)):
+            linha.append(0)
+        for ajust in range(len(matriz1)):
+            for pos1, l2 in enumerate(matriz2):
+                linha[pos0-ajust] += l[pos1]*l2[pos0-ajust]
+        matriz_saida.append(linha)
+    return matriz_saida
+
 #---------------------------------------------------------------------
 # função para pegar o tamanho do vetor
 def tamanho_vetor(vetor):

@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="40f19d69-33a2-4c14-82a8-a0754e89c91b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjetosProprios/LibraryRenderNatanT/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/ProjetosProprios/LibraryRenderNatanT/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjetosProprios/TesteLibraryRenderNatanT.py" beforeDir="false" afterPath="$PROJECT_DIR$/ProjetosProprios/TesteLibraryRenderNatanT.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -382,7 +380,7 @@
       <command value="project038" />
     </option>
   </component>
-  <component name="RunManager" selected="Python.TesteLibraryRenderNatanT">
+  <component name="RunManager" selected="Python.testeLibraryVectorNatan">
     <configuration name="TesteLibraryRenderNatanT" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PythonProject1" />
       <option name="ENV_FILES" value="" />
@@ -568,8 +566,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.TesteLibraryRenderNatanT" />
         <item itemvalue="Python.testeLibraryVectorNatan" />
+        <item itemvalue="Python.TesteLibraryRenderNatanT" />
         <item itemvalue="Python.teste_numba" />
         <item itemvalue="Python.gravidade_teste" />
         <item itemvalue="Python.opengl10" />
