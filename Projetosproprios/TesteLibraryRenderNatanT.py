@@ -70,7 +70,7 @@ while True:
     lvt.adiciona_valor_buffer('j', [5,5,5])
     lvt.compila_codigo_TelMatrixShader(codigo_tmsf,'BDV',True,0,'VEC')# 0.000118
     proj = lvt.projeta_vertices(0,False,True,90,posicao_camera=[0,0,0])# 0.000035
-    lvt.desenha_triangulo(proj,0,6)# 0.000071
+    lvt.desenha_triangulo(proj,0,6,True)# 0.000071
     lvt.compila_codigo_TelShader(codigo_TelShader)# 0.000071
     lvt.compila_codigo_TelTShader(codigo_TelTShader)
     image = lvt.compila_codigo_TelComputerShader(codigo_tcs,'TexO',[20,20],[20,20])

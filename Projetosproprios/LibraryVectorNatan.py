@@ -60,7 +60,10 @@ def divide_vetores(vetor1,vetor2):
     '''
     vetor_saida = []
     for pos0, i in enumerate(vetor1):
-        vetor_saida.append(i / vetor2[pos0])
+        if vetor2[pos0] != 0:
+            vetor_saida.append(i / vetor2[pos0])
+        else:
+            vetor_saida.append(1)
     return vetor_saida
 #---------------------------------------------------------------------
 #                          PRODUTO ESCALAR
