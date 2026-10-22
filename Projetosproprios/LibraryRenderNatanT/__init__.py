@@ -339,7 +339,7 @@ def ponto_triangulo(a,b,c,p):
 
     return sideAB and sideBC and sideCA
 
-def desenha_triangulo(proj,comeco,fim):
+def desenha_triangulo(proj,comeco,fim,inter=False):
     global tela,largura,altura,bda
 
     if len(proj) % 3 == 0:
@@ -360,7 +360,16 @@ def desenha_triangulo(proj,comeco,fim):
                         if ponto_triangulo(p[0],p[1],p[2],[x,y]) == True:
                             if trata_z_buffer(x,y,p[0][3]) == True:
                                 if y < altura and x < largura and y >= 0 and x >= 0:
-                                    tela[y][x] = f'\033[38;2;{bda[p[0][2]][0]};{bda[p[0][2]][1]};{bda[p[0][2]][2]}m█\033[m'
+                                    cor = []
+                                    if inter == True:
+                                        cor = lvn.multiplica_vetores(lvn.divide_vetores(
+                                            lvn.subtrai_vetores(bda[p[1][2]],bda[p[2][2]]),
+                                            lvn.subtrai_vetores(bda[p[0][2]],bda[p[1][2]]),
+                                        ),
+                                    [x*10,y*10,1])
+                                    else:
+                                        cor = bda[p[0][2]]
+                                    tela[y][x] = f'\033[38;2;{cor[0]};{cor[1]};{cor[2]}m█\033[m'
                                     z_buffer[y][x] = (p[0][3]+p[1][3]+p[2][3])/3
                 p = []
 
