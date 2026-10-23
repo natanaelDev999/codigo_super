@@ -162,10 +162,10 @@ def compila_codigo_TelMatrixShader(codigo,tipo,rec=False,pos=0,modo_armazenament
     global tela, altura, largura,lba
     if tipo == "BDV" or tipo == "Buffer de Dados para Vértices":
         for pos0,c in enumerate(bdv):
-            bdv[pos0] = compila_codigo_telmatrixshader(codigo,c,bdm,rec,pos,lba,modo_armazenamento)
+            bdv[pos0] = compila_codigo_telmatrixshader(codigo,c,bdm,pos0,rec,pos,lba,modo_armazenamento)
     elif tipo == "BDA" or tipo == "Buffer de Dados para Aparência":
         for pos0,c in enumerate(bda):
-            bda[pos0] = compila_codigo_telmatrixshader(codigo,c,bdm,rec,pos,lba,modo_armazenamento)
+            bda[pos0] = compila_codigo_telmatrixshader(codigo,c,bdm,pos0,rec,pos,lba,modo_armazenamento)
 # TelComputerShader
 def compila_codigo_TelComputerShader(codigo,entrada,grupos,veref):
     global tela,lba,z_buffer
