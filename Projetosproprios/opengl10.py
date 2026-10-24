@@ -31,7 +31,7 @@ iten = sorted([[random.randint(19000, 39000), random.randint(-10, 20),640000,
 
 sib = ['va','ve','vi','vo','vu','ta','te','ti','to','tu','sa','se','si','so','su','ca','ce','ci','co','cu','vac','vec','voc','c',
        'a','e','i','o','u','tri','tre','la','le','li','lo','lu','tho','the','r']
-
+# 0, 0.75 + y_m * 8, 0 + z_m * 150,
 np = []
 
 sate = []
