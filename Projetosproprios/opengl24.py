@@ -41,18 +41,20 @@ def cria_esfera(raio,pos):
                              1, 0, 0,
                              normal[0], normal[1] , normal[2],
                              pos[0],pos[1],pos[2]])
-    for i in range(31):
+    for i in range(30):
         k1 = i * (30+1)
         k2 = k1 + 30 + 1
 
-        for j in range(31):
-            k1 += 1
-            k2 += 1
+        for j in range(30):
 
             if i != 0:
                 ebo.append([k1,k2,k1+1])
             if i != 30+1:
                 ebo.append([k1+1,k2,k2+1])
+            # if i == 0:
+            #     ebo.append([k1+1,k2,k1])
+            k1 += 1
+            k2 += 1
     return [vertices,ebo]
 
 #####################################################
@@ -89,7 +91,7 @@ yaw = -90
 # [0,1,3]
 # [0,2,3]
 
-dados = cria_esfera(0.4,[1.,0.,0.])
+dados = cria_esfera(0.4,[0.,0.,0.])
 vertices = dados[0]
 faces = dados[1]
 #
