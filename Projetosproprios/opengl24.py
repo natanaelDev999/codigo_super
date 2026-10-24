@@ -17,51 +17,71 @@ import random
 # biblioteca para trabalhar com listas
 import LibraryVectorNatan as lvn
 
-def cria_esfera(raio,pos):
+
+def cria_esfera(raio, pos):
     vertices = []
     ebo = []
 
-    for i in range(30+1):
-        phi = math.pi * i / 30
+    coluna = 30
+    linha = 30
 
-        for j in range(30+1):
-            theta = 2 *math.pi * j / 30
+    for i in range(coluna + 1):
+        phi = math.pi * i / coluna
+
+        for j in range(linha + 1):
+            theta = 2 * math.pi * j / linha
 
             x2 = raio * math.sin(phi) * math.cos(theta)
             y2 = raio * math.cos(phi)
-            z2 = raio * math.sin(phi)* math.sin(theta)
-            x_m = random.random()/100
-            y_m = random.random()/100
-            z_m = random.random()/100
+            z2 = raio * math.sin(phi) * math.sin(theta)
+            x_m = random.random() / 50
+            y_m = random.random() / 50
+            z_m = random.random() / 50
 
             # n = ((p - 10)*c)*(-1)
-            normal = lvn.multiplica_vetores(lvn.subtrai_vetores(lvn.multiplica_vetores(lvn.soma_vetores([x2,y2,z2],pos),[10,10,10]),pos),[-1,-1,-1])
+            normal = lvn.multiplica_vetores(
+                lvn.subtrai_vetores(lvn.multiplica_vetores(lvn.soma_vetores([x2, y2, z2], pos), [10, 10, 10]), pos),
+                [-1, -1, -1])
 
-            vertices.append([x2+x_m,y2+y_m,z2+z_m,
-                             1, 0, 0,
-                             normal[0], normal[1] , normal[2],
-                             pos[0],pos[1],pos[2]])
-    for i in range(30):
-        k1 = i * (30+1)
-        k2 = k1 + 30 + 1
+            if math.dist(lvn.subtrai_vetores([x2,y2,z2],[x_m,y_m,z_m]),pos) < raio:
+                print(math.dist(lvn.subtrai_vetores([x2,y2,z2],[x_m,y_m,z_m]),pos))
+                # vertices.append([x2, y2, z2,
+                #                  0, 0.75 + y_m, 0 + z_m * 150,
+                #                  normal[0], normal[1], normal[2],
+                #                  pos[0] - x_m, pos[1] - y_m, pos[2] - z_m])
+                vertices.append([x2,y2,z2,
+                                 0,0.5,1.-math.dist(lvn.subtrai_vetores([x2,y2,z2],[x_m,y_m,z_m]),pos),
+                                 normal[0], normal[1], normal[2],
+                                 pos[0] - x_m, pos[1] - y_m, pos[2] - z_m])
+            else:
+                vertices.append([x2, y2, z2,
+                                 1, 0, 0,
+                                 normal[0], normal[1], normal[2],
+                                 pos[0] - x_m, pos[1] - y_m, pos[2] - z_m])
+    for i in range(coluna):
+        k1 = i * (coluna + 1)
+        k2 = k1 + coluna + 1
 
-        for j in range(30):
+        for j in range(linha):
 
             if i != 0:
-                ebo.append([k1,k2,k1+1])
-            if i != 30+1:
-                ebo.append([k1+1,k2,k2+1])
+                ebo.append([k1, k2, k1 + 1])
+            if i != 30 + 1:
+                ebo.append([k1 + 1, k2, k2 + 1])
             # if i == 0:
             #     ebo.append([k1+1,k2,k1])
             k1 += 1
             k2 += 1
-    return [vertices,ebo]
+    return [vertices, ebo]
+
 
 #####################################################
 #            FUNÇÕES DE INICIALIZAÇÃO
 def normaliza_glm_converte_pyrr(vetor):
-    vetor = glm.normalize( glm.vec3(vetor[0],vetor[1],vetor[2]) )
-    return pyrr.Vector3([vetor.x,vetor.y,vetor.z])
+    vetor = glm.normalize(glm.vec3(vetor[0], vetor[1], vetor[2]))
+    return pyrr.Vector3([vetor.x, vetor.y, vetor.z])
+
+
 #####################################################
 
 
@@ -77,7 +97,7 @@ angulo_y = 0
 angulo_x = 0
 # camera
 camera_posicao = pyrr.Vector3([0.0, 0.0, 3.0])
-camera_cima = pyrr.Vector3([0.0,1.0,0.0])
+camera_cima = pyrr.Vector3([0.0, 1.0, 0.0])
 pitch = 0
 yaw = -90
 # vertices
@@ -91,7 +111,7 @@ yaw = -90
 # [0,1,3]
 # [0,2,3]
 
-dados = cria_esfera(0.4,[0.,0.,0.])
+dados = cria_esfera(0.4, [0., 0., 0.])
 vertices = dados[0]
 faces = dados[1]
 #
@@ -132,13 +152,13 @@ faces = dados[1]
 # ]
 # quantidade de vértices
 quantidade_vertices = len(vertices)
-# quantidade de faces
 quantidade_faces = len(faces)
+# quantidade de faces
 
 
 # função para entrada de teclado
 def key_callback(window, key, scancode, action, mods):
-    global camera_posicao,camera_frente,camera_cima,yaw,pitch
+    global camera_posicao, camera_frente, camera_cima, yaw, pitch
     if key == glfw.KEY_W:
         camera_posicao += 0.05 * camera_frente
     elif key == glfw.KEY_S:
@@ -155,6 +175,8 @@ def key_callback(window, key, scancode, action, mods):
         yaw -= 1.75
     elif key == glfw.KEY_L:
         yaw += 1.75
+
+
 # função inicial
 def init():
     global vertices, vao_id, shader_program_id, faces, id_uniform_projecao, camera_visao, id_uniform_cor_luz
@@ -279,7 +301,7 @@ def init():
         //vec3 iluminacao_difusa = (delta * v_cor_luz);
 
         //iluminacao_difusa *= atenuacao;
-        
+
         iluminacao = dot(fragmento_normal, direcao_luz)*5;
 
         cor_fragmento = vec4(fragmento_cor+(vec3(dot(fragmento_normal,pos_luz))/20),1.0);
@@ -367,7 +389,7 @@ def init():
 
 # função para desenho
 def render():
-    global vao_id, quantidade_vertices, shader_program_id, quantidade_faces,camera_visao, id_uniform_cor_luz, angulo_y , angulo_x,camera_posicao,camera_frente,camera_cima
+    global vao_id, quantidade_vertices, shader_program_id, quantidade_faces, camera_visao, id_uniform_cor_luz, angulo_y, angulo_x, camera_posicao, camera_frente, camera_cima
     # limpa a tela utilizando junto, o z-buffer
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
 
