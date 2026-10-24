@@ -32,11 +32,12 @@ def compila_codigo_telcomputershader(codigo_telcomputershader,entrada,tipo,bdm,p
             linha = linha.strip()
             if linha.startswith('|') or not linha.startswith('|'):
                 if ativ_case == True or not linha.startswith('|'):
+                    # trata condicionais
+                    if linha.startswith('ec'):
+                        pass
                     if linha.startswith('|'):
                         linha = linha[1:]
                         linha = linha.strip()
-                    # trata condicionais
-                    if linha.startswith('ec'):
                         ativ_case = False
                     if linha.startswith('case'):
                         comando, valor1, comp, valor2 = linha.split(' ')

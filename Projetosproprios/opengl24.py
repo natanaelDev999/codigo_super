@@ -14,8 +14,10 @@ import math
 import glm
 # biblioteca para aleatóridade
 import random
+# biblioteca para trabalhar com listas
+import LibraryVectorNatan as lvn
 
-def cria_esfera(raio):
+def cria_esfera(raio,pos):
     vertices = []
     ebo = []
 
@@ -28,15 +30,22 @@ def cria_esfera(raio):
             x2 = raio * math.sin(phi) * math.cos(theta)
             y2 = raio * math.cos(phi)
             z2 = raio * math.sin(phi)* math.sin(theta)
-            normal = [-1,0,0]
-            vertices.append([x2+random.random()/100,y2+random.random()/100,z2+(raio*0.5),
-                             0, 0, 0,
-                             normal[0], normal[1] , normal[2]])
-    for i in range(30+1):
+            x_m = random.random()/100
+            y_m = random.random()/100
+            z_m = random.random()/100
+
+            # n = ((p - 10)*c)*(-1)
+            normal = lvn.multiplica_vetores(lvn.subtrai_vetores(lvn.multiplica_vetores(lvn.soma_vetores([x2,y2,z2],pos),[10,10,10]),pos),[-1,-1,-1])
+
+            vertices.append([x2+x_m,y2+y_m,z2+z_m,
+                             1, 0, 0,
+                             normal[0], normal[1] , normal[2],
+                             pos[0],pos[1],pos[2]])
+    for i in range(31):
         k1 = i * (30+1)
         k2 = k1 + 30 + 1
 
-        for j in range(30+1):
+        for j in range(31):
             k1 += 1
             k2 += 1
 
@@ -80,7 +89,7 @@ yaw = -90
 # [0,1,3]
 # [0,2,3]
 
-dados = cria_esfera(0.4)
+dados = cria_esfera(0.4,[1.,0.,0.])
 vertices = dados[0]
 faces = dados[1]
 #
@@ -137,13 +146,13 @@ def key_callback(window, key, scancode, action, mods):
     elif key == glfw.KEY_D:
         camera_posicao += normaliza_glm_converte_pyrr(pyrr.vector3.cross(camera_frente, camera_cima)) * 0.05
     elif key == glfw.KEY_I:
-        pitch += 1.5
+        pitch += 1.75
     elif key == glfw.KEY_K:
-        pitch -= 1.5
+        pitch -= 1.75
     elif key == glfw.KEY_J:
-        yaw -= 1.5
+        yaw -= 1.75
     elif key == glfw.KEY_L:
-        yaw += 1.5
+        yaw += 1.75
 # função inicial
 def init():
     global vertices, vao_id, shader_program_id, faces, id_uniform_projecao, camera_visao, id_uniform_cor_luz
@@ -172,25 +181,33 @@ def init():
                           3,  # quantidade de valores do atributo
                           GL_FLOAT,  # tipo dos valores do atributo
                           GL_FALSE,  # se deve ser normalizada a cor
-                          9 * 4,  # tamanho do pulo para os próximos valores do atributo
+                          12 * 4,  # tamanho do pulo para os próximos valores do atributo
                           ctypes.c_void_p(0))  # começo dos valores
     # descreve os vértices
     glVertexAttribPointer(1,  # código do atributo (cor)
                           3,  # quantidade de valores do atributo
                           GL_FLOAT,  # tipo dos valores do atributo
                           GL_FALSE,  # se deve ser normalizada a cor
-                          9 * 4,  # tamanho do pulo para os próximos valores do atributo
+                          12 * 4,  # tamanho do pulo para os próximos valores do atributo
                           ctypes.c_void_p(3 * 4))  # começo dos valores
     # descreve os vértices
     glVertexAttribPointer(2,  # código do atributo (normal)
                           3,  # quantidade de valores do atributo
                           GL_FLOAT,  # tipo dos valores do atributo
                           GL_FALSE,  # se deve ser normalizada a cor
-                          9 * 4,  # tamanho do pulo para os próximos valores do atributo
+                          12 * 4,  # tamanho do pulo para os próximos valores do atributo
                           ctypes.c_void_p(6 * 4))  # começo dos valores
+    # descreve os vértices
+    glVertexAttribPointer(3,  # código do atributo (translação)
+                          3,  # quantidade de valores do atributo
+                          GL_FLOAT,  # tipo dos valores do atributo
+                          GL_FALSE,  # se deve ser normalizada a cor
+                          12 * 4,  # tamanho do pulo para os próximos valores do atributo
+                          ctypes.c_void_p(9 * 4))  # começo dos valores
     glEnableVertexAttribArray(0)  # habilita o atributo de posição location (0)
     glEnableVertexAttribArray(1)  # habilita o atributo de cor location (1)
-    glEnableVertexAttribArray(2)  # habilita o atributo de cor location (2)
+    glEnableVertexAttribArray(2)  # habilita o atributo de normal location (2)
+    glEnableVertexAttribArray(3)  # habilita o atributo de translação location (3)
     # EBO
     faces = np.array(faces, dtype=np.uint32)
     # cria ebo
@@ -238,7 +255,7 @@ def init():
     //  recebe a normal do fragmento
     in vec3 fragmento_normal;
     //  defini origem da luz
-    vec3 pos_luz = vec3(0.0, 0.0, -3.0);
+    vec3 pos_luz = vec3(2.0, 0.0, -3.0);
     //  recebe a posição do fragmento
     in vec3 fragmento_pos;
 
@@ -256,14 +273,14 @@ def init():
         float atenuacao = 14.0 / (constante+linear*distancia+quadratica*(distancia*distancia));
 
         vec3 direcao_luz = normalize(pos_luz-fragmento_pos);
-        //float delta = max(dot(fragmento_normal, direcao_luz),0.0)+0.025;
+        //float delta = max(dot(fragmento_normal, direcao_luz),0.0);
         //vec3 iluminacao_difusa = (delta * v_cor_luz);
 
         //iluminacao_difusa *= atenuacao;
         
         iluminacao = dot(fragmento_normal, direcao_luz)*5;
 
-        cor_fragmento = vec4(fragmento_cor+iluminacao,1.0);
+        cor_fragmento = vec4(fragmento_cor+(vec3(dot(fragmento_normal,pos_luz))/20),1.0);
     }        
     '''
 
@@ -276,8 +293,9 @@ def init():
     // carrega o atributo de cor     
     layout(location = 1) in vec3 atributo_cor; 
     // carrega o atributo de normal
-    layout(location = 2) in vec3 atributo_normal;    
-
+    layout(location = 2) in vec3 atributo_normal;   
+    // carrega o atributo de translação
+    layout(location = 3) in vec3 atributo_trans; 
 
     out vec3 fragmento_cor;
     // matriz de projeção
@@ -294,7 +312,7 @@ def init():
     void main(){
         // comandos e declarações da função inicial
         // informa posição do vértice
-        gl_Position = matriz*vec4(atributo_pos,1.0);
+        gl_Position = matriz*vec4((atributo_pos+atributo_trans),1.0);
         // inseri valor ao vetor de saída para cor
         fragmento_cor = vec3(atributo_cor);
         // inseri valor ao vetor de saída para a cor da luz
