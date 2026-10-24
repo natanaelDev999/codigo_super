@@ -2,8 +2,8 @@
 #                     LibraryRenderNatanT
 ###############################################################
 # criação do projeto: 18/09/2026
-# termino do projeto:
-# intervalo de tempo:
+# termino do projeto: 23/10/2026
+# intervalo de tempo: 36 dias
 ###############################################################
 # DADOS DOS SHADERS
 # criação do TelShader: 20/09/2026
@@ -20,7 +20,7 @@
 
 #TelComputerShader: entrada -> TelComputerShader -> saída
 ###############################################################
-#                 bibliotecas utilizadas
+#                  bibliotecas utilizadas
 # biblioteca para manipulação do terminal
 import sys
 # biblioteca para trabalhar com vetores

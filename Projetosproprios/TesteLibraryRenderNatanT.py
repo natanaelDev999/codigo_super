@@ -1,5 +1,6 @@
 import LibraryRenderNatanT as lvt
 import time
+import math
 
 codigo_TelShader = '''
 p=pr;
@@ -37,9 +38,9 @@ vul VarI out;
 codigo_tmsf = lvt.carrega_arquivo('D:\\Nova pasta\\arquivos python\\Projetosproprios\\ProjetosProprios\\codigo_TelMatrixShader.ns')
 
 matriz_id_0 = [
-               [1,0,0],
+               [math.cos(math.radians(15)),0,-math.sin(math.radians(15))],
                [0,1,0],
-               [0,0,1]
+               [-math.sin(math.radians(15)),0,math.cos(math.radians(15))]
               ]
 '''
 
@@ -72,9 +73,9 @@ lvt.cria_buffer_adicional('j',5)
 lvt.adiciona_valor_buffer('j',[5,5,5])
 lvt.adiciona_valor_buffer('j', [5,5,5])
 lvt.adiciona_valor_buffer('j', [5,5,5])
+lvt.compila_codigo_TelMatrixShader(codigo_tmsf,'BDV',True,0,'VEC')# 0.000118
 while True:
     comeco = time.perf_counter()
-    lvt.compila_codigo_TelMatrixShader(codigo_tmsf,'BDV',True,0,'VEC')# 0.000118
     proj = lvt.projeta_vertices(0,False,True,90,posicao_camera=[0,0,0])# 0.000035
     lvt.desenha_triangulo(proj,0,12,False)# 0.000071
     lvt.compila_codigo_TelShader(codigo_TelShader)# 0.000071
