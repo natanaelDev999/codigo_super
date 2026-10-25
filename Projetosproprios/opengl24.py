@@ -12,12 +12,12 @@ import pyrr
 import math
 # biblioteca matemática especializada para OpenGL
 import glm
-# biblioteca para aleatóridade
+# biblioteca para aleatoriedade
 import random
 # biblioteca para trabalhar com listas
 import LibraryVectorNatan as lvn
-
-
+# nekoba
+        
 def cria_esfera(raioA, posA,cont):
     vertices = []
     ebo = []
@@ -49,7 +49,9 @@ def cria_esfera(raioA, posA,cont):
                     [-1, -1, -1])
 
                 vertices.append([x2, y2, z2,
-                                 0, 0.75 + y_m, 0 + z_m * 150,
+                                 0,
+                                 0.75 + y_m,
+                                 0 + z_m * 150,# aumenta ou diminui a quantidade de água
                                  normal[0], normal[1], normal[2],
                                  pos[0] - x_m, pos[1] - y_m, pos[2] - z_m])
 
@@ -85,8 +87,8 @@ def cria_esfera(raioA, posA,cont):
 #####################################################
 #            FUNÇÕES DE INICIALIZAÇÃO
 def normaliza_glm_converte_pyrr(vetor):
-    vetor = glm.normalize(glm.vec3(vetor[0], vetor[1], vetor[2]))
-    return pyrr.Vector3([vetor.x, vetor.y, vetor.z])
+    vetor = pyrr.vector.normalise(vetor)
+    return vetor
 
 #####################################################
 
@@ -117,7 +119,7 @@ yaw = -90
 # [0,1,3]
 # [0,2,3]
 
-# informações
+# informações dos planetas
 raiosP = [0.4,0.3,0.2]
 posP = [[1., 0., 0.],[0.,0.,0.],[-1.,0.,0.]]
 
@@ -168,7 +170,7 @@ quantidade_faces = len(faces)
 # colisão
 def colisao(pos_player,pos_astro,raio):
     retr = True
-    if math.sqrt((pos_astro[0]--pos_player[0])**2+(pos_astro[1]--pos_player[1])**2+(pos_astro[2]--pos_player[2])**2) <= raio:
+    if math.sqrt((pos_astro[0]--pos_player[0])**2+(pos_astro[1]--pos_player[1])**2+(pos_astro[2]--pos_player[2])**2) < raio:
         retr = False
     return retr
 # colisão para planetas
@@ -302,7 +304,7 @@ def init():
     //  recebe a normal do fragmento
     in vec3 fragmento_normal;
     //  defini origem da luz
-    vec3 pos_luz = vec3(0.0, 0.0, -9.0);
+    vec3 pos_luz = vec3(0.0, 0.0, -19.0);
     //  recebe a posição do fragmento
     in vec3 fragmento_pos;
 
@@ -327,7 +329,7 @@ def init():
 
         iluminacao = dot(fragmento_normal, direcao_luz)*5;
 
-        cor_fragmento = vec4(fragmento_cor+(vec3(dot(fragmento_normal,pos_luz))/100),1.0);
+        cor_fragmento = vec4((fragmento_cor+(vec3(dot(fragmento_normal,pos_luz))/100))-(distance(fragmento_pos,pos_luz)/50),1.0);
     }        
     '''
 

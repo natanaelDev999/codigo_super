@@ -557,12 +557,12 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Python.testeclass" />
       <item itemvalue="Python.RayTracing3" />
-      <item itemvalue="Python.TesteLibraryRenderNatanT" />
       <item itemvalue="Python.opengl24" />
       <item itemvalue="Python.p" />
       <item itemvalue="Python.testeLibraryVectorNatan" />
-      <item itemvalue="Python.testeclass" />
+      <item itemvalue="Python.TesteLibraryRenderNatanT" />
     </list>
     <recent_temporary>
       <list>
