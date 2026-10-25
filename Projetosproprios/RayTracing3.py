@@ -52,7 +52,7 @@ def renderRayTracing():
             # for j in esferas:
             #      if hit_sphere(j[0],j[1],[camera_center,[x,y,z]]) == True:
             #          cor = j[2]
-            if hit_cube(raio,[-1,-0.25,1],[-0.25,0.25,1.5]):
+            if hit_cube(raio,[-1,-0.25,1],[-1.75,0.25,1.5]):
                  cor = [255,0,0]
             print(f'\033[38;2;{cor[0]};{cor[1]};{cor[2]}m#\033[m',end=' ')
         print()
