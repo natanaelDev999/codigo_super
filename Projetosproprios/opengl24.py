@@ -18,60 +18,66 @@ import random
 import LibraryVectorNatan as lvn
 
 
-def cria_esfera(raio, pos):
+def cria_esfera(raio, posA,cont):
     vertices = []
     ebo = []
 
     coluna = 30
     linha = 30
 
-    for i in range(coluna + 1):
-        phi = math.pi * i / coluna
+    for c in range(cont):
+        pos = posA[c]
 
-        for j in range(linha + 1):
-            theta = 2 * math.pi * j / linha
+        inicio = len(vertices)
+        for i in range(coluna + 1):
+            phi = math.pi * i / coluna
 
-            x2 = raio * math.sin(phi) * math.cos(theta)
-            y2 = raio * math.cos(phi)
-            z2 = raio * math.sin(phi) * math.sin(theta)
-            x_m = random.random() / 50
-            y_m = random.random() / 50
-            z_m = random.random() / 50
+            for j in range(linha + 1):
+                theta = 2 * math.pi * j / linha
 
-            # n = ((p - 10)*c)*(-1)
-            normal = lvn.multiplica_vetores(
-                lvn.subtrai_vetores(lvn.multiplica_vetores(lvn.soma_vetores([x2, y2, z2], pos), [10, 10, 10]), pos),
-                [-1, -1, -1])
+                x2 = raio * math.sin(phi) * math.cos(theta)
+                y2 = raio * math.cos(phi)
+                z2 = raio * math.sin(phi) * math.sin(theta)
+                x_m = random.random() / 75
+                y_m = random.random() / 75
+                z_m = random.random() / 75
 
-            if math.dist(lvn.subtrai_vetores([x2,y2,z2],[x_m,y_m,z_m]),pos) < raio:
-                print(math.dist(lvn.subtrai_vetores([x2,y2,z2],[x_m,y_m,z_m]),pos))
-                # vertices.append([x2, y2, z2,
-                #                  0, 0.75 + y_m, 0 + z_m * 150,
-                #                  normal[0], normal[1], normal[2],
-                #                  pos[0] - x_m, pos[1] - y_m, pos[2] - z_m])
-                vertices.append([x2,y2,z2,
-                                 0,0.5,1.-math.dist(lvn.subtrai_vetores([x2,y2,z2],[x_m,y_m,z_m]),pos),
-                                 normal[0], normal[1], normal[2],
-                                 pos[0] - x_m, pos[1] - y_m, pos[2] - z_m])
-            else:
+                # n = ((p - 10)*c)*(-1)
+                normal = lvn.multiplica_vetores(
+                    lvn.subtrai_vetores(lvn.multiplica_vetores(lvn.soma_vetores([x2, y2, z2], pos), [10, 10, 10]), pos),
+                    [-1, -1, -1])
+
                 vertices.append([x2, y2, z2,
-                                 1, 0, 0,
+                                 0, 0.75 + y_m, 0 + z_m * 150,
                                  normal[0], normal[1], normal[2],
                                  pos[0] - x_m, pos[1] - y_m, pos[2] - z_m])
-    for i in range(coluna):
-        k1 = i * (coluna + 1)
-        k2 = k1 + coluna + 1
 
-        for j in range(linha):
+                # if math.dist(lvn.subtrai_vetores([x2,y2,z2],[x_m,y_m,z_m]),pos) < raio:
+                #     print(math.dist(lvn.subtrai_vetores([x2,y2,z2],[x_m,y_m,z_m]),pos))
+                #     # vertices.append([x2, y2, z2,
+                #     #                  0, 0.75 + y_m, 0 + z_m * 150,
+                #     #                  normal[0], normal[1], normal[2],
+                #     #                  pos[0] - x_m, pos[1] - y_m, pos[2] - z_m])
+                #     vertices.append([x2,y2,z2,
+                #                      0,0.5,1.-math.dist(lvn.subtrai_vetores([x2,y2,z2],[x_m,y_m,z_m]),pos),
+                #                      normal[0], normal[1], normal[2],
+                #                      pos[0] - x_m, pos[1] - y_m, pos[2] - z_m])
+                # else:
+                #     vertices.append([x2, y2, z2,
+                #                      1, 0, 0,
+                #                      normal[0], normal[1], normal[2],
+                #                      pos[0] - x_m, pos[1] - y_m, pos[2] - z_m])
+        for i in range(coluna):
 
-            if i != 0:
+            for j in range(linha):
+
+                k1 = inicio + i * (linha + 1)+j
+                k2 = k1 + linha + 1
                 ebo.append([k1, k2, k1 + 1])
-            if i != 30 + 1:
                 ebo.append([k1 + 1, k2, k2 + 1])
-            # if i == 0:
-            #     ebo.append([k1+1,k2,k1])
-            k1 += 1
-            k2 += 1
+                # if i == 0:
+                #     ebo.append([k1+1,k2,k1]
+
     return [vertices, ebo]
 
 
@@ -80,7 +86,6 @@ def cria_esfera(raio, pos):
 def normaliza_glm_converte_pyrr(vetor):
     vetor = glm.normalize(glm.vec3(vetor[0], vetor[1], vetor[2]))
     return pyrr.Vector3([vetor.x, vetor.y, vetor.z])
-
 
 #####################################################
 
@@ -111,7 +116,7 @@ yaw = -90
 # [0,1,3]
 # [0,2,3]
 
-dados = cria_esfera(0.4, [0., 0., 0.])
+dados = cria_esfera(0.4, [[1., 0., 0.],[0.,0.,0.]],2)
 vertices = dados[0]
 faces = dados[1]
 #
@@ -279,7 +284,7 @@ def init():
     //  recebe a normal do fragmento
     in vec3 fragmento_normal;
     //  defini origem da luz
-    vec3 pos_luz = vec3(2.0, 0.0, -3.0);
+    vec3 pos_luz = vec3(0.0, 0.0, -9.0);
     //  recebe a posição do fragmento
     in vec3 fragmento_pos;
 
@@ -304,7 +309,7 @@ def init():
 
         iluminacao = dot(fragmento_normal, direcao_luz)*5;
 
-        cor_fragmento = vec4(fragmento_cor+(vec3(dot(fragmento_normal,pos_luz))/20),1.0);
+        cor_fragmento = vec4(fragmento_cor+(vec3(dot(fragmento_normal,pos_luz))/100),1.0);
     }        
     '''
 
