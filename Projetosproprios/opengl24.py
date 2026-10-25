@@ -18,7 +18,7 @@ import random
 import LibraryVectorNatan as lvn
 
 
-def cria_esfera(raio, posA,cont):
+def cria_esfera(raioA, posA,cont):
     vertices = []
     ebo = []
 
@@ -27,6 +27,7 @@ def cria_esfera(raio, posA,cont):
 
     for c in range(cont):
         pos = posA[c]
+        raio = raioA[c]
 
         inicio = len(vertices)
         for i in range(coluna + 1):
@@ -116,7 +117,11 @@ yaw = -90
 # [0,1,3]
 # [0,2,3]
 
-dados = cria_esfera(0.4, [[1., 0., 0.],[0.,0.,0.]],2)
+# informações
+raiosP = [0.4,0.3,0.2]
+posP = [[1., 0., 0.],[0.,0.,0.],[-1.,0.,0.]]
+
+dados = cria_esfera(raiosP, posP,len(posP))
 vertices = dados[0]
 faces = dados[1]
 #
@@ -160,7 +165,20 @@ quantidade_vertices = len(vertices)
 quantidade_faces = len(faces)
 # quantidade de faces
 
-
+# colisão
+def colisao(pos_player,pos_astro,raio):
+    retr = True
+    if math.sqrt((pos_astro[0]--pos_player[0])**2+(pos_astro[1]--pos_player[1])**2+(pos_astro[2]--pos_player[2])**2) <= raio:
+        retr = False
+    return retr
+# colisão para planetas
+def colisaoM(pos_player,pos_atros,raios):
+    pros = True
+    for pos0,c in enumerate(pos_atros):
+        pros = colisao(pos_player,c,raios[pos0])
+        if pros == False:
+            break
+    return pros
 # função para entrada de teclado
 def key_callback(window, key, scancode, action, mods):
     global camera_posicao, camera_frente, camera_cima, yaw, pitch
@@ -480,9 +498,14 @@ def main():
     # utiliza a função inicial
     init()
     # loop para renderização
+    pros = True
     while not glfw.window_should_close(window):
         # renderiza
         render()
+        # colisão
+        pros = colisaoM([camera_posicao.x,camera_posicao.y,camera_posicao.z],posP,raiosP)
+        if pros == False:
+            break
         # configurações
         glfw.poll_events()
         glfw.swap_buffers(window)
