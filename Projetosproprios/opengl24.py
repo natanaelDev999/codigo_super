@@ -16,9 +16,11 @@ import glm
 import random
 # biblioteca para trabalhar com listas
 import LibraryVectorNatan as lvn
+
+
 # nekoba
-        
-def cria_esfera(raioA, posA,cont):
+
+def cria_esfera(raioA, posA, cont):
     vertices = []
     ebo = []
 
@@ -51,7 +53,7 @@ def cria_esfera(raioA, posA,cont):
                 vertices.append([x2, y2, z2,
                                  0,
                                  0.75 + y_m,
-                                 0 + z_m * 150,# aumenta ou diminui a quantidade de água
+                                 0 + z_m * 150,  # aumenta ou diminui a quantidade de água
                                  normal[0], normal[1], normal[2],
                                  pos[0] - x_m, pos[1] - y_m, pos[2] - z_m])
 
@@ -73,8 +75,7 @@ def cria_esfera(raioA, posA,cont):
         for i in range(coluna):
 
             for j in range(linha):
-
-                k1 = inicio + i * (linha + 1)+j
+                k1 = inicio + i * (linha + 1) + j
                 k2 = k1 + linha + 1
                 ebo.append([k1, k2, k1 + 1])
                 ebo.append([k1 + 1, k2, k2 + 1])
@@ -90,6 +91,7 @@ def normaliza_glm_converte_pyrr(vetor):
     vetor = pyrr.vector.normalise(vetor)
     return vetor
 
+
 #####################################################
 
 
@@ -103,7 +105,7 @@ id_uniform_cor_luz = 0
 # ângulo para rotação
 angulo_y = 0
 angulo_x = 0
-# camera
+# nave
 camera_posicao = pyrr.Vector3([0.0, 0.0, 3.0])
 camera_cima = pyrr.Vector3([0.0, 1.0, 0.0])
 pitch = 0
@@ -120,12 +122,20 @@ yaw = -90
 # [0,2,3]
 
 # informações dos planetas
-raiosP = [0.4,0.3,0.2]
-posP = [[1., 0., 0.],[0.,0.,0.],[-1.,0.,0.]]
+raiosP = [0.4, 0.3, 0.2]
+posP = [[4., 0., 0.], [0., 0., 0.], [-4., 0., 0.]]
 
-dados = cria_esfera(raiosP, posP,len(posP))
+dados = cria_esfera(raiosP, posP, len(posP))
 vertices = dados[0]
 faces = dados[1]
+# gravidade(aplica a gravidade)
+def gravidade(pos,raio):
+    global peso_nave,camera_posicao
+    for pos0,p in enumerate(pos):
+        raiop = raio[pos0]
+        if math.sqrt((p[0]- -camera_posicao[0])**2+(p[1]- -camera_posicao[1])**2+(p[2]- -camera_posicao[2])**2) < raiop +1:
+            forca = pyrr.Vector3([p[0]-camera_posicao[0]/10000,p[1]-camera_posicao[1]/10000,p[2]-camera_posicao[2]/10000])
+            camera_posicao = camera_posicao+forca
 #
 #
 # vertices = \
@@ -165,22 +175,29 @@ faces = dados[1]
 # quantidade de vértices
 quantidade_vertices = len(vertices)
 quantidade_faces = len(faces)
+
+
 # quantidade de faces
 
 # colisão
-def colisao(pos_player,pos_astro,raio):
+def colisao(pos_player, pos_astro, raio):
     retr = True
-    if math.sqrt((pos_astro[0]--pos_player[0])**2+(pos_astro[1]--pos_player[1])**2+(pos_astro[2]--pos_player[2])**2) < raio:
+    if math.sqrt((pos_astro[0] - -pos_player[0]) ** 2 + (pos_astro[1] - -pos_player[1]) ** 2 + (
+            pos_astro[2] - -pos_player[2]) ** 2) < raio:
         retr = False
     return retr
+
+
 # colisão para planetas
-def colisaoM(pos_player,pos_atros,raios):
+def colisaoM(pos_player, pos_atros, raios):
     pros = True
-    for pos0,c in enumerate(pos_atros):
-        pros = colisao(pos_player,c,raios[pos0])
+    for pos0, c in enumerate(pos_atros):
+        pros = colisao(pos_player, c, raios[pos0])
         if pros == False:
             break
     return pros
+
+
 # função para entrada de teclado
 def key_callback(window, key, scancode, action, mods):
     global camera_posicao, camera_frente, camera_cima, yaw, pitch
@@ -304,7 +321,7 @@ def init():
     //  recebe a normal do fragmento
     in vec3 fragmento_normal;
     //  defini origem da luz
-    vec3 pos_luz = vec3(0.0, 0.0, -19.0);
+    vec3 pos_luz = vec3(0.0, 0.0, -9.0);
     //  recebe a posição do fragmento
     in vec3 fragmento_pos;
 
@@ -316,20 +333,22 @@ def init():
         float constante = 1.0;
         float linear = 0.09;
         float quadratica = 0.032;
-        float distancia = length(pos_luz - fragmento_pos)/0.75;
+        float distancia = length(pos_luz - fragmento_pos)/0.15;
         float iluminacao = 0.;
 
         float atenuacao = 14.0 / (constante+linear*distancia+quadratica*(distancia*distancia));
 
         vec3 direcao_luz = normalize(pos_luz-fragmento_pos);
-        //float delta = max(dot(fragmento_normal, direcao_luz),0.0);
-        //vec3 iluminacao_difusa = (delta * v_cor_luz);
+        float delta = max(dot(fragmento_normal, direcao_luz),0.0);
+        vec3 iluminacao_difusa = (delta * v_cor_luz);
 
-        //iluminacao_difusa *= atenuacao;
+        iluminacao_difusa *= atenuacao;
 
         iluminacao = dot(fragmento_normal, direcao_luz)*5;
-
-        cor_fragmento = vec4((fragmento_cor+(vec3(dot(fragmento_normal,pos_luz))/100))-(distance(fragmento_pos,pos_luz)/50),1.0);
+        
+        //(vec3(dot(fragmento_normal,pos_luz))/100))-(distance(fragmento_pos,pos_luz)/50)
+        // iluminacao/(distance(fragmento_pos,pos_luz)*10)
+        cor_fragmento = vec4(fragmento_cor+iluminacao/(distance(fragmento_pos,pos_luz)*10),1.0);
     }        
     '''
 
@@ -504,8 +523,9 @@ def main():
     while not glfw.window_should_close(window):
         # renderiza
         render()
+        gravidade(posP,raiosP)
         # colisão
-        pros = colisaoM([camera_posicao.x,camera_posicao.y,camera_posicao.z],posP,raiosP)
+        pros = colisaoM([camera_posicao.x, camera_posicao.y, camera_posicao.z], posP, raiosP)
         if pros == False:
             break
         # configurações
