@@ -91,7 +91,6 @@ def normaliza_glm_converte_pyrr(vetor):
     vetor = pyrr.vector.normalise(vetor)
     return vetor
 
-
 #####################################################
 
 
@@ -108,8 +107,14 @@ angulo_x = 0
 # nave
 camera_posicao = pyrr.Vector3([0.0, 0.0, 3.0])
 camera_cima = pyrr.Vector3([0.0, 1.0, 0.0])
+velocidade_nave = 0.05
+peso_nave = 20
 pitch = 0
 yaw = -90
+#
+
+constante_grav = 0.0000674
+
 # vertices
 # quadrado
 # vértices
@@ -122,20 +127,24 @@ yaw = -90
 # [0,2,3]
 
 # informações dos planetas
-raiosP = [0.4, 0.3, 0.2]
-posP = [[4., 0., 0.], [0., 0., 0.], [-4., 0., 0.]]
+raiosP = [0.4, 0.2]
+posP = [[4., 0., 0.],[-4., 0., 0.]]
 
 dados = cria_esfera(raiosP, posP, len(posP))
 vertices = dados[0]
 faces = dados[1]
 # gravidade(aplica a gravidade)
 def gravidade(pos,raio):
-    global peso_nave,camera_posicao
-    for pos0,p in enumerate(pos):
-        raiop = raio[pos0]
-        if math.sqrt((p[0]- -camera_posicao[0])**2+(p[1]- -camera_posicao[1])**2+(p[2]- -camera_posicao[2])**2) < raiop +1:
-            forca = pyrr.Vector3([p[0]-camera_posicao[0]/10000,p[1]-camera_posicao[1]/10000,p[2]-camera_posicao[2]/10000])
-            camera_posicao = camera_posicao+forca
+    global peso_nave,camera_posicao,velocidade_nave,constante_grav
+    for pos0,r in enumerate(raio):
+        #volume 4/3Pi*R³
+        massa_planeta = 3.*(4.1887902047*(r)**3)
+        dist = math.dist(lvn.multiplica_vetores(camera_posicao,[-1,-1,-1]),pos[pos0])**2
+        forca_dir = lvn.normaliza_vetor(lvn.subtrai_vetores(camera_posicao,pos[pos0]))
+        forca_modulo = constante_grav*peso_nave*massa_planeta/dist
+        forca = pyrr.Vector3(lvn.multiplica_vetores(forca_dir,[forca_modulo,forca_modulo,forca_modulo]))
+        camera_posicao = camera_posicao + forca
+
 #
 #
 # vertices = \
@@ -202,13 +211,13 @@ def colisaoM(pos_player, pos_atros, raios):
 def key_callback(window, key, scancode, action, mods):
     global camera_posicao, camera_frente, camera_cima, yaw, pitch
     if key == glfw.KEY_W:
-        camera_posicao += 0.05 * camera_frente
+        camera_posicao += velocidade_nave * camera_frente
     elif key == glfw.KEY_S:
-        camera_posicao -= 0.05 * camera_frente
+        camera_posicao -= velocidade_nave * camera_frente
     elif key == glfw.KEY_A:
-        camera_posicao -= normaliza_glm_converte_pyrr(pyrr.vector3.cross(camera_frente, camera_cima)) * 0.05
+        camera_posicao -= normaliza_glm_converte_pyrr(pyrr.vector3.cross(camera_frente, camera_cima)) * velocidade_nave
     elif key == glfw.KEY_D:
-        camera_posicao += normaliza_glm_converte_pyrr(pyrr.vector3.cross(camera_frente, camera_cima)) * 0.05
+        camera_posicao += normaliza_glm_converte_pyrr(pyrr.vector3.cross(camera_frente, camera_cima)) * velocidade_nave
     elif key == glfw.KEY_I:
         pitch += 1.75
     elif key == glfw.KEY_K:

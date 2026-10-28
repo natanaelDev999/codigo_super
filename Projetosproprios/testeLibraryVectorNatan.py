@@ -1,4 +1,5 @@
 import LibraryVectorNatan
+import time
 
 vetor = (2,2)
 vetor2 = (1,0)
@@ -35,4 +36,12 @@ matriz2 = [[1,2],
 matriz3 = [[5,6],
            [7,8]]
 
-print(LibraryVectorNatan.multiplica_matriz_matriz(matriz2,matriz3))
+comeco = time.perf_counter()
+
+new_m = LibraryVectorNatan.multiplica_matriz_matriz(matriz2,matriz3)
+
+fim = time.perf_counter()
+
+print(f'{fim-comeco:.7f}')
+
+print(new_m)
