@@ -244,7 +244,7 @@ def projeta_vertices(dist,desenha_pontos=False,camera=False,campo_visao=0,direca
     for pos0,p in enumerate(bdv):
         if p[2] > 0 and len(p) == 3:
             if camera == True:
-                if (lvn.angulo_vetores_graus(lvn.subtrai_vetores(p,posicao_camera),lvn.subtrai_vetores(direcao_camera,posicao_camera)) < campo_visao
+                if (lvn.angulo_vetores_graus(lvn.subtrai_vetores(p,posicao_camera),lvn.subtrai_vetores(direcao_camera,posicao_camera)) < campo_visao/2
                         and lvn.angulo_vetores_graus(lvn.subtrai_vetores(p,posicao_camera),lvn.subtrai_vetores(direcao_camera,posicao_camera)) > 0):
                     proj.append([int((p[0]/(p[2]+dist))+(largura/2)),
                                     int((p[1]/(p[2]+dist))+(altura/2)),pos0,p[2]])
