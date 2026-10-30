@@ -20,13 +20,14 @@ import LibraryVectorNatan as lvn
 
 # nekoba
 
-def cria_esfera(raioA, posA, cont):
+def cria_esfera(raioA, posA, cont,raioCorP):
     vertices = []
     ebo = []
 
     coluna = 30
     linha = 30
 
+    # esfera
     for c in range(cont):
         pos = posA[c]
         raio = raioA[c]
@@ -81,6 +82,57 @@ def cria_esfera(raioA, posA, cont):
                 ebo.append([k1 + 1, k2, k2 + 1])
                 # if i == 0:
                 #     ebo.append([k1+1,k2,k1]
+    # aneis
+    for c in range(cont):
+        centro = posA[c]
+        raio = raioA[c]
+        inicio = len(vertices)
+        cor = raioCorP[c]
+        for d in range(0,1):
+            for i in range(0, 50):
+                ang = 0 + (i / float(50 - 1) * (360 - 0))
+                rad = math.radians(ang)
+
+                raio_externo = raio*1.75
+                raio_interno = raio_externo * 0.75
+
+                x2 = raio_externo * math.cos(rad)
+                z2 = raio_externo * math.sin(rad)
+                y2 = 0
+                # inclinação
+                # if c[6] != 0:
+                #     y2 = (c[3] * 1.5) * math.cos(rad) / c[6]
+                # else:
+                #     y2 = (c[3] * 1.5) * math.cos(rad) / 2
+                vertices.append([x2,y2,z2,
+                                 cor[0], cor[1], cor[2],
+                                 0,0,1,
+                                 centro[0],centro[1],centro[2]])
+
+                x2 = raio_interno * math.cos(rad)
+                z2 = raio_interno * math.sin(rad)
+                y2 = 0
+                # inclinação
+                # if c[6] != 0:
+                #     y2 = (c[3] * 1.5) * math.cos(rad) / c[6]
+                # else:
+                #     y2 = (c[3] * 1.5) * math.cos(rad) / 2
+                vertices.append([x2, y2, z2,
+                                 cor[0], cor[1], cor[2],
+                                 0, 0, 1,
+                                 centro[0], centro[1], centro[2]])
+
+        for i in range(50):
+            proximo_i = (i + 1) % 50
+
+            int_atual = inicio + (i * 2)
+            ext_atual = inicio + (i * 2) + 1
+
+            int_prox = inicio + (proximo_i * 2)
+            ext_prox = inicio + (proximo_i * 2) + 1
+
+            ebo.append([int_atual, ext_atual, ext_prox])
+            ebo.append([int_atual, ext_prox, int_prox])
 
     return [vertices, ebo]
 
@@ -127,25 +179,15 @@ constante_grav = 0.0000674
 # [0,2,3]
 
 # informações dos planetas
-raiosP = [0.4, 0.2]
-posP = [[4., 0., 0.],[-4., 0., 0.]]
+raiosP = [0.4, 0.3,0.2]
+posP = [[4., 0., 0.], [0.,0.,0.],[-4., 0., 0.]]
+corRaioP = [[1,0,0],[0,1,0],[0,0,1]]
 
-dados = cria_esfera(raiosP, posP, len(posP))
+dados = cria_esfera(raiosP, posP, len(posP),corRaioP)
 vertices = dados[0]
 faces = dados[1]
-# gravidade(aplica a gravidade)
-def gravidade(pos,raio):
-    global peso_nave,camera_posicao,velocidade_nave,constante_grav
-    for pos0,r in enumerate(raio):
-        #volume 4/3Pi*R³
-        massa_planeta = 3.*(4.1887902047*(r)**3)
-        dist = math.dist(lvn.multiplica_vetores(camera_posicao,[-1,-1,-1]),pos[pos0])**2
-        forca_dir = lvn.normaliza_vetor(lvn.subtrai_vetores(camera_posicao,pos[pos0]))
-        forca_modulo = constante_grav*peso_nave*massa_planeta/dist
-        forca = pyrr.Vector3(lvn.multiplica_vetores(forca_dir,[forca_modulo,forca_modulo,forca_modulo]))
-        camera_posicao = camera_posicao + forca
 
-#
+
 #
 # vertices = \
 #     [
@@ -183,11 +225,24 @@ def gravidade(pos,raio):
 # ]
 # quantidade de vértices
 quantidade_vertices = len(vertices)
+# quantidade de faces
 quantidade_faces = len(faces)
 
 
-# quantidade de faces
 
+# gravidade(aplica a gravidade)
+def gravidade(pos, raio):
+    global peso_nave, camera_posicao, velocidade_nave, constante_grav
+    for pos0, r in enumerate(raio):
+        # volume 4/3Pi*R³
+        massa_planeta = 3. * (4.1887902047 * (r) ** 3)
+        dist = math.dist(lvn.multiplica_vetores(camera_posicao, [-1, -1, -1]), pos[pos0]) ** 2
+        forca_dir = lvn.normaliza_vetor(lvn.subtrai_vetores(pos[pos0],camera_posicao))
+        forca_modulo = constante_grav * peso_nave * massa_planeta / dist
+        forca = pyrr.Vector3(lvn.multiplica_vetores(forca_dir, [forca_modulo, forca_modulo, forca_modulo]))
+        camera_posicao = camera_posicao + forca
+
+#
 # colisão
 def colisao(pos_player, pos_astro, raio):
     retr = True
@@ -354,7 +409,7 @@ def init():
         iluminacao_difusa *= atenuacao;
 
         iluminacao = dot(fragmento_normal, direcao_luz)*5;
-        
+
         //(vec3(dot(fragmento_normal,pos_luz))/100))-(distance(fragmento_pos,pos_luz)/50)
         // iluminacao/(distance(fragmento_pos,pos_luz)*10)
         cor_fragmento = vec4(fragmento_cor+iluminacao/(distance(fragmento_pos,pos_luz)*10),1.0);
@@ -532,7 +587,7 @@ def main():
     while not glfw.window_should_close(window):
         # renderiza
         render()
-        gravidade(posP,raiosP)
+        gravidade(posP, raiosP)
         # colisão
         pros = colisaoM([camera_posicao.x, camera_posicao.y, camera_posicao.z], posP, raiosP)
         if pros == False:
