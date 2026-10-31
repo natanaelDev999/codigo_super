@@ -168,14 +168,15 @@ def multiplica_matriz_matriz(matriz1,matriz2):
     :return: retorna a matriz resultante da multiplicação de matriz1 e matriz2
     '''
     matriz_saida = []
-    for pos0,l in enumerate(matriz1):
-        linha = []
-        for i in range(len(matriz1)):
-            linha.append(0)
-        for ajust in range(len(matriz1)):
-            for pos1, l2 in enumerate(matriz2):
-                linha[pos0-ajust] += l[pos1]*l2[pos0-ajust]
-        matriz_saida.append(linha)
+    # achei o algoritmo da wikipedia ,link: https://pt.wikipedia.org/wiki/Algoritmo_de_multiplica%C3%A7%C3%A3o_de_matrizes
+    for i in range(0,len(matriz1)):
+        vetor_adicional = []
+        for j in range(0,len(matriz2[0])):
+            soma = 0
+            for k in range(0,len(matriz1[0])):
+                soma = soma + matriz1[i][k]*matriz2[k][j]
+            vetor_adicional.append(soma)
+        matriz_saida.append(vetor_adicional)
     return matriz_saida
 
 #---------------------------------------------------------------------
