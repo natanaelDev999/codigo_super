@@ -20,7 +20,7 @@ import LibraryVectorNatan as lvn
 
 # nekoba
 
-def cria_esfera(raioA, posA, cont,raioCorP):
+def cria_esfera(raioA, posA, cont,raioCorP,corP,ativ):
     vertices = []
     ebo = []
 
@@ -33,6 +33,7 @@ def cria_esfera(raioA, posA, cont,raioCorP):
         raio = raioA[c]
 
         inicio = len(vertices)
+        cor = corP[c]
         for i in range(coluna + 1):
             phi = math.pi * i / coluna
 
@@ -52,11 +53,17 @@ def cria_esfera(raioA, posA, cont,raioCorP):
                     [-1, -1, -1])
 
                 vertices.append([x2, y2, z2,
-                                 0,
-                                 0.75 + y_m,
-                                 0 + z_m * 150,  # aumenta ou diminui a quantidade de água
-                                 normal[0], normal[1], normal[2],
+                                 cor[0]-x_m*10,
+                                 cor[1]-y_m*10,
+                                 cor[2]-z_m*10,
+                                 normal[0]+z_m, normal[1]+y_m, normal[2]-x_m,
                                  pos[0] - x_m, pos[1] - y_m, pos[2] - z_m])
+                # vertices.append([x2, y2, z2,
+                #                  0,
+                #                  0.75 + y_m,
+                #                  0 + z_m * 150,  # aumenta ou diminui a quantidade de água
+                #                  normal[0], normal[1], normal[2],
+                #                  pos[0] - x_m, pos[1] - y_m, pos[2] - z_m])
 
                 # if math.dist(lvn.subtrai_vetores([x2,y2,z2],[x_m,y_m,z_m]),pos) < raio:
                 #     print(math.dist(lvn.subtrai_vetores([x2,y2,z2],[x_m,y_m,z_m]),pos))
@@ -88,13 +95,16 @@ def cria_esfera(raioA, posA, cont,raioCorP):
         raio = raioA[c]
         inicio = len(vertices)
         cor = raioCorP[c]
+        ativacao = ativ[c]
+        if ativacao == False:
+            return [vertices, ebo]
         for d in range(0,1):
             for i in range(0, 50):
                 ang = 0 + (i / float(50 - 1) * (360 - 0))
                 rad = math.radians(ang)
 
                 raio_externo = raio*1.75
-                raio_interno = raio_externo * 0.75
+                raio_interno = raio_externo * 1.25
 
                 x2 = raio_externo * math.cos(rad)
                 z2 = raio_externo * math.sin(rad)
@@ -181,9 +191,11 @@ constante_grav = 0.0000674
 # informações dos planetas
 raiosP = [0.4, 0.3,0.2]
 posP = [[4., 0., 0.], [0.,0.,0.],[-4., 0., 0.]]
-corRaioP = [[1,0,0],[0,1,0],[0,0,1]]
+corP = [[1,1,0.5],[1,0.5,0],[1,0.5,1]]
+corRaioP = [[0,1,0],[1,1,0],[1,0,1]]
+ativ = [True,True,True]
 
-dados = cria_esfera(raiosP, posP, len(posP),corRaioP)
+dados = cria_esfera(raiosP, posP, len(posP),corRaioP,corP,ativ)
 vertices = dados[0]
 faces = dados[1]
 
@@ -228,14 +240,13 @@ quantidade_vertices = len(vertices)
 # quantidade de faces
 quantidade_faces = len(faces)
 
-
-
 # gravidade(aplica a gravidade)
 def gravidade(pos, raio):
     global peso_nave, camera_posicao, velocidade_nave, constante_grav
     for pos0, r in enumerate(raio):
         # volume 4/3Pi*R³
         massa_planeta = 3. * (4.1887902047 * (r) ** 3)
+        # G*g¹*g²/r^2
         dist = math.dist(lvn.multiplica_vetores(camera_posicao, [-1, -1, -1]), pos[pos0]) ** 2
         forca_dir = lvn.normaliza_vetor(lvn.subtrai_vetores(pos[pos0],camera_posicao))
         forca_modulo = constante_grav * peso_nave * massa_planeta / dist
@@ -385,7 +396,7 @@ def init():
     //  recebe a normal do fragmento
     in vec3 fragmento_normal;
     //  defini origem da luz
-    vec3 pos_luz = vec3(0.0, 0.0, -9.0);
+    vec3 pos_luz = vec3(0.0, 0.0, -900.0);
     //  recebe a posição do fragmento
     in vec3 fragmento_pos;
 
@@ -412,7 +423,7 @@ def init():
 
         //(vec3(dot(fragmento_normal,pos_luz))/100))-(distance(fragmento_pos,pos_luz)/50)
         // iluminacao/(distance(fragmento_pos,pos_luz)*10)
-        cor_fragmento = vec4(fragmento_cor+iluminacao/(distance(fragmento_pos,pos_luz)*10),1.0);
+        cor_fragmento = vec4(fragmento_cor+iluminacao/(distance(fragmento_pos,pos_luz))*10,1.0);
     }        
     '''
 
