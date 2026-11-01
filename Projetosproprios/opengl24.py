@@ -11,14 +11,14 @@ import pyrr
 # biblioteca para matemática básica com ângulos
 import math
 # biblioteca matemática especializada para OpenGL
-import glm
+#import glm
 # biblioteca para aleatoriedade
 import random
 # biblioteca para trabalhar com listas
 import LibraryVectorNatan as lvn
 
 
-def cria_esfera(raioA, posA, cont,raioCorP,corP,ativ,ini):
+def cria_esfera(raioA, posA, cont,raioCorP,corP,ativ,ini:int,tipo,angAnel):
     vertices = []
     ebo = []
 
@@ -45,17 +45,17 @@ def cria_esfera(raioA, posA, cont,raioCorP,corP,ativ,ini):
                 y_m = random.random() / 75
                 z_m = random.random() / 75
 
-                # n = ((p - 10)*c)*(-1)
+                # n = ((p - 10)*c)*(-1) cálculo para adquirir a normal de um vértice de uma esfera
                 normal = lvn.multiplica_vetores(
                     lvn.subtrai_vetores(lvn.multiplica_vetores(lvn.soma_vetores([x2, y2, z2], pos), [10, 10, 10]), pos),
                     [-1, -1, -1])
 
                 vertices.append([x2, y2, z2,
-                                 cor[0]-x_m*10,
-                                 cor[1]-y_m*10,
-                                 cor[2]-z_m*10,
-                                 normal[0]+z_m, normal[1]+y_m, normal[2]-x_m,
-                                 pos[0] - x_m, pos[1] - y_m, pos[2] - z_m])
+                                 cor[0]+x_m*10,
+                                 cor[1]+y_m*10,
+                                 cor[2]+z_m*10,
+                                 normal[0]+x_m, normal[1]+y_m, normal[2]+z_m,
+                                 pos[0] - x_m, pos[1] - y_m, pos[2] - z_m,tipo[0],tipo[1],tipo[2]])
                 # vertices.append([x2, y2, z2,
                 #                  0,
                 #                  0.75 + y_m,
@@ -88,13 +88,14 @@ def cria_esfera(raioA, posA, cont,raioCorP,corP,ativ,ini):
                 #     ebo.append([k1+1,k2,k1]
     # aneis
     for c in range(cont):
+        ativacao = ativ[c]
+        if ativacao == False:
+            continue
         centro = posA[c]
         raio = raioA[c]
         inicio = len(vertices)
         cor = raioCorP[c]
-        ativacao = ativ[c]
-        if ativacao == False:
-            continue
+        angulo = angAnel[c]
         for d in range(0,1):
             for i in range(0, 50):
                 ang = 0 + (i / float(50 - 1) * (360 - 0))
@@ -107,27 +108,29 @@ def cria_esfera(raioA, posA, cont,raioCorP,corP,ativ,ini):
                 z2 = raio_externo * math.sin(rad)
                 y2 = 0
                 # inclinação
-                # if c[6] != 0:
-                #     y2 = (c[3] * 1.5) * math.cos(rad) / c[6]
-                # else:
-                #     y2 = (c[3] * 1.5) * math.cos(rad) / 2
+                if angulo != 0:
+                     y2 = (raio_externo * 1.5) * math.cos(rad) / angulo
+                else:
+                     y2 = (raio_externo * 1.5) * math.cos(rad) / 2
                 vertices.append([x2,y2,z2,
                                  cor[0], cor[1], cor[2],
                                  0,0,1,
-                                 centro[0],centro[1],centro[2]])
+                                 centro[0],centro[1],centro[2],
+                                 tipo[0],tipo[1],tipo[2]])
 
                 x2 = raio_interno * math.cos(rad)
                 z2 = raio_interno * math.sin(rad)
                 y2 = 0
                 # inclinação
-                # if c[6] != 0:
-                #     y2 = (c[3] * 1.5) * math.cos(rad) / c[6]
-                # else:
-                #     y2 = (c[3] * 1.5) * math.cos(rad) / 2
+                if angulo != 0:
+                    y2 = (raio_interno * 1.5) * math.cos(rad) / angulo
+                else:
+                    y2 = (raio_interno * 1.5) * math.cos(rad) / 2
                 vertices.append([x2, y2, z2,
                                  cor[0], cor[1], cor[2],
                                  0, 0, 1,
-                                 centro[0], centro[1], centro[2]])
+                                 centro[0], centro[1], centro[2],
+                                 tipo[0],tipo[1],tipo[2]])
 
         for i in range(50):
             proximo_i = (i + 1) % 50
@@ -152,7 +155,6 @@ def normaliza_glm_converte_pyrr(vetor):
 
 #####################################################
 
-
 # variáveis
 vao_id = 0
 shader_program_id = 0
@@ -160,6 +162,8 @@ camera_visao = None
 # endereço de informs
 id_uniform_projecao = 0
 id_uniform_cor_luz = 0
+id_uniform_pos_luz = 0
+pos_luz = pyrr.Vector3([0.0, 0.0, -900.0])
 # ângulo para rotação
 angulo_y = 0
 angulo_x = 0
@@ -167,7 +171,7 @@ angulo_x = 0
 camera_posicao = pyrr.Vector3([0.0, 0.0, 3.0])
 camera_cima = pyrr.Vector3([0.0, 1.0, 0.0])
 velocidade_nave = 0.05
-peso_nave = 20
+peso_nave = 2
 pitch = 0
 yaw = -90
 #
@@ -192,16 +196,22 @@ corP = [[1,1,0.5],[1,0.5,0],[1,0.5,1]]
 corRaioP = [[0,1,0],[1,1,0],[1,0,1]]
 ativ = [True,False,True]
 ajustes_colisao = [0,0,0]
+angAnel = [5,0,7]
 # informações para satélites naturais
-raiosSN = [0.1,0.1,0.1]
+raiosSN = [0.15,0.15,0.15]
 posSN = [[4.5, -.5, 0.],[0.5,.5,0.],[-5.5, .5, 0.]]
 corSN = [[0,1,0],[1,1,0],[1,0,1]]
+# informações para estrelas
+raiosE = [0.5]
+posE = [[0.,0.,-6.]]
+corE = [[1,1,0]]
 
 # adquire os dados dos triângulos
-planetas_dados = cria_esfera(raiosP, posP, len(posP),corRaioP,corP,ativ,0)
-satelites_dados = cria_esfera(raiosSN,posSN,len(posSN),[[],[],[]],corSN,[False,False,False],len(planetas_dados[0]))
+planetas_dados = cria_esfera(raiosP, posP, len(posP),corRaioP,corP,ativ,0,lvn.preenche_vetor(1,3),angAnel)
+satelites_dados = cria_esfera(raiosSN,posSN,len(posSN),[[],[],[]],corSN,lvn.preenche_vetor(False,3),len(planetas_dados[0]),lvn.preenche_vetor(2,3),angAnel)
+estrelas_dados = cria_esfera(raiosE,posE,len(posE),[],corE,lvn.preenche_vetor(False,1),len(planetas_dados[0]+satelites_dados[0]),lvn.preenche_vetor(3,3),angAnel)
 
-dados = [planetas_dados[0]+satelites_dados[0],planetas_dados[1]+satelites_dados[1]]
+dados = [planetas_dados[0]+satelites_dados[0]+estrelas_dados[0],planetas_dados[1]+satelites_dados[1]+estrelas_dados[1]]
 vertices = dados[0]
 faces = dados[1]
 
@@ -303,7 +313,7 @@ def key_callback(window, key, scancode, action, mods):
 
 # função inicial
 def init():
-    global vertices, vao_id, shader_program_id, faces, id_uniform_projecao, camera_visao, id_uniform_cor_luz
+    global vertices, vao_id, shader_program_id, faces, id_uniform_projecao, camera_visao, id_uniform_cor_luz,id_uniform_pos_luz
     glClearColor(0, 1, 1, 1)
 
     # ativa z-buffer
@@ -329,33 +339,42 @@ def init():
                           3,  # quantidade de valores do atributo
                           GL_FLOAT,  # tipo dos valores do atributo
                           GL_FALSE,  # se deve ser normalizada a cor
-                          12 * 4,  # tamanho do pulo para os próximos valores do atributo
+                          15 * 4,  # tamanho do pulo para os próximos valores do atributo
                           ctypes.c_void_p(0))  # começo dos valores
     # descreve os vértices
     glVertexAttribPointer(1,  # código do atributo (cor)
                           3,  # quantidade de valores do atributo
                           GL_FLOAT,  # tipo dos valores do atributo
                           GL_FALSE,  # se deve ser normalizada a cor
-                          12 * 4,  # tamanho do pulo para os próximos valores do atributo
+                          15 * 4,  # tamanh o do pulo para os próximos valores do atributo
                           ctypes.c_void_p(3 * 4))  # começo dos valores
     # descreve os vértices
     glVertexAttribPointer(2,  # código do atributo (normal)
                           3,  # quantidade de valores do atributo
                           GL_FLOAT,  # tipo dos valores do atributo
                           GL_FALSE,  # se deve ser normalizada a cor
-                          12 * 4,  # tamanho do pulo para os próximos valores do atributo
+                          15 * 4,  # tamanho do pulo para os próximos valores do atributo
                           ctypes.c_void_p(6 * 4))  # começo dos valores
     # descreve os vértices
     glVertexAttribPointer(3,  # código do atributo (translação)
                           3,  # quantidade de valores do atributo
                           GL_FLOAT,  # tipo dos valores do atributo
                           GL_FALSE,  # se deve ser normalizada a cor
-                          12 * 4,  # tamanho do pulo para os próximos valores do atributo
+                          15 * 4,  # tamanho do pulo para os próximos valores do atributo
                           ctypes.c_void_p(9 * 4))  # começo dos valores
+    # descreve os vértices
+    glVertexAttribPointer(4,# código do atributo (tipo de astro)
+                          3,#quantidade de valores do atributo
+                          GL_FLOAT, # tipo do valor do atributo
+                          GL_FALSE, # se deve ser normalizada a cor
+                          15 * 4, # tamanho do pulo para os próximos valores do atributo
+                          ctypes.c_void_p(12*4) # começo dos valores
+                          )
     glEnableVertexAttribArray(0)  # habilita o atributo de posição location (0)
     glEnableVertexAttribArray(1)  # habilita o atributo de cor location (1)
     glEnableVertexAttribArray(2)  # habilita o atributo de normal location (2)
     glEnableVertexAttribArray(3)  # habilita o atributo de translação location (3)
+    glEnableVertexAttribArray(4)  # habilite o atributo de tipo do astro location (4)
     # EBO
     faces = np.array(faces, dtype=np.uint32)
     # cria ebo
@@ -402,35 +421,42 @@ def init():
     vec3 ajuste_luz = vec3(0.25,0.25,0.25);
     //  recebe a normal do fragmento
     in vec3 fragmento_normal;
-    //  defini origem da luz
-    vec3 pos_luz = vec3(0.0, 0.0, -900.0);
+    //  adquire origem da luz
+    in vec3 luz_pos;
     //  recebe a posição do fragmento
     in vec3 fragmento_pos;
+    //  recebe o tipo do astro
+    in vec3 tipo_astro;
 
     // função inicial
     void main(){
         // comandos e declarações da função inicial
-        // CÁLCULOS DE ILUMINAÇÃO
+        if (tipo_astro.x == 3) {
+            cor_fragmento = vec4(fragmento_cor,1.0);
+        }
+        else {
+            // CÁLCULOS DE ILUMINAÇÃO
 
-        float constante = 1.0;
-        float linear = 0.09;
-        float quadratica = 0.032;
-        float distancia = length(pos_luz - fragmento_pos)/0.15;
-        float iluminacao = 0.;
-
-        float atenuacao = 14.0 / (constante+linear*distancia+quadratica*(distancia*distancia));
-
-        vec3 direcao_luz = normalize(pos_luz-fragmento_pos);
-        float delta = max(dot(fragmento_normal, direcao_luz),0.0);
-        vec3 iluminacao_difusa = (delta * v_cor_luz);
-
-        iluminacao_difusa *= atenuacao;
-
-        iluminacao = dot(fragmento_normal, direcao_luz)*5;
-
-        //(vec3(dot(fragmento_normal,pos_luz))/100))-(distance(fragmento_pos,pos_luz)/50)
-        // iluminacao/(distance(fragmento_pos,pos_luz)*10)
-        cor_fragmento = vec4(fragmento_cor+iluminacao/(distance(fragmento_pos,pos_luz))*10,1.0);
+            float constante = 1.0;
+            float linear = 0.09;
+            float quadratica = 0.032;
+            float distancia = length(luz_pos - fragmento_pos)/0.15;
+            float iluminacao = 0.;
+    
+            float atenuacao = 14.0 / (constante+linear*distancia+quadratica*(distancia*distancia));
+    
+            vec3 direcao_luz = normalize(luz_pos-fragmento_pos);
+            float delta = max(dot(fragmento_normal, direcao_luz),0.0);
+            vec3 iluminacao_difusa = (delta * v_cor_luz);
+    
+            iluminacao_difusa *= atenuacao;
+    
+            iluminacao = dot(fragmento_normal, direcao_luz)*5;
+    
+            //(vec3(dot(fragmento_normal,pos_luz))/100))-(distance(fragmento_pos,pos_luz)/50)
+            // iluminacao/(distance(fragmento_pos,pos_luz)*10)
+            cor_fragmento = vec4(fragmento_cor+iluminacao/(distance(fragmento_pos,luz_pos))*10,1.0);
+        }
     }        
     '''
 
@@ -446,17 +472,25 @@ def init():
     layout(location = 2) in vec3 atributo_normal;   
     // carrega o atributo de translação
     layout(location = 3) in vec3 atributo_trans; 
+    // carrega o atributo de tipo do astro
+    layout(location = 4) in vec3 astro_tipo;
 
     out vec3 fragmento_cor;
     // matriz de projeção
     uniform mat4 matriz;
     // cor da luz
     uniform vec3 cor_luz;
+    // posição da luz
+    uniform vec3 pos_luz;
     out vec3 v_cor_luz;
     // normal do vértice
     out vec3 fragmento_normal;
     // direciona a posição do pixel
     out vec3 fragmento_pos;
+    // saida para a posição da luz
+    out vec3 luz_pos;
+    // saída para o tipo de astro
+    out vec3 tipo_astro;
 
     // função inicial
     void main(){
@@ -470,7 +504,11 @@ def init():
         // inseri valor ao vetor de saída para o vetor normal
         fragmento_normal = vec3(atributo_normal);
         // inseri valor ao vetor de saída para a posição do fragmento
-        fragmento_pos = vec3(atributo_pos);
+        fragmento_pos = vec3(atributo_pos)+vec3(atributo_trans);
+        // inseri valor ao vetor de saída para a posição da luz
+        luz_pos = vec3(pos_luz);
+        // inseri valor ao vetor de saída
+        tipo_astro = vec3(astro_tipo);
     }               
     '''
 
@@ -509,6 +547,7 @@ def init():
     # descobre a localização do uniform dentro de um shader
     id_uniform_projecao = glGetUniformLocation(shader_program_id, 'matriz')
     id_uniform_cor_luz = glGetUniformLocation(shader_program_id, 'cor_luz')
+    id_uniform_pos_luz = glGetUniformLocation(shader_program_id, 'pos_luz')
     # trata matrix de visão
     camera_visao = pyrr.matrix44.create_from_translation(pyrr.Vector3([0.0, 0.0, -3.0]))
 
@@ -516,6 +555,7 @@ def init():
 # função para desenho
 def render():
     global vao_id, quantidade_vertices, shader_program_id, quantidade_faces, camera_visao, id_uniform_cor_luz, angulo_y, angulo_x, camera_posicao, camera_frente, camera_cima
+    global pos_luz
     # limpa a tela utilizando junto, o z-buffer
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
 
@@ -566,6 +606,7 @@ def render():
                        matrix_completa_projecao  # dado a ser inserido no uniform
                        )
     glUniform3f(id_uniform_cor_luz, 1.0, 1.0, 1.0)
+    glUniform3f(id_uniform_pos_luz,pos_luz[0],pos_luz[1],pos_luz[2])
 
     # desenho indexado
     glDrawElements(GL_TRIANGLES,  # modo de desenho
@@ -601,15 +642,15 @@ def main():
     # utiliza a função inicial
     init()
     # loop para renderização
-    pros = True
     while not glfw.window_should_close(window):
         # renderiza
         render()
         gravidade(posP, raiosP)
         # colisão
-        pros = colisaoM([camera_posicao.x, camera_posicao.y, camera_posicao.z], posP, raiosP,ajustes_colisao)
-        if pros == False:
+        if colisaoM([camera_posicao.x, camera_posicao.y, camera_posicao.z], posP, raiosP,ajustes_colisao) == False:
             break
+        # if colisaoM([camera_posicao.x, camera_posicao.y, camera_posicao.z],posSN,raiosSN,[1.,1.,1]) == False:
+        #     break
         # configurações
         glfw.poll_events()
         glfw.swap_buffers(window)
