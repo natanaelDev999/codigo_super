@@ -206,3 +206,10 @@ def normaliza_vetor(vetor):
     for v in vetor:
         vetor_saida.append(v/divisor)
     return vetor_saida
+#---------------------------------------------------------------------
+# função para preencher um vetor com um valor
+def preenche_vetor(valor,quantidade):
+    vetor_saida = []
+    for c in range(quantidade+1):
+        vetor_saida.append(valor)
+    return vetor_saida
