@@ -18,9 +18,7 @@ import random
 import LibraryVectorNatan as lvn
 
 
-# nekoba
-
-def cria_esfera(raioA, posA, cont,raioCorP,corP,ativ):
+def cria_esfera(raioA, posA, cont,raioCorP,corP,ativ,ini):
     vertices = []
     ebo = []
 
@@ -81,12 +79,11 @@ def cria_esfera(raioA, posA, cont,raioCorP,corP,ativ):
                 #                      normal[0], normal[1], normal[2],
                 #                      pos[0] - x_m, pos[1] - y_m, pos[2] - z_m])
         for i in range(coluna):
-
             for j in range(linha):
                 k1 = inicio + i * (linha + 1) + j
                 k2 = k1 + linha + 1
-                ebo.append([k1, k2, k1 + 1])
-                ebo.append([k1 + 1, k2, k2 + 1])
+                ebo.append([k1 + ini, k2 + ini, k1 + 1 + ini])
+                ebo.append([k1 + 1 + ini, k2 + ini, k2 + 1 + ini])
                 # if i == 0:
                 #     ebo.append([k1+1,k2,k1]
     # aneis
@@ -97,7 +94,7 @@ def cria_esfera(raioA, posA, cont,raioCorP,corP,ativ):
         cor = raioCorP[c]
         ativacao = ativ[c]
         if ativacao == False:
-            return [vertices, ebo]
+            continue
         for d in range(0,1):
             for i in range(0, 50):
                 ang = 0 + (i / float(50 - 1) * (360 - 0))
@@ -141,8 +138,8 @@ def cria_esfera(raioA, posA, cont,raioCorP,corP,ativ):
             int_prox = inicio + (proximo_i * 2)
             ext_prox = inicio + (proximo_i * 2) + 1
 
-            ebo.append([int_atual, ext_atual, ext_prox])
-            ebo.append([int_atual, ext_prox, int_prox])
+            ebo.append([int_atual+ini, ext_atual+ini, ext_prox+ini])
+            ebo.append([int_atual+ini, ext_prox+ini, int_prox+ini])
 
     return [vertices, ebo]
 
@@ -193,9 +190,18 @@ raiosP = [0.4, 0.3,0.2]
 posP = [[4., 0., 0.], [0.,0.,0.],[-4., 0., 0.]]
 corP = [[1,1,0.5],[1,0.5,0],[1,0.5,1]]
 corRaioP = [[0,1,0],[1,1,0],[1,0,1]]
-ativ = [True,True,True]
+ativ = [True,False,True]
+ajustes_colisao = [0,0,0]
+# informações para satélites naturais
+raiosSN = [0.1,0.1,0.1]
+posSN = [[4.5, -.5, 0.],[0.5,.5,0.],[-5.5, .5, 0.]]
+corSN = [[0,1,0],[1,1,0],[1,0,1]]
 
-dados = cria_esfera(raiosP, posP, len(posP),corRaioP,corP,ativ)
+# adquire os dados dos triângulos
+planetas_dados = cria_esfera(raiosP, posP, len(posP),corRaioP,corP,ativ,0)
+satelites_dados = cria_esfera(raiosSN,posSN,len(posSN),[[],[],[]],corSN,[False,False,False],len(planetas_dados[0]))
+
+dados = [planetas_dados[0]+satelites_dados[0],planetas_dados[1]+satelites_dados[1]]
 vertices = dados[0]
 faces = dados[1]
 
@@ -255,19 +261,20 @@ def gravidade(pos, raio):
 
 #
 # colisão
-def colisao(pos_player, pos_astro, raio):
+def colisao(pos_player, pos_astro, raio,ajuste):
     retr = True
     if math.sqrt((pos_astro[0] - -pos_player[0]) ** 2 + (pos_astro[1] - -pos_player[1]) ** 2 + (
-            pos_astro[2] - -pos_player[2]) ** 2) < raio:
+            pos_astro[2] - -pos_player[2]) ** 2) < raio+ajuste:
         retr = False
     return retr
 
 
 # colisão para planetas
-def colisaoM(pos_player, pos_atros, raios):
+def colisaoM(pos_player, pos_atros, raios,ajustes):
     pros = True
     for pos0, c in enumerate(pos_atros):
-        pros = colisao(pos_player, c, raios[pos0])
+        ajuste = ajustes[pos0]
+        pros = colisao(pos_player, c, raios[pos0],ajuste)
         if pros == False:
             break
     return pros
@@ -600,7 +607,7 @@ def main():
         render()
         gravidade(posP, raiosP)
         # colisão
-        pros = colisaoM([camera_posicao.x, camera_posicao.y, camera_posicao.z], posP, raiosP)
+        pros = colisaoM([camera_posicao.x, camera_posicao.y, camera_posicao.z], posP, raiosP,ajustes_colisao)
         if pros == False:
             break
         # configurações
