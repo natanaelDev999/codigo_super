@@ -1,11 +1,20 @@
 import random
 import json
 import LibraryVectorNatan as lvn
+import os
+import time
+# valores de aprendizado
+valores_aprendizado= [0,0,0,0]
 # camadas
 camadas = [{'distancias':[],'biases':[],'no':[],'n_no':0,'n_et':0},
            {'distancias':[],'biases':[],'no':[],'n_no':0,'n_et':0},
            {'distancias':[],'biases':[],'no':[],'n_no':0,'n_et':0}]
-
+# limpa camadas
+def limpa_camadas():
+    global camadas
+    for c in camadas:
+        c['biases'] = []
+        c['distancias'] = []
 # inicia camada
 def ini_camadas(pos,entradas,nos):
     global camadas
@@ -38,16 +47,17 @@ def avanca(pos,entradas):
         camadas[pos]['no'][c] += camadas[pos]['biases'][c]
 # função de ativação
 def ativacao(pos):
+    novo_no = []
     for c in range(camadas[pos]['n_no']):
-
-       if camadas[pos]['no'][c] < 0:
-              camadas[pos]['no'][c] = 0
-       else:
+        if camadas[pos]['no'][c] < 0:
+            novo_no.append(0)
+        else:
             if camadas[pos]['no'][c] > 0.5:
-                camadas[pos]['no'][c] = 1
+                novo_no.append(1)
 
             else:
-                camadas[pos]['no'][c] = 0
+                novo_no.append(0)
+    return novo_no
 #
 def inicia_camadas():
     # camada 1
@@ -57,27 +67,42 @@ def inicia_camadas():
     # camada para saída
     ini_camadas(2,4,2)
     #
+# função para aprendizado
+def aprendizado(camada_modificada):
+    global valores_aprendizado
+    '''saida = camadas[-1]['no']
+    erro = lvn.subtrai_vetores(saida_esperada,saida)
+    print(camadas[camada_modificada]['biases'])
+    for pos0,c in enumerate(camadas[camada_modificada]['biases']):
+         camadas[camada_modificada]['biases'][pos0] += erro[0]+erro[1]
+    print(camadas[camada_modificada]['biases'])'''
+    random.seed(None)
+    for pos0, c in enumerate(camadas[camada_modificada]['biases']):
+        valor = random.random()*2
+        camadas[camada_modificada]['biases'][pos0] /= valor
+        valores_aprendizado[pos0] += valor
+    random.seed(250000)
 # função cerebral
 def cerebro(entradas,pos1,pos2,pos3):
     global camadas
     # camada 1
     avanca(pos1,entradas)
-    ativacao(pos1)
+    no1 = ativacao(pos1)
     # camada 2
-    avanca(pos2, camadas[pos1]['no'])
-    ativacao(pos2)
+    avanca(pos2, no1)
+    no2 = ativacao(pos2)
     # camada para saída
-    avanca(pos3, camadas[pos2]['no'])
-    ativacao(pos3)
+    avanca(pos3, no2)
+    no3 = ativacao(pos3)
 
-    return camadas[pos3]['no']
+    return no3
 # função para salvamento de informações para escolha dos valores corretos
 def armazena_dados_seed(seed):
-    global camadas
+    global camadas,valores_aprendizado
     dados_json = {}
     with open('camadas_testeIA2.json','r') as arquivo1:
         dados_json = json.load(arquivo1)
-    dados_json['seeds'].append(seed)
+    dados_json['camada2']=valores_aprendizado
     with open('camadas_testeIA2.json','w') as arquivo2:
         json.dump(dados_json,arquivo2)
 #================================================================
@@ -90,6 +115,7 @@ mundo = [[' ',' ',' ',' ',' ',' ',' '],
 # informações do ser
 vetor_pos = [2,2]
 vetor_dir = [1,0]
+fome = 1
 # vetor para ações
 vetor_acoes = ['^','a']
 # funções para os sentidos que serão as entradas
@@ -211,30 +237,41 @@ def come_alimento():
 
 # função principal
 def main():
-    global vetor_pos,vetor_acoes
+    global vetor_pos,vetor_acoes,fome
 
     SEED = 250000
 
-    entradas = [sentido_visao(),sentido_tato()]
-
-    random.seed(SEED)
-
-    inicia_camadas()
-    resul = cerebro(entradas,0,1,2)
-    print(entradas)
-    print(resul)
-
-    for pos0,v in enumerate(resul):
-        if v == 1:
-            if vetor_acoes[pos0] == 'a':
-                come_alimento()
-            if vetor_acoes[pos0] == '^':
-                movimento_frontal()
-
     mundo[vetor_pos[1]][vetor_pos[0]] = 'S'
-    desenha_mundo()
 
-    armazena_dados_seed(SEED)
+    for c in range(9):
+        print(c)
+        desenha_mundo()
+        mundo[vetor_pos[1]][vetor_pos[0]] = ' '
+        entradas = [sentido_visao(),sentido_tato()]
+
+        random.seed(SEED)
+
+        limpa_camadas()
+        inicia_camadas()
+        aprendizado(1)
+        resul = cerebro(entradas,0,1,2)
+
+        print(resul)
+        for pos0,v in enumerate(resul):
+            if v == 1:
+                if vetor_acoes[pos0] == 'a' and fome == 1:
+                    come_alimento()
+                    fome = 0
+                if vetor_acoes[pos0] == '^':
+                    movimento_frontal()
+        mundo[vetor_pos[1]][vetor_pos[0]] = 'S'
+        time.sleep(1)
+        os.system('cls')
+
+    salva = str(input('Deve ser salvo: ')).upper()
+
+    if salva == 'S':
+        armazena_dados_seed(SEED)
 
 
     # # Vamos testar 250.000 combinações de seeds diferentes

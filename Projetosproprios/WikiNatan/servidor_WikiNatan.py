@@ -38,6 +38,7 @@ def ler_artigo(titulo):
     for artigo in dados["artigos"]:
         if artigo[0] == titulo or titulo in artigo[0]:
             artigo_retorna = artigo
+            break
     return artigo_retorna
 
 def modifica_artigo(titulo,artigo_recebido,autor):
@@ -61,24 +62,31 @@ def trata_cliente(conexao,ender):
         dados = conexao.recv(1024).decode()
         print(dados)
         try:
+            # cria artigo
             if dados[0] == "=":
                 autor, titulo, artigo = dados[1:].split("§")
                 salva_artigo(titulo,artigo,autor)
                 print('[SERVIDOR] artigo criado')
+            # lê artigo
             elif dados[0] == "-":
                 dados = dados[1:]
                 artigo = ler_artigo(dados)
                 if len(artigo) > 0:
                     conexao.sendall((f"Titulo:{artigo[0]}\nAutor:{artigo[1]};Criado em:{artigo[3]}\n{artigo[2]}").encode())
+                else:
+                    conexao.sendall((f"Não a artigo com tal nome ou que contenha tal nome").encode())
+            # modifica artigo
             elif dados[0] == "%":
                 dados = dados[1:]
                 autor, titulo, artigo = dados.split("§")
                 modifica_artigo(titulo,artigo,autor)
+            # lista todos os artigos
             elif dados == "A§":
                 lista = listar_artigos()
                 conexao.sendall((lista).encode())
         except:
             print("[SERVIDOR] houve um problema com o cliente")
+            break
 
     conexao.close()
 

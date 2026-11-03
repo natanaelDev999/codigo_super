@@ -163,7 +163,7 @@ camera_visao = None
 id_uniform_projecao = 0
 id_uniform_cor_luz = 0
 id_uniform_pos_luz = 0
-pos_luz = pyrr.Vector3([0.0, 0.0, -900.0])
+pos_luz = pyrr.Vector3([0.0, 0.0, -90.0])
 # ângulo para rotação
 angulo_y = 0
 angulo_x = 0
@@ -171,9 +171,10 @@ angulo_x = 0
 camera_posicao = pyrr.Vector3([0.0, 0.0, 3.0])
 camera_cima = pyrr.Vector3([0.0, 1.0, 0.0])
 velocidade_nave = 0.05
-peso_nave = 2
+peso_nave = 20
 pitch = 0
 yaw = -90
+mov = False
 #
 
 constante_grav = 0.0000674
@@ -273,8 +274,8 @@ def gravidade(pos, raio):
 # colisão
 def colisao(pos_player, pos_astro, raio,ajuste):
     retr = True
-    if math.sqrt((pos_astro[0] - -pos_player[0]) ** 2 + (pos_astro[1] - -pos_player[1]) ** 2 + (
-            pos_astro[2] - -pos_player[2]) ** 2) < raio+ajuste:
+    if (math.sqrt((pos_astro[0] - (-pos_player[0])) ** 2 + (pos_astro[1] - (-pos_player[1])) ** 2 + (
+            pos_astro[2] - (-pos_player[2])) ** 2)) < raio+ajuste:
         retr = False
     return retr
 
@@ -292,22 +293,24 @@ def colisaoM(pos_player, pos_atros, raios,ajustes):
 
 # função para entrada de teclado
 def key_callback(window, key, scancode, action, mods):
-    global camera_posicao, camera_frente, camera_cima, yaw, pitch
-    if key == glfw.KEY_W:
-        camera_posicao += velocidade_nave * camera_frente
-    elif key == glfw.KEY_S:
-        camera_posicao -= velocidade_nave * camera_frente
-    elif key == glfw.KEY_A:
+    global camera_posicao, camera_frente, camera_cima, yaw, pitch,mov
+    '''elif key == glfw.KEY_A:
         camera_posicao -= normaliza_glm_converte_pyrr(pyrr.vector3.cross(camera_frente, camera_cima)) * velocidade_nave
     elif key == glfw.KEY_D:
-        camera_posicao += normaliza_glm_converte_pyrr(pyrr.vector3.cross(camera_frente, camera_cima)) * velocidade_nave
-    elif key == glfw.KEY_I:
+        camera_posicao += normaliza_glm_converte_pyrr(pyrr.vector3.cross(camera_frente, camera_cima)) * velocidade_nave'''
+    if key == glfw.KEY_O:
+        mov = True
+        #camera_posicao += velocidade_nave * camera_frente
+    elif key == glfw.KEY_P:
+        mov = False
+        #camera_posicao -= velocidade_nave * camera_frente
+    elif key == glfw.KEY_W:
         pitch += 1.75
-    elif key == glfw.KEY_K:
+    elif key == glfw.KEY_S:
         pitch -= 1.75
-    elif key == glfw.KEY_J:
+    elif key == glfw.KEY_A:
         yaw -= 1.75
-    elif key == glfw.KEY_L:
+    elif key == glfw.KEY_D:
         yaw += 1.75
 
 
@@ -449,13 +452,11 @@ def init():
             float delta = max(dot(fragmento_normal, direcao_luz),0.0);
             vec3 iluminacao_difusa = (delta * v_cor_luz);
     
-            iluminacao_difusa *= atenuacao;
-    
             iluminacao = dot(fragmento_normal, direcao_luz)*5;
     
             //(vec3(dot(fragmento_normal,pos_luz))/100))-(distance(fragmento_pos,pos_luz)/50)
             // iluminacao/(distance(fragmento_pos,pos_luz)*10)
-            cor_fragmento = vec4(fragmento_cor+iluminacao/(distance(fragmento_pos,luz_pos))*10,1.0);
+            cor_fragmento = vec4((fragmento_cor/2)+iluminacao/(distance(fragmento_pos,luz_pos)),1.0);
         }
     }        
     '''
@@ -630,6 +631,7 @@ def render():
 
 # função central
 def main():
+    global mov,camera_posicao
     # cria janela
     glfw.init()
     window = glfw.create_window(600, 600, "OpenGL moderno 3D", None, None)
@@ -646,9 +648,15 @@ def main():
         # renderiza
         render()
         gravidade(posP, raiosP)
+        gravidade(posE, raiosE)
         # colisão
-        if colisaoM([camera_posicao.x, camera_posicao.y, camera_posicao.z], posP, raiosP,ajustes_colisao) == False:
+        if colisaoM(camera_posicao, posP, raiosP,ajustes_colisao) == False:
             break
+        if colisaoM(camera_posicao,posE,raiosE,ajustes_colisao) == False:
+            break
+        # movimentação
+        if mov == True:
+            camera_posicao += (velocidade_nave/6) * camera_frente
         # if colisaoM([camera_posicao.x, camera_posicao.y, camera_posicao.z],posSN,raiosSN,[1.,1.,1]) == False:
         #     break
         # configurações
