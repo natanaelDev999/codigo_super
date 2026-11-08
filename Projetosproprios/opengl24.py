@@ -16,6 +16,8 @@ import math
 import random
 # biblioteca para trabalhar com listas
 import LibraryVectorNatan as lvn
+# biblioteca para manipulação do terminal
+import sys
 
 
 def cria_esfera(raioA, posA, cont, raioCorP, corP, ativ, ini: int, tipo, angAnel):
@@ -164,7 +166,6 @@ camera_visao = None
 id_uniform_projecao = 0
 id_uniform_cor_luz = 0
 id_uniform_pos_luz = 0
-pos_luz = pyrr.Vector3([0.0, 0.0, -90.0])
 # ângulo para rotação
 angulo_y = 0
 angulo_x = 0
@@ -194,7 +195,7 @@ constante_grav = 0.0000674
 
 def cria_sistema(pos):
     # nebulosa informações
-    massa = random.randint(5,6)
+    massa = random.randint(10,15)
     # cria informações
     quantidade_planetas = random.randint(1,8)
     # dados do planeta
@@ -209,11 +210,13 @@ def cria_sistema(pos):
     satelite_raios = []
     satelite_pos = []
     satelite_cor = []
+    # dado da estrela
+    raio_e = random.uniform(0.9,1.5)
 
     for c in range(quantidade_planetas):
         # dados do planeta
-        pos_p = [pos[0]+random.randint(-10,10)+(c/10),pos[1]+random.randint(1,5)+(c/10),pos[2]+random.randint(5,10)+(c/10)]
-        raio_p = random.uniform(0.3,0.5)
+        pos_p = [pos[0]+random.randint(-12,12)+((c+raio_e)/9),pos[1]+random.randint(-8,8)+((c+raio_e)/9),pos[2]+random.randint(-12,12)+((c+raio_e)/9)]
+        raio_p = random.uniform(0.5,0.8)
         massa_p = 3. * (4.1887902047 * (raio_p) ** 3)
         cor_p = [random.uniform(0.0,1.0),random.uniform(0.0,1.0),random.uniform(0.0,1.0)]
         # anéis
@@ -223,11 +226,11 @@ def cria_sistema(pos):
         # satélites naturais
         ativ_sate = random.choice([True, False])
         if ativ_sate == True:
-            quant_sate = random.randint(1, 5)
+            quant_sate = random.randint(1, 3)
             for v in range(quant_sate):
                 pos_s = lvn.soma_vetores(pos_p,
-                                         [raio_p + random.random()+(v/10), raio_p + random.random()+(v/10), raio_p + random.random()+(v/10)])
-                raio_s = random.uniform(0.05, 0.2)
+                                         [raio_p + random.uniform(-2,2)+(v/3), raio_p + random.uniform(-2,2)+(v/3), raio_p + random.uniform(-2,2)+(v/3)])
+                raio_s = random.uniform(0.1, 0.2)
                 cor_s = [random.uniform(0.0,1.0),random.uniform(0.0,1.0),random.uniform(0.0,1.0)]
                 massa_s = 3. * (4.1887902047 * (raio_s) ** 3)
                 massa_p += massa_s
@@ -242,11 +245,13 @@ def cria_sistema(pos):
             ativ_aneis.append(ativ_a)
             cor_aneis.append(cor_a)
             angulo_aneis.append(angulo)
+            massa-=massa_p
+        print(massa)
     return {'planetas':[planeta_pos, planeta_raio, planeta_cor, ativ_aneis,cor_aneis,angulo_aneis],'estrela':[[pos],
-            [random.uniform(0.5,0.9)],[[.5+random.uniform(0.12,0.25),.25+random.uniform(0.12,0.20),0]]],
+            [raio_e],[[.75+random.uniform(0.12,0.25),.5+random.uniform(0.12,0.20),0]]],
             'satelites':[satelite_pos,satelite_raios,satelite_cor]}
 
-informacoes = cria_sistema([0,0,-10])
+informacoes = cria_sistema([0,0,-25])
 # informações dos planetas
 raiosP = informacoes['planetas'][1]
 posP = informacoes['planetas'][0]
@@ -262,6 +267,7 @@ corSN = informacoes['satelites'][2]
 raiosE = informacoes['estrela'][1]
 posE = informacoes['estrela'][0]
 corE = informacoes['estrela'][2]
+pos_luz = pyrr.Vector3(informacoes['estrela'][0])
 
 # adquire os dados dos triângulos
 planetas_dados = cria_esfera(raiosP, posP, len(posP), corRaioP, corP, ativ, 0, lvn.preenche_vetor(1, 3), angAnel)
@@ -352,7 +358,7 @@ def colisaoM(pos_player, pos_atros, raios):
 
 # função para entrada de teclado
 def key_callback(window, key, scancode, action, mods):
-    global camera_posicao, camera_frente, camera_cima, yaw, pitch, mov,propulsor
+    global camera_posicao, camera_frente, camera_cima, yaw, pitch, mov,propulsor,velocidade_nave
     '''elif key == glfw.KEY_A:
         camera_posicao -= normaliza_glm_converte_pyrr(pyrr.vector3.cross(camera_frente, camera_cima)) * velocidade_nave
     elif key == glfw.KEY_D:
@@ -375,6 +381,12 @@ def key_callback(window, key, scancode, action, mods):
         yaw -= 1.75
     elif key == glfw.KEY_D:
         yaw += 1.75
+    elif key == glfw.KEY_R and action == 1:
+        if round(velocidade_nave,2) != 0.2:
+            velocidade_nave += 0.01
+    elif key == glfw.KEY_T and action == 1:
+        if round(velocidade_nave,2) != 0.00:
+            velocidade_nave -= 0.01
 
 
 # função inicial
@@ -690,14 +702,18 @@ def render():
     glBindVertexArray(0)
     # desativa shaders
     glUseProgram(0)
-
+# função para interface de terminal da nave
+def interface_terminal_nave():
+    global velocidade_nave
+    print('\033[35;1;44m--- CONSOLE DA NAVE ---\033[m')
+    print(f'    \033[33;1;43mvelocidade:{abs(velocidade_nave):.2f}\033[m')
 
 # função central
 def main():
     global mov, camera_posicao,propulsor
     # cria janela
     glfw.init()
-    window = glfw.create_window(600, 600, "OpenGL moderno 3D", None, None)
+    window = glfw.create_window(600, 600, "SuperSpace 4", None, None)
     # faz entrada de teclado
     glfw.set_key_callback(window, key_callback)
     # utiliza o contexto opengl
@@ -712,6 +728,7 @@ def main():
         render()
         gravidade(posP, raiosP)
         gravidade(posE, raiosE)
+        gravidade(posSN,raiosSN)
         # colisão
         if colisaoM(camera_posicao, posP, raiosP) == False:
             break
@@ -730,6 +747,11 @@ def main():
         # configurações
         glfw.poll_events()
         glfw.swap_buffers(window)
+        # limpa terminal
+        sys.stdout.write('\033[H')
+        sys.stdout.flush()
+        #
+        interface_terminal_nave()
     # termina janela
     glfw.terminate()
 
