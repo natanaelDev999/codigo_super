@@ -3,13 +3,14 @@
 #---------------------------------------------------------------------
 #                            BIBLIOTECAS
 import math
+from decimal import Decimal
 #---------------------------------------------------------------------
-#biblioteca para manipulação de vetores
+# biblioteca para manipulação de vetores
 #---------------------------------------------------------------------
 #                        OPERAÇÕES MATEMÁTICAS
 #---------------------------------------------------------------------
 # potência de vetores
-def potencia_vetores(vetor1,elevacao):
+def potencia_vetores(vetor1,elevacao: int):
     vetor_saida = []
     for c in vetor1:
         vetor_saida.append(c**elevacao)
@@ -208,8 +209,69 @@ def normaliza_vetor(vetor):
     return vetor_saida
 #---------------------------------------------------------------------
 # função para preencher um vetor com um valor
-def preenche_vetor(valor,quantidade):
+def preenche_vetor(valor,quantidade:int):
     vetor_saida = []
     for c in range(quantidade+1):
         vetor_saida.append(valor)
     return vetor_saida
+#---------------------------------------------------------------------
+#                            QUATERNIONS
+# função para soma de quaternions
+def soma_quaternions(q1,q2):
+    '''
+
+    :param q1: Deve ser uma lista quadridimensional
+    :param q2: Deve ser uma lista quadridimensional
+    :return: retorna a soma dos dois quaternions
+    '''
+    q_saida = []
+    for pos0,c in enumerate(q1):
+        q_saida.append(float(Decimal(str(c))+Decimal(str(q2[pos0]))))
+    return q_saida
+# função para multiplicação de escalar por quaternions
+def multiplica_escalar_quaternion(escalar: float,q1):
+    '''
+
+    :param escalar: valor escalar
+    :param q1:  Deve ser uma lista quadridimensional
+    :return: retorna o quaternion resultante da multiplicação do escalar e do quaternion
+    '''
+    q_saida = []
+    for c in q1:
+        q_saida.append(float(Decimal(str(escalar))*Decimal(str(c))))
+    return q_saida
+# função para conjugação de quaternions
+def conjuga_quaternion(q1):
+    '''
+
+    :param q1: Deve ser uma lista quadridimensional
+    :return: retorna o quaternion conjugado
+    '''
+    return [q1[0],q1[1]*-1,q1[2]*-1,q1[3]*-1]
+# função para norma de quaternions
+def norma_quaternion(q1):
+    '''
+
+    :param q1:  Deve ser uma lista quadridimensional
+    :return: retorna a norma do quaternion
+    '''
+    vetor_saida = []
+    divisor = 0
+    for i in q1:
+        divisor += i ** 2
+    divisor = math.sqrt(divisor)
+    for v in q1:
+        vetor_saida.append(v / divisor)
+    return vetor_saida
+# função para multiplicar quaternions
+def multiplica_quaternions(q1,q2):
+    '''
+
+    :param q1:  Deve ser uma lista quadridimensional
+    :param q2:  Deve ser uma lista quadridimensional
+    :return: retorna o quaternion resultante da multiplicação de q1 e q2
+    '''
+    return [q1[0]*q2[0]- q1[1]*q2[1]- q1[2]*q2[2]- q1[3]*q2[3],
+               q1[0]*q2[1]+ q2[0]*q1[1]+ q1[2]*q2[3]- q1[3]*q2[2],
+               q1[0]*q2[1]+ q2[0]*q1[2]+ q1[3]*q2[1]- q1[1]*q2[3],
+               q1[0]*q2[3]+ q2[0]*q1[2]+ q1[1]*q2[2]- q1[2]*q2[1]]
