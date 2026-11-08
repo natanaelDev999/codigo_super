@@ -324,6 +324,7 @@
     &quot;Python.testeLibraryRenderNatan.executor&quot;: &quot;Run&quot;,
     &quot;Python.testeLibraryVectorNatan.executor&quot;: &quot;Run&quot;,
     &quot;Python.testeMemoria.executor&quot;: &quot;Run&quot;,
+    &quot;Python.teste_LibraryVectorNatanT.executor&quot;: &quot;Run&quot;,
     &quot;Python.teste_arquivos.executor&quot;: &quot;Run&quot;,
     &quot;Python.teste_barra_de_progresso.executor&quot;: &quot;Run&quot;,
     &quot;Python.teste_email.executor&quot;: &quot;Run&quot;,
@@ -384,31 +385,6 @@
     </option>
   </component>
   <component name="RunManager" selected="Python.opengl24">
-    <configuration name="TesteIA2" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="PythonProject1" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ProjetosProprios" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="DEBUG_JUST_MY_CODE" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="RUN_TOOL" value="" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ProjetosProprios/TesteIA2.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="true" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="TesteLibraryRenderNatanT" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PythonProject1" />
       <option name="ENV_FILES" value="" />
@@ -509,6 +485,31 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="teste_LibraryVectorNatanT" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PythonProject1" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ProjetosProprios" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="DEBUG_JUST_MY_CODE" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="RUN_TOOL" value="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ProjetosProprios/teste_LibraryVectorNatanT.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="true" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="teste_email" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PythonProject1" />
       <option name="ENV_FILES" value="" />
@@ -560,20 +561,20 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.testeclass" />
       <item itemvalue="Python.TesteLibraryRenderNatanT" />
-      <item itemvalue="Python.teste_email" />
-      <item itemvalue="Python.TesteIA2" />
       <item itemvalue="Python.opengl10" />
       <item itemvalue="Python.opengl24" />
+      <item itemvalue="Python.teste_LibraryVectorNatanT" />
+      <item itemvalue="Python.teste_email" />
+      <item itemvalue="Python.testeclass" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.opengl24" />
+        <item itemvalue="Python.teste_LibraryVectorNatanT" />
+        <item itemvalue="Python.opengl10" />
         <item itemvalue="Python.TesteLibraryRenderNatanT" />
         <item itemvalue="Python.teste_email" />
-        <item itemvalue="Python.opengl10" />
-        <item itemvalue="Python.TesteIA2" />
       </list>
     </recent_temporary>
   </component>
