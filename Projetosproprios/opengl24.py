@@ -19,6 +19,7 @@ import LibraryVectorNatan as lvn
 # biblioteca para manipulação do terminal
 import sys
 
+random.seed(3)
 
 def cria_esfera(raioA, posA, cont, raioCorP, corP, ativ, ini: int, tipo, angAnel):
     vertices = []
@@ -98,12 +99,13 @@ def cria_esfera(raioA, posA, cont, raioCorP, corP, ativ, ini: int, tipo, angAnel
         inicio = len(vertices)
         cor = raioCorP[c]
         angulo = angAnel[c]
+        tamanho_anel = random.random()+.5
         for d in range(0, 1):
             for i in range(0, 50):
                 ang = 0 + (i / float(50 - 1) * (360 - 0))
                 rad = math.radians(ang)
 
-                raio_externo = raio * 1.75
+                raio_externo = raio * 1.25 * 2.25 * tamanho_anel
                 raio_interno = raio_externo * 1.25
 
                 x2 = raio_externo * math.cos(rad)
@@ -195,7 +197,7 @@ constante_grav = 0.0000674
 
 def cria_sistema(pos):
     # nebulosa informações
-    massa = random.randint(10,15)
+    massa = random.randint(10000,15000)
     # cria informações
     quantidade_planetas = random.randint(1,8)
     # dados do planeta
@@ -211,14 +213,15 @@ def cria_sistema(pos):
     satelite_pos = []
     satelite_cor = []
     # dado da estrela
-    raio_e = random.uniform(0.9,1.5)
-
+    raio_e = random.uniform(7.5,8.2)
+    massa-=raio_e
     for c in range(quantidade_planetas):
         # dados do planeta
-        pos_p = [pos[0]+random.randint(-12,12)+((c+raio_e)/9),pos[1]+random.randint(-8,8)+((c+raio_e)/9),pos[2]+random.randint(-12,12)+((c+raio_e)/9)]
-        raio_p = random.uniform(0.5,0.8)
+        pos_p = [pos[0]+random.randint(-56,56)+((c+raio_e)*5),pos[1]+random.randint(-50,50)+((c+raio_e)*5),pos[2]+random.randint(-56,56)+((c+raio_e)*5)]
+        raio_p = random.uniform(6.5,7.2)
         massa_p = 3. * (4.1887902047 * (raio_p) ** 3)
         cor_p = [random.uniform(0.0,1.0),random.uniform(0.0,1.0),random.uniform(0.0,1.0)]
+        print(massa_p)
         # anéis
         ativ_a = random.choice([True,False])
         cor_a = [random.uniform(0.0,1.0),random.uniform(0.0,1.0),random.uniform(0.0,1.0)]
@@ -229,8 +232,8 @@ def cria_sistema(pos):
             quant_sate = random.randint(1, 3)
             for v in range(quant_sate):
                 pos_s = lvn.soma_vetores(pos_p,
-                                         [raio_p + random.uniform(-2,2)+(v/3), raio_p + random.uniform(-2,2)+(v/3), raio_p + random.uniform(-2,2)+(v/3)])
-                raio_s = random.uniform(0.1, 0.2)
+                                         [raio_p + random.uniform(-15,15)+(v)*8, raio_p + random.uniform(-15,15)+(v)*8, raio_p + random.uniform(-15,15)+(v)*8])
+                raio_s = random.uniform(4.0, 4.5)
                 cor_s = [random.uniform(0.0,1.0),random.uniform(0.0,1.0),random.uniform(0.0,1.0)]
                 massa_s = 3. * (4.1887902047 * (raio_s) ** 3)
                 massa_p += massa_s
@@ -238,7 +241,7 @@ def cria_sistema(pos):
                 satelite_pos.append(pos_s)
                 satelite_cor.append(cor_s)
         #
-        if massa-massa_p >= 0:
+        if massa-massa_p > 0:
             planeta_pos.append(pos_p)
             planeta_raio.append(raio_p)
             planeta_cor.append(cor_p)
@@ -246,12 +249,11 @@ def cria_sistema(pos):
             cor_aneis.append(cor_a)
             angulo_aneis.append(angulo)
             massa-=massa_p
-        print(massa)
     return {'planetas':[planeta_pos, planeta_raio, planeta_cor, ativ_aneis,cor_aneis,angulo_aneis],'estrela':[[pos],
             [raio_e],[[.75+random.uniform(0.12,0.25),.5+random.uniform(0.12,0.20),0]]],
             'satelites':[satelite_pos,satelite_raios,satelite_cor]}
 
-informacoes = cria_sistema([0,0,-25])
+informacoes = cria_sistema([0,0,-150])
 # informações dos planetas
 raiosP = informacoes['planetas'][1]
 posP = informacoes['planetas'][0]
@@ -531,7 +533,7 @@ def init():
 
             //(vec3(dot(fragmento_normal,pos_luz))/100))-(distance(fragmento_pos,pos_luz)/50)
             // iluminacao/(distance(fragmento_pos,pos_luz)*10)
-            cor_fragmento = vec4((fragmento_cor/2)+iluminacao/(distance(fragmento_pos,luz_pos)*100),1.0);
+            cor_fragmento = vec4((fragmento_cor/2)-iluminacao/(distance(fragmento_pos,luz_pos)*100),1.0);
         }
     }        
     '''
@@ -661,7 +663,7 @@ def render():
 
     aspect_ratio = 600 / 600
     # matrizes
-    projecao = pyrr.matrix44.create_perspective_projection_matrix(45.0, aspect_ratio, 0.1, 150.0)
+    projecao = pyrr.matrix44.create_perspective_projection_matrix(45.0, aspect_ratio, 0.1, 150000.0)
     model_y = pyrr.matrix44.create_from_x_rotation(math.radians(angulo_x))
     model_x = pyrr.matrix44.create_from_y_rotation(math.radians(angulo_y))
 
