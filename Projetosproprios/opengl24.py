@@ -28,10 +28,12 @@ def cria_esfera(raioA, posA, cont, raioCorP, corP, ativ, ini: int, tipo, angAnel
     coluna = 30
     linha = 30
 
+
     # esfera
     for c in range(cont):
         pos = posA[c]
         raio = raioA[c]
+        tamanhoInv = 1.0 / raio
 
         inicio = len(vertices)
         cor = corP[c]
@@ -43,20 +45,28 @@ def cria_esfera(raioA, posA, cont, raioCorP, corP, ativ, ini: int, tipo, angAnel
 
                 x2 = raio * math.sin(phi) * math.cos(theta)
                 y2 = raio * math.cos(phi)
-                z2 = raio * math.sin(phi) * math.sin(theta)
-                x_m = random.random() / 75
-                y_m = random.random() / 75
-                z_m = random.random() / 75
+                z2 = round(raio * math.sin(phi) * math.sin(theta),3)
+                x_m = 0
+                y_m = 0
+                z_m = 0
+                if tipo[0] != 3:
+                    x_m = random.random()/6
+                    y_m = random.random()/6
+                    z_m = random.random()/6
+
+                else:
+                    x_m = random.random() / 100
+                    y_m = random.random() / 100
+                    z_m = random.random() / 100
 
                 # n = ((p - 10)*c)*(-1) cálculo para adquirir a normal de um vértice de uma esfera
-                normal = lvn.multiplica_vetores(
-                    lvn.subtrai_vetores(lvn.multiplica_vetores(lvn.soma_vetores([x2, y2, z2], pos), [10, 10, 10]), pos),
-                    [-1, -1, -1])
-
+                # fórmula acima minha
+                # fórmula que encontrei abaixo
+                normal = lvn.multiplica_vetores([x2,y2,z2],[tamanhoInv,tamanhoInv,tamanhoInv])
                 vertices.append([x2, y2, z2,
-                                 cor[0] + x_m * 10,
-                                 cor[1] + y_m * 10,
-                                 cor[2] + z_m * 10,
+                                 cor[0] + x_m*.75,
+                                 cor[1] + y_m*.75,
+                                 cor[2] + z_m*.75,
                                  normal[0] + x_m, normal[1] + y_m, normal[2] + z_m,
                                  pos[0] - x_m, pos[1] - y_m, pos[2] - z_m, tipo[0], tipo[1], tipo[2]])
                 # vertices.append([x2, y2, z2,
@@ -109,7 +119,7 @@ def cria_esfera(raioA, posA, cont, raioCorP, corP, ativ, ini: int, tipo, angAnel
                 raio_interno = raio_externo * 1.25
 
                 x2 = raio_externo * math.cos(rad)
-                z2 = raio_externo * math.sin(rad)
+                z2 = round(raio_externo * math.sin(rad),2)
                 y2 = 0
                 # inclinação
                 if angulo != 0:
@@ -117,7 +127,7 @@ def cria_esfera(raioA, posA, cont, raioCorP, corP, ativ, ini: int, tipo, angAnel
                 else:
                     y2 = (raio_externo * 1.5) * math.cos(rad) / 2
                 vertices.append([x2, y2, z2,
-                                 cor[0], cor[1], cor[2],
+                                 cor[0]/2, cor[1]/2, cor[2]/2,
                                  0, 0, 1,
                                  centro[0], centro[1], centro[2],
                                  tipo[0], tipo[1], tipo[2]])
@@ -174,7 +184,8 @@ angulo_x = 0
 # nave
 camera_posicao = pyrr.Vector3([0.0, 0.0, 9.0])
 camera_cima = pyrr.Vector3([0.0, 1.0, 0.0])
-velocidade_nave = 0.05
+velocidade_nave = 1.
+max_velocidade = 20.0
 peso_nave = 20
 pitch = 0
 yaw = -90
@@ -197,7 +208,7 @@ constante_grav = 0.0000674
 
 def cria_sistema(pos):
     # nebulosa informações
-    massa = random.randint(10000,15000)
+    massa = random.randint(10**35,10**45)
     # cria informações
     quantidade_planetas = random.randint(1,8)
     # dados do planeta
@@ -213,15 +224,14 @@ def cria_sistema(pos):
     satelite_pos = []
     satelite_cor = []
     # dado da estrela
-    raio_e = random.uniform(7.5,8.2)
+    raio_e = random.uniform(3555.9,3985.8)
     massa-=raio_e
     for c in range(quantidade_planetas):
         # dados do planeta
-        pos_p = [pos[0]+random.randint(-56,56)+((c+raio_e)*5),pos[1]+random.randint(-50,50)+((c+raio_e)*5),pos[2]+random.randint(-56,56)+((c+raio_e)*5)]
-        raio_p = random.uniform(6.5,7.2)
+        pos_p = [pos[0]+random.randint(-80975,80975)+((c+raio_e)*5),pos[1]+random.randint(-80975,80975)+((c+raio_e)*5),pos[2]+random.randint(-80975,80975)+((c+raio_e)*5)]
+        raio_p = random.uniform(2755.9,2985.8)
         massa_p = 3. * (4.1887902047 * (raio_p) ** 3)
         cor_p = [random.uniform(0.0,1.0),random.uniform(0.0,1.0),random.uniform(0.0,1.0)]
-        print(massa_p)
         # anéis
         ativ_a = random.choice([True,False])
         cor_a = [random.uniform(0.0,1.0),random.uniform(0.0,1.0),random.uniform(0.0,1.0)]
@@ -229,17 +239,18 @@ def cria_sistema(pos):
         # satélites naturais
         ativ_sate = random.choice([True, False])
         if ativ_sate == True:
-            quant_sate = random.randint(1, 3)
+            quant_sate = random.randint(1, 2)
             for v in range(quant_sate):
                 pos_s = lvn.soma_vetores(pos_p,
-                                         [raio_p + random.uniform(-15,15)+(v)*8, raio_p + random.uniform(-15,15)+(v)*8, raio_p + random.uniform(-15,15)+(v)*8])
-                raio_s = random.uniform(4.0, 4.5)
+                                         [raio_p + random.uniform(-7500,7500)+(v)*8, raio_p + random.uniform(-7500,7500)+(v)*8, raio_p + random.uniform(-7500,7500)+(v)*8])
+                raio_s = random.uniform(700.0, 958.5)
                 cor_s = [random.uniform(0.0,1.0),random.uniform(0.0,1.0),random.uniform(0.0,1.0)]
                 massa_s = 3. * (4.1887902047 * (raio_s) ** 3)
                 massa_p += massa_s
-                satelite_raios.append(raio_s)
-                satelite_pos.append(pos_s)
-                satelite_cor.append(cor_s)
+                if math.sqrt((pos_p[0]-pos_s[0])**2+(pos_p[1]-pos_s[1])**2+(pos_p[2]-pos_s[2])**2) > raio_p:
+                    satelite_raios.append(raio_s)
+                    satelite_pos.append(pos_s)
+                    satelite_cor.append(cor_s)
         #
         if massa-massa_p > 0:
             planeta_pos.append(pos_p)
@@ -253,7 +264,7 @@ def cria_sistema(pos):
             [raio_e],[[.75+random.uniform(0.12,0.25),.5+random.uniform(0.12,0.20),0]]],
             'satelites':[satelite_pos,satelite_raios,satelite_cor]}
 
-informacoes = cria_sistema([0,0,-150])
+informacoes = cria_sistema([0,0,-58000])
 # informações dos planetas
 raiosP = informacoes['planetas'][1]
 posP = informacoes['planetas'][0]
@@ -331,7 +342,8 @@ def gravidade(pos, raio):
         # volume 4/3Pi*R³
         massa_planeta = 3. * (4.1887902047 * (r) ** 3)
         # G*g¹*g²/r^2
-        dist = math.dist(lvn.multiplica_vetores(camera_posicao, [-1, -1, -1]), pos[pos0]) ** 2
+        camera_correta = lvn.multiplica_vetores(camera_posicao, [-1, -1, -1])
+        dist = math.sqrt((camera_correta[0]- pos[pos0][0])**2+(camera_correta[1]- pos[pos0][1])**2+(camera_correta[2]- pos[pos0][2])**2) ** 2
         forca_dir = lvn.normaliza_vetor(lvn.subtrai_vetores(pos[pos0], camera_posicao))
         forca_modulo = constante_grav * peso_nave * massa_planeta / dist
         forca = pyrr.Vector3(lvn.multiplica_vetores(forca_dir, [forca_modulo, forca_modulo, forca_modulo]))
@@ -360,7 +372,7 @@ def colisaoM(pos_player, pos_atros, raios):
 
 # função para entrada de teclado
 def key_callback(window, key, scancode, action, mods):
-    global camera_posicao, camera_frente, camera_cima, yaw, pitch, mov,propulsor,velocidade_nave
+    global camera_posicao, camera_frente, camera_cima, yaw, pitch, mov,propulsor,velocidade_nave, max_velocidade
     '''elif key == glfw.KEY_A:
         camera_posicao -= normaliza_glm_converte_pyrr(pyrr.vector3.cross(camera_frente, camera_cima)) * velocidade_nave
     elif key == glfw.KEY_D:
@@ -384,17 +396,17 @@ def key_callback(window, key, scancode, action, mods):
     elif key == glfw.KEY_D:
         yaw += 1.75
     elif key == glfw.KEY_R and action == 1:
-        if round(velocidade_nave,2) != 0.2:
-            velocidade_nave += 0.01
+        if round(velocidade_nave,2) < max_velocidade:
+            velocidade_nave += 1.0
     elif key == glfw.KEY_T and action == 1:
-        if round(velocidade_nave,2) != 0.00:
-            velocidade_nave -= 0.01
+        if round(velocidade_nave,2) > 0.00:
+            velocidade_nave -= 1.00
 
 
 # função inicial
 def init():
     global vertices, vao_id, shader_program_id, faces, id_uniform_projecao, camera_visao, id_uniform_cor_luz, id_uniform_pos_luz
-    glClearColor(0, 1, 1, 1)
+    glClearColor(0,0,0.4,0)
 
     # ativa z-buffer
     glEnable(GL_DEPTH_TEST)
@@ -497,8 +509,6 @@ def init():
 
     //  recebe o valor da cor da luz
     in vec3 v_cor_luz;
-    //  ajuste para criação de iluminação ambiente
-    vec3 ajuste_luz = vec3(0.25,0.25,0.25);
     //  recebe a normal do fragmento
     in vec3 fragmento_normal;
     //  adquire origem da luz
@@ -525,15 +535,19 @@ def init():
 
             float atenuacao = 14.0 / (constante+linear*distancia+quadratica*(distancia*distancia));
 
+            // difusa, peguei de um repositório do github
+            vec3 normal = normalize(fragmento_normal);
             vec3 direcao_luz = normalize(luz_pos-fragmento_pos);
-            float delta = max(dot(fragmento_normal, direcao_luz),0.0);
-            vec3 iluminacao_difusa = (delta * v_cor_luz);
+            float diff = max(dot(normal, direcao_luz), 0.0);
+            vec3 difusa = diff * vec3(1.0f, 1.0f, 1.0f);
+            
+            
 
-            iluminacao = dot(fragmento_normal, direcao_luz);
+            iluminacao = max(dot(fragmento_normal, direcao_luz),0.0);
 
             //(vec3(dot(fragmento_normal,pos_luz))/100))-(distance(fragmento_pos,pos_luz)/50)
-            // iluminacao/(distance(fragmento_pos,pos_luz)*10)
-            cor_fragmento = vec4((fragmento_cor/2)-iluminacao/(distance(fragmento_pos,luz_pos)*100),1.0);
+            // (fragmento_cor/2)-iluminacao/(distance(fragmento_pos,luz_pos)*100)
+            cor_fragmento = vec4((fragmento_cor)*difusa,1.0);
         }
     }        
     '''
@@ -663,7 +677,7 @@ def render():
 
     aspect_ratio = 600 / 600
     # matrizes
-    projecao = pyrr.matrix44.create_perspective_projection_matrix(45.0, aspect_ratio, 0.1, 150000.0)
+    projecao = pyrr.matrix44.create_perspective_projection_matrix(50.0, aspect_ratio, 1, 1500000000.0)
     model_y = pyrr.matrix44.create_from_x_rotation(math.radians(angulo_x))
     model_x = pyrr.matrix44.create_from_y_rotation(math.radians(angulo_y))
 
