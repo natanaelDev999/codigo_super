@@ -19,7 +19,7 @@ import LibraryVectorNatan as lvn
 # biblioteca para manipulação do terminal
 import sys
 
-random.seed(3)
+random.seed(30)
 
 def cria_esfera(raioA, posA, cont, raioCorP, corP, ativ, ini: int, tipo, angAnel):
     vertices = []
@@ -185,7 +185,7 @@ angulo_x = 0
 camera_posicao = pyrr.Vector3([0.0, 0.0, 9.0])
 camera_cima = pyrr.Vector3([0.0, 1.0, 0.0])
 velocidade_nave = 1.
-max_velocidade = 20.0
+max_velocidade = 100.0
 peso_nave = 20
 pitch = 0
 yaw = -90
@@ -193,7 +193,7 @@ mov = False
 propulsor = -1
 #
 
-constante_grav = 0.0000674
+constante_grav = 0.0000000674
 
 # vertices
 # quadrado
@@ -208,7 +208,7 @@ constante_grav = 0.0000674
 
 def cria_sistema(pos):
     # nebulosa informações
-    massa = random.randint(10**35,10**45)
+    massa = random.randint(10**45,10**55)
     # cria informações
     quantidade_planetas = random.randint(1,8)
     # dados do planeta
@@ -224,13 +224,14 @@ def cria_sistema(pos):
     satelite_pos = []
     satelite_cor = []
     # dado da estrela
-    raio_e = random.uniform(3555.9,3985.8)
+    raio_e = random.uniform(6955.9,7585.8)
     massa-=raio_e
     for c in range(quantidade_planetas):
         # dados do planeta
-        pos_p = [pos[0]+random.randint(-80975,80975)+((c+raio_e)*5),pos[1]+random.randint(-80975,80975)+((c+raio_e)*5),pos[2]+random.randint(-80975,80975)+((c+raio_e)*5)]
-        raio_p = random.uniform(2755.9,2985.8)
+        pos_p = [pos[0]+random.randint(-200975,200975)+((c+raio_e)*5),pos[1]+random.randint(-200975,200975)+((c+raio_e)*5),pos[2]+random.randint(-200975,200975)+((c+raio_e)*5)]
+        raio_p = random.uniform(5555.9,5985.8)
         massa_p = 3. * (4.1887902047 * (raio_p) ** 3)
+        print(massa_p)
         cor_p = [random.uniform(0.0,1.0),random.uniform(0.0,1.0),random.uniform(0.0,1.0)]
         # anéis
         ativ_a = random.choice([True,False])
@@ -264,7 +265,7 @@ def cria_sistema(pos):
             [raio_e],[[.75+random.uniform(0.12,0.25),.5+random.uniform(0.12,0.20),0]]],
             'satelites':[satelite_pos,satelite_raios,satelite_cor]}
 
-informacoes = cria_sistema([0,0,-58000])
+informacoes = cria_sistema([0,0,-88000])
 # informações dos planetas
 raiosP = informacoes['planetas'][1]
 posP = informacoes['planetas'][0]
@@ -397,7 +398,7 @@ def key_callback(window, key, scancode, action, mods):
         yaw += 1.75
     elif key == glfw.KEY_R and action == 1:
         if round(velocidade_nave,2) < max_velocidade:
-            velocidade_nave += 1.0
+            velocidade_nave += 10.0
     elif key == glfw.KEY_T and action == 1:
         if round(velocidade_nave,2) > 0.00:
             velocidade_nave -= 1.00
@@ -527,26 +528,12 @@ def init():
         else {
             // CÁLCULOS DE ILUMINAÇÃO
 
-            float constante = 1.0;
-            float linear = 0.09;
-            float quadratica = 0.032;
-            float distancia = length(luz_pos - fragmento_pos)/0.15;
-            float iluminacao = 0.;
-
-            float atenuacao = 14.0 / (constante+linear*distancia+quadratica*(distancia*distancia));
-
             // difusa, peguei de um repositório do github
             vec3 normal = normalize(fragmento_normal);
             vec3 direcao_luz = normalize(luz_pos-fragmento_pos);
             float diff = max(dot(normal, direcao_luz), 0.0);
             vec3 difusa = diff * vec3(1.0f, 1.0f, 1.0f);
-            
-            
 
-            iluminacao = max(dot(fragmento_normal, direcao_luz),0.0);
-
-            //(vec3(dot(fragmento_normal,pos_luz))/100))-(distance(fragmento_pos,pos_luz)/50)
-            // (fragmento_cor/2)-iluminacao/(distance(fragmento_pos,luz_pos)*100)
             cor_fragmento = vec4((fragmento_cor)*difusa,1.0);
         }
     }        
@@ -677,7 +664,7 @@ def render():
 
     aspect_ratio = 600 / 600
     # matrizes
-    projecao = pyrr.matrix44.create_perspective_projection_matrix(50.0, aspect_ratio, 1, 1500000000.0)
+    projecao = pyrr.matrix44.create_perspective_projection_matrix(50.0, aspect_ratio, 1, 150000000000000000000000000.0)
     model_y = pyrr.matrix44.create_from_x_rotation(math.radians(angulo_x))
     model_x = pyrr.matrix44.create_from_y_rotation(math.radians(angulo_y))
 
@@ -729,6 +716,8 @@ def main():
     global mov, camera_posicao,propulsor
     # cria janela
     glfw.init()
+    # escolhe a precisão do z-buffer(foi difícil de achar)
+    glfw.window_hint(glfw.DEPTH_BITS, 256)
     window = glfw.create_window(600, 600, "SuperSpace 4", None, None)
     # faz entrada de teclado
     glfw.set_key_callback(window, key_callback)
