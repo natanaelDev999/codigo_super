@@ -101,6 +101,6 @@ print(f'Servidor Rodando:True;\nporta:{port}')
 while True:
     conexao, endereco = objeto_s.accept()
 
-    thread = threading.Thread(target=trata_cliente, args=(conexao, endereco,))
+    thread = threading.Thread(target=trata_cliente, args=(conexao, endereco,),daemon=True)
 
     thread.start()
