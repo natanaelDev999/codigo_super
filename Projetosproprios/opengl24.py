@@ -19,8 +19,6 @@ import LibraryVectorNatan as lvn
 # biblioteca para manipulação do terminal
 import sys
 
-random.seed(300)
-
 def cria_esfera(raioA, posA, cont, raioCorP, corP, ativ, ini: int, tipo, angAnel):
     vertices = []
     ebo = []
@@ -191,20 +189,11 @@ pitch = 0
 yaw = -90
 mov = False
 propulsor = -1
+quadrante_atual = camera_posicao / pyrr.Vector3([300.000,300.000,300.000])
+random.seed(300+quadrante_atual[0]+quadrante_atual[1]+quadrante_atual[2])
 #
 
-constante_grav = 0.0000
-
-# vertices
-# quadrado
-# vértices
-# [2,2, 1,0,0]
-# [-2,2, 1,0,0]
-# [2,-2, 1,0,0]
-# [-2,-2, 1,0,0]
-# faces
-# [0,1,3]
-# [0,2,3]
+constante_grav = 0.000000674
 
 def cria_sistema(pos):
     # nebulosa informações
@@ -231,7 +220,6 @@ def cria_sistema(pos):
         pos_p = [pos[0]+random.randint(-200975,200975)+((c+raio_e)*5),pos[1]+random.randint(-200975,200975)+((c+raio_e)*5),pos[2]+random.randint(-200975,200975)+((c+raio_e)*5)]
         raio_p = random.uniform(5555.9,5985.8)
         massa_p = 3. * (4.1887902047 * (raio_p) ** 3)
-        print(massa_p)
         cor_p = [random.uniform(0.0,1.0),random.uniform(0.0,1.0),random.uniform(0.0,1.0)]
         # anéis
         ativ_a = random.choice([True,False])
@@ -243,8 +231,8 @@ def cria_sistema(pos):
             quant_sate = random.randint(1, 2)
             for v in range(quant_sate):
                 pos_s = lvn.soma_vetores(pos_p,
-                                         [raio_p + random.uniform(-7500,7500)+(v)*8, raio_p + random.uniform(-7500,7500)+(v)*8, raio_p + random.uniform(-7500,7500)+(v)*8])
-                raio_s = random.uniform(700.0, 958.5)
+                                         [raio_p + random.uniform(-8500,8500)+(v)*8, raio_p + random.uniform(-8500,8500)+(v)*8, raio_p + random.uniform(-8500,8500)+(v)*8])
+                raio_s = random.uniform(1000.0, 1558.5)
                 cor_s = [random.uniform(0.0,1.0),random.uniform(0.0,1.0),random.uniform(0.0,1.0)]
                 massa_s = 3. * (4.1887902047 * (raio_s) ** 3)
                 massa_p += massa_s
@@ -264,36 +252,6 @@ def cria_sistema(pos):
     return {'planetas':[planeta_pos, planeta_raio, planeta_cor, ativ_aneis,cor_aneis,angulo_aneis],'estrela':[[pos],
             [raio_e],[[.75+random.uniform(0.12,0.25),.5+random.uniform(0.12,0.20),0]]],
             'satelites':[satelite_pos,satelite_raios,satelite_cor]}
-
-informacoes = cria_sistema([0,0,-88000])
-# informações dos planetas
-raiosP = informacoes['planetas'][1]
-posP = informacoes['planetas'][0]
-corP = informacoes['planetas'][2]
-corRaioP = informacoes['planetas'][4]
-ativ = informacoes['planetas'][3]
-angAnel = informacoes['planetas'][5]
-# informações para satélites naturais
-raiosSN = informacoes['satelites'][1]
-posSN = informacoes['satelites'][0]
-corSN = informacoes['satelites'][2]
-# informações para estrelas
-raiosE = informacoes['estrela'][1]
-posE = informacoes['estrela'][0]
-corE = informacoes['estrela'][2]
-pos_luz = pyrr.Vector3(informacoes['estrela'][0])
-
-# adquire os dados dos triângulos
-planetas_dados = cria_esfera(raiosP, posP, len(posP), corRaioP, corP, ativ, 0, lvn.preenche_vetor(1, 3), angAnel)
-satelites_dados = cria_esfera(raiosSN, posSN, len(posSN), [[], [], []], corSN, lvn.preenche_vetor(False, len(posSN)),
-                              len(planetas_dados[0]), lvn.preenche_vetor(2, 3), angAnel)
-estrelas_dados = cria_esfera(raiosE, posE, len(posE), [], corE, lvn.preenche_vetor(False, 1),
-                             len(planetas_dados[0] + satelites_dados[0]), lvn.preenche_vetor(3, 3), angAnel)
-
-dados = [planetas_dados[0] + satelites_dados[0] + estrelas_dados[0],
-         planetas_dados[1] + satelites_dados[1] + estrelas_dados[1]]
-vertices = dados[0]
-faces = dados[1]
 
 #
 # vertices = \
@@ -330,11 +288,6 @@ faces = dados[1]
 #     [2, 6, 3],
 #     [6, 3, 7],
 # ]
-# quantidade de vértices
-quantidade_vertices = len(vertices)
-# quantidade de faces
-quantidade_faces = len(faces)
-
 
 # gravidade(aplica a gravidade)
 def gravidade(pos, raio):
@@ -406,7 +359,7 @@ def key_callback(window, key, scancode, action, mods):
 
 # função inicial
 def init(vertices,faces):
-    # vertices, faces ,
+    # vertices, faces
     global vao_id, shader_program_id,id_uniform_projecao, camera_visao, id_uniform_cor_luz, id_uniform_pos_luz
     glClearColor(0,0,0.4,0)
 
@@ -519,12 +472,6 @@ def init(vertices,faces):
     in vec3 fragmento_pos;
     //  recebe o tipo do astro
     in vec3 tipo_astro;
-    
-    float random (vec2 st) {
-    return fract(sin(dot(st.xy,
-                         vec2(12.9898,78.233)))*
-        43758.5453123);
-    }
 
     // função inicial
     void main(){
@@ -639,9 +586,8 @@ def init(vertices,faces):
 
 
 # função para desenho
-def render():
-    global vao_id, quantidade_vertices, shader_program_id, quantidade_faces, camera_visao, id_uniform_cor_luz, angulo_y, angulo_x, camera_posicao, camera_frente, camera_cima
-    global pos_luz
+def render(pos_luz,quantidade_faces,quantidade_vertices):
+    global vao_id, shader_program_id, camera_visao, id_uniform_cor_luz, angulo_y, angulo_x, camera_posicao, camera_frente, camera_cima
     # limpa a tela utilizando junto, o z-buffer
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
 
@@ -717,10 +663,52 @@ def interface_terminal_nave():
     global velocidade_nave
     print('\033[35;1;44m--- CONSOLE DA NAVE ---\033[m')
     print(f'    \033[33;1;43mvelocidade:{abs(velocidade_nave):.2f}\033[m')
+# função para gerar o dados
+def gera_dados(pos_estrela):
+    informacoes = cria_sistema(pos_estrela)
+    # informações dos planetas
+    raiosP = informacoes['planetas'][1]
+    posP = informacoes['planetas'][0]
+    corP = informacoes['planetas'][2]
+    corRaioP = informacoes['planetas'][4]
+    ativ = informacoes['planetas'][3]
+    angAnel = informacoes['planetas'][5]
+    # informações para satélites naturais
+    raiosSN = informacoes['satelites'][1]
+    posSN = informacoes['satelites'][0]
+    corSN = informacoes['satelites'][2]
+    # informações para estrelas
+    raiosE = informacoes['estrela'][1]
+    posE = informacoes['estrela'][0]
+    corE = informacoes['estrela'][2]
+    pos_luz = pyrr.Vector3(informacoes['estrela'][0])
+
+    # adquire os dados dos triângulos
+    planetas_dados = cria_esfera(raiosP, posP, len(posP), corRaioP, corP, ativ, 0, lvn.preenche_vetor(1, 3), angAnel)
+    satelites_dados = cria_esfera(raiosSN, posSN, len(posSN), [[], [], []], corSN,
+                                  lvn.preenche_vetor(False, len(posSN)),
+                                  len(planetas_dados[0]), lvn.preenche_vetor(2, 3), angAnel)
+    estrelas_dados = cria_esfera(raiosE, posE, len(posE), [], corE, lvn.preenche_vetor(False, 1),
+                                 len(planetas_dados[0] + satelites_dados[0]), lvn.preenche_vetor(3, 3), angAnel)
+
+    dados = [planetas_dados[0] + satelites_dados[0] + estrelas_dados[0],
+             planetas_dados[1] + satelites_dados[1] + estrelas_dados[1]]
+    vertices = dados[0]
+    faces = dados[1]
+
+    # quantidade de vértices
+    quantidade_vertices = len(vertices)
+    # quantidade de faces
+    quantidade_faces = len(faces)
+    return [vertices,faces,quantidade_vertices,quantidade_faces,posP,raiosP,posE, raiosE,posSN,raiosSN]
 
 # função central
 def main():
-    global mov, camera_posicao,propulsor,vertices,faces
+    global mov, camera_posicao,propulsor
+    pos_estrela =[0, 0, -88000]
+
+    vertices, faces, quantidade_vertices, quantidade_faces, posP, raiosP, posE, raiosE, posSN, raiosSN = gera_dados(pos_estrela)
+
     # cria janela
     glfw.init()
     # escolhe a precisão do z-buffer(foi difícil de achar)
@@ -737,7 +725,7 @@ def main():
     # loop para renderização
     while not glfw.window_should_close(window):
         # renderiza
-        render()
+        render(pos_estrela,quantidade_faces,quantidade_vertices)
         gravidade(posP, raiosP)
         gravidade(posE, raiosE)
         gravidade(posSN,raiosSN)
