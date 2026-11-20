@@ -19,7 +19,7 @@ import LibraryVectorNatan as lvn
 # biblioteca para manipulação do terminal
 import sys
 
-random.seed(30)
+random.seed(300)
 
 def cria_esfera(raioA, posA, cont, raioCorP, corP, ativ, ini: int, tipo, angAnel):
     vertices = []
@@ -193,7 +193,7 @@ mov = False
 propulsor = -1
 #
 
-constante_grav = 0.0000000674
+constante_grav = 0.0000
 
 # vertices
 # quadrado
@@ -405,8 +405,9 @@ def key_callback(window, key, scancode, action, mods):
 
 
 # função inicial
-def init():
-    global vertices, vao_id, shader_program_id, faces, id_uniform_projecao, camera_visao, id_uniform_cor_luz, id_uniform_pos_luz
+def init(vertices,faces):
+    # vertices, faces ,
+    global vao_id, shader_program_id,id_uniform_projecao, camera_visao, id_uniform_cor_luz, id_uniform_pos_luz
     glClearColor(0,0,0.4,0)
 
     # ativa z-buffer
@@ -518,6 +519,12 @@ def init():
     in vec3 fragmento_pos;
     //  recebe o tipo do astro
     in vec3 tipo_astro;
+    
+    float random (vec2 st) {
+    return fract(sin(dot(st.xy,
+                         vec2(12.9898,78.233)))*
+        43758.5453123);
+    }
 
     // função inicial
     void main(){
@@ -570,7 +577,7 @@ def init():
     out vec3 luz_pos;
     // saída para o tipo de astro
     out vec3 tipo_astro;
-
+    
     // função inicial
     void main(){
         // comandos e declarações da função inicial
@@ -713,7 +720,7 @@ def interface_terminal_nave():
 
 # função central
 def main():
-    global mov, camera_posicao,propulsor
+    global mov, camera_posicao,propulsor,vertices,faces
     # cria janela
     glfw.init()
     # escolhe a precisão do z-buffer(foi difícil de achar)
@@ -726,7 +733,7 @@ def main():
     # limita o fps
     glfw.swap_interval(1)
     # utiliza a função inicial
-    init()
+    init(vertices,faces)
     # loop para renderização
     while not glfw.window_should_close(window):
         # renderiza
