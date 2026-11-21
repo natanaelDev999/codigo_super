@@ -156,6 +156,9 @@ def cria_esfera(raioA, posA, cont, raioCorP, corP, ativ, ini: int, tipo, angAnel
             ebo.append([int_atual + ini, ext_atual + ini, ext_prox + ini])
             ebo.append([int_atual + ini, ext_prox + ini, int_prox + ini])
 
+            ebo.append([int_atual + ini, ext_prox + ini, ext_atual + ini])
+            ebo.append([int_atual + ini, int_prox + ini, ext_prox + ini])
+
     return [vertices, ebo]
 
 
@@ -182,22 +185,23 @@ angulo_x = 0
 # nave
 camera_posicao = pyrr.Vector3([0.0, 0.0, 9.0])
 camera_cima = pyrr.Vector3([0.0, 1.0, 0.0])
-velocidade_nave = 1.
+velocidade_nave = 0.
 max_velocidade = 100.0
 peso_nave = 20
 pitch = 0
 yaw = -90
 mov = False
 propulsor = -1
-quadrante_atual = camera_posicao / pyrr.Vector3([300.000,300.000,300.000])
+quadrante_atual = camera_posicao / pyrr.Vector3([350.000,350.000,350.000])
 random.seed(300+quadrante_atual[0]+quadrante_atual[1]+quadrante_atual[2])
+combustivel = 100
 #
 
 constante_grav = 0.000000674
 
 def cria_sistema(pos):
     # nebulosa informações
-    massa = random.randint(10**45,10**55)
+    massa = random.randint(10**65,10**95)
     # cria informações
     quantidade_planetas = random.randint(1,8)
     # dados do planeta
@@ -231,8 +235,8 @@ def cria_sistema(pos):
             quant_sate = random.randint(1, 2)
             for v in range(quant_sate):
                 pos_s = lvn.soma_vetores(pos_p,
-                                         [raio_p + random.uniform(-8500,8500)+(v)*8, raio_p + random.uniform(-8500,8500)+(v)*8, raio_p + random.uniform(-8500,8500)+(v)*8])
-                raio_s = random.uniform(1000.0, 1558.5)
+                                         [raio_p + random.uniform(-15000,15000)+(v)*8, raio_p + random.uniform(-15000,15000)+(v)*8, raio_p + random.uniform(-15000,15000)+(v)*8])
+                raio_s = random.uniform(1500.0, 2058.5)
                 cor_s = [random.uniform(0.0,1.0),random.uniform(0.0,1.0),random.uniform(0.0,1.0)]
                 massa_s = 3. * (4.1887902047 * (raio_s) ** 3)
                 massa_p += massa_s
@@ -363,8 +367,14 @@ def init(vertices,faces):
     global vao_id, shader_program_id,id_uniform_projecao, camera_visao, id_uniform_cor_luz, id_uniform_pos_luz
     glClearColor(0,0,0.4,0)
 
-    # ativa z-buffer
+    # ativa back face culling
     glEnable(GL_DEPTH_TEST)
+    glEnable(GL_CULL_FACE)
+    glCullFace(GL_FRONT)
+    # ativa transparência
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
     # transforma em uma lista de bytes
     vertices = np.array(vertices, np.dtype(np.float32))
     # VAO
@@ -476,10 +486,13 @@ def init(vertices,faces):
     // função inicial
     void main(){
         // comandos e declarações da função inicial
-        if (tipo_astro.x == 3) {
-            cor_fragmento = vec4(fragmento_cor,1.0);
+        if (tipo_astro.x == 4) {
+            cor_fragmento = vec4(fragmento_cor,.25);
         }
-        else {
+        if (tipo_astro.x == 3) {
+            cor_fragmento = vec4(fragmento_cor,1.);
+        }
+        if (tipo_astro.x == 2 || tipo_astro.x == 1) {
             // CÁLCULOS DE ILUMINAÇÃO
 
             // difusa, peguei de um repositório do github
@@ -488,7 +501,7 @@ def init(vertices,faces):
             float diff = max(dot(normal, direcao_luz), 0.0);
             vec3 difusa = diff * vec3(1.0f, 1.0f, 1.0f);
 
-            cor_fragmento = vec4((fragmento_cor)*difusa,1.0);
+            cor_fragmento = vec4((fragmento_cor/2)*difusa,1.0);
         }
     }        
     '''
@@ -617,7 +630,7 @@ def render(pos_luz,quantidade_faces,quantidade_vertices):
 
     aspect_ratio = 600 / 600
     # matrizes
-    projecao = pyrr.matrix44.create_perspective_projection_matrix(50.0, aspect_ratio, 1, 150000000000000000000000000.0)
+    projecao = pyrr.matrix44.create_perspective_projection_matrix(50.0, aspect_ratio, 1, 20000000.0)
     model_y = pyrr.matrix44.create_from_x_rotation(math.radians(angulo_x))
     model_x = pyrr.matrix44.create_from_y_rotation(math.radians(angulo_y))
 
@@ -658,11 +671,6 @@ def render(pos_luz,quantidade_faces,quantidade_vertices):
     glBindVertexArray(0)
     # desativa shaders
     glUseProgram(0)
-# função para interface de terminal da nave
-def interface_terminal_nave():
-    global velocidade_nave
-    print('\033[35;1;44m--- CONSOLE DA NAVE ---\033[m')
-    print(f'    \033[33;1;43mvelocidade:{abs(velocidade_nave):.2f}\033[m')
 # função para gerar o dados
 def gera_dados(pos_estrela):
     informacoes = cria_sistema(pos_estrela)
@@ -690,9 +698,11 @@ def gera_dados(pos_estrela):
                                   len(planetas_dados[0]), lvn.preenche_vetor(2, 3), angAnel)
     estrelas_dados = cria_esfera(raiosE, posE, len(posE), [], corE, lvn.preenche_vetor(False, 1),
                                  len(planetas_dados[0] + satelites_dados[0]), lvn.preenche_vetor(3, 3), angAnel)
+    estrelas_dados_brilho = cria_esfera([raiosE[0]+1000],posE,len(posE),[],corE,lvn.preenche_vetor(False,1),len(planetas_dados[0]+satelites_dados[0]+
+                                        estrelas_dados[0]),lvn.preenche_vetor(4,3),angAnel)
 
-    dados = [planetas_dados[0] + satelites_dados[0] + estrelas_dados[0],
-             planetas_dados[1] + satelites_dados[1] + estrelas_dados[1]]
+    dados = [planetas_dados[0] + satelites_dados[0] + estrelas_dados[0] + estrelas_dados_brilho[0],
+             planetas_dados[1] + satelites_dados[1] + estrelas_dados[1] + estrelas_dados_brilho[1]]
     vertices = dados[0]
     faces = dados[1]
 
@@ -701,18 +711,21 @@ def gera_dados(pos_estrela):
     # quantidade de faces
     quantidade_faces = len(faces)
     return [vertices,faces,quantidade_vertices,quantidade_faces,posP,raiosP,posE, raiosE,posSN,raiosSN]
-
+# função para interface de terminal da nave
+def interface_terminal_nave():
+    global velocidade_nave,combustivel
+    print('\033[35;1;44m--- CONSOLE DA NAVE ---\033[m')
+    print(f'    \033[33;1;43mvelocidade:{abs(velocidade_nave):.2f}\033[m')
+    print(f'    \033[35;1;45mcombustivel:{combustivel:.1f}\033[m')
 # função central
 def main():
-    global mov, camera_posicao,propulsor
-    pos_estrela =[0, 0, -88000]
+    global mov, camera_posicao,propulsor,combustivel
+    pos_estrela = [0, 0, -175_000]
 
     vertices, faces, quantidade_vertices, quantidade_faces, posP, raiosP, posE, raiosE, posSN, raiosSN = gera_dados(pos_estrela)
 
     # cria janela
     glfw.init()
-    # escolhe a precisão do z-buffer(foi difícil de achar)
-    glfw.window_hint(glfw.DEPTH_BITS, 256)
     window = glfw.create_window(600, 600, "SuperSpace 4", None, None)
     # faz entrada de teclado
     glfw.set_key_callback(window, key_callback)
@@ -737,11 +750,15 @@ def main():
         if colisaoM(camera_posicao, posE, raiosE) == False:
             break
         # movimentação
-        if mov == True:
+        if mov == True and combustivel > 0:
             if propulsor == 1:
                 camera_posicao += (velocidade_nave / 6) * camera_frente
+                if velocidade_nave != 0:
+                    combustivel = max(combustivel - 0.00005,0)
             else:
                 camera_posicao -= (velocidade_nave / 6) * camera_frente
+                if velocidade_nave != 0:
+                    combustivel = max(combustivel - 0.00005, 0)
         # if colisaoM([camera_posicao.x, camera_posicao.y, camera_posicao.z],posSN,raiosSN,[1.,1.,1]) == False:
         #     break
         # configurações
