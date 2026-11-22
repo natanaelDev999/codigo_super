@@ -182,6 +182,9 @@ id_uniform_pos_luz = 0
 # ângulo para rotação
 angulo_y = 0
 angulo_x = 0
+angulo_z = 0
+# chunks
+medida_chunk = 350000
 # nave
 camera_posicao = pyrr.Vector3([0.0, 0.0, 9.0])
 camera_cima = pyrr.Vector3([0.0, 1.0, 0.0])
@@ -192,10 +195,20 @@ pitch = 0
 yaw = -90
 mov = False
 propulsor = -1
-quadrante_atual = camera_posicao / pyrr.Vector3([350.000,350.000,350.000])
-random.seed(300+quadrante_atual[0]+quadrante_atual[1]+quadrante_atual[2])
+quadrante_atual = camera_posicao / pyrr.Vector3([medida_chunk,medida_chunk,medida_chunk])
+random.seed(quadrante_atual[0]+quadrante_atual[1]+quadrante_atual[2])
 combustivel = 100
-#
+# mapa para facilitar localização no espaço
+visualizador_espacial = [[' ',' ',' ',' ',' ',' ',' ',' ',' ',' '],
+                [' ',' ',' ',' ',' ',' ',' ',' ',' ',' '],
+                [' ',' ',' ',' ',' ',' ',' ',' ',' ',' '],
+                [' ',' ',' ',' ',' ',' ',' ',' ',' ',' '],
+                [' ',' ',' ',' ',' ',' ',' ',' ',' ',' '],
+                [' ',' ',' ',' ',' ',' ',' ',' ',' ',' '],
+                [' ',' ',' ',' ',' ',' ',' ',' ',' ',' '],
+                [' ',' ',' ',' ',' ',' ',' ',' ',' ',' '],
+                [' ',' ',' ',' ',' ',' ',' ',' ',' ',' '],
+                [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ']]
 
 constante_grav = 0.000000674
 
@@ -235,7 +248,7 @@ def cria_sistema(pos):
             quant_sate = random.randint(1, 2)
             for v in range(quant_sate):
                 pos_s = lvn.soma_vetores(pos_p,
-                                         [raio_p + random.uniform(-15000,15000)+(v)*8, raio_p + random.uniform(-15000,15000)+(v)*8, raio_p + random.uniform(-15000,15000)+(v)*8])
+                                         [raio_p + random.uniform(-25000,25000)+(v)*8, raio_p + random.uniform(-25000,25000)+(v)*8, raio_p + random.uniform(-25000,25000)+(v)*8])
                 raio_s = random.uniform(1500.0, 2058.5)
                 cor_s = [random.uniform(0.0,1.0),random.uniform(0.0,1.0),random.uniform(0.0,1.0)]
                 massa_s = 3. * (4.1887902047 * (raio_s) ** 3)
@@ -330,7 +343,7 @@ def colisaoM(pos_player, pos_atros, raios):
 
 # função para entrada de teclado
 def key_callback(window, key, scancode, action, mods):
-    global camera_posicao, camera_frente, camera_cima, yaw, pitch, mov,propulsor,velocidade_nave, max_velocidade
+    global camera_posicao, camera_frente, camera_cima, yaw, pitch, mov,propulsor,velocidade_nave, max_velocidade,angulo_z
     '''elif key == glfw.KEY_A:
         camera_posicao -= normaliza_glm_converte_pyrr(pyrr.vector3.cross(camera_frente, camera_cima)) * velocidade_nave
     elif key == glfw.KEY_D:
@@ -358,8 +371,11 @@ def key_callback(window, key, scancode, action, mods):
             velocidade_nave += 10.0
     elif key == glfw.KEY_T and action == 1:
         if round(velocidade_nave,2) > 0.00:
-            velocidade_nave -= 1.00
-
+            velocidade_nave -= 10.00
+    elif key == glfw.KEY_Z:
+        angulo_z += 1.75
+    elif key == glfw.KEY_X:
+        angulo_z -= 1.75
 
 # função inicial
 def init(vertices,faces):
@@ -487,7 +503,7 @@ def init(vertices,faces):
     void main(){
         // comandos e declarações da função inicial
         if (tipo_astro.x == 4) {
-            cor_fragmento = vec4(fragmento_cor,.25);
+            cor_fragmento = vec4(fragmento_cor,.20);
         }
         if (tipo_astro.x == 3) {
             cor_fragmento = vec4(fragmento_cor,1.);
@@ -600,7 +616,7 @@ def init(vertices,faces):
 
 # função para desenho
 def render(pos_luz,quantidade_faces,quantidade_vertices):
-    global vao_id, shader_program_id, camera_visao, id_uniform_cor_luz, angulo_y, angulo_x, camera_posicao, camera_frente, camera_cima
+    global vao_id, shader_program_id, camera_visao, id_uniform_cor_luz, angulo_y, angulo_x, camera_posicao, camera_frente, camera_cima,angulo_z
     # limpa a tela utilizando junto, o z-buffer
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
 
@@ -617,8 +633,6 @@ def render(pos_luz,quantidade_faces,quantidade_vertices):
 
     camera_frente = normaliza_glm_converte_pyrr(direcao)
 
-    camera_frente = normaliza_glm_converte_pyrr(direcao)
-
     camera_alvo = pyrr.Vector3([0.0, 0.0, 0.0])
     camera_direcao = normaliza_glm_converte_pyrr(camera_posicao - camera_alvo)
     cima_global = pyrr.Vector3([0.0, 1.0, 0.0])
@@ -630,12 +644,14 @@ def render(pos_luz,quantidade_faces,quantidade_vertices):
 
     aspect_ratio = 600 / 600
     # matrizes
-    projecao = pyrr.matrix44.create_perspective_projection_matrix(50.0, aspect_ratio, 1, 20000000.0)
+    projecao = pyrr.matrix44.create_perspective_projection_matrix(50.0, aspect_ratio, 1, 40000000.0)
     model_y = pyrr.matrix44.create_from_x_rotation(math.radians(angulo_x))
     model_x = pyrr.matrix44.create_from_y_rotation(math.radians(angulo_y))
+    model_z = pyrr.matrix44.create_from_z_rotation(math.radians(angulo_z))
 
     # multiplição de matrizes
-    matrix_completa_projecao = pyrr.matrix44.multiply(model_y, matriz_LookAt)
+    matrix_completa_projecao = pyrr.matrix44.multiply(model_z, matriz_LookAt)
+    matrix_completa_projecao = pyrr.matrix44.multiply(model_y, matrix_completa_projecao)
     matrix_completa_projecao = pyrr.matrix44.multiply(model_x, matrix_completa_projecao)
     matrix_completa_projecao = pyrr.matrix44.multiply(matrix_completa_projecao, projecao)
 
@@ -716,10 +732,33 @@ def interface_terminal_nave():
     global velocidade_nave,combustivel
     print('\033[35;1;44m--- CONSOLE DA NAVE ---\033[m')
     print(f'    \033[33;1;43mvelocidade:{abs(velocidade_nave):.2f}\033[m')
-    print(f'    \033[35;1;45mcombustivel:{combustivel:.1f}\033[m')
+    print(f'   \033[35;1;45mcombustivel:{combustivel:.1f}\033[m')
+# função para funcionamento do visualizador
+def carrega_dados_visualizador(pos_astros,caractere,ad):
+    global medida_chunk,visualizador_espacial,camera_posicao
+    for c in pos_astros:
+        resul = []
+        if ad == 0:
+            resul = lvn.multiplica_vetores(lvn.divide_vetores([c[0],c[1],-c[2]],[medida_chunk,medida_chunk,medida_chunk]),[10,10,10])
+        if ad == 1:
+            resul = lvn.soma_vetores(lvn.multiplica_vetores(lvn.divide_vetores([-c[0],c[1],c[2]],[medida_chunk,medida_chunk,medida_chunk]),[10,10,10]),[5,5,5])
+        if abs(resul[0]) < 10 and abs(resul[2]) < 10:
+            visualizador_espacial[int(resul[0])][int(resul[2])] = caractere
+    pos_nave = lvn.multiplica_vetores(lvn.divide_vetores([camera_posicao[0],camera_posicao[1],camera_posicao[2]],[medida_chunk,medida_chunk,medida_chunk]),[10,10,10])
+    if int(pos_nave[0])+5 < 10 and int(pos_nave[2])+5< 10:
+        visualizador_espacial[int(pos_nave[0])+5][int(pos_nave[2])+5] = '\033[0;1;43m^\033[m'
+# função para desenhar o visualizador espacial
+def desenha_visualizador_espacial():
+    global visualizador_espacial
+    print('|| '*7)
+    for pos0,c in enumerate(visualizador_espacial):
+        for pos1,v in enumerate(c):
+            print(v,end='\033[0;1;42m \033[m')
+            visualizador_espacial[pos0][pos1] = '\033[0;1;42m \033[m'
+        print('||')
 # função central
 def main():
-    global mov, camera_posicao,propulsor,combustivel
+    global mov, camera_posicao,propulsor,combustivel,quadrante_atual,medida_chunk
     pos_estrela = [0, 0, -175_000]
 
     vertices, faces, quantidade_vertices, quantidade_faces, posP, raiosP, posE, raiosE, posSN, raiosSN = gera_dados(pos_estrela)
@@ -737,6 +776,7 @@ def main():
     init(vertices,faces)
     # loop para renderização
     while not glfw.window_should_close(window):
+        # carrega localização no chunk
         # renderiza
         render(pos_estrela,quantidade_faces,quantidade_vertices)
         gravidade(posP, raiosP)
@@ -767,8 +807,14 @@ def main():
         # limpa terminal
         sys.stdout.write('\033[H')
         sys.stdout.flush()
+        # some o cursor de digitação
+        sys.stdout.write("\033[?25l")
+        sys.stdout.flush()
         #
         interface_terminal_nave()
+        quadrante_atual = camera_posicao / pyrr.Vector3([medida_chunk, medida_chunk, medida_chunk])
+        carrega_dados_visualizador(posP,'\033[0;1;45mO\033[m',0)
+        desenha_visualizador_espacial()
     # termina janela
     glfw.terminate()
 
