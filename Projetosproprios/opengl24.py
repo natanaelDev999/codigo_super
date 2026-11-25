@@ -18,6 +18,9 @@ import random
 import LibraryVectorNatan as lvn
 # biblioteca para manipulação do terminal
 import sys
+import os
+# biblioteca para tempo
+import time
 
 def cria_esfera(raioA, posA, cont, raioCorP, corP, ativ, ini: int, tipo, angAnel):
     vertices = []
@@ -170,7 +173,10 @@ def normaliza_glm_converte_pyrr(vetor):
 
 
 #####################################################
-
+vertices= faces= quantidade_vertices= quantidade_faces= posP= raiosP= posE= raiosE= posSN= raiosSN= nomeP = []
+# síbalas para criação de nome para os planeta e estrela
+silabas = ['va','ve','vi','vo','vu','ta','te','ti','to','tu','sa','se','si','so','su','ca','ce','ci','co','cu','vac','vec','voc','c',
+       'a','e','i','o','u','tri','tre','la','le','li','lo','lu','tho','the','r']
 # variáveis
 vao_id = 0
 shader_program_id = 0
@@ -186,7 +192,7 @@ angulo_z = 0
 # chunks
 medida_chunk = 350000
 # nave
-camera_posicao = pyrr.Vector3([0.0, 0.0, 9.0])
+camera_posicao = pyrr.Vector3([0.0, 0.0,9.0])
 camera_cima = pyrr.Vector3([0.0, 1.0, 0.0])
 velocidade_nave = 0.
 max_velocidade = 100.0
@@ -196,8 +202,9 @@ yaw = -90
 mov = False
 propulsor = -1
 quadrante_atual = camera_posicao / pyrr.Vector3([medida_chunk,medida_chunk,medida_chunk])
-random.seed(quadrante_atual[0]+quadrante_atual[1]+quadrante_atual[2])
+quadrante_atual = [int(quadrante_atual[0]),int(quadrante_atual[1]),int(quadrante_atual[2])]
 combustivel = 100
+combustivel_maximo = 100
 # mapa para facilitar localização no espaço
 visualizador_espacial = [[' ',' ',' ',' ',' ',' ',' ',' ',' ',' '],
                 [' ',' ',' ',' ',' ',' ',' ',' ',' ',' '],
@@ -211,7 +218,9 @@ visualizador_espacial = [[' ',' ',' ',' ',' ',' ',' ',' ',' ',' '],
                 [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ']]
 
 constante_grav = 0.000000674
-
+def gera_nome():
+    global silabas
+    return random.choice(silabas) + random.choice(silabas) + random.choice(silabas)
 def cria_sistema(pos):
     # nebulosa informações
     massa = random.randint(10**65,10**95)
@@ -221,6 +230,7 @@ def cria_sistema(pos):
     planeta_pos = []
     planeta_raio = []
     planeta_cor = []
+    planeta_nome = []
     # anéis
     ativ_aneis = []
     cor_aneis = []
@@ -259,6 +269,9 @@ def cria_sistema(pos):
                     satelite_cor.append(cor_s)
         #
         if massa-massa_p > 0:
+            random.seed(pos_p[0]+pos_p[1]+pos_p[2])
+            nome = gera_nome()
+            planeta_nome.append(nome)
             planeta_pos.append(pos_p)
             planeta_raio.append(raio_p)
             planeta_cor.append(cor_p)
@@ -266,46 +279,22 @@ def cria_sistema(pos):
             cor_aneis.append(cor_a)
             angulo_aneis.append(angulo)
             massa-=massa_p
-    return {'planetas':[planeta_pos, planeta_raio, planeta_cor, ativ_aneis,cor_aneis,angulo_aneis],'estrela':[[pos],
+    return {'planetas':[planeta_pos, planeta_raio, planeta_cor, ativ_aneis,cor_aneis,angulo_aneis,planeta_nome],'estrela':[[pos],
             [raio_e],[[.75+random.uniform(0.12,0.25),.5+random.uniform(0.12,0.20),0]]],
             'satelites':[satelite_pos,satelite_raios,satelite_cor]}
-
-#
-# vertices = \
-#     [
-#         # posição   \\   cor   \\ normal
-#         # frente
-#         [0.2, 0.2, 0, 1, 0, 0, 0, 0, 1],
-#         [-0.2, 0.2, 0, 1, 0, 0, 0, 0, 1],
-#         [0.2, -0.2, 0, 1, 0, 0, 0, 0, 1],
-#         [-0.2, -0.2, 0, 1, 0, 0, 0, 0, 1],
-#         # atrás
-#         [0.2, 0.2, 0.36, 1, 0, 0, 0, 0, -1],
-#         [-0.2, 0.2, 0.36, 1, 0, 0, 0, 0, -1],
-#         [0.2, -0.2, 0.36, 1, 0, 0, 0, 0, -1],
-#         [-0.2, -0.2, 0.36, 1, 0, 0, 0, 0, -1]
-#     ]
-# faces = [
-#     # atrás
-#     [4, 5, 7],
-#     [4, 6, 7],
-#     # frente
-#     [0, 1, 3],
-#     [0, 2, 3],
-#     # lado esquerdo
-#     [0, 4, 6],
-#     [0, 2, 6],
-#     # lado direito
-#     [1, 5, 3],
-#     [3, 5, 7],
-#     # cima
-#     [0, 4, 1],
-#     [4, 1, 5],
-#     # baixo
-#     [2, 6, 3],
-#     [6, 3, 7],
-# ]
-
+# função para comércio
+def comercio(ind_p):
+    global combustivel,combustivel_maximo
+    # limpa terminal
+    os.system('cls')
+    print('\033[0;1;45mAcoplação ao hangar feita com sucesso\033[m')
+    abastece = str(input('\033[0;1;43mDeseja abastecer seu combustível?(s/n): \033[m')).upper()
+    if abastece == 'S':
+        combustivel = combustivel_maximo
+    massa_planeta = 3. * (4.1887902047 * (raiosP[ind_p]) ** 3)
+    print(f'\033[0;1;44mMassa do planeta: {massa_planeta:.1f}\033[m')
+    print(f'\033[0;1;42mO nome do planeta é:{nomeP[ind_p]}')
+    time.sleep(3.0)
 # gravidade(aplica a gravidade)
 def gravidade(pos, raio):
     global peso_nave, camera_posicao, velocidade_nave, constante_grav
@@ -326,18 +315,26 @@ def gravidade(pos, raio):
 def colisao(pos_player, pos_astro, raio):
     retr = True
     if (math.sqrt((pos_astro[0] -pos_player[0]) ** 2 + (pos_astro[1] -pos_player[1]) ** 2 + (
-            pos_astro[2] -pos_player[2]) ** 2)) < raio:
+            pos_astro[2] -pos_player[2]) ** 2)) < raio+10:
         retr = False
     return retr
 
 
 # colisão para planetas
-def colisaoM(pos_player, pos_atros, raios):
+def colisaoM(pos_player, pos_atros, raios,comercio_ativ=False):
+    global velocidade_nave,mov,camera_posicao
     pros = True
+
     for pos0, c in enumerate(pos_atros):
         pros = colisao(pos_player, c, raios[pos0])
-        if pros == False:
+        if pros == False and velocidade_nave > 10.0:
             break
+        elif pros == False and velocidade_nave <= 10.0 and comercio_ativ == True:
+            vetor_saida = lvn.divide_vetores(lvn.subtrai_vetores(c,pos_player),[2,2,2])
+            camera_posicao = lvn.subtrai_vetores(pos_player,vetor_saida)
+            comercio(pos0)
+            mov = False
+            pros=True
     return pros
 
 
@@ -697,6 +694,7 @@ def gera_dados(pos_estrela):
     corRaioP = informacoes['planetas'][4]
     ativ = informacoes['planetas'][3]
     angAnel = informacoes['planetas'][5]
+    nomeP = informacoes['planetas'][6]
     # informações para satélites naturais
     raiosSN = informacoes['satelites'][1]
     posSN = informacoes['satelites'][0]
@@ -726,7 +724,7 @@ def gera_dados(pos_estrela):
     quantidade_vertices = len(vertices)
     # quantidade de faces
     quantidade_faces = len(faces)
-    return [vertices,faces,quantidade_vertices,quantidade_faces,posP,raiosP,posE, raiosE,posSN,raiosSN]
+    return [vertices,faces,quantidade_vertices,quantidade_faces,posP,raiosP,nomeP,posE, raiosE,posSN,raiosSN]
 # função para interface de terminal da nave
 def interface_terminal_nave():
     global velocidade_nave,combustivel
@@ -735,17 +733,18 @@ def interface_terminal_nave():
     print(f'   \033[35;1;45mcombustivel:{combustivel:.1f}\033[m')
 # função para funcionamento do visualizador
 def carrega_dados_visualizador(pos_astros,caractere,ad):
-    global medida_chunk,visualizador_espacial,camera_posicao
+    global medida_chunk,visualizador_espacial,camera_posicao,quadrante_atual
     for c in pos_astros:
         resul = []
         if ad == 0:
-            resul = lvn.multiplica_vetores(lvn.divide_vetores([c[0],c[1],-c[2]],[medida_chunk,medida_chunk,medida_chunk]),[10,10,10])
+            resul = lvn.subtrai_vetores(lvn.multiplica_vetores(lvn.divide_vetores([c[0],c[1],c[2]],[medida_chunk,medida_chunk,medida_chunk]),[10,10,10]),
+                                        quadrante_atual)
         if ad == 1:
-            resul = lvn.soma_vetores(lvn.multiplica_vetores(lvn.divide_vetores([-c[0],c[1],c[2]],[medida_chunk,medida_chunk,medida_chunk]),[10,10,10]),[5,5,5])
+            resul = lvn.soma_vetores(lvn.multiplica_vetores(lvn.divide_vetores([c[0],c[1],c[2]],[medida_chunk,medida_chunk,medida_chunk]),[10,10,10]),[5,5,5])
         if abs(resul[0]) < 10 and abs(resul[2]) < 10:
             visualizador_espacial[int(resul[0])][int(resul[2])] = caractere
-    pos_nave = lvn.multiplica_vetores(lvn.divide_vetores([camera_posicao[0],camera_posicao[1],camera_posicao[2]],[medida_chunk,medida_chunk,medida_chunk]),[10,10,10])
-    if int(pos_nave[0])+5 < 10 and int(pos_nave[2])+5< 10:
+    pos_nave = lvn.multiplica_vetores(lvn.divide_vetores([camera_posicao[0]*-1,camera_posicao[1],camera_posicao[2]*-1],[medida_chunk,medida_chunk,medida_chunk]),[10,10,10])
+    if int(pos_nave[0])+5 < 10 and int(pos_nave[2])+5< 10 and int(pos_nave[0])+5 > 0 and int(pos_nave[2])+5 > 0:
         visualizador_espacial[int(pos_nave[0])+5][int(pos_nave[2])+5] = '\033[0;1;43m^\033[m'
 # função para desenhar o visualizador espacial
 def desenha_visualizador_espacial():
@@ -758,10 +757,15 @@ def desenha_visualizador_espacial():
         print('||')
 # função central
 def main():
-    global mov, camera_posicao,propulsor,combustivel,quadrante_atual,medida_chunk
-    pos_estrela = [0, 0, -175_000]
+    global mov, camera_posicao,propulsor,combustivel,quadrante_atual,medida_chunk,vertices, faces, quantidade_vertices, quantidade_faces, posP, raiosP, posE, raiosE\
+        , posSN, raiosSN,nomeP
 
-    vertices, faces, quantidade_vertices, quantidade_faces, posP, raiosP, posE, raiosE, posSN, raiosSN = gera_dados(pos_estrela)
+    pos_estrela = lvn.soma_vetores([0, 0, -175_000],
+                                   lvn.multiplica_vetores(quadrante_atual, [medida_chunk, medida_chunk, medida_chunk]))
+
+    random.seed(quadrante_atual[0] + quadrante_atual[1] + quadrante_atual[2])
+
+    vertices, faces, quantidade_vertices, quantidade_faces, posP, raiosP,nomeP, posE, raiosE, posSN, raiosSN = gera_dados(pos_estrela)
 
     # cria janela
     glfw.init()
@@ -783,7 +787,7 @@ def main():
         gravidade(posE, raiosE)
         gravidade(posSN,raiosSN)
         # colisão
-        if colisaoM(camera_posicao, posP, raiosP) == False:
+        if colisaoM(camera_posicao, posP, raiosP,True) == False:
             break
         if colisaoM(camera_posicao,posSN,raiosSN) == False:
             break
@@ -812,7 +816,14 @@ def main():
         sys.stdout.flush()
         #
         interface_terminal_nave()
-        quadrante_atual = camera_posicao / pyrr.Vector3([medida_chunk, medida_chunk, medida_chunk])
+        quadrante_novo = camera_posicao / pyrr.Vector3([medida_chunk, medida_chunk, medida_chunk])
+        quadrante_novo = [int(quadrante_novo[0]),int(quadrante_novo[1]),int(quadrante_novo[2])]
+        if quadrante_novo != [int(quadrante_atual[0]),int(quadrante_atual[1]),int(quadrante_atual[2])]:
+            pos_estrela = lvn.soma_vetores([0, 0, -175_000],lvn.multiplica_vetores(quadrante_novo,[medida_chunk, medida_chunk, medida_chunk]))
+            quadrante_atual = quadrante_novo[:]
+            random.seed(quadrante_atual[0] + quadrante_atual[1] + quadrante_atual[2])
+            # utiliza a função inicial
+            init(vertices, faces)
         carrega_dados_visualizador(posP,'\033[0;1;45mO\033[m',0)
         desenha_visualizador_espacial()
     # termina janela
